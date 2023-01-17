@@ -15,10 +15,19 @@
 
 
     </head>
-
     <body>
+        {% include 'partials/_main_navbar.html.twig' %}
+
         {% block body %}{% endblock %}
 
+
+
+
+        {# Inclusion JS Bootstrap #}
+        <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+
+        {# Bloc pour ajouter des fichiers JS additionnels #}
+        {% block js %}{% endblock %}
 
     </body>
 </html>
