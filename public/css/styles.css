@@ -14,7 +14,7 @@ body {
 
 .title {
     display: flex;
-    flex-direction: wrap;
+    flex-wrap: wrap;
     width: 50px;
     float: left;
     margin-left: 100px;
@@ -145,7 +145,7 @@ footer {
     margin-left: 100px;
     font-size: 3rem;
     display: flex;
-    flex-direction: wrap;
+    flex-wrap: wrap;
     float: left;
 }
 
