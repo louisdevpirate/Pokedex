@@ -8,6 +8,7 @@
 {% block body %}
 
 
+
     {# Titre h1 #}
     <div class="row">
         <h1 class="col-12 text-center my-5">Mon profil</h1>
@@ -34,36 +35,30 @@
 
     {# statistique #}
     <div>
-        <h2>statistiques</h2>
+        <h2>Statistiques</h2>
 
-        Nom :<br>
-        pv :<br>
-        Niveau de rareté :<br>
-        Puissance vstar :<br>
-        Faiblesse :<br>
-        Résistance :<br>
-        Coût de retrait :<br>
+        <div class="container-fluid">
 
-        <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus architecto asperiores eligendi esse quos. Accusantium dolorem earum eveniet expedita fuga non odio provident sint tempora voluptas. Dicta maxime nostrum temporibus?</span><span>Aspernatur blanditiis molestiae placeat porro voluptates? Amet dignissimos neque nesciunt nostrum porro sit ut! Dolor, hic iusto laudantium quia quis quod voluptates? Ad aliquid consequuntur dolore dolores, id praesentium reiciendis!</span><span>A aspernatur deserunt doloribus ex, fugit illum itaque maiores maxime quaerat ratione sequi temporibus, veritatis voluptatibus! Exercitationem in iusto labore minus modi repellat sed similique sit totam, ut, vel voluptatibus.</span></p>
-    </div>
+            <div class="row">
 
-    {# Formulaire bootstrap  #}
-    <form>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Mot de passe :</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="aaaa@a.com">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Adresse Email :</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Veuillez tapez votre mot de passe :">
-            <div id="emailHelp" class="form-text">Nous ne communiquerons pas vos coordonnées.</div>
-        </div>
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Se souvenir de moi !</label>
-        </div>
-        <div>
-            <button type="submit" class="btn btn-primary">S'enregistrer</button>
+                {# Block de gauche, Infos de l'utilisateur #}
+                <ul class="list-group col-12 col-lg-5 p-0" id="utilisateur">
+                    <li class="list-group-item ">Pokémons attrapés : <span class="text-info"></span></li>
+                    <li class="list-group-item ">Shiny obtenus : <span class="text-info"></span></li>
+                    <li class="list-group-item ">Pokédex remplis à  XX/100 : <span class="text-info"></span></li>
+                </ul>
+
+                {# Block de droite, Infos du compte #}
+                <ul class="list-group col-12 col-lg-5 p-0" id="compte">
+                    <li class="list-group-item ">Adresse Email : <span class="text-info"></span></li>
+                    <li class="list-group-item ">Pseudonyme : <span class="text-info"></span></li>
+                    <li class="list-group-item ">Date d'inscription : <span class="text-info"></span></li>
+                    <li class="list-group-item ">
+                        Compte :
+                        <span class="text-info">{{ is_granted('ROLE_ADMIN') ? 'Administrateur' : 'Utilisateur' }}</span>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         {# Lien qui redirige vers une nouvelle page afin de modifier les informations de l'utilisateur #}
@@ -71,8 +66,6 @@
             {# NE PAS OUBLIER DE CREER LE LIEN QUI REDIRIGE VERS LA PAGE DE MODIFICATION #}
             <a href="">Modifier les informations</a>
         </div>
-
-    </form>
 
     {# Fermeture langague twig #}
 {% endblock %}
