@@ -37,7 +37,7 @@ body {
 
 }
 
-.navbar-toggler{
+.navbar-toggler {
     background-color: #DD4242;
     border-radius: 0;
 }
@@ -54,16 +54,13 @@ body {
     height: 100%;
 }
 
-<<<<<<< HEAD
-=======
-.nav-item img{
+<<<<<<< HEAD=======.nav-item img {
     margin: 6px 3%;
 }
 
 
 
->>>>>>> 4f115c4ebd735f927ff5ca3750c57779494b06ad
-.nav-link {
+>>>>>>>4f115c4ebd735f927ff5ca3750c57779494b06ad .nav-link {
     color: #FFFFFF;
     font-size: 2rem;
     width: 100%;
@@ -158,10 +155,10 @@ footer {
     margin: 10px;
 }
 
-<<<<<<< HEAD
-.social-media-button a {
+<<<<<<< HEAD .social-media-button a {
     color: white;
 }
+
 =======
 /*Modifications de la page d'accueil*/
 
@@ -174,27 +171,28 @@ footer {
     background-position: center center;
 }
 
-.cover-box{
+.cover-box {
     padding: 0;
 }
 
-.project-div{
+.project-div {
     background: url(../images/Poke-Background.png);
     color: #FFFFFF;
 }
 
-.project-div img{
+.project-div img {
     border-radius: 50px;
 }
 
-.project-div img{
+.project-div img {
     margin-top: 20px;
     margin-bottom: 50px;
     border-radius: 60px;
     padding: 30px;
 
 }
-.project h2{
+
+.project h2 {
     text-align: center;
     text-transform: capitalize;
     text-decoration-line: underline;
@@ -203,16 +201,16 @@ footer {
 
 }
 
-.join-adventure{
+.join-adventure {
     background-color: #092A3B;
 }
 
-.second-part{
+.second-part {
     padding: 0;
 
 }
 
-.second-part p{
+.second-part p {
     color: #FFFFFF;
     margin: 0;
     font-style: italic;
@@ -220,35 +218,35 @@ footer {
 
 }
 
-.prof-chen{
+.prof-chen {
     padding-bottom: 40px;
     padding-top: 50px;
 }
 
-.join-adventure{
+.join-adventure {
     padding-top: 20px;
 }
 
-.chen-border{
+.chen-border {
     border: dotted #000000;
     border-radius: 40px;
     margin: 50px;
     padding-top: 30px;
 }
 
-.start-adventure-button{
+.start-adventure-button {
     background-color: #DD4242;
     padding: 10px;
     border-radius: 40px;
     border: solid #AF374D;
 }
 
-.start-adventure-button a{
+.start-adventure-button a {
     text-decoration: none;
     color: #FFFFFF;
 }
 
-.second-border{
+.second-border {
     padding: 5px;
     border: solid #FFFFFF;
     border-radius: 40px;
@@ -260,8 +258,7 @@ footer {
 
 
 /* MEDIAS QUERY A PARTIR DE 992px */
->>>>>>> 4f115c4ebd735f927ff5ca3750c57779494b06ad
-
+>>>>>>>4f115c4ebd735f927ff5ca3750c57779494b06ad
 
 /* Media Query de la bannière */
 @media screen and (min-width: 992px) {
@@ -281,8 +278,7 @@ footer {
         flex-wrap: wrap;
     }
 
-<<<<<<< HEAD
-    .footer-blocks {
+    <<<<<<< HEAD .footer-blocks {
         display: flex;
         flex-direction: row;
         margin-top: 10px;
@@ -307,14 +303,12 @@ footer {
 
 
 
-=======
-
-    .nav-link{
+    =======.nav-link {
         justify-content: center;
         margin: 0;
     }
 
->>>>>>> 4f115c4ebd735f927ff5ca3750c57779494b06ad
+    >>>>>>>4f115c4ebd735f927ff5ca3750c57779494b06ad
 }
 
 
@@ -322,38 +316,36 @@ footer {
 
 /* Page de profils */
 
-    /*MQ PARTIE HOME*/
+/*MQ PARTIE HOME*/
 
-    .inactive1{
-        background: url(../images/pikavener.png) no-repeat center ;
-        transform: scaleX(-1)
-    }
-    .inactive2{
-        background: url(../images/salameche2.png) no-repeat center;
-    }
+.inactive1 {
+    background: url(../images/pikavener.png) no-repeat center;
+    transform: scaleX(-1)
+}
 
-    .project-div{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0;
-        padding: 5%;
+.inactive2 {
+    background: url(../images/salameche2.png) no-repeat center;
+}
 
-    }
+.project-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 5%;
 
-    .project h2{
-        text-align: justify;
-    }
+}
 
-    .project-contain{
-        padding: 0;
+.project h2 {
+    text-align: justify;
+}
 
-    }
-    .project{
+.project-contain {
+    padding: 0;
 
-    }
+}
 
-
+.project {}
 
 
 
@@ -365,13 +357,9 @@ footer {
 
 
 
-<<<<<<< HEAD
-=======
 
 
-
-
->>>>>>> 4f115c4ebd735f927ff5ca3750c57779494b06ad
+<<<<<<< HEAD=======>>>>>>>4f115c4ebd735f927ff5ca3750c57779494b06ad
 /* --------------------------------------------------------------------------------------------- */
 
 /* Page de Connexion  */
