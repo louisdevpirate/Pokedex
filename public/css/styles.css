@@ -47,7 +47,6 @@ body {
     height: 100%;
 }
 
-
 .nav-link {
     color: #FFFFFF;
     font-size: 2rem;
@@ -75,6 +74,27 @@ body {
 
 }
 
+/* MEDIAS QUERY A PARTIR DE 992px */
+
+@media screen and (min-width: 992px) {
+
+    .banner {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .banner-title h1 {
+        font-size: 2rem;
+        align-items: center;
+        justify-content: center;
+        margin-top: 100px;
+    }
+
+}
+
+
+
 
 
 /* Modification du footer  */
@@ -92,13 +112,14 @@ footer {
 }
 
 .footer-logo h3 {
-    font-size: 2rem;
+    font-size: 2.4rem;
+    margin-left: 15px;
 }
 
 .social-media {
     order: 1;
-    flex: 1;
     text-align: center;
+    margin-top: 20px;
 }
 
 .footer-blocks {
@@ -119,31 +140,60 @@ footer {
     border: none;
     font-size: 2rem;
     margin: 10px;
-
 }
 
-/* MEDIAS QUERY A PARTIR DE 992px */
+.social-media-button a {
+    color: white;
+}
 
 @media screen and (min-width: 992px) {
 
-    .banner {
+    .footer {
+        background-color: #0C3348;
+        color: #FFFFFF;
         display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 70px;
     }
 
-    .banner-title h1 {
-        font-size: 2rem;
-        align-items: center;
-        justify-content: center;
-        margin-top: 100px;
+    .footer-logo {
+        display: flex;
+        flex-wrap: wrap;
     }
+
+    .footer-blocks {
+        display: flex;
+        flex-direction: row;
+        margin-top: 10px;
+    }
+
+    .social-media-button {
+        color: white;
+        background-color: #0C3348;
+        border: none;
+        padding: 3px;
+        font-size: 2.5rem;
+        margin: 10px;
+
+    }
+
+    .social-media-button:hover {
+        padding: 2.5px 5px 2.5px 5px;
+        color: #092A3B;
+        background-color: white;
+        border-radius: 100%;
+    }
+
+
 
 }
 
+
 /****************************************************************************************/
 
-/* page de profils */
+/* Page de profils */
 
 
 
@@ -158,14 +208,6 @@ footer {
 
 
 
-
-
-
-
-
-
-
-<<<<<<< HEAD
 /* --------------------------------------------------------------------------------------------- */
 
 /* Page de Connexion  */
