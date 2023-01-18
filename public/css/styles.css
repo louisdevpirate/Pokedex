@@ -1,14 +1,8 @@
-body {
-    margin: 0;
-    margin-right: 0;
-}
 
 /*Modification de la bannière*/
 
 .banner {
     background-color: #DD4242;
-    margin: 0;
-    padding: 0;
     text-align: center;
 }
 
@@ -16,11 +10,6 @@ body {
     color: #FFFFFF;
     font-size: 4rem;
     font-weight: bold;
-}
-
-.container-fluid {
-    margin: 0;
-    padding: 0;
 }
 
 .header-img img {
