@@ -34,22 +34,29 @@
 
     {# statistique #}
     <div>
-
         <h2>statistiques</h2>
 
-        <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus architecto asperiores eligendi esse quos. Accusantium dolorem earum eveniet expedita fuga non odio provident sint tempora voluptas. Dicta maxime nostrum temporibus?</span><span>Aspernatur blanditiis molestiae placeat porro voluptates? Amet dignissimos neque nesciunt nostrum porro sit ut! Dolor, hic iusto laudantium quia quis quod voluptates? Ad aliquid consequuntur dolore dolores, id praesentium reiciendis!</span><span>A aspernatur deserunt doloribus ex, fugit illum itaque maiores maxime quaerat ratione sequi temporibus, veritatis voluptatibus! Exercitationem in iusto labore minus modi repellat sed similique sit totam, ut, vel voluptatibus.</span><span>Ab aliquid consequatur dignissimos dolorem eius est, eum iste magnam mollitia odit, sapiente similique tenetur ut vero voluptatibus. Beatae consequatur consequuntur culpa deleniti dolor ea explicabo incidunt odio quas quod!</span><span>Deserunt ducimus facilis inventore magni maxime optio pariatur placeat porro quos sint. Ab dolor dolorum, ducimus ex, explicabo harum illum ipsa iste officia quasi reiciendis repudiandae rerum soluta, temporibus voluptatum!</span></p>
+        Nom :<br>
+        pv :<br>
+        Niveau de rareté :<br>
+        Puissance vstar :<br>
+        Faiblesse :<br>
+        Résistance :<br>
+        Coût de retrait :<br>
+
+        <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus architecto asperiores eligendi esse quos. Accusantium dolorem earum eveniet expedita fuga non odio provident sint tempora voluptas. Dicta maxime nostrum temporibus?</span><span>Aspernatur blanditiis molestiae placeat porro voluptates? Amet dignissimos neque nesciunt nostrum porro sit ut! Dolor, hic iusto laudantium quia quis quod voluptates? Ad aliquid consequuntur dolore dolores, id praesentium reiciendis!</span><span>A aspernatur deserunt doloribus ex, fugit illum itaque maiores maxime quaerat ratione sequi temporibus, veritatis voluptatibus! Exercitationem in iusto labore minus modi repellat sed similique sit totam, ut, vel voluptatibus.</span></p>
     </div>
 
     {# Formulaire bootstrap  #}
     <form>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <label for="exampleInputPassword1" class="form-label">Mot de passe :</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="aaaa@a.com">
         </div>
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            <label for="exampleInputEmail1" class="form-label">Adresse Email :</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Veuillez tapez votre mot de passe :">
+            <div id="emailHelp" class="form-text">Nous ne communiquerons pas vos coordonnées.</div>
         </div>
         <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -58,9 +65,14 @@
         <div>
             <button type="submit" class="btn btn-primary">S'enregistrer</button>
         </div>
+
+        {# Lien qui redirige vers une nouvelle page afin de modifier les informations de l'utilisateur #}
+        <div>
+            {# NE PAS OUBLIER DE CREER LE LIEN QUI REDIRIGE VERS LA PAGE DE MODIFICATION #}
+            <a href="">Modifier les informations</a>
+        </div>
+
     </form>
-
-
 
     {# Fermeture langague twig #}
 {% endblock %}
