@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="h-100">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -11,13 +11,12 @@
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/connexion.css') }}">
-
+        
         {% block css %}{% endblock %}
 
 
     </head>
-    <body>
+    <body class="d-flex flex-column h-100">
         {% include 'partials/_main_navbar.html.twig' %}
 
         {% block body %}{% endblock %}
