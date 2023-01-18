@@ -31,8 +31,15 @@ body {
     margin: 0;
 }
 
-.ciaobyebye {
+.bar-nav {
     background-color: #0C3348;
+    padding: 0;
+
+}
+
+.navbar-toggler{
+    background-color: #DD4242;
+    border-radius: 0;
 }
 
 .navbar-nav {
@@ -47,6 +54,15 @@ body {
     height: 100%;
 }
 
+<<<<<<< HEAD
+=======
+.nav-item img{
+    margin: 6px 3%;
+}
+
+
+
+>>>>>>> 4f115c4ebd735f927ff5ca3750c57779494b06ad
 .nav-link {
     color: #FFFFFF;
     font-size: 2rem;
@@ -56,10 +72,10 @@ body {
     border: none;
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
     cursor: pointer;
     padding: 0;
+    margin: 0;
 }
 
 .nav-link img {
@@ -142,10 +158,112 @@ footer {
     margin: 10px;
 }
 
+<<<<<<< HEAD
 .social-media-button a {
     color: white;
 }
+=======
+/*Modifications de la page d'accueil*/
 
+.fixed-cover {
+    height: 350px;
+    background-image: url(../images/Transition.png);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.cover-box{
+    padding: 0;
+}
+
+.project-div{
+    background: url(../images/Poke-Background.png);
+    color: #FFFFFF;
+}
+
+.project-div img{
+    border-radius: 50px;
+}
+
+.project-div img{
+    margin-top: 20px;
+    margin-bottom: 50px;
+    border-radius: 60px;
+    padding: 30px;
+
+}
+.project h2{
+    text-align: center;
+    text-transform: capitalize;
+    text-decoration-line: underline;
+    text-decoration-color: #294c5e;
+    color: #FFFFFF;
+
+}
+
+.join-adventure{
+    background-color: #092A3B;
+}
+
+.second-part{
+    padding: 0;
+
+}
+
+.second-part p{
+    color: #FFFFFF;
+    margin: 0;
+    font-style: italic;
+    padding: 20px 10px 50px;
+
+}
+
+.prof-chen{
+    padding-bottom: 40px;
+    padding-top: 50px;
+}
+
+.join-adventure{
+    padding-top: 20px;
+}
+
+.chen-border{
+    border: dotted #000000;
+    border-radius: 40px;
+    margin: 50px;
+    padding-top: 30px;
+}
+
+.start-adventure-button{
+    background-color: #DD4242;
+    padding: 10px;
+    border-radius: 40px;
+    border: solid #AF374D;
+}
+
+.start-adventure-button a{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.second-border{
+    padding: 5px;
+    border: solid #FFFFFF;
+    border-radius: 40px;
+    background-color: #AF374D;
+
+}
+
+
+
+
+/* MEDIAS QUERY A PARTIR DE 992px */
+>>>>>>> 4f115c4ebd735f927ff5ca3750c57779494b06ad
+
+
+/* Media Query de la bannière */
 @media screen and (min-width: 992px) {
 
     .footer {
@@ -163,6 +281,7 @@ footer {
         flex-wrap: wrap;
     }
 
+<<<<<<< HEAD
     .footer-blocks {
         display: flex;
         flex-direction: row;
@@ -188,6 +307,14 @@ footer {
 
 
 
+=======
+
+    .nav-link{
+        justify-content: center;
+        margin: 0;
+    }
+
+>>>>>>> 4f115c4ebd735f927ff5ca3750c57779494b06ad
 }
 
 
@@ -195,6 +322,36 @@ footer {
 
 /* Page de profils */
 
+    /*MQ PARTIE HOME*/
+
+    .inactive1{
+        background: url(../images/pikavener.png) no-repeat center ;
+        transform: scaleX(-1)
+    }
+    .inactive2{
+        background: url(../images/salameche2.png) no-repeat center;
+    }
+
+    .project-div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 5%;
+
+    }
+
+    .project h2{
+        text-align: justify;
+    }
+
+    .project-contain{
+        padding: 0;
+
+    }
+    .project{
+
+    }
 
 
 
@@ -208,6 +365,13 @@ footer {
 
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> 4f115c4ebd735f927ff5ca3750c57779494b06ad
 /* --------------------------------------------------------------------------------------------- */
 
 /* Page de Connexion  */
