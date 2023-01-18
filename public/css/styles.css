@@ -163,9 +163,6 @@ footer {
 
 
 
-<<<<<<< HEAD
-}
-
 
 
 
@@ -208,6 +205,10 @@ footer {
     margin-bottom: 40px;
 }
 
-@media screen and (min-width: 992px) {}
-=======
->>>>>>> ad8e449146a83e35c675e46d0c79cfb7d09768ee
+/* --------------------------------------------------------------------------------------------- */
+/* page d'inscription */
+
+.h1-inscription {
+
+  color: white;
+}

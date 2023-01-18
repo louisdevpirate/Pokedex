@@ -4,43 +4,85 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\IsTrue;
+use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
-            ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,
+            // Champ email
+            ->add('email', EmailType::class, [
+                'label' => 'Adresse Email',
                 'constraints' => [
-                    new IsTrue([
-                        'message' => 'You should agree to our terms.',
+
+                    new NotBlank([
+                        'message' => 'Merci de renseigner une adresse email',
                     ]),
+                    new Email([
+                        'message' => 'L\'adresse email {{value}} n\'est pas valide',
+                    ]),
+
                 ],
             ])
-            ->add('plainPassword', PasswordType::class, [
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
+            // Champ mots de passe (en double)
+            ->add('plainPassword', RepeatedType::class ,[
+                'type' => PasswordType::class,
+                'invalid_message' => 'Le mot de passe correspond pas à sa confirmation',
+                'first_options' => [
+                    'label' => 'Mot de passe',
+                ],
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => 'Merci de renseigner un mot de passe',
                     ]),
                     new Length([
-                        'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
-                        // max length allowed by Symfony for security reasons
+                        'min' => 8,
+                        'minMessage' => 'Votre mot de passe doit contenir au moins{{ limit }} caractères',
+                        'maxMessage' => 'Votre mot de passe doit contenir au maximum{{ limit }} caractères',
                         'max' => 4096,
                     ]),
+                    // regex de verification de mot de passe
+                    new Regex([
+                        'pattern' => "/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[ !\"#\$%&\'()*+,\-.\/:;<=>?@[\\\\\]\^_`{\|}~]).{8,4096}$/u",
+                        'message' => 'Votre mot de passe doit contenir obligatoirement une minuscule, une majuscule, un chiffre et un caractère spécial'
+                    ]),
+                ],
+            ])
+            // Champ pseudonym
+            ->add('pseudonym', TextType::class, [
+                'label' => 'Pseudonyme',
+                'constraints' => [
+                    new NotBlank([
+                                'message' => 'Merci de renseigner un pseudonyme',
+                    ]),
+                    new Length([
+                        'min' => 2,
+                        'max' => 40,
+                        'minMessage' => 'Votre pseudonyme doit contenir au moins {{limit}} caractères',
+                        'maxMessage' => 'Votre pseudonyme doit contenir au maximum {{limit}} caractères',
+                    ]),
+                ],
+            ])
+
+
+            // Bouton de validation
+            ->add('save', SubmitType::class, [
+                'label' => 'Créer mon compte',
+                'attr' => [ 'class' => 'btn btn-outline-primary w-100',
+
                 ],
             ])
         ;
