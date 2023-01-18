@@ -20,9 +20,7 @@
 
         {% block body %}{% endblock %}
 
-         {% block footer %}
-            {% include 'partials/_main_footer.html.twig' %}
-        {% endblock %}
+        {% include 'partials/_main_footer.html.twig' %}
 
         {# Inclusion JS Bootstrap #}
         <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>

@@ -5,48 +5,71 @@
 {% block body %}
 
 
-    {# Première paartie de la page d'accueil, avec Sacha et Pikachu  #}
+{#     Première paartie de la page d'accueil, avec Sacha et Pikachu  #}
     <div class="container">
 
-        <img class="sacha" src="/images/Sacha-Pikachu.jpg" alt="Sacha and Pikachu">
+        <div class="row">
 
-        <div class="project">
-        
-            <h2>Le Projet</h2>
+            <div class="col-12">
 
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, eligendi tempora! Quam, molestiae. Cumque iure doloremque commodi veritatis ad temporibus blanditiis dicta perferendis ullam perspiciatis. Explicabo iure quod laudantium quae.
-            Magni, amet commodi! Obcaecati sequi optio, itaque est voluptatum accusamus cum dolores aut dolorum commodi natus porro inventore impedit laboriosam iure quidem? Quia tempore aperiam facere. Quisquam nesciunt aliquam repellat!
-            Provident, dolor autem in eveniet ullam explicabo vitae sed dolorum? Rerum sequi aut totam. Sequi laudantium ipsam mollitia, incidunt minima molestiae odio! Nulla totam aliquam sequi vitae officia veniam iste?</p>
+                <img class="sacha" src="/images/Sacha-Pikachu.jpg" alt="Sacha and Pikachu">
 
-        </div>
+                <div class="project">
 
-    </div>
+                    <h2>Le Projet</h2>
 
-    {# Image de transition en background-fixed  #}
-    <div class="transition row my-5">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, eligendi tempora! Quam, molestiae. Cumque iure doloremque commodi veritatis ad temporibus blanditiis dicta perferendis ullam perspiciatis. Explicabo iure quod laudantium quae.
+                        Magni, amet commodi! Obcaecati sequi optio, itaque est voluptatum accusamus cum dolores aut dolorum commodi natus porro inventore impedit laboriosam iure quidem? Quia tempore aperiam facere. Quisquam nesciunt aliquam repellat!
+                        Provident, dolor autem in eveniet ullam explicabo vitae sed dolorum? Rerum sequi aut totam. Sequi laudantium ipsam mollitia, incidunt minima molestiae odio! Nulla totam aliquam sequi vitae officia veniam iste?</p>
 
-        <div class="bottom-container">
-
-            <div class="prof-chen">
-
-                <img src="/images/Professeur-Chen.png" alt="Professeur Chen">
+                </div>
 
             </div>
-        
+
         </div>
 
     </div>
 
-    {# Deuxième partie de la page d'accueil avec Prof Chen et le bouton pour s'inscrire  #}
-    <div class="join-adventure">
+{#     Image de transition en background-fixed  #}
+    <div class="container-fluid">
 
-        <a class="start-adventure-button"><img src="/images/PokeBall.png" alt="Poke Ball" width="50px">Commencez l'aventure
-            <i class="fa-solid fa-chevron-right"></i>
-        </a>
+        <div class="transition row my-5">
 
-        <p>"Rejoins l'aventure Pokémon, et deviens le meilleur dresseur en tentant de remplir ton Pokédex !"</p>
+            <div class="col-12">
 
+                <div class="bottom-container">
+
+                    <div class="prof-chen">
+
+                        <img class="img-fluid" src="/images/Professeur-Chen.png" alt="Professeur Chen">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-12">
+{#                 Deuxième partie de la page d'accueil avec Prof Chen et le bouton pour s'inscrire  #}
+                <div class="join-adventure">
+
+                    <a class="start-adventure-button"><img src="/images/PokeBall.png" alt="Poke Ball" width="50px">Commencez l'aventure
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+
+                    <p>"Rejoins l'aventure Pokémon, et deviens le meilleur dresseur en tentant de remplir ton Pokédex !"</p>
+
+                </div>
+            </div>
+
+        </div>
     </div>
+
+
 {% endblock %}
 
 
