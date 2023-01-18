@@ -19,13 +19,31 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/mon-profil/', name: 'app_profil')]
-    public function profil(): Response
+    #[Route('/register/', name: 'app_register')]
+    public function register(): Response
     {
-        return $this->render('main/profile.html.twig',[
+        return $this->render('main/register.html.twig',[
 
         ]);
     }
+
+    #[Route('/connexion/', name: 'app_connexion')]
+    public function connexion(): Response
+    {
+        return $this->render('main/connexion.html.twig',[
+
+        ]);
+    }
+    
+    #[Route('/mon-profil/', name: 'app_profil')]
+    public function profil(): Response
+    {
+        return $this->render('main/profil.html.twig',[
+
+        ]);
+    }
+
+    
 
 //    #[Route('/capture/', name: 'app_capture')]
 //    public function capture(): Response
