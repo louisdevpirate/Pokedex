@@ -1,3 +1,7 @@
+body {
+    background-color: #092A3B;
+    font-family: 'Ubuntu', sans-serif;
+}
 
 /*Modification de la bannière*/
 
@@ -17,7 +21,11 @@
     padding: 0;
 }
 
+
+
+
 /*Modification de la navbar */
+
 .navbar {
     padding: 0;
     margin: 0;
@@ -66,6 +74,8 @@
     transition: 0.5s;
 
 }
+
+
 
 /* Modification du footer  */
 
@@ -129,6 +139,75 @@ footer {
         margin-top: 100px;
     }
 
-
-
 }
+
+/****************************************************************************************/
+
+/* page de profils */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<<<<<<< HEAD
+}
+
+
+
+
+/* --------------------------------------------------------------------------------------------- */
+
+/* Page de Connexion  */
+
+.connexion {
+    height: 525px;
+    background-color: #092A3B;
+}
+
+.connexion-h1 {
+    color: white;
+}
+
+.connexion-button {
+    background-color: #DD4242;
+    margin-top: 40px;
+    border: none;
+    width: 200px;
+    border-radius: 50px;
+    height: 50px;
+}
+
+.connexion-button:hover {
+    background-color: white;
+    color: #DD4242;
+}
+
+.login-form-container {
+    background-image: url(../images/Poke-Background.png);
+}
+
+.login-form {
+    border-radius: 40px;
+    background-color: #092A3B;
+    padding: 100px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+@media screen and (min-width: 992px) {}
+=======
+>>>>>>> ad8e449146a83e35c675e46d0c79cfb7d09768ee
