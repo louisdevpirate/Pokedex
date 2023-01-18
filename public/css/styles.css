@@ -3,189 +3,143 @@ body {
     margin-right: 0;
 }
 
+/*Modification de la bannière*/
+
 .banner {
-    margin-top: 0px;
-    width: 100%;
     background-color: #DD4242;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
 
-.title {
-    display: flex;
-    flex-wrap: wrap;
-    width: 50px;
-    float: left;
-    margin-left: 100px;
-    color: white;
-    font-size: 3rem;
+.banner-title h1 {
+    color: #FFFFFF;
+    font-size: 4rem;
+    font-weight: bold;
 }
 
-.header-img {
-    margin: auto;
+.container-fluid {
+    margin: 0;
+    padding: 0;
 }
 
+.header-img img {
+    margin: 0;
+    padding: 0;
+}
+
+/*Modification de la navbar */
 .navbar {
-    width: 100%;
-    height: 60px;
-    background-color: #0C3348;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
+    padding: 0;
+    margin: 0;
 }
 
-.navigation-button {
+.ciaobyebye {
+    background-color: #0C3348;
+}
+
+.navbar-nav {
+    width: 100%;
+    height: 75px;
+    margin: 0 !important;
+}
+
+
+.nav-item {
+    width: 100%;
+    height: 100%;
+}
+
+
+.nav-link {
+    color: #FFFFFF;
+    font-size: 2rem;
     width: 100%;
     height: 100%;
     background-color: #0C3348;
     border: none;
-    color: white;
-    font-size: 1rem;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     cursor: pointer;
+    padding: 0;
 }
 
-.navigation-button:hover {
-    background-color: #092A3B;
+.nav-link img {
+    width: 50px;
+    height: 50px;
 }
 
-.container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: #092A3B;
-    height: 75%;
+.nav-link:hover {
+    color: #0C3348 !important;
+    background-color: #FFFFFF;
+    transition: 0.5s;
+
 }
 
-.sacha {
-    margin: 100px;
-    border-radius: 20px;
-}
-
-.project {
-    margin: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    color: whitesmoke;
-}
-
-.project h2 {
-    font-size: 5rem;
-}
-
-.transition {
-    height: 80%;
-    background-image: url(../images/Transition.png);
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-}
-
-.bottom-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background-image: url(../images/Poke-Background.png);
-    height: 75%;
-}
-
-.join-adventure {
-    margin: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    color: whitesmoke;
-    font-style: italic;
-    font-size: 1rem;
-}
-
-.start-adventure-button {
-    background-color: #DD4242;
-    width: 300px;
-    height: 70px;
-    border: none;
-    border-radius: 50px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    color: white;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-.start-adventure-button:hover {
-    background-color: #FF9797;
-}
-
+/* Modification du footer  */
 
 footer {
-    height: 25%;
-    background-color: #092A3B;
+    background-color: #0C3348;
+    color: #FFFFFF;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .footer-logo {
-    color: whitesmoke;
-    width: 50px;
-    margin-left: 100px;
-    font-size: 3rem;
-    display: flex;
-    flex-wrap: wrap;
-    float: left;
+    margin: 15px;
 }
 
-.footer-blocks {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    margin: auto;
-}
-
-.footer-block {
-    color: whitesmoke;
-    margin: 50px;
-}
-
-.footer-block ul {
-    list-style-type: none;
+.footer-logo h3 {
+    font-size: 2rem;
 }
 
 .social-media {
-    display: flex;
-    justify-content: space-evenly;
-    float: right;
-    margin-right: 100px;
-    padding: 20px;
+    order: 1;
+    flex: 1;
+    text-align: center;
+}
 
+.footer-blocks {
+    font-size: 0.8rem;
+}
+
+.footer-block h4 {
+    font-size: 1rem;
+}
+
+.footer-block ul {
+    list-style: none;
 }
 
 .social-media-button {
-    color: whitesmoke;
-    background-color: #092A3B;
+    color: white;
+    background-color: #0C3348;
     border: none;
-    font-size: 3rem;
-    cursor: pointer;
-    margin: 30px;
+    font-size: 2rem;
+    margin: 10px;
+
 }
 
-.social-media-button:hover {
-    background-color: whitesmoke;
-    color: #092A3B;
-    border-radius: 10px;
+/* MEDIAS QUERY A PARTIR DE 992px */
+
+@media screen and (min-width: 992px) {
+
+    .banner {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .banner-title h1 {
+        font-size: 2rem;
+        align-items: center;
+        justify-content: center;
+        margin-top: 100px;
+    }
+
+
+
 }
