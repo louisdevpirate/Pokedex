@@ -1,0 +1,29 @@
+body {
+    background-color: #092A3B;
+}
+
+.container {
+    height: 525px;
+}
+
+.connexion-h1 {
+    color: white;
+}
+
+.form-group {
+    margin: 30px;
+}
+
+.connexion-button {
+    background-color: #DD4242;
+    margin-top: 40px;
+    border: none;
+    width: 200px;
+    border-radius: 50px;
+    height: 50px;
+}
+
+.connexion-button:hover {
+    background-color: white;
+    color: #DD4242;
+}
