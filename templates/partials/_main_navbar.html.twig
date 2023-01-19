@@ -24,46 +24,38 @@
 
         <div class="container-fluid bar-nav">
 
+            <div class="coloration">
 
-            <div class="container-fluid ciaobyebye">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"  data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"    aria-label="Toggle navigation">
 
-                <div class="coloration">
+                    <span class="navbar-toggler-icon"></span>
 
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"  data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"    aria-label="Toggle navigation">
+                </button>
 
-                        <span class="navbar-toggler-icon"></span>
+            </div>
 
-                    </button>
-
-                </div>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse background-color-nav" id="navbarSupportedContent">
 
 
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0-0">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0-0 background-color-nav">
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_home') }}"><img src="{{ asset('images/Accueil.png') }}" alt="">Accueil</a>
-                        </li>
+                    <li class="nav-item background-color-nav">
+                        <a class="nav-link background-color-nav" href="{{ path('app_home') }}"><img src="{{ asset('images/Accueil.png') }}" alt="">Accueil</a>
+                    </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><img src="{{ asset('images/Capture.png') }}" alt="">Capture</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><img src="{{ asset('images/Capture.png') }}" alt="">Capture</a>
+                    </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><img src="{{ asset('images/Pokedex.png') }}" alt="">Pokédex</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><img src="{{ asset('images/Pokedex.png') }}" alt="">Pokédex</a>
+                    </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_profil') }}"> <img src="{{ asset('images/Profil.png') }}" alt="">Mon Profil</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_profil') }}"> <img src="{{ asset('images/Profil.png') }}" alt="">Mon Profil</a>
+                    </li>
 
-                    </ul>
-
-                </div>
-
-
-
+                </ul>
             </div>
         </div>
     </nav>
