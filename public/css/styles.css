@@ -215,9 +215,9 @@ footer {
     }
 
     .social-media-button:hover {
-        transition: all 1s ease;
-        color: #092A3B;
-        background-color: white;
+        transition: all 0.5s ease;
+        color: white;
+        background-color: #7097AB;
     }
 
 }
