@@ -54,15 +54,14 @@ body {
     height: 100%;
 }
 
-<<<<<<< HEAD
-=======
+
 .nav-item img{
     margin: 6px 3%;
 }
 
 
 
->>>>>>> 4f115c4ebd735f927ff5ca3750c57779494b06ad
+
 .nav-link {
     color: #FFFFFF;
     font-size: 2rem;
@@ -158,11 +157,11 @@ footer {
     margin: 10px;
 }
 
-<<<<<<< HEAD
+
 .social-media-button a {
     color: white;
 }
-=======
+
 /*Modifications de la page d'accueil*/
 
 .fixed-cover {
@@ -260,7 +259,7 @@ footer {
 
 
 /* MEDIAS QUERY A PARTIR DE 992px */
->>>>>>> 4f115c4ebd735f927ff5ca3750c57779494b06ad
+
 
 
 /* Media Query de la bannière */
@@ -281,7 +280,7 @@ footer {
         flex-wrap: wrap;
     }
 
-<<<<<<< HEAD
+
     .footer-blocks {
         display: flex;
         flex-direction: row;
@@ -307,14 +306,13 @@ footer {
 
 
 
-=======
 
     .nav-link{
         justify-content: center;
         margin: 0;
     }
 
->>>>>>> 4f115c4ebd735f927ff5ca3750c57779494b06ad
+
 }
 
 
@@ -365,22 +363,16 @@ footer {
 
 
 
-<<<<<<< HEAD
-=======
-
-
-
-
-<<<<<<< HEAD
 
 
 
 
 
 
-=======
->>>>>>> 4f115c4ebd735f927ff5ca3750c57779494b06ad
->>>>>>> 0eda46fb015330796ebf2357539eed3568ccbcdd
+
+
+
+
 /* --------------------------------------------------------------------------------------------- */
 
 /* Page de Connexion  */
@@ -428,4 +420,17 @@ footer {
 
   color: white;
 }
+
+/*------------------------------------------------------------------------------------------------*/
+/*formulaire d'inscription'*/
+
+.style-form-register {
+    font-size: 20px;
+    color: white;
+}
+
+
+
+
+
 

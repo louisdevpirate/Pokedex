@@ -36,12 +36,12 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         //Si le formulaire a bien été envoyé
-        if ($form->isSubmitted() && $from->isValide) {
+        if ($form->isSubmitted()) {
             //TODO a faire le captcha
 
 
             if ($form->isValid()){
-
+                // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
