@@ -3,6 +3,8 @@ body {
     font-family: 'Ubuntu', sans-serif;
 }
 
+
+/* ----------------------------------------------------------------------------------------------------------- */
 /*Modification de la bannière*/
 
 .banner {
@@ -21,9 +23,25 @@ body {
     padding: 0;
 }
 
+@media screen and (min-width: 992px) {
+
+    .banner {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .banner-title h1 {
+        font-size: 2rem;
+        align-items: center;
+        justify-content: center;
+        margin-top: 100px;
+    }
+}
 
 
 
+/* ----------------------------------------------------------------------------------------------------------- */
 /*Modification de la navbar */
 
 .navbar {
@@ -37,15 +55,29 @@ body {
 
 }
 
-.navbar-toggler{
+.navbar-toggler {
     background-color: #DD4242;
     border-radius: 0;
+    height: 75px;
+
+}
+
+.navbar-toggler:focus{
+    outline: none;
+    box-shadow: none;
 }
 
 .navbar-nav {
     width: 100%;
     height: 75px;
     margin: 0 !important;
+
+}
+
+
+
+.navbar-collapse .collapse .show, .collapse .navbar-collapse, .navbar-nav, .nav-item, .nav-link{
+    background-color: #0C3348;
 }
 
 
@@ -55,6 +87,7 @@ body {
 }
 
 
+
 .nav-item img{
     margin: 6px 3%;
 }
@@ -62,20 +95,41 @@ body {
 
 
 
+
+.nav-item img {
+    margin: 6px 3%;
+}
+
+
 .nav-link {
     color: #FFFFFF;
     font-size: 2rem;
     width: 100%;
     height: 100%;
-    background-color: #0C3348;
     border: none;
     display: flex;
     flex-direction: row;
     align-items: center;
     cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
     padding: 0;
-    margin: 0;
 }
+
+.nav-link a{
+    padding: 5px;
+    display: block;
+}
+
+.coloration{
+
+}
+
+.bar-nav{
+    height: 75px;
+}
+
+
 
 .nav-link img {
     width: 50px;
@@ -93,25 +147,16 @@ body {
 
 @media screen and (min-width: 992px) {
 
-    .banner {
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
-    }
-
-    .banner-title h1 {
-        font-size: 2rem;
-        align-items: center;
+    .nav-link {
         justify-content: center;
-        margin-top: 100px;
+        margin: 0;
     }
-
 }
 
 
 
 
-
+/* ----------------------------------------------------------------------------------------------------------- */
 /* Modification du footer  */
 
 footer {
@@ -120,6 +165,7 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    padding-bottom: 30px;
 }
 
 .footer-logo {
@@ -143,10 +189,15 @@ footer {
 
 .footer-block h4 {
     font-size: 1rem;
+    font-weight: bold;
 }
 
 .footer-block ul {
     list-style: none;
+}
+
+.social-media a {
+    color: #092A3B;
 }
 
 .social-media-button {
@@ -156,6 +207,7 @@ footer {
     font-size: 2rem;
     margin: 10px;
 }
+
 
 
 .social-media-button a {
@@ -263,6 +315,7 @@ footer {
 
 
 /* Media Query de la bannière */
+
 @media screen and (min-width: 992px) {
 
     .footer {
@@ -278,99 +331,196 @@ footer {
     .footer-logo {
         display: flex;
         flex-wrap: wrap;
+        margin-top: -50px;
     }
 
 
     .footer-blocks {
         display: flex;
         flex-direction: row;
-        margin-top: 10px;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .footer-block ul h4 {
+        font-weight: bold;
+    }
+
+    .social-media a {
+        color: #092A3B;
     }
 
     .social-media-button {
         color: white;
         background-color: #0C3348;
         border: none;
-        padding: 3px;
         font-size: 2.5rem;
-        margin: 10px;
+        box-sizing: border-box;
+        padding: 10px;
+        border-radius: 50px;
+        transition: all 0.4s ease;
+
 
     }
 
     .social-media-button:hover {
-        padding: 2.5px 5px 2.5px 5px;
-        color: #092A3B;
-        background-color: white;
-        border-radius: 100%;
+        transition: all 0.5s ease;
+        color: white;
+        background-color: #7097AB;
     }
 
+}
 
 
 
-    .nav-link{
-        justify-content: center;
-        margin: 0;
-    }
+
+/* ----------------------------------------------------------------------------------------------------------- */
+/*Modifications de la page d'accueil*/
 
 
+.fixed-cover {
+    height: 350px;
+    background-image: url(../images/Transition.png);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+
+
+
+.cover-box {
+    padding: 0;
+}
+
+.project-div {
+    background: url(../images/Poke-Background.png);
+    color: #FFFFFF;
+}
+
+.project-div img {
+    border-radius: 50px;
+}
+
+.project-div img {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    border-radius: 60px;
+    padding: 30px;
+
+}
+
+.project h2 {
+    text-align: center;
+    text-transform: capitalize;
+    text-decoration-line: underline;
+    text-decoration-color: #294c5e;
+    color: #FFFFFF;
+
+}
+
+.join-adventure {
+    background-color: #092A3B;
+}
+
+.second-part {
+    padding: 0;
+
+}
+
+.second-part p {
+    color: #FFFFFF;
+    margin: 0;
+    font-style: italic;
+    padding: 20px 10px 50px;
+
+}
+
+.prof-chen {
+    padding-bottom: 40px;
+    padding-top: 50px;
+}
+
+.join-adventure {
+    padding-top: 20px;
+}
+
+.chen-border {
+    border: dotted #000000;
+    border-radius: 40px;
+    margin: 50px;
+    padding-top: 30px;
+}
+
+.start-adventure-button {
+    background-color: #DD4242;
+    padding: 10px;
+    border-radius: 40px;
+    border: solid #AF374D;
+}
+
+.start-adventure-button:hover {
+    border: solid white;
+}
+
+.start-adventure-button a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.start-adventure img {
+    margin-right: 10px;
+}
+
+.second-border {
+    padding: 5px;
+    border: solid #FFFFFF;
+    border-radius: 40px;
+    background-color: #AF374D;
+>>>>>>> origin/master
 }
 
 
 /****************************************************************************************/
 
-/* Page de profils */
+/* Modification de la page de Profil */
 
-    /*MQ PARTIE HOME*/
+/*MQ PARTIE HOME*/
 
-    .inactive1{
-        background: url(../images/pikavener.png) no-repeat center ;
-        transform: scaleX(-1)
-    }
-    .inactive2{
-        background: url(../images/salameche2.png) no-repeat center;
-    }
+.inactive1 {
+    background: url(../images/pikavener.png) no-repeat center;
+    transform: scaleX(-1)
+}
 
-    .project-div{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0;
-        padding: 5%;
+.inactive2 {
+    background: url(../images/salameche2.png) no-repeat center;
+}
 
-    }
+.project-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 5%;
 
-    .project h2{
-        text-align: justify;
-    }
+}
 
-    .project-contain{
-        padding: 0;
+.project h2 {
+    text-align: justify;
+}
 
-    }
-    .project{
+.project-contain {
+    padding: 0;
 
-    }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.project {}
 
 
 /* --------------------------------------------------------------------------------------------- */
@@ -386,18 +536,53 @@ footer {
     color: white;
 }
 
-.connexion-button {
+/* .connexion-button {
     background-color: #DD4242;
     margin-top: 40px;
     border: none;
     width: 200px;
     border-radius: 50px;
     height: 50px;
+    font-size: 1.2rem;
+} */
+
+.connexion-button {
+    background-color: #DD4242;
+    padding: 5px;
+    border-radius: 40px;
+    border: solid #AF374D;
+    margin-top: 40px;
 }
 
 .connexion-button:hover {
-    background-color: white;
-    color: #DD4242;
+    border: solid white;
+}
+
+.connexion-button a {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 1.2rem;
+}
+
+.connexion-button img {
+    margin-right: 10px;
+    width: 35px;
+}
+
+.second-border-connexion {
+    padding: 5px;
+    border: solid #FFFFFF;
+    border-radius: 40px;
+    background-color: #AF374D;
+}
+
+i.fa-chevron-right {
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .login-form-container {
@@ -410,6 +595,7 @@ footer {
     padding: 100px;
     margin-top: 40px;
     margin-bottom: 40px;
+
 }
 
 
@@ -428,9 +614,3 @@ footer {
     font-size: 20px;
     color: white;
 }
-
-
-
-
-
-
