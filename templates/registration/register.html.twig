@@ -5,59 +5,50 @@
 {% block body %}
 
     {# Container du formulaire d'inscription  #}
-<div class="container mt-5">
+    <div class="container mt-5">
 
     <div class="row">
 
-        <div class="col-md-6 offset-md-3">
+        <div class="col-md-6 offset-md-3 style-form-register">
 
             <h1 class="text-center h1-inscription">Inscription</h1>
 
-            {# Formulaire d'inscription  #}
-            <form action="" method="post">
+        </div>
+    </div>
 
-                <div class="form-group">
+    {# Formulaire d'inscripton #}
+    <div class="row">
+        <div class="col-12 col-md-6 mx-auto style-form-register ">
+            {# Ouverture du formulaire #}
+            {{ form_start( registrationForm ) }}
 
-                    {# Ouverture du formulaire #}
-                    {{ form_start(registrationForm) }}
+            {# Affichage des erreur générales du formulaire #}
+            {{ form_errors( registrationForm ) }}
 
-                    {# Affichage des erreur générales du formulaire #}
-                    {{ form_errors( registrationForm ) }}
+            {# Champ email #}
+            {{ form_row( registrationForm.email ) }}
 
-                    <label for="username">Nom d'utilisateur</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Entrez
-                        votre nom d'utilisateur" {{ form_widget( registrationForm.pseudonym ) }}>
+            {# Champ pseudo #}
+            {{ form_row( registrationForm.pseudonym ) }}
 
-                </div>
 
-                <div class="form-group">
+            {# Champ mots de passe  #}
+            {{ form_row( registrationForm.plainPassword ) }}
 
-                    <label for="email">Adresse e-mail</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Entrez votre
-                        adresse e-mail" {{ form_widget( registrationForm.email ) }}>
+    {#        #}{# Affichage du cpatcha #}
+    {#        <div class="mb-3">#}
+    {#            <div class="mb-2">Captcha de sécurit</div>#}
 
-                </div>
+    {#            <div class="g-recaptcha" data-sitekey="{{ google_recaptcha_site_key }}"></div>#}
+    {#        </div>#}
 
-                <div class="form-group">
+            {# Bouton de validation #}
+            {{ form_row( registrationForm.save ) }}
 
-                    <label for="password">Mot de passe</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Entrez
-                         votre mot de passe"  {{ form_widget( registrationForm.plainPassword.first ) }}>
-
-                </div>
-
-                <div class="form-group">
-
-                    <label for="password_confirm">Confirmez votre mot de passe</label>
-                    <input type="password" class="form-control" id="password_confirm" name="password_confirm"
-                           placeholder="Confirmez votre mot de passe" {{ form_widget( registrationForm.plainPassword.second ) }}>
-
-                </div>
-
-                    <div class="form-group text-center">
-                        {{ form_row(registrationForm.save) }}
-                    </div>
-                    {{ form_end(registrationForm) }}
-
+            {# Fermeture du formulaire  #}
+            {{ form_end( registrationForm ) }}
+        </div>
+    </div>
+</div>
 
 {% endblock %}

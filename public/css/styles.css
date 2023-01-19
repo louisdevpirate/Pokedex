@@ -100,9 +100,20 @@ body {
     height: 100%;
 }
 
+
+
 .nav-item img {
     margin: 6px 3%;
 }
+
+
+
+
+
+.nav-item img {
+    margin: 6px 3%;
+}
+
 
 .nav-link {
     color: #FFFFFF;
@@ -213,6 +224,115 @@ footer {
     margin: 10px;
 }
 
+
+
+.social-media-button a {
+    color: white;
+}
+
+/*Modifications de la page d'accueil*/
+
+.fixed-cover {
+    height: 350px;
+    background-image: url(../images/Transition.png);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.cover-box {
+    padding: 0;
+}
+
+.project-div {
+    background: url(../images/Poke-Background.png);
+    color: #FFFFFF;
+}
+
+.project-div img {
+    border-radius: 50px;
+}
+
+.project-div img {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    border-radius: 60px;
+    padding: 30px;
+
+}
+
+.project h2 {
+    text-align: center;
+    text-transform: capitalize;
+    text-decoration-line: underline;
+    text-decoration-color: #294c5e;
+    color: #FFFFFF;
+
+}
+
+.join-adventure {
+    background-color: #092A3B;
+}
+
+.second-part {
+    padding: 0;
+
+}
+
+.second-part p {
+    color: #FFFFFF;
+    margin: 0;
+    font-style: italic;
+    padding: 20px 10px 50px;
+
+}
+
+.prof-chen {
+    padding-bottom: 40px;
+    padding-top: 50px;
+}
+
+.join-adventure {
+    padding-top: 20px;
+}
+
+.chen-border {
+    border: dotted #000000;
+    border-radius: 40px;
+    margin: 50px;
+    padding-top: 30px;
+}
+
+.start-adventure-button {
+    background-color: #DD4242;
+    padding: 10px;
+    border-radius: 40px;
+    border: solid #AF374D;
+}
+
+.start-adventure-button a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.second-border {
+    padding: 5px;
+    border: solid #FFFFFF;
+    border-radius: 40px;
+    background-color: #AF374D;
+
+}
+
+
+
+
+/* MEDIAS QUERY A PARTIR DE 992px */
+
+
+
+/* Media Query de la bannière */
+
 @media screen and (min-width: 992px) {
 
     .footer {
@@ -230,6 +350,7 @@ footer {
         flex-wrap: wrap;
         margin-top: -50px;
     }
+
 
     .footer-blocks {
         display: flex;
@@ -276,6 +397,7 @@ footer {
 /* ----------------------------------------------------------------------------------------------------------- */
 /*Modifications de la page d'accueil*/
 
+
 .fixed-cover {
     height: 350px;
     background-image: url(../images/Transition.png);
@@ -284,6 +406,9 @@ footer {
     background-repeat: no-repeat;
     background-position: center center;
 }
+
+
+
 
 .cover-box {
     padding: 0;
@@ -418,8 +543,6 @@ footer {
     padding: 0;
 
 }
-
-.project {}
 
 
 
