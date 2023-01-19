@@ -1,92 +1,80 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Accueil
+{% endblock %}
 
 {% block body %}
 
 
-{#     Première paartie de la page d'accueil, avec Sacha et Pikachu  #}
-    <div class="container-fluid project-contain">
+	{#     Première paartie de la page d'accueil, avec Sacha et Pikachu  #}
+	<div class="container-fluid project-contain">
 
-        <div class="project-div row">
+		<div class="project-div row">
 
-            <img class="sacha col-12 col-lg-6" src="/images/Sacha-Pikachu.jpg" alt="Sacha and Pikachu">
+			<img class="sacha col-12 col-lg-6" src="/images/Sacha-Pikachu.jpg" alt="Sacha and Pikachu">
 
-            <div class="project col-12 col-lg-6">
+			<div class="project col-12 col-lg-6">
 
-                <h2>Le Projet</h2>
+				<h2>Le Projet</h2>
 
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, eligendi tempora! Quam, molestiae. Cumque iure doloremque commodi veritatis ad temporibus blanditiis dicta perferendis ullam perspiciatis. Explicabo iure quod laudantium quae. Magni, amet commodi! Obcaecati sequi optio, itaque est voluptatum accusamus cum dolores aut dolorum commodi natus porro inventore impedit laboriosam iure quidem? Quia tempore aperiam facere. Quisquam nesciunt aliquam repellat! Provident, dolor autem in eveniet ullam explicabo vitae sed dolorum? Rerum sequi aut totam. Sequi laudantium ipsam mollitia, incidunt minima molestiae odio! Nulla totam aliquam sequi vitae officia veniam iste?</p>
-            </div>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, eligendi tempora! Quam, molestiae. Cumque iure doloremque commodi veritatis ad temporibus blanditiis dicta perferendis ullam perspiciatis. Explicabo iure quod laudantium quae. Magni, amet commodi! Obcaecati sequi optio, itaque est voluptatum accusamus cum dolores aut dolorum commodi natus porro inventore impedit laboriosam iure quidem? Quia tempore aperiam facere. Quisquam nesciunt aliquam repellat! Provident, dolor autem in eveniet ullam explicabo vitae sed dolorum? Rerum sequi aut totam. Sequi laudantium ipsam mollitia, incidunt minima molestiae odio! Nulla totam aliquam sequi vitae officia veniam iste?</p>
+			</div>
 
-        </div>
-
-
-    </div>
-
-{#     Image de transition en background-fixed  #}
-    <div class="container-fluid">
-
-        <div class="transition row">
-
-            <div class="col-12 cover-box">
-
-                <div class="fixed-cover">
-
-                    {# La background en fixed #}
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="row">
-
-            <div class="col-12 second-part">
-{#                 Deuxième partie de la page d'accueil avec Prof Chen et le bouton pour s'inscrire  #}
-                <div class="join-adventure text-center">
-                    <div class="chen-border  text-center row">
-
-                        <div class="inactive1 col-0 col-lg-4">
+		</div>
 
 
-                        </div>
+	</div>
 
-                        <div class="prof-chen text-center col-12 col-lg-4">
+	{#     Image de transition en background-fixed  #}
+	<div class="container-fluid">
 
-                            <img class="img-fluid" src="{{ asset('images/Professeur-Chen.png') }}" alt="Professeur Chen">
+		<div class="transition row">
 
-                        </div>
+			<div class="col-12 cover-box">
 
-                        <div class="inactive2 col-0 col-lg-4">
+				<div
+					class="fixed-cover">{# La background en fixed #}
 
+				</div>
 
-                        </div>
+			</div>
 
-                    </div>
-                    <button class="start-adventure-button">
-                        <div class="second-border">
-                            <a class="start-adventure"><img src="{{ asset('images/PokeBall.png') }}" alt="Poke Ball" width="50px">Commencez l'aventure
-                            <i class="fa-solid fa-chevron-right"></i>
-                            </a>
-                        </div>
-                    </button>
+		</div>
 
-                        <p>"Rejoins l'aventure Pokémon, et deviens le meilleur dresseur en tentant de remplir ton Pokédex !"</p>
+		<div class="row">
 
-                </div>
-            </div>
+			<div
+				class="col-12 second-part">
+				{#                 Deuxième partie de la page d'accueil avec Prof Chen et le bouton pour s'inscrire  #}
+				<div class="join-adventure text-center">
+					<div class="chen-border  text-center row">
 
-        </div>
-    </div>
+						<div class="inactive1 col-0 col-lg-4"></div>
+
+						<div class="prof-chen text-center col-12 col-lg-4">
+
+							<img class="img-fluid" src="{{ asset('images/Professeur-Chen.png') }}" alt="Professeur Chen">
+
+						</div>
+
+						<div class="inactive2 col-0 col-lg-4"></div>
+
+					</div>
+					<button class="start-adventure-button">
+						<div class="second-border">
+							<a class="start-adventure"><img src="{{ asset('images/PokeBall.png') }}" alt="Poke Ball" width="50px">Commencez l'aventure
+								<i class="fa-solid fa-chevron-right"></i>
+							</a>
+						</div>
+					</button>
+
+					<p>"Rejoins l'aventure Pokémon, et deviens le meilleur dresseur en tentant de remplir ton Pokédex !"</p>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
 
 
 {% endblock %}
-
-
-
-
-
-
-
