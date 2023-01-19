@@ -46,13 +46,13 @@ class HomeController extends AbstractController
 //        ]);
 //    }
 
-//    #[Route('/pokedex/', name: 'app_pokedex')]
-//    public function pokedex(): Response
-//    {
-//        return $this->render('main/pokedex.html.twig',[
-//
-//        ]);
-//    }
+   #[Route('/pokedex/', name: 'app_pokedex')]
+   public function pokedex(): Response
+   {
+       return $this->render('main/pokedex.html.twig',[
+
+       ]);
+   }
 
 
 }
