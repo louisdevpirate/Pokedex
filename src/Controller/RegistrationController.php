@@ -51,7 +51,7 @@ class RegistrationController extends AbstractController
 
             //hydratation de la date d'inscription du nouvel utilisateur
 
-                $user->setRegistrationDate(new \DateTime);
+                $user->setCreationDate(new \DateTime);
 
                 $entityManager->persist($user);
                 $entityManager->flush();
