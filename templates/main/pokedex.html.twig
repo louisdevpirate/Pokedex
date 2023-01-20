@@ -4,13 +4,101 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container-fluid">
+<div class="container-fluid">
 
-		<div class="class row"></div>
+	<div class="row">
 
-		<div class="class col-12"></div>
+		<div class="previous-next-buttons col-6">
+
+			<p><i class="fa-solid fa-chevron-left left-arrow"></i>Pokémon précédent</p>
+
+		</div>
+
+		<div class="previous-next-buttons col-6">
+
+			<p>Pokémon suivant<i class="fa-solid fa-chevron-right"></i></p>
+
+		</div>
+	
+	</div>
+
+</div>
+
+<div class="container-fluid">
+
+	<div class="row">
+
+		<div class="info col-12 d-flex flex-row justify-content-center align-items-center"></div>
+
+			<div class="info-tile-1 col-4">
+
+				<p>{# {{ pokemon.name }} #}Tortank</p>
+
+			</div>
+
+			<div class="info-tile-2 col-4">
+
+				<p>{# {{ pokemon.nameen }} #}Blastoise</p>
+
+			</div>
+
+			<div class="info-tile-3 col-4">
+
+				<p>{# {{ pokemon.id }} #}#009</p>
+
+			</div>
+
+		</div>
+	
+	</div>
+
+</div>
+
+
+<div class="container-fluid pokemon">
+
+	<div class="row">
+
+		<div class="pokepic col-12">
+
+			<img src="/images/blastoise.gif" alt="Pokémon">
+
+		</div>
 
 	</div>
 
+</div>
 
+
+<div class="container-fluid">
+
+	<div class="row">
+
+		<div class="type-h3 col-12">
+
+			<h3>Type(s)</h3>
+
+		</div>
+
+		<div class="type col-12 d-flex flex-row justify-content-evenly">
+
+			<img class="type-img" src="/images/Types/Water.png" alt="Type">
+
+			<img class="type-img" src="/images/Types/Fire.png" alt="Type">
+
+
+
+		</div>
+
+		<div class="description col-12">
+
+			<h3>Description</h3>
+
+				<p>Tortank est un bipède massif de la famille des tortues. Les extrémités supérieures gauche et droite de sa carapace sont ornées d'un canon à eau pouvant être orienté dans diverses directions. Formé au combat, sa tête s'est endurcie : le duvet de Carabaffe n'est plus présent et il possède désormais deux petites oreilles et une queue courte. Ses griffes se sont maintenant développées sur tous ses doigts et ses yeux n'ont pas changé de couleur.</p>
+
+		</div>
+		
+	</div>
+
+</div>
 {% endblock %}
