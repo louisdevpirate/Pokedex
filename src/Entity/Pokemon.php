@@ -39,6 +39,9 @@ class Pokemon
 
 
 
+    #[ORM\Column(length: 50)]
+    private ?string $gif = null;
+
 
     
 
@@ -113,6 +116,20 @@ class Pokemon
         return $this;
     }
 
+
+    public function getGif(): ?string
+    {
+        return $this->gif;
+    }
+
+    public function setGif(string $gif): self
+    {
+        $this->gif = $gif;
+
+        return $this;
+
+    }
+
     public function removeCapturedPokemon(CapturedPokemon $capturedPokemon): self
     {
         if ($this->capturedPokemon->removeElement($capturedPokemon)) {
@@ -121,6 +138,7 @@ class Pokemon
                 $capturedPokemon->setPokemon(null);
             }
         }
+
 
         return $this;
     }
