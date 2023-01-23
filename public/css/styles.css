@@ -135,8 +135,6 @@ body {
     display: block;
 }
 
-.coloration {}
-
 .bar-nav {
     height: 75px;
 }
@@ -639,20 +637,52 @@ i.fa-chevron-right {
     margin-right: 10px;
 }
 
+.previous-next-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .previous-next-buttons p {
     color: white;
 }
 
+.consult {
+    display: none;
+}
+
+.arrows {
+    display: none;
+}
+
+.list {
+    display: flex;
+    flex-direction: row;
+}
+
+.ul-list {
+    display: none;
+}
+
+.poke-info-pic {
+    padding: 0;
+}
 
 .pokemon {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: #092A3B;
     padding-top: 100px;
     padding-bottom: 100px;
     background-image: url(../images/Poke-Background.png);
+}
+
+
+.info {
+    padding: 0;
 }
 
 .info-tile-1 {
@@ -699,6 +729,13 @@ i.fa-chevron-right {
     font-size: 1.2rem;
     font-style: italic;
     color: darkgray;
+}
+
+.pokepic {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .pokepic img {
@@ -748,4 +785,285 @@ i.fa-chevron-right {
     padding-top: 20px;
     padding-bottom: 20px;
     font-weight: bold;
+}
+
+.gameboy {
+    display: none;
+}
+
+
+/* Premier media querry qui démarre à 992px, car problèmes d'affichage en responsive (div trop petites, manque de cohérence dans l'affichage)  */
+@media screen and (min-width: 992px) {
+
+    .main-block {
+        display: flex;
+        flex-direction: row;
+        background-image: url(../images/Poke-Background.png);
+    }
+
+    .poke-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 200px;
+        padding-left: 50px;
+    }
+
+    .previous-next-buttons {
+        display: none;
+    }
+
+    .consult {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        margin-bottom: 80px;
+    }
+
+    .consult h1 {
+        font-size: 3rem;
+    }
+
+    .arrows {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        background-color: rgba(255, 255, 255, 0);
+        ;
+    }
+
+    .arrows i {
+        color: #FFFFFF;
+        font-size: 3rem;
+    }
+
+    .arrows i:hover {
+        color: #7097AB;
+    }
+
+    .list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 500px;
+    }
+
+    .ul-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .ul-list ul {
+        list-style-type: none;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    .ul-list li {
+        background-color: #DD4242;
+        border: solid white 1px;
+        border-radius: 30px;
+        height: 80px;
+        width: 400px;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 1.5rem;
+    }
+
+    .ul-list li:hover {
+        background-color: white;
+        color: #DD4242;
+    }
+
+    .pokedex-background {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #DD4242;
+        padding-top: 70px;
+        padding-bottom: 70px;
+        margin: 50px;
+        margin-right: 50px;
+        border: solid #AF374D 15px;
+        border-radius: 30px;
+    }
+
+    .pokedex {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        padding: 40px;
+        border: solid black 3px;
+        border-radius: 30px;
+    }
+
+    .poke-info-pic {
+        width: 100%;
+        padding-bottom: 30px;
+    }
+
+    .info {
+        width: 100%;
+    }
+
+    .info-tile-1 {
+        border: solid black 1px;
+        border-radius: 20px 0px 0px 0px;
+    }
+
+    .info-tile-2 {
+        border: solid black 1px;
+        border-top-color: #000000;
+        border-left-color: white;
+    }
+
+    .info-tile-3 {
+        border: solid white 1px;
+        border-color: #000000;
+        border-left-color: white;
+        border-radius: 0px 20px 0px 0px;
+    }
+
+    .pokemon {
+        border: 0;
+        border-radius: 0px 0px 20px 20px;
+        padding: 20px;
+    }
+
+    .poke-type-description {
+        border: solid black 1px;
+        width: 100%;
+    }
+
+    .gameboy {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        padding-top: 70px;
+    }
+
+    .gameboy img {
+        width: 200px;
+    }
+
+    .start-select-buttons {
+        display: none;
+    }
+
+    .gameboy-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .gb-button-b {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        width: 100px;
+        background-color: #000000;
+        border: solid grey 5px;
+        border-radius: 100px;
+        color: grey;
+        font-size: 3rem;
+        margin-top: 70px;
+    }
+
+    .gb-button-a {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        width: 100px;
+        background-color: #000000;
+        border: solid grey 5px;
+        border-radius: 100px;
+        color: grey;
+        font-size: 3rem;
+        margin-bottom: 70px;
+    }
+
+    .a-b {
+        margin-bottom: 10px;
+        color: grey;
+    }
+}
+
+
+/* Deuxieme media querry pour écran large avec l'affichage "complet"  */
+@media screen and (min-width: 1700px) {
+
+    .poke-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+
+    .pokedex {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        padding: 40px;
+        border: solid black 3px;
+        border-radius: 30px;
+    }
+
+    .poke-info-pic {
+        width: 30%;
+    }
+
+    .poke-type-description {
+        border: solid black 1px;
+        width: 50%;
+    }
+
+    .start-select-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-top: 100px;
+    }
+
+    .start-select {
+        background-color: #000000;
+        border: solid grey 5px;
+        border-radius: 30px;
+        width: 100px;
+        height: 40px;
+    }
+
+    .gameboy-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 250px;
+    }
 }
