@@ -42,6 +42,9 @@ class Pokemon
     #[ORM\Column(length: 50)]
     private ?string $gif = null;
 
+    #[ORM\Column(length: 50)]
+    private ?string $name_en = null;
+
 
     
 
@@ -139,6 +142,18 @@ class Pokemon
             }
         }
 
+
+        return $this;
+    }
+
+    public function getNameEn(): ?string
+    {
+        return $this->name_en;
+    }
+
+    public function setNameEn(string $name_en): self
+    {
+        $this->name_en = $name_en;
 
         return $this;
     }
