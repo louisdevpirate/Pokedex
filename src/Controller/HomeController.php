@@ -33,7 +33,6 @@ class HomeController extends AbstractController
     }
 
     
-
     #[Route('/capture/', name: 'app_capture')]
 
 //    #[IsGranted('ROLE_USER')]
