@@ -4,9 +4,12 @@
 namespace App\Controller;
 
 
+use App\Entity\Pokemon;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 
 class HomeController extends AbstractController
@@ -38,13 +41,38 @@ class HomeController extends AbstractController
 
     
 
-//    #[Route('/capture/', name: 'app_capture')]
-//    public function capture(): Response
-//    {
-//        return $this->render('main/capture.html.twig',[
-//
-//        ]);
-//    }
+    #[Route('/capture/', name: 'app_capture')]
+//    #[IsGranted('ROLE_USER')]
+    public function capture(): Response
+    {
+        return $this->render('main/capture.html.twig',[
+
+        ]);
+    }
+
+    #[Route('/capture-api/', name: 'app_capture_api')]
+//    #[IsGranted('ROLE_USER')]
+    public function captureApi(ManagerRegistry $doctrine): Response
+    {
+
+        $pokeRepo = $doctrine->getRepository(Pokemon::class);
+        $pokemons = $pokeRepo->findAll();
+
+        $randomPoke = rand(0, count($pokemons) - 1);
+
+        $pokemonCaptured = $pokemons[$randomPoke];
+
+        return $this->json([
+            'captured_pokemon' => [
+                'id' => $pokemonCaptured->getId(),
+                'name' => $pokemonCaptured->getName(),
+                'gif' => $pokemonCaptured->getGif(),
+                'type' => $pokemonCaptured->getType(),
+                'type2' => $pokemonCaptured->getType2(),
+                'description' => $pokemonCaptured->getDescription(),
+            ],
+        ]);
+    }
 
 //    #[Route('/pokedex/', name: 'app_pokedex')]
 //    public function pokedex(): Response

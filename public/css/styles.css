@@ -132,7 +132,7 @@ body {
 
 }
 
-/* MEDIAS QUERY A PARTIR DE 992px */
+/* MQ NAVBAR */
 
 @media screen and (min-width: 992px) {
 
@@ -142,6 +142,34 @@ body {
     }
 }
 
+/*MQ PARTIE HOME*/
+
+.inactive1 {
+    background: url(../images/pikavener.png) no-repeat center;
+    transform: scaleX(-1)
+}
+
+.inactive2 {
+    background: url(../images/salameche2.png) no-repeat center;
+}
+
+.project-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 5%;
+
+}
+
+.project h2 {
+    text-align: justify;
+}
+
+.project-contain {
+    padding: 0;
+
+}
 
 
 
@@ -364,36 +392,8 @@ footer {
 
 /* Modification de la page de Profil */
 
-/*MQ PARTIE HOME*/
 
-.inactive1 {
-    background: url(../images/pikavener.png) no-repeat center;
-    transform: scaleX(-1)
-}
 
-.inactive2 {
-    background: url(../images/salameche2.png) no-repeat center;
-}
-
-.project-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    padding: 5%;
-
-}
-
-.project h2 {
-    text-align: justify;
-}
-
-.project-contain {
-    padding: 0;
-
-}
-
-.project {}
 
 
 
@@ -479,4 +479,68 @@ i.fa-chevron-right {
     padding: 100px;
     margin-top: 40px;
     margin-bottom: 40px;
+}
+
+
+/* ----------------------------------------------------------------------------------------------------------- */
+/* Modification de la page de capture  */
+
+.container-view{
+    padding-top: 30px;
+}
+
+.view-pokemon{
+    height: 400px;
+    background: url(../images/fonds/fond-foret-nuit.png) no-repeat center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2mm ridge rgba(240 0 32/ 0.9);
+    border-radius: 2%;
+
+}
+
+.view-pokemon img{
+
+    max-width: 100%;
+    transform: scale(2);
+
+}
+
+.capture-poke-button{
+
+    background-color: whitesmoke;
+    border-radius: 250px;
+    border-color: #DD4242;
+    border-width: 10px;
+}
+
+.capture-poke-button:active{
+    transition: background-color 0.2s;
+    border-color: whitesmoke;
+    background-color: #AF374D;
+}
+
+.pokeball-animate{
+    position: relative;
+}
+
+.capture-ball img{
+    width: 75%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.capture-poke-button{
+    width: 250px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    background-color: #FFFFFF;
+}
+
+.description-poke-capture{
+    color: #FFFFFF;
+    text-align: center;
+    background-color: #000000;
 }

@@ -29,6 +29,9 @@ class Pokemon
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $ObtentionDate = null;
 
+    #[ORM\Column(length: 50)]
+    private ?string $gif = null;
+
 
     
 
@@ -97,14 +100,14 @@ class Pokemon
         return $this;
     }
 
-    public function getOwner(): ?User
+    public function getGif(): ?string
     {
-        return $this->Owner;
+        return $this->gif;
     }
 
-    public function setOwner(?User $Owner): self
+    public function setGif(string $gif): self
     {
-        $this->Owner = $Owner;
+        $this->gif = $gif;
 
         return $this;
     }
