@@ -32,13 +32,13 @@ class HomeController extends AbstractController
 
     
 
-//    #[Route('/capture/', name: 'app_capture')]
-//    public function capture(): Response
-//    {
-//        return $this->render('main/capture.html.twig',[
-//
-//        ]);
-//    }
+    #[Route('/capture/', name: 'app_capture')]
+    public function capture(): Response
+    {
+        return $this->render('main/capture.html.twig',[
+
+        ]);
+    }
 
    #[Route('/pokedex/', name: 'app_pokedex')]
    public function pokedex(): Response
