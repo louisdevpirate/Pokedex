@@ -28,13 +28,16 @@ body {
     padding: 0;
 }
 
+
 .connexion-deconnexion {}
 
 .connexion-deconnexion a {
     text-decoration: none;
     color: #FFFFFF;
-    border: solid 3px black;
-    background-color: #0a53be;
+    border: solid 1px black;
+    background-color: #0C3348;
+    padding: 5px;
+    font-size: large;
 
 
 }
@@ -693,6 +696,13 @@ footer {
     margin-top: 100px;
     border: solid #092A3B;
     border-radius: 40px;
+}
+
+.modify-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* --------------------------------------------------------------------------------------------- */
