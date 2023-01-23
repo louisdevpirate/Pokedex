@@ -556,36 +556,138 @@ footer {
 
 /* --------------------------------------------------------------------------------------------- */
 
-/* Modification de la page de Profil */
+/* Page de Profil */
 
 
-.inactive2 {
-    background: url(../images/salameche2.png) no-repeat center;
+.profil-title {
+    color: white;
+    font-size: 3rem;
 }
 
-.project-div {
+.stats-title {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.stats {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0;
-    padding: 5%;
+}
+
+.informations-account-title {
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.modify-info {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
+
+.left-block {
+    margin-bottom: 30px;
+}
+
+.modify-button {
+    background-color: #DD4242;
+    padding: 5px;
+    border-radius: 40px;
+    border: solid #AF374D;
+    margin-top: 40px;
+}
+
+.modify-button:hover {
+    border: solid white;
+}
+
+.modify-button a {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 1.2rem;
+}
+
+.modify-button img {
+    margin-right: 10px;
+    width: 35px;
+}
+
+.second-border-modify {
+    padding: 5px;
+    border: solid #FFFFFF;
+    border-radius: 40px;
+    background-color: #AF374D;
+}
+
+
+@media screen and (min-width: 992px) {
+
+    .profil-title {
+        padding: 0;
+        margin: 0;
+    }
+
+    .background {
+        background-image: url(../images/Poke-Background.png);
+        background-attachment: fixed;
+        background: cover no-repeat;
+    }
+
+    .profil-title {
+        font-size: 3rem
+    }
+
+    .stats {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #092A3B;
+        margin-bottom: 100px;
+        margin-top: 100px;
+        border: solid #092A3B;
+        border-radius: 40px;
+    }
+
+    .stats-block {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .left-block {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        background-color: #0C3348;
+        border: solid #294c5e 5px;
+        border-radius: 30px;
+        padding: 30px;
+    }
+
+    .right-block {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        background-color: #0C3348;
+        border: solid #294c5e 5px;
+        border-radius: 30px;
+        padding: 20px;
+    }
 
 }
 
-.project h2 {
-    text-align: justify;
-}
 
-.project-contain {
-    padding: 0;
+/* --------------------------------------------------------------------------------------------- */
 
-}
-
-
-
-
-
-
+/* Page de Modification du Profil  */
 
 
 
@@ -658,11 +760,11 @@ i.fa-chevron-right {
 /* ----------------------------------------------------------------------------------------------------------- */
 /* Modification de la page de capture  */
 
-.container-view{
+.container-view {
     padding-top: 30px;
 }
 
-.view-pokemon{
+.view-pokemon {
     height: 400px;
     background: url(../images/fonds/fond-foret-nuit.png) no-repeat center;
     background-size: cover;
@@ -674,14 +776,14 @@ i.fa-chevron-right {
 
 }
 
-.view-pokemon img{
+.view-pokemon img {
 
     max-width: 100%;
     transform: scale(2);
 
 }
 
-.capture-poke-button{
+.capture-poke-button {
 
     background-color: whitesmoke;
     border-radius: 250px;
@@ -689,23 +791,23 @@ i.fa-chevron-right {
     border-width: 10px;
 }
 
-.capture-poke-button:active{
+.capture-poke-button:active {
     transition: background-color 0.2s;
     border-color: whitesmoke;
     background-color: #AF374D;
 }
 
-.pokeball-animate{
+.pokeball-animate {
     position: relative;
 }
 
-.capture-ball img{
+.capture-ball img {
     width: 75%;
     padding-top: 5px;
     padding-bottom: 5px;
 }
 
-.capture-poke-button{
+.capture-poke-button {
     width: 250px;
     margin-bottom: 30px;
     margin-top: 30px;
@@ -1169,5 +1271,4 @@ i.fa-chevron-right {
         align-items: center;
         width: 250px;
     }
-
 }
