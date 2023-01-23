@@ -28,6 +28,12 @@ class CapturedPokemon
     #[ORM\Column]
     private ?bool $shiny = null;
 
+    #[ORM\Column(length: 50)]
+    private ?string $name = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $name_en = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -77,6 +83,30 @@ class CapturedPokemon
     public function setShiny(bool $shiny): self
     {
         $this->shiny = $shiny;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getNameEn(): ?string
+    {
+        return $this->name_en;
+    }
+
+    public function setNameEn(string $name_en): self
+    {
+        $this->name_en = $name_en;
 
         return $this;
     }

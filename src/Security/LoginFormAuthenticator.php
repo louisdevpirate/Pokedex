@@ -21,6 +21,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 
     public const LOGIN_ROUTE = 'app_connexion';
 
+
     public function __construct(private UrlGeneratorInterface $urlGenerator)
     {
     }
