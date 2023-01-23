@@ -41,7 +41,7 @@ class RegistrationFormType extends AbstractType
             // Champ mots de passe (en double)
             ->add('plainPassword', RepeatedType::class ,[
                 'type' => PasswordType::class,
-                'invalid_message' => 'Le mot de passe correspond pas à sa confirmation',
+                'invalid_message' => 'Le mot de passe ne correspond pas à sa confirmation',
                 'first_options' => [
                     'label' => 'Mot de passe',
                 ],
@@ -56,8 +56,8 @@ class RegistrationFormType extends AbstractType
                     ]),
                     new Length([
                         'min' => 8,
-                        'minMessage' => 'Votre mot de passe doit contenir au moins{{ limit }} caractères',
-                        'maxMessage' => 'Votre mot de passe doit contenir au maximum{{ limit }} caractères',
+                        'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères',
+                        'maxMessage' => 'Votre mot de passe doit contenir au maximum {{ limit }} caractères',
                         'max' => 4096,
                     ]),
                     // regex de verification de mot de passe

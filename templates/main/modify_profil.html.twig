@@ -1,0 +1,91 @@
+{# Utilisation du squelette de page base.html.twig #}
+{% extends "base.html.twig" %}
+
+{# Titre de la page #}
+{% block title %}Gestion du profil
+{% endblock %}
+
+{# Contenu de la page #}
+{% block body %}
+
+	<div
+		class="background">
+		{# Titre h1 #}
+		<div class="row"></div>
+
+		{# statistique #}
+
+
+		<div class="container-fluid stats col-12 col-lg-8">
+
+			<h1 class="profil-title col-12 text-center my-5">Mon profil</h1>
+
+			<div class="col-12 col-lg-12 stats-block">
+
+				<div class="left-block col-12 col-lg-4">
+
+					<h2 class="stats-title">Statistiques</h2>
+
+					{# Block de gauche, Infos de l'utilisateur #}
+					<ul class="list-group col-12 col-lg-12" id="utilisateur">
+						<li class="list-group-item ">Pokémons attrapés :
+							<span class="text-info"></span>
+						</li>
+						<li class="list-group-item ">Shiny obtenus :
+							<span class="text-info"></span>
+						</li>
+						<li class="list-group-item ">Pokédex remplis à  XX/151 :
+							<span class="text-info"></span>
+						</li>
+					</ul>
+				</div>
+
+
+				<div class="right-block col-12 col-lg-4">
+
+					<h2 class="informations-account-title">Informations du compte</h2>
+
+					{# Block de droite, Infos du compte #}
+					<ul class="list-group col-12 col-lg-12" id="compte">
+						<li class="list-group-item ">Adresse Email :
+							<span class="text-info">{{ app.user.email }}</span>
+						</li>
+						<li class="list-group-item ">Pseudonyme :
+							<span class="text-info">{{ app.user.pseudonym }}</span>
+						</li>
+						<li class="list-group-item ">Date d'inscription :
+							<span class="text-info">{{ app.user.creationDate|date('d/m/Y')}}</span>
+						</li>
+
+
+						<li class="list-group-item ">
+							Compte :
+							<span class="text-info">{{ is_granted('ROLE_ADMIN') ? 'Administrateur' : 'Utilisateur' }}</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			{# Lien qui redirige vers une nouvelle page afin de modifier les informations de l'utilisateur #}
+			<div
+				class="modify-info">
+				{# NE PAS OUBLIER DE CREER LE LIEN QUI REDIRIGE VERS LA PAGE DE MODIFICATION #}
+				<button class="modify-button">
+
+					<div class="second-border-modify">
+
+						<a class="modify-button-link"><img src="{{ asset('images/PokeBall.png') }}" alt="Poke Ball" width="50px">Enregistrer
+
+							<i class="fa-solid fa-chevron-right"></i>
+
+						</a>
+
+					</div>
+
+				</button>
+			</div>
+		</div>
+	</div>
+
+</div>
+{# Fermeture langague twig #}{% endblock %}
