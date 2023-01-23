@@ -18,7 +18,7 @@ class RegistrationController extends AbstractController
     /**
      * Contrôleur de la page d'inscription
      */
-    #[Route('/register', name: 'app_register')]
+    #[Route('/register/', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         // si l'utilisateur est deja connecter, on le redirige de force sur la page d'acceuil du site
