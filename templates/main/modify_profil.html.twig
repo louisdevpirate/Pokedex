@@ -8,38 +8,13 @@
 {# Contenu de la page #}
 {% block body %}
 
-	<div
-		class="background">
-		{# Titre h1 #}
-		<div class="row"></div>
+	<div class="background">
 
-		{# statistique #}
+		<div class="container-fluid modify col-12 col-lg-8">
 
+			<h1 class="profil-title col-12 text-center my-5">Modifier les informations</h1>
 
-		<div class="container-fluid stats col-12 col-lg-8">
-
-			<h1 class="profil-title col-12 text-center my-5">Mon profil</h1>
-
-			<div class="col-12 col-lg-12 stats-block">
-
-				<div class="left-block col-12 col-lg-4">
-
-					<h2 class="stats-title">Statistiques</h2>
-
-					{# Block de gauche, Infos de l'utilisateur #}
-					<ul class="list-group col-12 col-lg-12" id="utilisateur">
-						<li class="list-group-item ">Pokémons attrapés :
-							<span class="text-info"></span>
-						</li>
-						<li class="list-group-item ">Shiny obtenus :
-							<span class="text-info"></span>
-						</li>
-						<li class="list-group-item ">Pokédex remplis à  XX/151 :
-							<span class="text-info"></span>
-						</li>
-					</ul>
-				</div>
-
+			<div class="col-12 col-lg-12 modify-block">
 
 				<div class="right-block col-12 col-lg-4">
 
@@ -74,7 +49,7 @@
 
 					<div class="second-border-modify">
 
-						<a class="modify-button-link"><img src="{{ asset('images/PokeBall.png') }}" alt="Poke Ball" width="50px">Enregistrer
+						<a href="{{ path('app_profil') }}" class="modify-button-link"><img src="{{ asset('images/PokeBall.png') }}" alt="Poke Ball" width="50px">Enregistrer
 
 							<i class="fa-solid fa-chevron-right"></i>
 
