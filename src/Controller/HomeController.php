@@ -7,6 +7,7 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 
 class HomeController extends AbstractController
@@ -19,16 +20,9 @@ class HomeController extends AbstractController
         ]);
     }
 
-
-    #[Route('/connexion/', name: 'app_connexion')]
-    public function connexion(): Response
-    {
-        return $this->render('main/connexion.html.twig',[
-
-        ]);
-    }
     
     #[Route('/mon-profil/', name: 'app_profil')]
+    #[IsGranted('ROLE_USER')]
     public function profil(): Response
     {
         return $this->render('main/profil.html.twig',[
