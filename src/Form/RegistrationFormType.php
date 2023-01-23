@@ -24,6 +24,9 @@ class RegistrationFormType extends AbstractType
             // Champ email
             ->add('email', EmailType::class, [
                 'label' => 'Adresse Email',
+                'attr' => [
+                    'placeholder' => 'alice@gmail.com',
+                ],
                 'constraints' => [
 
                     new NotBlank([
@@ -41,6 +44,9 @@ class RegistrationFormType extends AbstractType
                 'invalid_message' => 'Le mot de passe correspond pas à sa confirmation',
                 'first_options' => [
                     'label' => 'Mot de passe',
+                ],
+                'second_options' => [
+                    'label' => 'Confirmation du mot de passe',
                 ],
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
@@ -64,6 +70,9 @@ class RegistrationFormType extends AbstractType
             // Champ pseudonym
             ->add('pseudonym', TextType::class, [
                 'label' => 'Pseudonyme',
+                'attr' => [
+                    'placeholder' => 'profchen',
+                ],
                 'constraints' => [
                     new NotBlank([
                                 'message' => 'Merci de renseigner un pseudonyme',
@@ -81,7 +90,7 @@ class RegistrationFormType extends AbstractType
             // Bouton de validation
             ->add('save', SubmitType::class, [
                 'label' => 'Créer mon compte',
-                'attr' => [ 'class' => 'btn btn-outline-primary w-100',
+                'attr' => [ 'class' => 'btn btn-outline-primary w-100 valid-button',
 
                 ],
             ])

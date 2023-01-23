@@ -1,10 +1,192 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Pokédex{% endblock %}
+{% block title %}Pokédex
+{% endblock %}
 
 {% block body %}
 
+	{# Container principal  #}
+	<div
+		class="main-block">
+
+		{# Container bouton précédent et suivant en mobile first, container de la liste en écran large  #}
+		<div class="poke-list container-fluid col-lg-4">
+
+			<div
+				class="list row">
 
 
+				{# Bouton "Pokémon précédent" visible seulement en mobile first  #}
+				<button class="previous-next-buttons col-6">
 
-{% endblock %}
+					<p>
+						<i class="fa-solid fa-chevron-left left-arrow"></i>Pokémon précédent</p>
+
+				</button>
+
+				{# Titre h1 seulement visible en écran large, au-dessus de la liste  #}
+				<h1 class="consult">Consultez le Pokédex</h1>
+
+				{# Boutons de flèche du haut, seulement visible en écran large  #}
+				<button class="arrows col-6">
+
+					<i class="fa-solid fa-chevron-up"></i>
+
+				</button>
+
+				{# Div qui contient la liste des Pokémon affichés en écran large  #}
+				<div class="ul-list">
+					<ul>
+						<li>Pokémon #001</li>
+						<li>Pokémon #002</li>
+						<li>Pokémon #003</li>
+						<li>Pokémon #004</li>
+						<li>Pokémon #005</li>
+					</ul>
+				</div>
+
+				{# Bouton de flèche du bas, seulement visible en écran large  #}
+				<button class="arrows col-6">
+
+					<i class="fa-solid fa-chevron-down"></i>
+
+				</button>
+
+				{# Bouton "Pokémon suivant" visible seulement en mobile first  #}
+				<button class="previous-next-buttons col-6">
+
+					<p>Pokémon suivant<i class="fa-solid fa-chevron-right"></i>
+					</p>
+
+				</button>
+
+			</div>
+
+		</div>
+
+		{# Div qui englobe toutes les infos du Pokédex (infos du pokémon, son image, son/ses type(s) et sa description)  #}
+		<div class="pokedex-background">
+
+			<div
+				class="pokedex col-lg-10">
+				{# Container des infos Pokémon (nom, nom-en et numéro Pokédex) ainsi que l'image GIF du pokémon  #}
+				<div class="poke-info-pic container-fluid col-lg-4">
+
+					<div
+						class="row">
+
+						{# Infos du nom, du nom-en et du numéro Pokémon  #}
+						<div class="poke-info">
+
+							<div class="info col-12 d-flex flex-row justify-content-center align-items-center">
+
+								<div class="info-tile-1 col-4">
+
+									<p>{# {{ pokemon.name }} #}Tortank</p>
+
+								</div>
+
+								<div class="info-tile-2 col-4">
+
+									<p>{# {{ pokemon.nameen }} #}Blastoise</p>
+
+								</div>
+
+								<div class="info-tile-3 col-4">
+
+									<p>{# {{ pokemon.id }} #}#009</p>
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+
+					{# Image Pokémon  #}
+					<div class="pokemon">
+
+						<div class="pokepic col-12">
+
+							<img src="/images/blastoise.gif" alt="Pokémon">
+
+						</div>
+
+					</div>
+
+				</div>
+
+
+				{# Container du/des types, et de la description du Pokémon  #}
+				<div class="poke-type-description container-fluid col-lg-4">
+
+					<div
+						class="row">
+
+						{# h3 avec le titre "Type"  #}
+						<div class="type-h3 col-12">
+
+							<h3>Type(s)</h3>
+
+						</div>
+
+						{# Div qui contient les logos avec les types des Pokémon  #}
+						<div class="type col-12 d-flex flex-row justify-content-evenly">
+
+							<img class="type-img" src="/images/Types/Water.png" alt="Type">
+
+						</div>
+
+						{# Div qui contient le contenu de la description du Pokémon  #}
+						<div class="description col-12">
+
+							<h3>Description</h3>
+
+							<p>Tortank est un bipède massif de la famille des tortues. Les extrémités supérieures gauche et droite de sa carapace sont ornées d'un canon à eau pouvant être orienté dans diverses directions. Formé au combat, sa tête s'est endurcie : le duvet de Carabaffe n'est plus présent et il possède désormais deux petites oreilles et une queue courte. Ses griffes se sont maintenant développées sur tous ses doigts et ses yeux n'ont pas changé de couleur</p>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			{# Div qui contient toute l'interface "gameboy" avec la croix et les boutons  #}
+			<div
+				class="col-lg-12 gameboy">
+
+				{# Image de la croix directionnelle  #}
+				<img
+				class="col-lg-4" src="/images/Cross.png" alt="Croix de Gameboy">
+
+				{# Div qui contient les boutons start et select du milieu (affichés uniquement en écran large)  #}
+				<div class="start-select-buttons col-lg-4">
+
+					<button class="start-select"></button>
+
+					<button class="start-select"></button>
+
+				</div>
+
+				{# Div qui contient les boutons B et A comme sur gameboy  #}
+				<div class="gameboy-buttons col-lg-4">
+
+					<div class="gb-button-b">
+						<p class="a-b">B</p>
+					</div>
+
+					<div class="gb-button-a">
+						<p class="a-b">A</p>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+</div>{% endblock %}

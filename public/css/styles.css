@@ -4,6 +4,11 @@ body {
 }
 
 
+
+
+
+
+
 /* ----------------------------------------------------------------------------------------------------------- */
 /*Modification de la bannière*/
 
@@ -41,6 +46,11 @@ body {
 
 
 
+
+
+
+
+
 /* ----------------------------------------------------------------------------------------------------------- */
 /*Modification de la navbar */
 
@@ -62,7 +72,7 @@ body {
 
 }
 
-.navbar-toggler:focus{
+.navbar-toggler:focus {
     outline: none;
     box-shadow: none;
 }
@@ -76,7 +86,11 @@ body {
 
 
 
-.navbar-collapse .collapse .show, .collapse .navbar-collapse, .navbar-nav, .nav-item, .nav-link{
+.navbar-collapse .collapse .show,
+.collapse .navbar-collapse,
+.navbar-nav,
+.nav-item,
+.nav-link {
     background-color: #0C3348;
 }
 
@@ -86,9 +100,20 @@ body {
     height: 100%;
 }
 
+
+
 .nav-item img {
     margin: 6px 3%;
 }
+
+
+
+
+
+.nav-item img {
+    margin: 6px 3%;
+}
+
 
 .nav-link {
     color: #FFFFFF;
@@ -105,16 +130,12 @@ body {
     padding: 0;
 }
 
-.nav-link a{
+.nav-link a {
     padding: 5px;
     display: block;
 }
 
-.coloration{
-
-}
-
-.bar-nav{
+.bar-nav {
     height: 75px;
 }
 
@@ -173,6 +194,10 @@ body {
 
 
 
+
+
+
+
 /* ----------------------------------------------------------------------------------------------------------- */
 /* Modification du footer  */
 
@@ -186,7 +211,7 @@ footer {
 }
 
 .footer-logo {
-    margin: 15px;
+    margin: 30px;
 }
 
 .footer-logo h3 {
@@ -225,6 +250,115 @@ footer {
     margin: 10px;
 }
 
+
+
+.social-media-button a {
+    color: white;
+}
+
+/*Modifications de la page d'accueil*/
+
+.fixed-cover {
+    height: 350px;
+    background-image: url(../images/Transition.png);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.cover-box {
+    padding: 0;
+}
+
+.project-div {
+    background: url(../images/Poke-Background.png);
+    color: #FFFFFF;
+}
+
+.project-div img {
+    border-radius: 50px;
+}
+
+.project-div img {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    border-radius: 60px;
+    padding: 30px;
+
+}
+
+.project h2 {
+    text-align: center;
+    text-transform: capitalize;
+    text-decoration-line: underline;
+    text-decoration-color: #294c5e;
+    color: #FFFFFF;
+
+}
+
+.join-adventure {
+    background-color: #092A3B;
+}
+
+.second-part {
+    padding: 0;
+
+}
+
+.second-part p {
+    color: #FFFFFF;
+    margin: 0;
+    font-style: italic;
+    padding: 20px 10px 50px;
+
+}
+
+.prof-chen {
+    padding-bottom: 40px;
+    padding-top: 50px;
+}
+
+.join-adventure {
+    padding-top: 20px;
+}
+
+.chen-border {
+    border: dotted #000000;
+    border-radius: 40px;
+    margin: 50px;
+    padding-top: 30px;
+}
+
+.start-adventure-button {
+    background-color: #DD4242;
+    padding: 10px;
+    border-radius: 40px;
+    border: solid #AF374D;
+}
+
+.start-adventure-button a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.second-border {
+    padding: 5px;
+    border: solid #FFFFFF;
+    border-radius: 40px;
+    background-color: #AF374D;
+
+}
+
+
+
+
+/* MEDIAS QUERY A PARTIR DE 992px */
+
+
+
+/* Media Query de la bannière */
+
 @media screen and (min-width: 992px) {
 
     .footer {
@@ -242,6 +376,7 @@ footer {
         flex-wrap: wrap;
         margin-top: -50px;
     }
+
 
     .footer-blocks {
         display: flex;
@@ -280,8 +415,14 @@ footer {
 }
 
 
+
+
+
+
+
 /* ----------------------------------------------------------------------------------------------------------- */
 /*Modifications de la page d'accueil*/
+
 
 .fixed-cover {
     height: 350px;
@@ -291,6 +432,9 @@ footer {
     background-repeat: no-repeat;
     background-position: center center;
 }
+
+
+
 
 .cover-box {
     padding: 0;
@@ -388,16 +532,37 @@ footer {
 }
 
 
-/****************************************************************************************/
+
+
+
+
+
+/* --------------------------------------------------------------------------------------------- */
 
 /* Modification de la page de Profil */
 
 
+.inactive2 {
+    background: url(../images/salameche2.png) no-repeat center;
+}
 
+.project-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 5%;
 
+}
 
+.project h2 {
+    text-align: justify;
+}
 
+.project-contain {
+    padding: 0;
 
+}
 
 
 
@@ -419,16 +584,6 @@ footer {
 .connexion-h1 {
     color: white;
 }
-
-/* .connexion-button {
-    background-color: #DD4242;
-    margin-top: 40px;
-    border: none;
-    width: 200px;
-    border-radius: 50px;
-    height: 50px;
-    font-size: 1.2rem;
-} */
 
 .connexion-button {
     background-color: #DD4242;
@@ -480,6 +635,7 @@ i.fa-chevron-right {
     margin-top: 40px;
     margin-bottom: 40px;
 }
+
 
 
 /* ----------------------------------------------------------------------------------------------------------- */
@@ -539,8 +695,462 @@ i.fa-chevron-right {
     background-color: #FFFFFF;
 }
 
-.description-poke-capture{
+.description-poke-capture {
     color: #FFFFFF;
     text-align: center;
     background-color: #000000;
+
+}
+
+
+/* --------------------------------------------------------------------------------------------- */
+
+/* Page du Pokédex  */
+
+.previous-next-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #DD4242;
+    font-size: 1rem;
+    border: solid white 1px;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+.left-arrow {
+    margin-right: 10px;
+}
+
+.previous-next-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.previous-next-buttons p {
+    color: white;
+}
+
+.consult {
+    display: none;
+}
+
+.arrows {
+    display: none;
+}
+
+.list {
+    display: flex;
+    flex-direction: row;
+}
+
+.ul-list {
+    display: none;
+}
+
+.poke-info-pic {
+    padding: 0;
+}
+
+.pokemon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #092A3B;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-image: url(../images/Poke-Background.png);
+}
+
+
+.info {
+    padding: 0;
+}
+
+.info-tile-1 {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: solid white 1px;
+    border-right-color: #092A3B;
+    height: 50px;
+    padding-top: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.info-tile-2 {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: solid white 1px;
+    border-right-color: #092A3B;
+    height: 50px;
+    padding-top: 10px;
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+.info-tile-3 {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: solid white 1px;
+    border-right: none;
+    border-right-color: #092A3B;
+    height: 50px;
+    padding-top: 10px;
+    padding-right: 0;
+    padding-left: 0;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: darkgray;
+}
+
+.pokepic {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pokepic img {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.type-h3 {
+    background-color: white;
+}
+
+.type-h3 h3 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+
+.type {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding-top: 10px;
+}
+
+.type-img {
+    width: 80px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border: solid grey 1px;
+    border-radius: 50px;
+}
+
+.type-img-grass {
+    width: 85px;
+}
+
+.description {
+    background-color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+.description h3 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+
+.gameboy {
+    display: none;
+}
+
+
+/* Premier media querry qui démarre à 992px, car problèmes d'affichage en responsive (div trop petites, manque de cohérence dans l'affichage)  */
+@media screen and (min-width: 992px) {
+
+    .main-block {
+        display: flex;
+        flex-direction: row;
+        background-image: url(../images/Poke-Background.png);
+    }
+
+    .poke-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 200px;
+        padding-left: 50px;
+    }
+
+    .previous-next-buttons {
+        display: none;
+    }
+
+    .consult {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        margin-bottom: 80px;
+    }
+
+    .consult h1 {
+        font-size: 3rem;
+    }
+
+    .arrows {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        background-color: rgba(255, 255, 255, 0);
+        ;
+    }
+
+    .arrows i {
+        color: #FFFFFF;
+        font-size: 3rem;
+    }
+
+    .arrows i:hover {
+        color: #7097AB;
+    }
+
+    .list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 500px;
+    }
+
+    .ul-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .ul-list ul {
+        list-style-type: none;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    .ul-list li {
+        background-color: #DD4242;
+        border: solid white 1px;
+        border-radius: 30px;
+        height: 80px;
+        width: 400px;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 1.5rem;
+    }
+
+    .ul-list li:hover {
+        background-color: white;
+        color: #DD4242;
+    }
+
+    .pokedex-background {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #DD4242;
+        padding-top: 70px;
+        padding-bottom: 70px;
+        margin: 50px;
+        margin-right: 50px;
+        border: solid #AF374D 15px;
+        border-radius: 30px;
+    }
+
+    .pokedex {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        padding: 40px;
+        border: solid black 3px;
+        border-radius: 30px;
+    }
+
+    .poke-info-pic {
+        width: 100%;
+        padding-bottom: 30px;
+    }
+
+    .info {
+        width: 100%;
+    }
+
+    .info-tile-1 {
+        border: solid black 1px;
+        border-radius: 20px 0px 0px 0px;
+    }
+
+    .info-tile-2 {
+        border: solid black 1px;
+        border-top-color: #000000;
+        border-left-color: white;
+    }
+
+    .info-tile-3 {
+        border: solid white 1px;
+        border-color: #000000;
+        border-left-color: white;
+        border-radius: 0px 20px 0px 0px;
+    }
+
+    .pokemon {
+        border: 0;
+        border-radius: 0px 0px 20px 20px;
+        padding: 20px;
+    }
+
+    .poke-type-description {
+        border: solid black 1px;
+        width: 100%;
+    }
+
+    .gameboy {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        padding-top: 70px;
+    }
+
+    .gameboy img {
+        width: 200px;
+    }
+
+    .start-select-buttons {
+        display: none;
+    }
+
+    .gameboy-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .gb-button-b {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        width: 100px;
+        background-color: #000000;
+        border: solid grey 5px;
+        border-radius: 100px;
+        color: grey;
+        font-size: 3rem;
+        margin-top: 70px;
+    }
+
+    .gb-button-a {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        width: 100px;
+        background-color: #000000;
+        border: solid grey 5px;
+        border-radius: 100px;
+        color: grey;
+        font-size: 3rem;
+        margin-bottom: 70px;
+    }
+
+    .a-b {
+        margin-bottom: 10px;
+        color: grey;
+    }
+}
+
+
+/* Deuxieme media querry pour écran large avec l'affichage "complet"  */
+@media screen and (min-width: 1700px) {
+
+    .poke-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+
+    .pokedex {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        padding: 40px;
+        border: solid black 3px;
+        border-radius: 30px;
+    }
+
+    .poke-info-pic {
+        width: 30%;
+    }
+
+    .poke-type-description {
+        border: solid black 1px;
+        width: 50%;
+    }
+
+    .start-select-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-top: 100px;
+    }
+
+    .start-select {
+        background-color: #000000;
+        border: solid grey 5px;
+        border-radius: 30px;
+        width: 100px;
+        height: 40px;
+    }
+
+    .gameboy-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 250px;
+    }
+
 }

@@ -1,8 +1,11 @@
 <?php
-
+// Table de donées des utilisateurs du site
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -31,6 +34,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 50)]
     private ?string $pseudonym = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $creationDate = null;
+
+    #[ORM\OneToMany(mappedBy: 'owner', targetEntity: CapturedPokemon::class, orphanRemoval: true)]
+    private Collection $capturedPokemon;
+
+    public function __construct()
+    {
+        $this->capturedPokemon = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -114,7 +129,49 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function setRegistrationDate(\DateTime $param)
+    public function getCreationDate(): ?\DateTimeInterface
     {
+        return $this->creationDate;
     }
+
+    public function setCreationDate(\DateTimeInterface $creationDate): self
+    {
+        $this->creationDate = $creationDate;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, CapturedPokemon>
+     */
+    public function getCapturedPokemon(): Collection
+    {
+        return $this->capturedPokemon;
+    }
+
+    public function addCapturedPokemon(CapturedPokemon $capturedPokemon): self
+    {
+        if (!$this->capturedPokemon->contains($capturedPokemon)) {
+            $this->capturedPokemon->add($capturedPokemon);
+            $capturedPokemon->setOwner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCapturedPokemon(CapturedPokemon $capturedPokemon): self
+    {
+        if ($this->capturedPokemon->removeElement($capturedPokemon)) {
+            // set the owning side to null (unless already changed)
+            if ($capturedPokemon->getOwner() === $this) {
+                $capturedPokemon->setOwner(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+
+    
 }

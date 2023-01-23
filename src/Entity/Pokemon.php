@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PokemonRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -26,8 +28,16 @@ class Pokemon
     #[ORM\Column(length: 5000)]
     private ?string $description = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $ObtentionDate = null;
+    #[ORM\OneToMany(mappedBy: 'pokemon', targetEntity: CapturedPokemon::class, orphanRemoval: true)]
+    private Collection $capturedPokemon;
+
+    public function __construct()
+    {
+        $this->capturedPokemon = new ArrayCollection();
+    }
+
+
+
 
     #[ORM\Column(length: 50)]
     private ?string $gif = null;
@@ -88,17 +98,24 @@ class Pokemon
         return $this;
     }
 
-    public function getObtentionDate(): ?\DateTimeInterface
+    /**
+     * @return Collection<int, CapturedPokemon>
+     */
+    public function getCapturedPokemon(): Collection
     {
-        return $this->ObtentionDate;
+        return $this->capturedPokemon;
     }
 
-    public function setObtentionDate(\DateTimeInterface $ObtentionDate): self
+    public function addCapturedPokemon(CapturedPokemon $capturedPokemon): self
     {
-        $this->ObtentionDate = $ObtentionDate;
+        if (!$this->capturedPokemon->contains($capturedPokemon)) {
+            $this->capturedPokemon->add($capturedPokemon);
+            $capturedPokemon->setPokemon($this);
+        }
 
         return $this;
     }
+
 
     public function getGif(): ?string
     {
@@ -110,7 +127,23 @@ class Pokemon
         $this->gif = $gif;
 
         return $this;
+
     }
+
+    public function removeCapturedPokemon(CapturedPokemon $capturedPokemon): self
+    {
+        if ($this->capturedPokemon->removeElement($capturedPokemon)) {
+            // set the owning side to null (unless already changed)
+            if ($capturedPokemon->getPokemon() === $this) {
+                $capturedPokemon->setPokemon(null);
+            }
+        }
+
+
+        return $this;
+    }
+
+
 
 
 }

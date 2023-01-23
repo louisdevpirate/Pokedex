@@ -22,16 +22,9 @@ class HomeController extends AbstractController
         ]);
     }
 
-
-    #[Route('/connexion/', name: 'app_connexion')]
-    public function connexion(): Response
-    {
-        return $this->render('main/connexion.html.twig',[
-
-        ]);
-    }
     
     #[Route('/mon-profil/', name: 'app_profil')]
+    #[IsGranted('ROLE_USER')]
     public function profil(): Response
     {
         return $this->render('main/profil.html.twig',[
@@ -42,6 +35,7 @@ class HomeController extends AbstractController
     
 
     #[Route('/capture/', name: 'app_capture')]
+
 //    #[IsGranted('ROLE_USER')]
     public function capture(): Response
     {
@@ -74,13 +68,14 @@ class HomeController extends AbstractController
         ]);
     }
 
-//    #[Route('/pokedex/', name: 'app_pokedex')]
-//    public function pokedex(): Response
-//    {
-//        return $this->render('main/pokedex.html.twig',[
-//
-//        ]);
-//    }
+
+   #[Route('/pokedex/', name: 'app_pokedex')]
+   public function pokedex(): Response
+   {
+       return $this->render('main/pokedex.html.twig',[
+
+       ]);
+   }
 
 
 }
