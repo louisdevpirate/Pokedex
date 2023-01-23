@@ -31,13 +31,16 @@ body {
 
 
 
+
 }
 
 .connexion-deconnexion a{
     text-decoration: none;
     color: #FFFFFF;
-    border: solid 3px black;
-    background-color: #0a53be;
+    border: solid 1px black;
+    background-color: #0C3348;
+    padding: 5px;
+    font-size: large;
 
 
 }
