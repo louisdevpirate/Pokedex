@@ -67,11 +67,4 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    #[Route('/modify-profil/', name: 'app_modify')]
-   public function pokedex(): Response
-   {
-       return $this->render('main/modify_profil.html.twig',[
-
-       ]);
-   }
 }
