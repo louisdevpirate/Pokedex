@@ -25,7 +25,7 @@ class RegistrationFormType extends AbstractType
             ->add('email', EmailType::class, [
                 'label' => 'Adresse Email',
                 'attr' => [
-                    'placeholder' => 'alice@gmail.com',
+                    'placeholder' => 'ex : alice@gmail.com',
                 ],
                 'constraints' => [
 
@@ -71,7 +71,7 @@ class RegistrationFormType extends AbstractType
             ->add('pseudonym', TextType::class, [
                 'label' => 'Pseudonyme',
                 'attr' => [
-                    'placeholder' => 'profchen',
+                    'placeholder' => 'ex : prof_chen',
                 ],
                 'constraints' => [
                     new NotBlank([

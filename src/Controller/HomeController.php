@@ -7,7 +7,10 @@ namespace App\Controller;
 use App\Entity\CapturedPokemon;
 use App\Entity\Pokemon;
 use DateTime;
+use App\Form\ModifyFormType;
+use App\Form\RegistrationFormType;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,7 +37,6 @@ class HomeController extends AbstractController
         ]);
     }
 
-    
     #[Route('/capture/', name: 'app_capture')]
     #[IsGranted('ROLE_USER')]
     public function capture(): Response
@@ -142,7 +144,31 @@ class HomeController extends AbstractController
        return $this->render('main/pokedex.html.twig',[
 
        ]);
+
    }
 
+    #[Route('/modify-profil/', name: 'app_modify')]
+    #[IsGranted('ROLE_USER')]
+    public function modifyProfil(Request $request, ManagerRegistry $doctrine): Response
+    {
 
+        // Creation du formulaire de modification des informations du profil
+        $form = $this->createForm(RegistrationFormType::class, $this->getUser());
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+
+            $em = $doctrine->getManager();
+            $em->flush();
+
+        }
+
+        return $this->render('main/modify_profil.html.twig',[
+            'form' => $form->createView(),
+        ]);
+    }
+
+
+   
 }
