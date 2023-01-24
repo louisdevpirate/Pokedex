@@ -6,7 +6,7 @@
 {% block body %}
 
 	{# Container du formulaire d'inscription  #}
-	<div class="container mt-5">
+	<div class=" register-form-block container mt-5 col-10">
 
 		<div class="row">
 
@@ -18,38 +18,57 @@
 		</div>
 
 		{# Formulaire d'inscripton #}
-		<div class="row">
+		<div
+			class="row">
+
+			{# Ouverture du formulaire #}
+			{{ form_start( registrationForm ) }}
+
+			{# Affichage des erreur générales du formulaire #}
+			{{ form_errors( registrationForm ) }}
+
 			<div
-				class="col-12 col-md-6 mx-auto style-form-register ">
-
-				{# Ouverture du formulaire #}
-				{{ form_start( registrationForm ) }}
-
-				{# Affichage des erreur générales du formulaire #}
-				{{ form_errors( registrationForm ) }}
-
+				class="col-12 col-md-6 mx-auto style-form-register">
 				{# Champ email #}
 				{{ form_row( registrationForm.email ) }}
+			</div>
 
+			<div
+				class="col-12 col-md-6 mx-auto style-form-register">
 				{# Champ pseudo #}
 				{{ form_row( registrationForm.pseudonym ) }}
+			</div>
 
-
+			<div
+				class="col-12 col-md-6 mx-auto style-form-register">
 				{# Champ mots de passe  #}
 				{{ form_row( registrationForm.plainPassword ) }}
+			</div>
 
-				{#        #}
-				{# Affichage du cpatcha #}
-				{#        <div class="mb-3">#}
-				{#            <div class="mb-2">Captcha de sécurit</div>#}
+			{#        #}
+			{# Affichage du cpatcha #}
+			{#        <div class="mb-3">#}
+			{#            <div class="mb-2">Captcha de sécurit</div>#}
 
-				{#            <div class="g-recaptcha" data-sitekey="{{ google_recaptcha_site_key }}"></div>#}
-				{#        </div>#}
+			{#            <div class="g-recaptcha" data-sitekey="{{ google_recaptcha_site_key }}"></div>#}
+			{#        </div>#}
 
-				{# Bouton de validation #}
-				{{ form_row( registrationForm.save ) }}
 
-				{# Fermeture du formulaire  #}
+			<div class="text-center mx-auto register-button"> 
+			
+				<div class="second-border-register">
+
+					<img src="{{ asset('images/PokeBall.png') }}" alt="Poke Ball">{{ form_row( registrationForm.save, { 'attr': {'class': 'register-button-valid d-block'} } ) }}
+
+					<i class="fa-solid fa-chevron-right"></i>
+
+				</div>
+
+
+			</div>
+
+
+			{# Fermeture du formulaire  #}
 			{{ form_end( registrationForm ) }}
 		</div>
 	</div>

@@ -27,14 +27,11 @@ body {
     margin: 0;
     padding: 0;
 }
-.connexion-deconnexion{
 
 
+.connexion-deconnexion {}
 
-
-}
-
-.connexion-deconnexion a{
+.connexion-deconnexion a {
     text-decoration: none;
     color: #FFFFFF;
     border: solid 1px black;
@@ -54,10 +51,11 @@ body {
     }
 
     .banner-title h1 {
-        font-size: 2rem;
+        font-size: 4rem;
         align-items: center;
         justify-content: center;
-        margin-top: 100px;
+        margin-top: 50px;
+
     }
 }
 
@@ -272,6 +270,14 @@ footer {
 .social-media-button a {
     color: white;
 }
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------------------------------------------- */
 
 /*Modifications de la page d'accueil*/
 
@@ -688,6 +694,25 @@ footer {
 /* --------------------------------------------------------------------------------------------- */
 
 /* Page de Modification du Profil  */
+
+.modify {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #092A3B;
+    margin-bottom: 100px;
+    margin-top: 100px;
+    border: solid #092A3B;
+    border-radius: 40px;
+}
+
+.modify-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 
 
@@ -1271,4 +1296,77 @@ i.fa-chevron-right {
         align-items: center;
         width: 250px;
     }
+}
+
+
+/* --------------------------------------------------------------------------------------------- */
+
+/* Page d'Inscription  */
+
+.register-form-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.h1-inscription {
+    color: white;
+    margin-bottom: 50px;
+    font-size: 3rem
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.style-form-register {
+    color: white;
+}
+
+.register-button {
+    background-color: #DD4242;
+    padding: 10px;
+    border-radius: 40px;
+    border: solid #AF374D;
+    margin-top: 40px;
+    margin-bottom: 100px;
+    width: 300px;
+}
+
+.register-button:hover {
+    border: solid white;
+}
+
+.register-button-valid {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 1.2rem;
+    padding: 0px;
+    margin-top: 12px;
+}
+
+.register-button-valid:hover {
+    color: white;
+}
+
+.register-button img {
+    margin-right: 10px;
+    width: 50px;
+}
+
+.second-border-register {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    border: solid #FFFFFF;
+    border-radius: 40px;
+    background-color: #AF374D;
+    width: 100%;
+}
+
+.second-border-register i {
+    color: white;
 }
