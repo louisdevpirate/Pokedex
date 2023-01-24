@@ -20,12 +20,12 @@ function myMove() {
 
     function frame() {
 
-        if (pos === 250){
+        if (pos === 250) {
 
             clearInterval(id);
 
-        }else if (pos !== 250) {
-            pos+=5;
+        } else if (pos !== 250) {
+            pos += 5;
             angle += 22;
             elem.style.bottom = pos + 'px';
             elem.style.rotate = angle + 'deg';
@@ -44,11 +44,11 @@ function myMove() {
 
 
 
-document.querySelector('.capture-poke-button').addEventListener("click", function (){
+document.querySelector('.capture-poke-button').addEventListener("click", function () {
 
     //Si il y'a deja un pokemon, on l'enleve
     let currentPoke = document.querySelector('.displayed-pokemon');
-    if(currentPoke){
+    if (currentPoke) {
         currentPoke.remove();
     }
 
@@ -68,12 +68,12 @@ document.querySelector('.capture-poke-button').addEventListener("click", functio
             // alert( 'Vous avez capturé un ' + data.captured_pokemon.name + '!' );
 
         })
-    ;
+        ;
 
     //Si pokemon apparu il disparait
 
     //Pokebal se lance
-    if(Date.now() - lastMove > 3000) {
+    if (Date.now() - lastMove > 3000) {
         // Do stuff
         lastMove = Date.now();
 
@@ -90,6 +90,3 @@ document.querySelector('.capture-poke-button').addEventListener("click", functio
 
 
 });
-
-
-
