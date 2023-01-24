@@ -35,13 +35,6 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/modify-profil/', name: 'app_modify')]
-   public function modifyProfil(): Response
-   {
-       return $this->render('main/modify_profil.html.twig',[
-
-       ]);
-   }
 
     #[Route('/capture/', name: 'app_capture')]
 
@@ -105,7 +98,7 @@ class HomeController extends AbstractController
         }
 
         return $this->render('main/modify_profil.html.twig',[
-            'form' => $form->createView(),
+            'modifyform' => $form->createView(),
         ]);
     }
 
