@@ -4,7 +4,9 @@
 namespace App\Controller;
 
 
+use App\Entity\CapturedPokemon;
 use App\Entity\Pokemon;
+use DateTime;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -34,8 +36,7 @@ class HomeController extends AbstractController
 
     
     #[Route('/capture/', name: 'app_capture')]
-
-//    #[IsGranted('ROLE_USER')]
+    #[IsGranted('ROLE_USER')]
     public function capture(): Response
     {
         return $this->render('main/capture.html.twig',[
@@ -44,25 +45,92 @@ class HomeController extends AbstractController
     }
 
     #[Route('/capture-api/', name: 'app_capture_api')]
-//    #[IsGranted('ROLE_USER')]
+    #[IsGranted('ROLE_USER')]
     public function captureApi(ManagerRegistry $doctrine): Response
     {
 
         $pokeRepo = $doctrine->getRepository(Pokemon::class);
-        $pokemons = $pokeRepo->findAll();
+
+        $randomRarity = rand(10,1000)/10;
+
+
+        if($randomRarity < 40 ){
+
+            $rarity = 'C';
+
+        }elseif ($randomRarity > 39.9 && $randomRarity < 64.9){
+
+            $rarity = 'PC';
+
+        }elseif($randomRarity > 64.8 && $randomRarity < 84.8){
+
+            $rarity = 'R';
+
+        }elseif($randomRarity > 84.7 && $randomRarity < 94.7){
+
+            $rarity = 'TR';
+
+        }elseif($randomRarity > 94.6 && $randomRarity < 99.6){
+
+            $rarity = 'EX';
+
+        }else{
+
+            $rarity = 'SR';
+
+        }
+
+
+        $pokemons = $pokeRepo->findByRarity($rarity);
 
         $randomPoke = rand(0, count($pokemons) - 1);
 
-        $pokemonCaptured = $pokemons[$randomPoke];
+        $pokemonSpeciesCaptured = $pokemons[$randomPoke];
 
+
+        $pokemonCaptured = new CapturedPokemon();
+
+        //Calculs shiny
+
+        $shinyTest = rand(1,200);
+
+        if ($shinyTest == 1){
+
+            $isShiny = true;
+        }else{
+
+            $isShiny = false;
+        }
+
+
+        //Hydratation BDD
+        $pokemonCaptured
+            ->setPokemon($pokemonSpeciesCaptured)
+            ->setOwner($this->getUser())
+            ->setCaptureDate(new DateTime())
+            ->setShiny($isShiny)
+
+        ;
+
+        $em = $doctrine->getManager();
+
+        $em->persist($pokemonCaptured);
+
+        $em->flush();
+
+
+        //Retour des informations a Javascript
         return $this->json([
             'captured_pokemon' => [
-                'id' => $pokemonCaptured->getId(),
-                'name' => $pokemonCaptured->getName(),
-                'gif' => $pokemonCaptured->getGif(),
-                'type' => $pokemonCaptured->getType(),
-                'type2' => $pokemonCaptured->getType2(),
-                'description' => $pokemonCaptured->getDescription(),
+                'id' => $pokemonCaptured->getPokemon()->getId(),
+                'name' => $pokemonCaptured->getPokemon()->getName(),
+                'gif' => $pokemonCaptured->getPokemon()->getGif(),
+                'type' => $pokemonCaptured->getPokemon()->getType(),
+                'type2' => $pokemonCaptured->getPokemon()->getType2(),
+                'description' => $pokemonCaptured->getPokemon()->getDescription(),
+                'shiny' => $pokemonCaptured->getShiny(),
+                'rarity' => $rarity,
+                'rarityRandom' => $randomRarity,
             ],
         ]);
     }
