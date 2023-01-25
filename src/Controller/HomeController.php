@@ -6,10 +6,12 @@ namespace App\Controller;
 
 use App\Entity\CapturedPokemon;
 use App\Entity\Pokemon;
+use Container4zm6YBo\getCapturedPokemonRepositoryService;
 use DateTime;
 use App\Form\ModifyFormType;
 use App\Form\RegistrationFormType;
 use Doctrine\Persistence\ManagerRegistry;
+use http\Client\Curl\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,28 +25,35 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function home(): Response
     {
-        return $this->render('main/home.html.twig',[
+        return $this->render('main/home.html.twig', [
         ]);
     }
 
-    
+
     #[Route('/mon-profil/', name: 'app_profil')]
     #[IsGranted('ROLE_USER')]
     public function profil(): Response
     {
+
+
+        $user = $this->getUser();
+        $capturedPokemon = $user->getCapturedPokemon();
+        $nbPokemon = count($capturedPokemon);
+
+
         return $this->render('main/profil.html.twig',[
-
+            'nbPokemon' => $nbPokemon
         ]);
+
+
     }
-
-
 
 
     #[Route('/capture/', name: 'app_capture')]
     #[IsGranted('ROLE_USER')]
     public function capture(): Response
     {
-        return $this->render('main/capture.html.twig',[
+        return $this->render('main/capture.html.twig', [
 
         ]);
     }
@@ -56,30 +65,30 @@ class HomeController extends AbstractController
 
         $pokeRepo = $doctrine->getRepository(Pokemon::class);
 
-        $randomRarity = rand(10,1000)/10;
+        $randomRarity = rand(10, 1000) / 10;
 
 
-        if($randomRarity < 40 ){
+        if ($randomRarity < 40) {
 
             $rarity = 'C';
 
-        }elseif ($randomRarity > 39.9 && $randomRarity < 64.9){
+        } elseif ($randomRarity > 39.9 && $randomRarity < 64.9) {
 
             $rarity = 'PC';
 
-        }elseif($randomRarity > 64.8 && $randomRarity < 84.8){
+        } elseif ($randomRarity > 64.8 && $randomRarity < 84.8) {
 
             $rarity = 'R';
 
-        }elseif($randomRarity > 84.7 && $randomRarity < 94.7){
+        } elseif ($randomRarity > 84.7 && $randomRarity < 94.7) {
 
             $rarity = 'TR';
 
-        }elseif($randomRarity > 94.6 && $randomRarity < 99.6){
+        } elseif ($randomRarity > 94.6 && $randomRarity < 99.6) {
 
             $rarity = 'EX';
 
-        }else{
+        } else {
 
             $rarity = 'SR';
 
@@ -97,12 +106,12 @@ class HomeController extends AbstractController
 
         //Calculs shiny
 
-        $shinyTest = rand(1,200);
+        $shinyTest = rand(1, 200);
 
-        if ($shinyTest == 1){
+        if ($shinyTest == 1) {
 
             $isShiny = true;
-        }else{
+        } else {
 
             $isShiny = false;
         }
@@ -113,9 +122,7 @@ class HomeController extends AbstractController
             ->setPokemon($pokemonSpeciesCaptured)
             ->setOwner($this->getUser())
             ->setCaptureDate(new DateTime())
-            ->setShiny($isShiny)
-
-        ;
+            ->setShiny($isShiny);
 
         $em = $doctrine->getManager();
 
@@ -141,14 +148,14 @@ class HomeController extends AbstractController
     }
 
 
-   #[Route('/pokedex/', name: 'app_pokedex')]
-   public function pokedex(): Response
-   {
-       return $this->render('main/pokedex.html.twig',[
+    #[Route('/pokedex/', name: 'app_pokedex')]
+    public function pokedex(): Response
+    {
+        return $this->render('main/pokedex.html.twig', [
 
-       ]);
+        ]);
 
-   }
+    }
 
     #[Route('/modify-profil/', name: 'app_modify')]
     #[IsGranted('ROLE_USER')]
@@ -160,18 +167,24 @@ class HomeController extends AbstractController
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
 
             $em = $doctrine->getManager();
             $em->flush();
 
-        }
+            //message flash de success
+            $this->addFlash('success', 'Votre profile à été modifier avec success');
 
-        return $this->render('main/modify_profil.html.twig',[
-            'modifyform' => $form->createView(),
-        ]);
+            return $this->redirectToRoute('app_profil');
+        }
+        return $this->render('main/modify_profil.html.twig', [
+            'modifyform' => $form->createView(),]);
+
+
     }
 
 
-   
 }
+
+
+
