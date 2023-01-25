@@ -799,11 +799,18 @@ i.fa-chevron-right {
 
 }
 
-.view-pokemon img {
+.view-pokemon .displayed-pokemon{
 
     max-width: 100%;
     transform: scale(2);
+    position: absolute;
 
+}
+
+.shining-effect{
+
+    transform: scale(0.80);
+    position: relative;
 }
 
 .capture-poke-button {
