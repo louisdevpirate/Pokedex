@@ -50,7 +50,7 @@ class HomeController extends AbstractController
     }
 
     #[Route('/capture-api/', name: 'app_capture_api')]
-    #[IsGranted('ROLE_USER')]
+    #[IsGranted('ROLE_ADMIN')]
     public function captureApi(ManagerRegistry $doctrine): Response
     {
 
@@ -141,14 +141,58 @@ class HomeController extends AbstractController
     }
 
 
-   #[Route('/pokedex/', name: 'app_pokedex')]
-   public function pokedex(): Response
+   #[Route('/pokedex/{id}/', name: 'app_pokedex')]
+   public function pokedex(Pokemon $pokemon, ManagerRegistry $doctrine): Response
    {
+
+        $pokeRepo = $doctrine->getRepository(Pokemon::class);
+
+        $pokemonBeforeBefore = $pokeRepo->findPrev($pokemon, 1);
+        $pokemonBefore = $pokeRepo->findPrev($pokemon);
+        $pokemonNext = $pokeRepo->findNext($pokemon);
+        $pokemonNextNext = $pokeRepo->findNext($pokemon, 1);
+       
        return $this->render('main/pokedex.html.twig',[
-
-       ]);
-
+           'pokemonBeforeBefore' => $pokemonBeforeBefore,
+           'pokemonBefore' => $pokemonBefore,
+           'pokemon' => $pokemon,
+           'pokemonAfter' => $pokemonNext,
+           'pokemonAfterAfter' => $pokemonNextNext,
+        ]);
+        
    }
+
+    // #[Route('/pokedex-api/', name: 'app_pokedex_api')]
+    // public function pokedexApi(ManagerRegistry $doctrine): Response
+    // {
+    //     // Récupération du gestionnaire d'entités
+    //     $pokeRepo = $doctrine->getRepository(Pokemon::class);
+
+    //     // Récupération des données de la base de données
+    //     $pokemons = $pokeRepo->findAll();
+
+    //     $pokemonsToReturn = [];
+
+
+    //     foreach($pokemons as $pokemon){
+
+    //         $pokemonsToReturn[] = [
+    //             'name' => $pokemon->getName(),
+    //             'description' => $pokemon->getDescription(),
+    //         ];
+            
+    //     }
+
+
+    //     // Renvoi de la réponse HTTP
+    //     return $this->json([
+    //         'pokemons' => $pokemonsToReturn,
+    //     ]);
+    // }
+
+
+
+
 
     #[Route('/modify-profil/', name: 'app_modify')]
     #[IsGranted('ROLE_USER')]
