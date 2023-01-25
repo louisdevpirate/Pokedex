@@ -1,4 +1,3 @@
-
 let captureInProcess = false;
 let elem = document.querySelector(".pokeball-animate");
 function backToPlace() {
@@ -6,20 +5,13 @@ function backToPlace() {
     elem.style.rotate = '0deg';
 }
 
-
 //Fonction de déplacement de la pokéball
-
-
-
-
-
-
 
 //Bouton de capture
 
 document.querySelector('.capture-poke-button').addEventListener("click", async function () {
 
-    if(!captureInProcess) {
+    if (!captureInProcess) {
 
         captureInProcess = true;
 
@@ -83,14 +75,14 @@ document.querySelector('.capture-poke-button').addEventListener("click", async f
 
                     pokemonGif = pokemonsGifDir + '/' + ((data.captured_pokemon.shiny) ? 'shiny-' : '') + data.captured_pokemon.gif;
 
-                    console.log(data.captured_pokemon.rarity + '('+ data.captured_pokemon.rarityRandom +'%)');
+                    console.log(data.captured_pokemon.rarity + '(' + data.captured_pokemon.rarityRandom + '%)');
 
                     resolve();
 
                     // alert( 'Vous avez capturé un ' + data.captured_pokemon.name + '!' );
 
                 })
-            ;
+                ;
 
         });
 
@@ -110,6 +102,3 @@ document.querySelector('.capture-poke-button').addEventListener("click", async f
 
 
 });
-
-
-

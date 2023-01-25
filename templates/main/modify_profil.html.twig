@@ -1,75 +1,76 @@
-{# Utilisation du squelette de page base.html.twig #}
-{% extends "base.html.twig" %}
+{% extends 'base.html.twig' %}
 
-{# Titre de la page #}
-{% block title %}Gestion du profil
+{% block title %}Modifier mon compte
 {% endblock %}
 
-{# Contenu de la page #}
 {% block body %}
 
+	{# Container du formulaire d'inscription  #}
+	<div class=" register-form-block container mt-5 col-10">
 
-	{{ form(form) }}
+		<div class="row">
 
-	<div
-		class="background">
-		{# Titre h1 #}
-		<div class="row"></div>
+			<div class="col-md-6 offset-md-3 style-form-register">
 
-	<div class="background">
+				<h1 class="text-center h1-inscription">Modifier mon compte</h1>
 
-
-		<div class="container-fluid modify col-12 col-lg-8">
-
-			<h1 class="profil-title col-12 text-center my-5">Modifier les informations</h1>
-
-			<div class="col-12 col-lg-12 modify-block">
-
-				<div class="right-block col-12 col-lg-4">
-
-					<h2 class="informations-account-title">Informations du compte</h2>
-
-					{# Block de droite, Infos du compte #}
-					<ul class="list-group col-12 col-lg-12" id="compte">
-						<li class="list-group-item ">Adresse Email :
-							<span class="text-info">{{ app.user.email }}</span>
-						</li>
-						<li class="list-group-item ">Pseudonyme :
-							<span class="text-info">{{ app.user.pseudonym }}</span>
-						</li>
-						<li class="list-group-item ">Date d'inscription :
-							<span class="text-info">{{ app.user.creationDate|date('d/m/Y')}}</span>
-						</li>
-
-
-						<li class="list-group-item ">
-							Compte :
-							<span class="text-info">{{ is_granted('ROLE_ADMIN') ? 'Administrateur' : 'Utilisateur' }}</span>
-						</li>
-					</ul>
-				</div>
-			</div>
-
-			{# Lien qui redirige vers une nouvelle page afin de modifier les informations de l'utilisateur #}
-			<div
-				class="modify-info">
-				{# NE PAS OUBLIER DE CREER LE LIEN QUI REDIRIGE VERS LA PAGE DE MODIFICATION #}
-				<button class="modify-button">
-
-					<div class="second-border-modify">
-
-						<a href="{{ path('app_profil') }}" class="modify-button-link"><img src="{{ asset('images/PokeBall.png') }}" alt="Poke Ball" width="50px">Enregistrer
-
-							<i class="fa-solid fa-chevron-right"></i>
-
-						</a>
-
-					</div>
-
-				</button>
 			</div>
 		</div>
-	</div>
 
-</div>
-{# Fermeture langague twig #}{% endblock %}
+		{# Formulaire d'inscripton #}
+		<div
+				class="row">
+
+			{# Ouverture du formulaire #}
+			{{ form_start( modifyform ) }}
+
+			{# Affichage des erreur générales du formulaire #}
+			{{ form_errors( modifyform ) }}
+
+			<div
+					class="col-12 col-md-6 mx-auto style-form-register display d-none">
+				Champ email
+				{{ form_row( modifyform.email ) }}
+			</div>
+			<div
+					class="col-12 col-md-6 mx-auto style-form-register">
+				{# Champ pseudo #}
+				{{ form_row( modifyform.pseudonym ) }}
+			</div>
+
+			<div
+					class="col-12 col-md-6 mx-auto style-form-register">
+				{# Champ mots de passe  #}
+				{{ form_row( modifyform.plainPassword ) }}
+			</div>
+
+			{#        #}
+			{# Affichage du cpatcha #}
+			{#        <div class="mb-3">#}
+			{#            <div class="mb-2">Captcha de sécurit</div>#}
+
+			{#            <div class="g-recaptcha" data-sitekey="{{ google_recaptcha_site_key }}"></div>#}
+			{#        </div>#}
+
+
+			<div class="text-center mx-auto register-button">
+
+				<div class="second-border-register">
+
+					<img src="{{ asset('images/PokeBall.png') }}" alt="Poke Ball">{{ form_row( modifyform.save, { 'attr': {'class': 'register-button-valid d-block'} } ) }}
+
+					<i class="fa-solid fa-chevron-right"></i>
+
+				</div>
+
+
+			</div>
+
+
+			{# Fermeture du formulaire  #}
+			{{ form_end( modifyform ) }}
+		</div>
+	</div>
+{% endblock %}
+
+

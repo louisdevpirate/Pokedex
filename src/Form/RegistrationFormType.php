@@ -35,7 +35,6 @@ class RegistrationFormType extends AbstractType
                     new Email([
                         'message' => 'L\'adresse email {{value}} n\'est pas valide',
                     ]),
-
                 ],
             ])
             // Champ mots de passe (en double)
@@ -71,7 +70,7 @@ class RegistrationFormType extends AbstractType
             ->add('pseudonym', TextType::class, [
                 'label' => 'Pseudonyme',
                 'attr' => [
-                    'placeholder' => 'ex : prof_chen',
+                    'placeholder' => 'ex : bobdu95',
                 ],
                 'constraints' => [
                     new NotBlank([

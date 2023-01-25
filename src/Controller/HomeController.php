@@ -37,6 +37,9 @@ class HomeController extends AbstractController
         ]);
     }
 
+
+
+
     #[Route('/capture/', name: 'app_capture')]
     #[IsGranted('ROLE_USER')]
     public function capture(): Response
@@ -165,7 +168,7 @@ class HomeController extends AbstractController
         }
 
         return $this->render('main/modify_profil.html.twig',[
-            'form' => $form->createView(),
+            'modifyform' => $form->createView(),
         ]);
     }
 
