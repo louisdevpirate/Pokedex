@@ -48,6 +48,9 @@ class Pokemon
     #[ORM\Column(length: 30)]
     private ?string $rarity = null;
 
+    #[ORM\Column(length: 4)]
+    private ?string $pokeId = null;
+
 
     
 
@@ -169,6 +172,18 @@ class Pokemon
     public function setRarity(string $rarity): self
     {
         $this->rarity = $rarity;
+
+        return $this;
+    }
+
+    public function getPokeId(): ?string
+    {
+        return $this->pokeId;
+    }
+
+    public function setPokeId(string $pokeId): self
+    {
+        $this->pokeId = $pokeId;
 
         return $this;
     }
