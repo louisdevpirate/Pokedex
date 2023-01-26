@@ -97,7 +97,7 @@ class HomeController extends AbstractController
 
         //Calculs shiny
 
-        $shinyTest = rand(1,200);
+        $shinyTest = rand(1,250);
 
         if ($shinyTest == 1){
 
