@@ -30,38 +30,51 @@
 				{# Boutons de flèche du haut, seulement visible en écran large  #}
 				<button class="arrows col-6">
 
-					<i class="fa-solid fa-chevron-up"></i>
+				
+
+					{% if pokemonBefore is not null %}
+
+						<a href="{{ path('app_pokedex', { pokeId : (pokemonBefore.pokeId) }) }}">
+
+							<i class="fa-solid fa-chevron-up"></i>
+
+						</a>
+
+					{% else %}
+
+						<a><i class="fa-solid fa-chevron-up"></i>
+
+					{% endif %}
+
+					
 
 				</button>
 
 				{# Div qui contient la liste des Pokémon affichés en écran large  #}
-				<div class="ul-list">
+				<div class="ul-list pokedex-nav">
+
 					<ul>
-						<li>
-							{% if pokemonBeforeBefore is not null %}
-								<a href="{{ path('app_pokedex', { id : (pokemonBeforeBefore.id) }) }}">{{ pokemonBeforeBefore.name|capitalize }}</a>
-							{% endif %}
-						</li>
-						<li>
-							<a href="{{ path('app_pokedex', { id : (pokemonBefore.id) }) }}">{{ pokemonBefore.name|capitalize }}</a>
-						</li>
-						<li>
-							<a href="{{ path('app_pokedex', { id : pokemon.id }) }}">{{ pokemon.name|capitalize }}</a>
-						</li>
-						<li>
-							<a href="{{ path('app_pokedex', { id : (pokemonAfter.id) }) }}">{{ pokemonAfter.name|capitalize }}</a>
-						</li>
-						<li>
-							<a href="{{ path('app_pokedex', { id : (pokemonAfterAfter.id) }) }}">{{ pokemonAfterAfter.name|capitalize }}</a>
-						</li>
+						
+
+						{% for pokemon in pokemons %}
+
+							<li {{ (currentPokemon == pokemon) ? 'data-current="true"' }} id="poke-{{ pokemon.pokeId }}">
+								<a disabled class="list-a" href="{{ path('app_pokedex', { pokeId : (pokemon.pokeId) }) }}">{{ pokemon.name|capitalize }} #{{ pokemon.pokeId }}</a>
+							</li>
+
+						{% endfor %}
+					
 					</ul>
+
 				</div>
 
 				{# Bouton de flèche du bas, seulement visible en écran large  #}
 				<button class="arrows col-6">
 
-					<a href="{{ path('app_pokedex', { id : (pokemonAfter.id) }) }}">
+					<a href="{{ path('app_pokedex', { pokeId : (pokemonAfter.pokeId) }) }}">
+
 						<i class="fa-solid fa-chevron-down"></i>
+
 					</a>
 
 				</button>
@@ -81,8 +94,8 @@
 		{# Div qui englobe toutes les infos du Pokédex (infos du pokémon, son image, son/ses type(s) et sa description)  #}
 		<div class="pokedex-background">
 
-			<div
-				class="pokedex col-lg-10">
+			<div class="pokedex col-lg-10">
+
 				{# Container des infos Pokémon (nom, nom-en et numéro Pokédex) ainsi que l'image GIF du pokémon  #}
 				<div class="poke-info-pic container-fluid col-lg-4">
 
@@ -96,19 +109,19 @@
 
 								<div class="info-tile-1 col-4">
 
-									<p>{{ pokemon.name|capitalize }}</p>
+									<p>{{ currentPokemon.name|capitalize }}</p>
 
 								</div>
 
 								<div class="info-tile-2 col-4">
 
-									<p>{{ pokemon.nameen|capitalize }}</p>
+									<p>{{ currentPokemon.nameen|capitalize }}</p>
 
 								</div>
 
 								<div class="info-tile-3 col-4">
 
-									<p>{{ pokemon.pokeId }}</p>
+									<p>#{{ currentPokemon.pokeid }}</p>
 
 								</div>
 
@@ -124,7 +137,7 @@
 
 						<div class="pokepic col-12">
 
-							<img src="{{ asset('images/gifs/' ~ pokemon.gif ) }}" alt="Pokémon">
+							<img class="poke-gif" src="{{ asset('images/gifs/' ~ currentPokemon.gif ) }}" alt="Pokémon">
 
 						</div>
 
@@ -149,7 +162,132 @@
 						{# Div qui contient les logos avec les types des Pokémon  #}
 						<div class="type col-12 d-flex flex-row justify-content-evenly">
 
-							<img class="type-img" src="/images/Types/Water.png" alt="Type">
+
+							{# Image du premier type Pokémon  #}
+
+							{% if currentPokemon.type == 'combat' %}
+        						<img class="type-img" src="/images/Types/Fighting.png" alt="Type">
+							{% endif %}
+
+    						{% if currentPokemon.type == 'dragon' %}
+        						<img class="type-img" src="/images/Types/Dragon.png" alt="Type">
+							{% endif %}
+
+							{% if currentPokemon.type == 'eau' %}
+        						<img class="type-img" src="/images/Types/Water.png" alt="Type">
+							{% endif %}
+
+							{% if currentPokemon.type == 'electrik' %}
+        						<img class="type-img" src="/images/Types/Electric.png" alt="Type">
+    						{% endif %}
+
+							{% if currentPokemon.type == 'fée' %}
+        						<img class="type-img" src="/images/Types/Fairy.png" alt="Type">
+    						{% endif %}
+
+							{% if currentPokemon.type == 'feu' %}
+        						<img class="type-img" src="/images/Types/Fire.png" alt="Type">
+    						{% endif %}
+
+							{% if currentPokemon.type == 'glace' %}
+        						<img class="type-img" src="/images/Types/Ice.png" alt="Type">
+    						{% endif %}
+
+							{% if currentPokemon.type == 'insecte' %}
+        						<img class="type-img" src="/images/Types/Bug.png" alt="Type">
+    						{% endif %}
+
+							{% if currentPokemon.type == 'normal' %}
+        						<img class="type-img" src="/images/Types/Normal.png" alt="Type">
+    						{% endif %}
+
+							{% if currentPokemon.type == 'plante' %}
+        						<img class="type-img" src="/images/Types/Grass.png" alt="Type">
+    						{% endif %}
+
+							{% if currentPokemon.type == 'poison' %}
+        						<img class="type-img" src="/images/Types/Poison.png" alt="Type">
+    						{% endif %}
+
+							{% if currentPokemon.type == 'psy' %}
+        						<img class="type-img" src="/images/Types/Psychic.png" alt="Type">
+    						{% endif %}
+
+							{% if currentPokemon.type == 'roche' %}
+        						<img class="type-img" src="/images/Types/Rock.png" alt="Type">
+    						{% endif %}
+
+							{% if currentPokemon.type == 'sol' %}
+        						<img class="type-img" src="/images/Types/Ground.png" alt="Type">
+    						{% endif %}
+
+							{% if currentPokemon.type == 'spectre' %}
+        						<img class="type-img" src="/images/Types/Ghost.png" alt="Type">
+    						{% endif %}
+
+
+							{# Image du deuxième type Pokémon  #}
+
+							{% if currentPokemon.type2 == 'combat' %}
+        						<img class="type-img" src="/images/Types/Fighting.png" alt="Type">
+							{% endif %}
+
+    						{% if currentPokemon.type2 == 'dragon' %}
+        						<img class="type-img" src="/images/Types/Dragon.png" alt="Type">
+							{% endif %}
+
+							{% if currentPokemon.type2 == 'eau' %}
+        						<img class="type-img" src="/images/Types/Water.png" alt="Type">
+							{% endif %}
+
+							{% if currentPokemon.type2 == 'electrik' %}
+        						<img class="type-img" src="/images/Types/Electric.png" alt="Type">
+    						{% endif %}
+
+							{% if currentPokemon.type2 == 'fée' %}
+        						<img class="type-img" src="/images/Types/Fairy.png" alt="Type">
+    						{% endif %}
+
+							{% if currentPokemon.type2 == 'feu' %}
+        						<img class="type-img" src="/images/Types/Fire.png" alt="Type">
+    						{% endif %}
+
+							{% if currentPokemon.type2 == 'glace' %}
+        						<img class="type-img" src="/images/Types/Ice.png" alt="Type">
+    						{% endif %}
+
+							{% if currentPokemon.type2 == 'insecte' %}
+        						<img class="type-img" src="/images/Types/Bug.png" alt="Type">
+    						{% endif %}
+
+							{% if currentPokemon.type2 == 'normal' %}
+        						<img class="type-img" src="/images/Types/Normal.png" alt="Type">
+    						{% endif %}
+
+							{% if currentPokemon.type2 == 'plante' %}
+        						<img class="type-img" src="/images/Types/Grass.png" alt="Type">
+    						{% endif %}
+
+							{% if currentPokemon.type2 == 'poison' %}
+        						<img class="type-img" src="/images/Types/Poison.png" alt="Type">
+    						{% endif %}
+
+							{% if currentPokemon.type2 == 'psy' %}
+        						<img class="type-img" src="/images/Types/Psychic.png" alt="Type">
+    						{% endif %}
+
+							{% if currentPokemon.type2 == 'roche' %}
+        						<img class="type-img" src="/images/Types/Rock.png" alt="Type">
+    						{% endif %}
+
+							{% if currentPokemon.type2 == 'sol' %}
+        						<img class="type-img" src="/images/Types/Ground.png" alt="Type">
+    						{% endif %}
+
+							{% if currentPokemon.type2 == 'spectre' %}
+        						<img class="type-img" src="/images/Types/Ghost.png" alt="Type">
+    						{% endif %}
+
 
 						</div>
 
@@ -158,7 +296,7 @@
 
 							<h3>Description</h3>
 
-							<p>Tortank est un bipède massif de la famille des tortues. Les extrémités supérieures gauche et droite de sa carapace sont ornées d'un canon à eau pouvant être orienté dans diverses directions. Formé au combat, sa tête s'est endurcie : le duvet de Carabaffe n'est plus présent et il possède désormais deux petites oreilles et une queue courte. Ses griffes se sont maintenant développées sur tous ses doigts et ses yeux n'ont pas changé de couleur</p>
+							<p>{{ currentPokemon.description }}</p>
 
 						</div>
 
@@ -203,8 +341,19 @@
 		</div>
 	</div>
 
-</div>{% endblock %}{% block js %}//<script>
-// 	const pokedexAPIURL = '{#{ url('app_pokedex_api') }#}';
-	// </script>
-	// <script src="{{ asset('js/pokemon-list.js') }}"></script>
+</div>
+
 {% endblock %}
+
+
+{% block js %}
+
+	<script src="{{ asset('js/pokemon-list.js') }}"></script>
+	
+{% endblock %}
+
+
+
+
+
+
