@@ -1,16 +1,17 @@
-
-
-// fetch(pokedexAPIURL)
-
+// fetch('/pokedex-api/')
 //     .then(response => response.json())
-
 //     .then(data => {
-//         // Traitement des données ici
-//         console.log(data);
+//         const pokemonListContainer = document.getElementById('pokemon-list-container');
+//         data.pokemons.forEach(pokemon => {
+//             const div = document.createElement('div');
+//             div.innerHTML = `<a href="{{ 'app_pokedex' }}">${pokemon.name} #${pokemon.id}</a>`;
+//             pokemonListContainer.appendChild(div);
+//         });
+//     });
 
-//         document.querySelector('.description p').textContent = data.pokemons[0].description;
+let pokedexNav = document.querySelector('.pokedex-nav');
 
-//     })
+let buttonToDisplay = pokedexNav.querySelector('[data-current]');
 
-//     .catch(error => console.log(error))
-//     ;
+
+pokedexNav.scrollTop = buttonToDisplay.offsetTop - 555;

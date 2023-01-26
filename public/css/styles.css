@@ -861,7 +861,7 @@ i.fa-chevron-right {
     font-size: 1.5rem;
 }
 
-.view-pokemon .displayed-pokemon{
+.view-pokemon .displayed-pokemon {
 
     max-width: 100%;
     transform: scale(2.5);
@@ -869,7 +869,7 @@ i.fa-chevron-right {
 
 }
 
-.shining-effect{
+.shining-effect {
 
     transform: scale(0.80);
     position: relative;
@@ -994,8 +994,9 @@ i.fa-chevron-right {
     flex-direction: row;
 }
 
-.ul-list {
-    display: none;
+.pokedex-nav {
+    height: 450px;
+    overflow: scroll;
 }
 
 .poke-info-pic {
@@ -1052,9 +1053,8 @@ i.fa-chevron-right {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    border: solid white 1px;
-    border-right: none;
-    border-right-color: #092A3B;
+    border: 1px solid white;
+    border-right: none #092A3B;
     height: 50px;
     padding-top: 10px;
     padding-right: 0;
@@ -1190,7 +1190,7 @@ i.fa-chevron-right {
     .ul-list {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: start;
         align-items: center;
         margin-top: 10px;
         margin-bottom: 10px;
@@ -1222,6 +1222,16 @@ i.fa-chevron-right {
         color: #DD4242;
     }
 
+    .list-a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .list-a:hover {
+        color: #DD4242;
+        text-decoration: none;
+    }
+
     .pokedex-background {
         display: flex;
         flex-direction: column;
@@ -1231,7 +1241,6 @@ i.fa-chevron-right {
         padding-top: 70px;
         padding-bottom: 70px;
         margin: 50px;
-        margin-right: 50px;
         border: solid #AF374D 15px;
         border-radius: 30px;
     }
@@ -1248,7 +1257,7 @@ i.fa-chevron-right {
     }
 
     .poke-info-pic {
-        width: 100%;
+        width: 500px;
         padding-bottom: 30px;
     }
 
@@ -1278,6 +1287,10 @@ i.fa-chevron-right {
         border: 0;
         border-radius: 0px 0px 20px 20px;
         padding: 20px;
+    }
+
+    .poke-gif {
+        width: 50%;
     }
 
     .poke-type-description {
@@ -1354,7 +1367,9 @@ i.fa-chevron-right {
         justify-content: center;
         align-items: center;
         padding: 0;
+        position: relative;
     }
+
 
     .pokedex {
         display: flex;
@@ -1473,3 +1488,9 @@ i.fa-chevron-right {
 .second-border-register i {
     color: white;
 }
+
+
+
+/* --------------------------------------------------------------------------------------------- */
+
+/* Erreur 404  */

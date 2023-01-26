@@ -141,23 +141,22 @@ class HomeController extends AbstractController
     }
 
 
-   #[Route('/pokedex/{id}/', name: 'app_pokedex')]
+   #[Route('/pokedex/{pokeId}/', name: 'app_pokedex')]
    public function pokedex(Pokemon $pokemon, ManagerRegistry $doctrine): Response
    {
 
         $pokeRepo = $doctrine->getRepository(Pokemon::class);
 
-        $pokemonBeforeBefore = $pokeRepo->findPrev($pokemon, 1);
         $pokemonBefore = $pokeRepo->findPrev($pokemon);
         $pokemonNext = $pokeRepo->findNext($pokemon);
-        $pokemonNextNext = $pokeRepo->findNext($pokemon, 1);
+
+        $pokemons = $pokeRepo->findBy([], ['pokeId' => 'ASC']);
        
        return $this->render('main/pokedex.html.twig',[
-           'pokemonBeforeBefore' => $pokemonBeforeBefore,
            'pokemonBefore' => $pokemonBefore,
-           'pokemon' => $pokemon,
+           'currentPokemon' => $pokemon,
            'pokemonAfter' => $pokemonNext,
-           'pokemonAfterAfter' => $pokemonNextNext,
+           'pokemons' => $pokemons,
         ]);
         
    }
@@ -219,3 +218,7 @@ class HomeController extends AbstractController
 
    
 }
+
+
+
+
