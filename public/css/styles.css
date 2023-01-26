@@ -641,7 +641,8 @@ footer {
     }
 
     .background {
-        background: url(../images/Poke-Background.png) no-repeat fixed;
+        background-image: url(../images/Poke-Background.png);
+        background: cover;
     }
 
     .profil-title {
@@ -799,11 +800,18 @@ i.fa-chevron-right {
 
 }
 
-.view-pokemon img {
+.view-pokemon .displayed-pokemon{
 
     max-width: 100%;
     transform: scale(2);
+    position: absolute;
 
+}
+
+.shining-effect{
+
+    transform: scale(0.80);
+    position: relative;
 }
 
 .capture-poke-button {
@@ -844,7 +852,7 @@ i.fa-chevron-right {
 
 }
 
-.pokeball-animated{
+.pokeball-animated {
     animation-duration: 1s;
     animation-fill-mode: both;
     animation-iteration-count: infinite;
@@ -854,28 +862,28 @@ i.fa-chevron-right {
 
 
 @keyframes shake {
-    from{
+    from {
         transform: none;
 
     }
 
-    20%{
+    20% {
         transform: translate3d(-20%, 0, 0) rotate3d(0, 0, 1, -10deg);
     }
 
-    40%{
+    40% {
         transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 5deg);
     }
 
-    50%{
+    50% {
         transform: translate3d(-10%, 0, 0) rotate3d(0, 0, 1, -10deg);
     }
 
-    60%{
+    60% {
         transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 5deg);
     }
 
-    to{
+    to {
         transform: none;
     }
 }
@@ -1069,7 +1077,7 @@ i.fa-chevron-right {
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        padding-top: 200px;
+        padding-top: 150px;
         padding-left: 50px;
     }
 

@@ -20,12 +20,20 @@ document.querySelector('.capture-poke-button').addEventListener("click", async f
         if (currentPoke) {
             currentPoke.remove();
         }
+        let currentShiny = document.querySelector('.shining-effect');
+        if (currentShiny) {
+            currentShiny.remove();
+        }
 
         // <img src="{{ asset('images/gifs/charizard.gif') }}" alt="">
         let pokemonImage = document.createElement('img');
+        let pokemonShining = document.createElement('img');
         pokemonImage.classList.add('displayed-pokemon');
+        pokemonShining.classList.add('shining-effect');
         pokemonImage.alt = '';
+        pokemonShining.alt = '';
         let pokemonGif;
+        let pokemonShine;
 
         let animatePromise = new Promise((resolve, reject) => {
 
@@ -75,7 +83,24 @@ document.querySelector('.capture-poke-button').addEventListener("click", async f
 
                     pokemonGif = pokemonsGifDir + '/' + ((data.captured_pokemon.shiny) ? 'shiny-' : '') + data.captured_pokemon.gif;
 
+
+
                     console.log(data.captured_pokemon.rarity + '(' + data.captured_pokemon.rarityRandom + '%)');
+
+
+                    if(data.captured_pokemon.shiny === true) {
+                        pokemonShine = pokemonsShineDir + '/shiny-sparkle.gif';
+                    }else if (data.captured_pokemon.rarity === 'TR'){
+                        pokemonShine = pokemonsShineDir + '/sparkle.gif';
+                    }else if(data.captured_pokemon.rarity === 'EX'){
+                        pokemonShine = pokemonsShineDir + '/orange-sparkle.gif';
+                    }else if(data.captured_pokemon.rarity === 'SR'){
+                        pokemonShine = pokemonsShineDir + '/red-sparkle.gif';
+                    }else{
+                        pokemonShine = null;
+                    }
+
+
 
                     resolve();
 
@@ -90,7 +115,11 @@ document.querySelector('.capture-poke-button').addEventListener("click", async f
         await getPokemonPromise;
 
         pokemonImage.src = pokemonGif;
+        pokemonShining.src = pokemonShine;
+        document.querySelector('.view-pokemon').append(pokemonShining);
         document.querySelector('.view-pokemon').append(pokemonImage);
+
+
 
         backToPlace();
 

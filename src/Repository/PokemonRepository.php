@@ -39,6 +39,36 @@ class PokemonRepository extends ServiceEntityRepository
         }
     }
 
+    public function findPrev(Pokemon $currentPokemon, int $offset = 0): ?Pokemon
+    {
+
+        // SELECT * FROM `pokemon` WHERE id < xxx ORDER BY id DESC LIMIT 1
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.id < ' . $currentPokemon->getId())
+            ->orderBy('p.id', 'DESC')
+            ->setFirstResult($offset)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+
+    }
+
+    public function findNext(Pokemon $currentPokemon, int $offset = 0): ?Pokemon
+    {
+
+        // SELECT * FROM `pokemon` WHERE id > xxx ORDER BY id LIMIT 1
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.id > ' . $currentPokemon->getId())
+            ->orderBy('p.id')
+            ->setFirstResult($offset)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+
+    }
+
 //    /**
 //     * @return Pokemon[] Returns an array of Pokemon objects
 //     */

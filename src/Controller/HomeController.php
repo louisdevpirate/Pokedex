@@ -6,12 +6,11 @@ namespace App\Controller;
 
 use App\Entity\CapturedPokemon;
 use App\Entity\Pokemon;
-use Container4zm6YBo\getCapturedPokemonRepositoryService;
+use App\Form\RegistrationFormType;
+use Container5c8TNiR\getCapturedPokemonRepositoryService;
 use DateTime;
 use App\Form\ModifyFormType;
-use App\Form\RegistrationFormType;
 use Doctrine\Persistence\ManagerRegistry;
-use http\Client\Curl\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -32,17 +31,21 @@ class HomeController extends AbstractController
 
     #[Route('/mon-profil/', name: 'app_profil')]
     #[IsGranted('ROLE_USER')]
-    public function profil(): Response
+    public function profil(ManagerRegistry $doctrine): Response
     {
 
+        $pokeRepo = $doctrine->getRepository(CapturedPokemon::class);
 
         $user = $this->getUser();
+
+        $capturedPokemonShiny = $pokeRepo->findBy(['owner' => $user, 'shiny' => true]);
         $capturedPokemon = $user->getCapturedPokemon();
         $nbPokemon = count($capturedPokemon);
+        $nbShiny = count($capturedPokemonShiny);
 
 
         return $this->render('main/profil.html.twig',[
-            'nbPokemon' => $nbPokemon
+            'nbPokemon' => $nbPokemon , 'nbShiny' => $nbShiny
         ]);
 
 
@@ -148,14 +151,60 @@ class HomeController extends AbstractController
     }
 
 
-    #[Route('/pokedex/', name: 'app_pokedex')]
-    public function pokedex(): Response
-    {
-        return $this->render('main/pokedex.html.twig', [
 
+   #[Route('/pokedex/{id}/', name: 'app_pokedex')]
+   public function pokedex(Pokemon $pokemon, ManagerRegistry $doctrine): Response
+   {
+
+        $pokeRepo = $doctrine->getRepository(Pokemon::class);
+
+        $pokemonBeforeBefore = $pokeRepo->findPrev($pokemon, 1);
+        $pokemonBefore = $pokeRepo->findPrev($pokemon);
+        $pokemonNext = $pokeRepo->findNext($pokemon);
+        $pokemonNextNext = $pokeRepo->findNext($pokemon, 1);
+
+       return $this->render('main/pokedex.html.twig',[
+           'pokemonBeforeBefore' => $pokemonBeforeBefore,
+           'pokemonBefore' => $pokemonBefore,
+           'pokemon' => $pokemon,
+           'pokemonAfter' => $pokemonNext,
+           'pokemonAfterAfter' => $pokemonNextNext,
         ]);
 
-    }
+   }
+
+
+//     #[Route('/pokedex-api/', name: 'app_pokedex_api')]
+//     public function pokedexApi(ManagerRegistry $doctrine): Response
+//     {
+//         // Récupération du gestionnaire d'entités
+//         $pokeRepo = $doctrine->getRepository(Pokemon::class);
+//
+//         // Récupération des données de la base de données
+//         $pokemons = $pokeRepo->findAll();
+//
+//         $pokemonsToReturn = [];
+//
+//
+//         foreach($pokemons as $pokemon){
+//
+//             $pokemonsToReturn[] = [
+//                 'name' => $pokemon->getName(),
+//                 'description' => $pokemon->getDescription(),
+//             ];
+//
+//         }
+//
+//
+//         // Renvoi de la réponse HTTP
+//         return $this->json([
+//             'pokemons' => $pokemonsToReturn,
+//         ]);
+//     }
+
+
+
+
 
     #[Route('/modify-profil/', name: 'app_modify')]
     #[IsGranted('ROLE_USER')]
