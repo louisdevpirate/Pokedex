@@ -37,18 +37,32 @@
 				{# Div qui contient la liste des Pokémon affichés en écran large  #}
 				<div class="ul-list">
 					<ul>
-						<li>Pokémon #001</li>
-						<li>Pokémon #002</li>
-						<li>Pokémon #003</li>
-						<li>Pokémon #004</li>
-						<li>Pokémon #005</li>
+						<li>
+							{% if pokemonBeforeBefore is not null %}
+								<a href="{{ path('app_pokedex', { id : (pokemonBeforeBefore.id) }) }}">{{ pokemonBeforeBefore.name|capitalize }}</a>
+							{% endif %}
+						</li>
+						<li>
+							<a href="{{ path('app_pokedex', { id : (pokemonBefore.id) }) }}">{{ pokemonBefore.name|capitalize }}</a>
+						</li>
+						<li>
+							<a href="{{ path('app_pokedex', { id : pokemon.id }) }}">{{ pokemon.name|capitalize }}</a>
+						</li>
+						<li>
+							<a href="{{ path('app_pokedex', { id : (pokemonAfter.id) }) }}">{{ pokemonAfter.name|capitalize }}</a>
+						</li>
+						<li>
+							<a href="{{ path('app_pokedex', { id : (pokemonAfterAfter.id) }) }}">{{ pokemonAfterAfter.name|capitalize }}</a>
+						</li>
 					</ul>
 				</div>
 
 				{# Bouton de flèche du bas, seulement visible en écran large  #}
 				<button class="arrows col-6">
 
-					<i class="fa-solid fa-chevron-down"></i>
+					<a href="{{ path('app_pokedex', { id : (pokemonAfter.id) }) }}">
+						<i class="fa-solid fa-chevron-down"></i>
+					</a>
 
 				</button>
 
@@ -82,19 +96,19 @@
 
 								<div class="info-tile-1 col-4">
 
-									<p>{# {{ pokemon.name }} #}Tortank</p>
+									<p>{{ pokemon.name|capitalize }}</p>
 
 								</div>
 
 								<div class="info-tile-2 col-4">
 
-									<p>{# {{ pokemon.nameen }} #}Blastoise</p>
+									<p>{{ pokemon.nameen|capitalize }}</p>
 
 								</div>
 
 								<div class="info-tile-3 col-4">
 
-									<p>{# {{ pokemon.id }} #}#009</p>
+									<p>{{ pokemon.pokeId }}</p>
 
 								</div>
 
@@ -110,7 +124,7 @@
 
 						<div class="pokepic col-12">
 
-							<img src="/images/blastoise.gif" alt="Pokémon">
+							<img src="{{ asset('images/gifs/' ~ pokemon.gif ) }}" alt="Pokémon">
 
 						</div>
 
@@ -189,10 +203,8 @@
 		</div>
 	</div>
 
-</div>
-{% endblock %}
-
-
-{% block js %}
-	<script src="{{ asset('js/pokemon-list.js') }}"></script>
+</div>{% endblock %}{% block js %}//<script>
+// 	const pokedexAPIURL = '{#{ url('app_pokedex_api') }#}';
+	// </script>
+	// <script src="{{ asset('js/pokemon-list.js') }}"></script>
 {% endblock %}
