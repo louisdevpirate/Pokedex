@@ -8,6 +8,12 @@
 {# Contenu de la page #}
 {% block body %}
 
+
+
+	{% for message in app.flashes('success') %}
+		<div style="color: #20c997">{{ message }}</div>
+	{% endfor %}
+
 	<div
 		class="background">
 
@@ -23,12 +29,13 @@
 					<h2 class="stats-title">Statistiques</h2>
 
 					{# Block de gauche, Infos de l'utilisateur #}
-					<ul class="list-group col-12 col-lg-12" id="utilisateur">
+					<ul class="list-group col-12 col-lg-12 " id="utilisateur">
 						<li class="list-group-item ">Pokémons attrapés :
-							<span class="text-info"></span>
+							<span class="text-info">{{ nbPokemon }}</span>
+
 						</li>
 						<li class="list-group-item ">Shiny obtenus :
-							<span class="text-info"></span>
+							<span class="text-info">{{ nbShiny }}</span>
 						</li>
 						<li class="list-group-item ">Pokédex remplis à  XX/151 :
 							<span class="text-info"></span>
