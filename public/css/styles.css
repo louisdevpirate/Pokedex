@@ -800,7 +800,7 @@ i.fa-chevron-right {
 
 }
 
-.view-pokemon .displayed-pokemon{
+.view-pokemon .displayed-pokemon {
 
     max-width: 100%;
     transform: scale(2);
@@ -808,7 +808,7 @@ i.fa-chevron-right {
 
 }
 
-.shining-effect{
+.shining-effect {
 
     transform: scale(0.80);
     position: relative;
@@ -932,8 +932,9 @@ i.fa-chevron-right {
     flex-direction: row;
 }
 
-.ul-list {
-    display: none;
+.pokedex-nav {
+    height: 450px;
+    overflow: scroll;
 }
 
 .poke-info-pic {
@@ -1128,7 +1129,7 @@ i.fa-chevron-right {
     .ul-list {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: start;
         align-items: center;
         margin-top: 10px;
         margin-bottom: 10px;
@@ -1160,6 +1161,16 @@ i.fa-chevron-right {
         color: #DD4242;
     }
 
+    .list-a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .list-a:hover {
+        color: #DD4242;
+        text-decoration: none;
+    }
+
     .pokedex-background {
         display: flex;
         flex-direction: column;
@@ -1186,7 +1197,7 @@ i.fa-chevron-right {
     }
 
     .poke-info-pic {
-        width: 100%;
+        width: 500px;
         padding-bottom: 30px;
     }
 
@@ -1216,6 +1227,10 @@ i.fa-chevron-right {
         border: 0;
         border-radius: 0px 0px 20px 20px;
         padding: 20px;
+    }
+
+    .poke-gif {
+        width: 50%;
     }
 
     .poke-type-description {
@@ -1292,7 +1307,9 @@ i.fa-chevron-right {
         justify-content: center;
         align-items: center;
         padding: 0;
+        position: relative;
     }
+
 
     .pokedex {
         display: flex;
@@ -1411,3 +1428,9 @@ i.fa-chevron-right {
 .second-border-register i {
     color: white;
 }
+
+
+
+/* --------------------------------------------------------------------------------------------- */
+
+/* Erreur 404  */

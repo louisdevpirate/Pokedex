@@ -44,8 +44,8 @@ class PokemonRepository extends ServiceEntityRepository
 
         // SELECT * FROM `pokemon` WHERE id < xxx ORDER BY id DESC LIMIT 1
         return $this->createQueryBuilder('p')
-            ->andWhere('p.id < ' . $currentPokemon->getId())
-            ->orderBy('p.id', 'DESC')
+            ->andWhere('p.pokeId < ' . $currentPokemon->getPokeId())
+            ->orderBy('p.pokeId', 'DESC')
             ->setFirstResult($offset)
             ->setMaxResults(1)
             ->getQuery()
@@ -59,8 +59,8 @@ class PokemonRepository extends ServiceEntityRepository
 
         // SELECT * FROM `pokemon` WHERE id > xxx ORDER BY id LIMIT 1
         return $this->createQueryBuilder('p')
-            ->andWhere('p.id > ' . $currentPokemon->getId())
-            ->orderBy('p.id')
+            ->andWhere('p.pokeId > ' . $currentPokemon->getPokeId())
+            ->orderBy('p.pokeId')
             ->setFirstResult($offset)
             ->setMaxResults(1)
             ->getQuery()
