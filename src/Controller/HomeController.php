@@ -62,7 +62,7 @@ class HomeController extends AbstractController
     }
 
     #[Route('/capture-api/', name: 'app_capture_api')]
-    #[IsGranted('ROLE_USER')]
+    #[IsGranted('ROLE_ADMIN')]
     public function captureApi(ManagerRegistry $doctrine): Response
     {
 

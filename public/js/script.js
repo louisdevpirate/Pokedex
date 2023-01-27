@@ -185,8 +185,6 @@ document.querySelector('.capture-poke-button').addEventListener("click", async f
 
         backToPlace();
 
-        document.querySelector('.pokeball-animate').classList.remove('pokeball-animated');
-
         setTimeout(() => {
             captureInProcess = false;
         }, 1000);
