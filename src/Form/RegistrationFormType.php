@@ -93,6 +93,14 @@ class RegistrationFormType extends AbstractType
 
                 ],
             ])
+
+            // Bouton de validation
+            ->add('modify', SubmitType::class, [
+                'label' => 'Modifier mon compte',
+                'attr' => [ 'class' => 'btn btn-outline-primary w-100 valid-button',
+
+                ],
+            ])
         ;
     }
 

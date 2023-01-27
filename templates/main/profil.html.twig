@@ -8,12 +8,6 @@
 {# Contenu de la page #}
 {% block body %}
 
-
-
-	{% for message in app.flashes('success') %}
-		<div style="color: #20c997">{{ message }}</div>
-	{% endfor %}
-
 	<div
 		class="background">
 
@@ -37,7 +31,7 @@
 						<li class="list-group-item ">Shiny obtenus :
 							<span class="text-info">{{ nbShiny }}</span>
 						</li>
-						<li class="list-group-item ">Pokédex remplis à  XX/151 :
+						<li class="list-group-item ">Pokédex remplis à  {{ nbPokemonUnique }}/151 :
 							<span class="text-info"></span>
 						</li>
 					</ul>
