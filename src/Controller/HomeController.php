@@ -7,13 +7,9 @@ namespace App\Controller;
 use App\Entity\CapturedPokemon;
 use App\Entity\Pokemon;
 use App\Form\RegistrationFormType;
-use Container5c8TNiR\getCapturedPokemonRepositoryService;
 use DateTime;
 use App\Form\ModifyFormType;
 use Doctrine\Persistence\ManagerRegistry;
-use http\Client\Curl\User;
-use phpDocumentor\Reflection\Types\String_;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -77,7 +73,7 @@ class HomeController extends AbstractController
     }
 
     #[Route('/capture-api/', name: 'app_capture_api')]
-    #[IsGranted('ROLE_USER')]
+    #[IsGranted('ROLE_ADMIN')]
     public function captureApi(ManagerRegistry $doctrine): Response
     {
 

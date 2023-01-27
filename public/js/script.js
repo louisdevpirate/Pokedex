@@ -187,6 +187,9 @@ document.querySelector('.capture-poke-button').addEventListener("click", async f
 
 
 
+
+
+
         setTimeout(() => {
             captureInProcess = false;
         }, 1000);
