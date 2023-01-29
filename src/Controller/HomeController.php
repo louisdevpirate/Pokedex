@@ -185,33 +185,33 @@ class HomeController extends AbstractController
    }
 
 
-//     #[Route('/pokedex-api/', name: 'app_pokedex_api')]
-//     public function pokedexApi(ManagerRegistry $doctrine): Response
-//     {
-//         // Récupération du gestionnaire d'entités
-//         $pokeRepo = $doctrine->getRepository(Pokemon::class);
-//
-//         // Récupération des données de la base de données
-//         $pokemons = $pokeRepo->findAll();
-//
-//         $pokemonsToReturn = [];
-//
-//
-//         foreach($pokemons as $pokemon){
-//
-//             $pokemonsToReturn[] = [
-//                 'name' => $pokemon->getName(),
-//                 'description' => $pokemon->getDescription(),
-//             ];
-//
-//         }
-//
-//
-//         // Renvoi de la réponse HTTP
-//         return $this->json([
-//             'pokemons' => $pokemonsToReturn,
-//         ]);
-//     }
+    #[Route('/pokedex-api/', name: 'app_pokedex_api')]
+    public function pokedexApi(ManagerRegistry $doctrine): Response
+    {
+        // Récupération du gestionnaire d'entités
+        $pokeRepo = $doctrine->getRepository(Pokemon::class);
+
+        // Récupération des données de la base de données
+        $pokemons = $pokeRepo->findAll();
+
+        $pokemonsToReturn = [];
+
+
+        foreach($pokemons as $pokemon){
+
+            $pokemonsToReturn[] = [
+                'name' => $pokemon->getName(),
+                'description' => $pokemon->getDescription(),
+            ];
+
+        }
+
+
+        // Renvoi de la réponse HTTP
+        return $this->json([
+            'pokemons' => $pokemonsToReturn,
+        ]);
+    }
 
 
 
@@ -241,6 +241,13 @@ class HomeController extends AbstractController
             'modifyform' => $form->createView(),]);
 
 
+    }
+
+    #[Route('/types/', name: 'app_types')]
+    public function types(): Response
+    {
+        return $this->render('main/types.html.twig', [
+        ]);
     }
 
 
