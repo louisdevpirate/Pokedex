@@ -7,7 +7,6 @@ namespace App\Controller;
 use App\Entity\CapturedPokemon;
 use App\Entity\Pokemon;
 use App\Form\RegistrationFormType;
-use Container5c8TNiR\getCapturedPokemonRepositoryService;
 use DateTime;
 use App\Form\ModifyFormType;
 use Doctrine\Persistence\ManagerRegistry;
@@ -24,6 +23,12 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function home(): Response
     {
+        $user = $this->getUser();
+        if ($user){
+            $this->addFlash('success', sprintf('Bonjour %s', $user->getPseudonym()));
+        }
+
+
         return $this->render('main/home.html.twig', [
         ]);
     }
@@ -35,18 +40,24 @@ class HomeController extends AbstractController
     {
 
         $pokeRepo = $doctrine->getRepository(CapturedPokemon::class);
-
         $user = $this->getUser();
 
-        $capturedPokemonShiny = $pokeRepo->findBy(['owner' => $user, 'shiny' => true]);
+        $capturedPokemon = $pokeRepo->findBy(['owner' => $user]);
         $capturedPokemon = $user->getCapturedPokemon();
+        $pokemonIds = [];
+        foreach ($capturedPokemon as $cp) {
+            $pokemonIds[] = $cp->getPokemon()->getId();
+        }
+        $uniquePokemonIds = array_unique($pokemonIds);
+        $nbPokemonUnique = count($uniquePokemonIds);
         $nbPokemon = count($capturedPokemon);
+        $capturedPokemonShiny = $pokeRepo->findBy(['owner' => $user, 'shiny' => true]);
         $nbShiny = count($capturedPokemonShiny);
 
-
         return $this->render('main/profil.html.twig',[
-            'nbPokemon' => $nbPokemon , 'nbShiny' => $nbShiny
+           'nbPokemon' => $nbPokemon , 'nbPokemonUnique' => $nbPokemonUnique, 'nbShiny' => $nbShiny
         ]);
+
 
 
     }
@@ -62,7 +73,7 @@ class HomeController extends AbstractController
     }
 
     #[Route('/capture-api/', name: 'app_capture_api')]
-    #[IsGranted('ROLE_USER')]
+    #[IsGranted('ROLE_ADMIN')]
     public function captureApi(ManagerRegistry $doctrine): Response
     {
 
@@ -219,8 +230,9 @@ class HomeController extends AbstractController
 
     #[Route('/modify-profil/', name: 'app_modify')]
     #[IsGranted('ROLE_USER')]
-    public function modifyProfil(Request $request, ManagerRegistry $doctrine): Response
+    public function modifyProfil(Request $request, ManagerRegistry $doctrine,): Response
     {
+
 
         // Creation du formulaire de modification des informations du profil
         $form = $this->createForm(RegistrationFormType::class, $this->getUser());
