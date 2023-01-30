@@ -8,11 +8,10 @@
 {# Contenu de la page #}
 {% block body %}
 
-	<div
-		class="background">
+	<div class="background">
 
 		{# statistique #}
-		<div class="container-fluid stats col-12 col-lg-8">
+		<div class="container-fluid stats fade-up col-12 col-lg-8">
 
 			<h1 class="profil-title col-12 text-center my-5">Mon profil</h1>
 
@@ -31,12 +30,13 @@
 						<li class="list-group-item ">Shiny obtenus :
 							<span class="text-info">{{ nbShiny }}</span>
 						</li>
-						<li class="list-group-item ">Pokédex remplis à  {{ nbPokemonUnique }}/151 :
+						<li class="list-group-item ">Pokédex rempli à  {{ nbPokemonUnique }}/151
 							<span class="text-info"></span>
 						</li>
 					</ul>
 				</div>
 
+				<img class="trainer-gif"src="/images/trainer.gif" alt="pokemon-trainer">
 
 				<div class="right-block col-12 col-lg-4">
 
@@ -44,13 +44,14 @@
 
 					{# Block de droite, Infos du compte #}
 					<ul class="list-group col-12 col-lg-12" id="compte">
-						<li class="list-group-item ">Adresse Email :
+
+						<li class="list-group-item ">Adresse E-mail :
 							<span class="text-info">{{ app.user.email }}</span>
 						</li>
 						<li class="list-group-item ">Pseudonyme :
 							<span class="text-info">{{ app.user.pseudonym }}</span>
 						</li>
-						<li class="list-group-item ">Date d'inscription :
+						<li class="list-group-item ">Début de l'aventure :
 							<span class="text-info">{{ app.user.creationDate|date('d/m/Y')}}</span>
 						</li>
 
@@ -64,8 +65,7 @@
 			</div>
 
 			{# Lien qui redirige vers une nouvelle page afin de modifier les informations de l'utilisateur #}
-			<div
-				class="modify-info">
+			<div class="modify-info">
 				{# NE PAS OUBLIER DE CREER LE LIEN QUI REDIRIGE VERS LA PAGE DE MODIFICATION #}
 				<button class="modify-button">
 

@@ -181,10 +181,8 @@ class HomeController extends AbstractController
 
         $pokemonNextNext = $pokeRepo->findNext($pokemon, 1);
 
-
-
         $pokemons = $pokeRepo->findBy([], ['pokeId' => 'ASC']);
-       
+
 
        return $this->render('main/pokedex.html.twig',[
            'pokemonBefore' => $pokemonBefore,
@@ -196,33 +194,34 @@ class HomeController extends AbstractController
    }
 
 
-    #[Route('/pokedex-api/', name: 'app_pokedex_api')]
-    public function pokedexApi(ManagerRegistry $doctrine): Response
-    {
-        // Récupération du gestionnaire d'entités
-        $pokeRepo = $doctrine->getRepository(Pokemon::class);
+    // #[Route('/pokedex-api/', name: 'app_pokedex_api')]
+    // public function pokedexApi(ManagerRegistry $doctrine): Response
+    // {
+    //     // Récupération du gestionnaire d'entités
+    //     $pokeRepo = $doctrine->getRepository(Pokemon::class);
 
-        // Récupération des données de la base de données
-        $pokemons = $pokeRepo->findAll();
+    //     // Récupération des données de la base de données
+    //     $pokemons = $pokeRepo->findAll();
 
-        $pokemonsToReturn = [];
-
-
-        foreach($pokemons as $pokemon){
-
-            $pokemonsToReturn[] = [
-                'name' => $pokemon->getName(),
-                'description' => $pokemon->getDescription(),
-            ];
-
-        }
+    //     $pokemonsToReturn = [];
 
 
-        // Renvoi de la réponse HTTP
-        return $this->json([
-            'pokemons' => $pokemonsToReturn,
-        ]);
-    }
+    //     foreach($pokemons as $pokemon){
+
+    //         $pokemonsToReturn[] = [
+    //             'name' => $pokemon->getName(),
+    //             'description' => $pokemon->getDescription(),
+    //             'shiny' => $pokemon->getShiny(),
+    //         ];
+
+    //     }
+
+
+    //     // Renvoi de la réponse HTTP
+    //     return $this->json([
+    //         'pokemons' => $pokemonsToReturn,
+    //     ]);
+    // }
 
 
 
