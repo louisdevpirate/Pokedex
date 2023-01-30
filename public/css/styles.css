@@ -511,10 +511,6 @@ footer {
 
 
 
-
-
-
-
 /* ----------------------------------------------------------------------------------------------------------- */
 /*Modifications de la page d'accueil*/
 
@@ -964,12 +960,13 @@ i.fa-chevron-right {
 
 .pokeball-animate {
     position: relative;
-}
-
-.capture-ball img {
     width: 75%;
     padding-top: 5px;
     padding-bottom: 5px;
+}
+
+.multiple {
+    transform: scale(1);
 }
 
 
@@ -1452,7 +1449,7 @@ i.fa-chevron-right {
         justify-content: flex-start;
         align-items: center;
         height: 100px;
-        padding: 50px 0px 100px 0px;
+        padding: 50px 0 100px 0;
     }
 
     .blue-button-second-border {
@@ -1475,7 +1472,7 @@ i.fa-chevron-right {
         align-items: center;
         width: 80px;
         height: 80px;
-        padding: 0px 0px 20px 20px;
+        padding: 0 0 20px 20px;
         background-color: rgb(62, 164, 248);
         border: solid black 1px;
         border-radius: 100px;
@@ -1521,7 +1518,7 @@ i.fa-chevron-right {
         align-items: center;
         width: 20px;
         height: 20px;
-        padding: 0px 0px 10px 10px;
+        padding: 0 0 10px 10px;
         background-color: rgb(218, 49, 49);
         border: solid black 1px;
         border-radius: 100px;
@@ -1534,7 +1531,7 @@ i.fa-chevron-right {
         align-items: center;
         width: 20px;
         height: 20px;
-        padding: 0px 0px 10px 10px;
+        padding: 0 0 10px 10px;
         background-color: rgb(240, 240, 53);
         border: solid black 1px;
         border-radius: 100px;
@@ -1547,7 +1544,7 @@ i.fa-chevron-right {
         align-items: center;
         width: 20px;
         height: 20px;
-        padding: 0px 0px 10px 10px;
+        padding: 0 0 10px 10px;
         background-color: rgb(14, 184, 14);
         border: solid black 1px;
         border-radius: 100px;
@@ -1577,17 +1574,18 @@ i.fa-chevron-right {
         align-items: center;
         background-color: white;
         padding: 50px;
-        box-shadow: 0px 0px 10px black;
+        box-shadow: 0 0 10px black;
         border: solid black 1px;
         clip-path: polygon(0 0, 100% 0%, 100% 100%, 10% 100%, 0 90%);
     }
 
     .info {
-        box-shadow: 0px 0px 10px black;
+        box-shadow: 0 0 10px black;
     }
 
     .info-tile-1 {
         border: solid black 1px;
+        border-radius: 20px 0 0 0;
         box-shadow: -1px 2px 0 #888, -3px 5px 0 #333;
     }
 
@@ -1603,12 +1601,16 @@ i.fa-chevron-right {
         border: solid white 1px;
         border-color: #000000;
         border-left-color: white;
+        border-radius: 0 20px 0 0;
         box-shadow: -1px 2px 0 #888, -3px 5px 0 #333;
+
 
     }
 
     .pokemon {
         border: 0;
+        border-radius: 0 0 20px 20px;
+        padding: 20px;
         border-radius: 0px 0px 20px 20px;
         padding: 0;
         box-shadow: 0px 0px 10px black;
@@ -1925,7 +1927,7 @@ i.fa-chevron-right {
     text-decoration: none;
     color: #FFFFFF;
     font-size: 1.2rem;
-    padding: 0px;
+    padding: 0;
     margin-top: 12px;
 }
 

@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Entity\CapturedPokemon;
 use App\Entity\Pokemon;
+use App\Entity\User;
 use App\Form\RegistrationFormType;
 use DateTime;
 use App\Form\ModifyFormType;
@@ -73,14 +74,21 @@ class HomeController extends AbstractController
     }
 
     #[Route('/capture-api/', name: 'app_capture_api')]
-    #[IsGranted('ROLE_ADMIN')]
+    #[IsGranted('ROLE_USER')]
     public function captureApi(ManagerRegistry $doctrine): Response
     {
 
+        if($this->getUser()->getLaunchs() < 1){
+            return $this->json([
+                'error' => 'Vous n\'avez plus de lancers disponibles, veuillez réessayer plus tard!'
+            ]);
+        }
         $pokeRepo = $doctrine->getRepository(Pokemon::class);
+        $userRepo = $doctrine->getRepository(User::class);
+
+        //Calcul des probabilités
 
         $randomRarity = rand(10, 1000) / 10;
-
 
         if ($randomRarity < 40) {
 
@@ -120,10 +128,7 @@ class HomeController extends AbstractController
 
         //Calculs shiny
 
-
-        $shinyTest = rand(1,250);
-
-        $shinyTest = rand(1, 200);
+        $shinyTest = rand(1, 250);
 
 
         if ($shinyTest == 1) {
@@ -146,6 +151,8 @@ class HomeController extends AbstractController
 
         $em->persist($pokemonCaptured);
 
+        $this->getUser()->setLaunchs($this->getUser()->getLaunchs()-1);
+
         $em->flush();
 
 
@@ -163,6 +170,11 @@ class HomeController extends AbstractController
                 'rarityRandom' => $randomRarity,
             ],
         ]);
+
+
+
+
+
     }
 
 
