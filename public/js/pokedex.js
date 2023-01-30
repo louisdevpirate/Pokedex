@@ -38,21 +38,21 @@ function removeClass() {
 
 
 // Animation du bouton A 
-// const buttonA = document.querySelector(".gb-button-a");
+const buttonA = document.querySelector(".gb-button-a");
+const pokeGif = document.querySelector(".poke-gif");
 
-// buttonA.addEventListener("click", animate);
+const originalSrc = pokeGif.src;
+const shinySrc = pokeShineDir;
 
-// const pokeGifA = document.querySelector(".poke-gif");
+buttonA.addEventListener("click", function () {
+    if (pokeGif.src === originalSrc) {
+        pokeGif.src = shinySrc;
+    } else {
+        pokeGif.src = originalSrc;
+    }
+});
 
 
-// function animate() {
-//     pokeGifA.classList.add("shaking-animation", "scale");
-// }
-
-// pokeGifA.addEventListener("animationend", removeClass);
-// function removeClass() {
-//     pokeGifA.classList.remove("shaking-animation", "scale");
-// }
 
 
 

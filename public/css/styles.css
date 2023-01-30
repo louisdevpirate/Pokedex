@@ -1585,7 +1585,6 @@ i.fa-chevron-right {
 
     .info-tile-1 {
         border: solid black 1px;
-        border-radius: 20px 0 0 0;
         box-shadow: -1px 2px 0 #888, -3px 5px 0 #333;
     }
 
@@ -1601,7 +1600,6 @@ i.fa-chevron-right {
         border: solid white 1px;
         border-color: #000000;
         border-left-color: white;
-        border-radius: 0 20px 0 0;
         box-shadow: -1px 2px 0 #888, -3px 5px 0 #333;
 
 
@@ -1680,7 +1678,7 @@ i.fa-chevron-right {
         background-color: #9ae97a;
         font-family: 'Press Start 2P', sans-serif;
         font-size: 0.8rem;
-        height: 400px;
+        height: 450px;
 
     }
 

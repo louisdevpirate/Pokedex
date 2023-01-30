@@ -471,6 +471,7 @@
 
 {% block js %}
 
+	<script>const pokeShineDir = '{{ asset('images/gifs/' ~ 'shiny-' ~ currentPokemon.gif ) }}'</script>
 	<script src="{{ asset('js/pokedex.js') }}"></script>
 	
 {% endblock %}
