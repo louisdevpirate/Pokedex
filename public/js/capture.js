@@ -181,7 +181,7 @@ document.querySelector('.capture-poke-button').addEventListener("click", async f
 
 
                 })
-                ;
+            ;
 
         });
 

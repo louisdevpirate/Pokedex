@@ -8,7 +8,6 @@ use App\Entity\CapturedPokemon;
 use App\Entity\Pokemon;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
-use Container5c8TNiR\getCapturedPokemonRepositoryService;
 use DateTime;
 use App\Form\ModifyFormType;
 use Doctrine\Persistence\ManagerRegistry;
@@ -25,6 +24,12 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function home(): Response
     {
+        $user = $this->getUser();
+        if ($user){
+            $this->addFlash('success', sprintf('Bonjour %s', $user->getPseudonym()));
+        }
+
+
         return $this->render('main/home.html.twig', [
         ]);
     }
@@ -36,18 +41,24 @@ class HomeController extends AbstractController
     {
 
         $pokeRepo = $doctrine->getRepository(CapturedPokemon::class);
-
         $user = $this->getUser();
 
-        $capturedPokemonShiny = $pokeRepo->findBy(['owner' => $user, 'shiny' => true]);
+        $capturedPokemon = $pokeRepo->findBy(['owner' => $user]);
         $capturedPokemon = $user->getCapturedPokemon();
+        $pokemonIds = [];
+        foreach ($capturedPokemon as $cp) {
+            $pokemonIds[] = $cp->getPokemon()->getId();
+        }
+        $uniquePokemonIds = array_unique($pokemonIds);
+        $nbPokemonUnique = count($uniquePokemonIds);
         $nbPokemon = count($capturedPokemon);
+        $capturedPokemonShiny = $pokeRepo->findBy(['owner' => $user, 'shiny' => true]);
         $nbShiny = count($capturedPokemonShiny);
 
-
         return $this->render('main/profil.html.twig',[
-            'nbPokemon' => $nbPokemon , 'nbShiny' => $nbShiny
+           'nbPokemon' => $nbPokemon , 'nbPokemonUnique' => $nbPokemonUnique, 'nbShiny' => $nbShiny
         ]);
+
 
 
     }
@@ -197,33 +208,33 @@ class HomeController extends AbstractController
    }
 
 
-//     #[Route('/pokedex-api/', name: 'app_pokedex_api')]
-//     public function pokedexApi(ManagerRegistry $doctrine): Response
-//     {
-//         // Récupération du gestionnaire d'entités
-//         $pokeRepo = $doctrine->getRepository(Pokemon::class);
-//
-//         // Récupération des données de la base de données
-//         $pokemons = $pokeRepo->findAll();
-//
-//         $pokemonsToReturn = [];
-//
-//
-//         foreach($pokemons as $pokemon){
-//
-//             $pokemonsToReturn[] = [
-//                 'name' => $pokemon->getName(),
-//                 'description' => $pokemon->getDescription(),
-//             ];
-//
-//         }
-//
-//
-//         // Renvoi de la réponse HTTP
-//         return $this->json([
-//             'pokemons' => $pokemonsToReturn,
-//         ]);
-//     }
+    #[Route('/pokedex-api/', name: 'app_pokedex_api')]
+    public function pokedexApi(ManagerRegistry $doctrine): Response
+    {
+        // Récupération du gestionnaire d'entités
+        $pokeRepo = $doctrine->getRepository(Pokemon::class);
+
+        // Récupération des données de la base de données
+        $pokemons = $pokeRepo->findAll();
+
+        $pokemonsToReturn = [];
+
+
+        foreach($pokemons as $pokemon){
+
+            $pokemonsToReturn[] = [
+                'name' => $pokemon->getName(),
+                'description' => $pokemon->getDescription(),
+            ];
+
+        }
+
+
+        // Renvoi de la réponse HTTP
+        return $this->json([
+            'pokemons' => $pokemonsToReturn,
+        ]);
+    }
 
 
 
@@ -231,8 +242,9 @@ class HomeController extends AbstractController
 
     #[Route('/modify-profil/', name: 'app_modify')]
     #[IsGranted('ROLE_USER')]
-    public function modifyProfil(Request $request, ManagerRegistry $doctrine): Response
+    public function modifyProfil(Request $request, ManagerRegistry $doctrine,): Response
     {
+
 
         // Creation du formulaire de modification des informations du profil
         $form = $this->createForm(RegistrationFormType::class, $this->getUser());
@@ -253,6 +265,13 @@ class HomeController extends AbstractController
             'modifyform' => $form->createView(),]);
 
 
+    }
+
+    #[Route('/types/', name: 'app_types')]
+    public function types(): Response
+    {
+        return $this->render('main/types.html.twig', [
+        ]);
     }
 
 
