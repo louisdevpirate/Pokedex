@@ -1283,7 +1283,7 @@ i.fa-chevron-right {
     object-fit: cover;
     margin: 0;
     position: absolute;
-    transform: scale(3);
+    transform: scale(2.5);
 }
 
 
@@ -1309,6 +1309,7 @@ i.fa-chevron-right {
     align-items: center;
     background-color: white;
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .type-img {
@@ -1476,8 +1477,7 @@ i.fa-chevron-right {
         justify-content: center;
         align-items: center;
         background-color: #DD4242;
-        padding-top: 70px;
-        padding-bottom: 70px;
+        padding-top: 30px;
         margin: 50px;
         box-shadow: -30px 20px 0 #A62840;
         border-radius: 50px;
@@ -1489,7 +1489,6 @@ i.fa-chevron-right {
         justify-content: flex-start;
         align-items: center;
         height: 100px;
-        padding: 50px 0 100px 0;
     }
 
     .blue-button-second-border {
@@ -1532,7 +1531,7 @@ i.fa-chevron-right {
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
-        align-items: flex-start;
+        align-items: center;
         margin-left: 50px;
         width: 300px;
         height: 100px;
@@ -1613,10 +1612,11 @@ i.fa-chevron-right {
         justify-content: center;
         align-items: center;
         background-color: white;
-        padding: 50px;
+        padding: 20px;
         box-shadow: 0 0 10px black;
         border: solid black 1px;
         clip-path: polygon(0 0, 100% 0%, 100% 100%, 10% 100%, 0 90%);
+        margin-top: 20px;
     }
 
     .info {
@@ -1651,6 +1651,9 @@ i.fa-chevron-right {
         padding: 0;
         box-shadow: 0 0 10px black;
         height: 450px;
+        box-shadow: 0px 0px 10px black;
+        height: 350px;
+
     }
 
     .pokepic {
@@ -1671,18 +1674,17 @@ i.fa-chevron-right {
     }
 
     .digital {
-        margin: 50px 0px 0px 50px;
+        margin: 50px 0px 50px 0px;
         padding: 20px;
         box-shadow: 0px 0px 10px black;
         background-color: #9ae97a;
         font-family: 'Press Start 2P', sans-serif;
-        font-size: 0.8rem;
+        font-size: 0.6rem;
         height: 450px;
-
     }
 
     .digital h3 {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .poke-type-description {
@@ -1695,11 +1697,7 @@ i.fa-chevron-right {
     }
 
     .gameboy {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        padding-top: 70px;
+        display: none;
     }
 
     .gameboy img {
@@ -1771,15 +1769,15 @@ i.fa-chevron-right {
 
     @keyframes jump {
         0% {
-            transform: translateY(0) scale(3);
+            transform: translateY(0) scale(2.5);
         }
 
         50% {
-            transform: translateY(-150px) scale(3);
+            transform: translateY(-150px) scale(2.5);
         }
 
         100% {
-            transform: translateY(0) scale(3);
+            transform: translateY(0) scale(2.5);
         }
     }
 
@@ -1806,6 +1804,7 @@ i.fa-chevron-right {
 
     .pokedex {
         width: 40%;
+        margin-top: -50px;
     }
 
     .info-tile-1 {
@@ -1824,7 +1823,16 @@ i.fa-chevron-right {
     .digital {
         width: 50%;
         margin: 50px 0px 100px 100px;
+        font-size: 0.8rem;
+    }
 
+    .gameboy {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        padding-bottom: 30px;
+        margin-top: -50px;
     }
 
     .start-select-buttons {
@@ -2083,9 +2091,13 @@ i.fa-chevron-right {
     margin-top: 100px;
 }
 
+.yann h3 {
+    margin: 30px;
+    color: white;
+}
+
 .yann p {
     color: white;
-    margin: 30px;
 }
 
 .bastien {
@@ -2096,9 +2108,13 @@ i.fa-chevron-right {
     margin-top: 100px;
 }
 
-.bastien p {
+.bastien h3 {
     color: white;
     margin: 30px;
+}
+
+.bastien p {
+    color: white;
 }
 
 .louis {
@@ -2174,7 +2190,6 @@ i.fa-chevron-right {
     }
 
     .bastien p {
-        margin-top: 40px;
         font-size: 1rem;
     }
 
