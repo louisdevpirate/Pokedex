@@ -326,8 +326,6 @@ footer {
     margin: 10px;
 }
 
-
-
 .social-media-button a {
     color: white;
 }
@@ -343,6 +341,7 @@ footer {
         justify-content: space-evenly;
         align-items: center;
         padding: 70px;
+        margin: 0;
     }
 
     .footer-logo {
@@ -367,8 +366,6 @@ footer {
     .footer-block ul {
         padding: 0;
     }
-
-
 
     .social-media a {
         color: #092A3B;
@@ -1682,6 +1679,10 @@ i.fa-chevron-right {
 
     }
 
+    .digital h3 {
+        font-size: 1.2rem;
+    }
+
     .poke-type-description {
         display: flex;
         flex-direction: column;
@@ -2045,5 +2046,230 @@ i.fa-chevron-right {
         flex-wrap: wrap;
         margin: auto;
         margin-bottom: 100px;
+    }
+}
+
+
+
+
+
+
+
+/* ------------------------------------------------------------------------------------------  */
+
+/* Page A propos  */
+
+.presentation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.yann {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.yann p {
+    color: white;
+    margin: 30px;
+}
+
+.bastien {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.bastien p {
+    color: white;
+    margin: 30px;
+}
+
+.louis {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.louis h3 {
+    margin: 30px;
+    color: white;
+}
+
+.louis p {
+    color: white;
+    margin: 0px 30px 30px 30px;
+}
+
+
+.yann img {
+    width: 200px;
+    margin: auto;
+}
+
+.bastien img {
+    width: 270px;
+    float: left;
+}
+
+.louis img {
+    width: 190px;
+}
+
+
+@media screen and (min-width: 992px) {
+
+    .presentation {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-bottom: 100px;
+    }
+
+    .yann {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .yann img {
+        margin: 0;
+        width: 300px;
+    }
+
+    .yann p {
+        font-size: 1rem;
+    }
+
+    .bastien {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .bastien img {
+        margin: 0;
+        width: 350px;
+    }
+
+    .bastien p {
+        margin-top: 40px;
+        font-size: 1rem;
+    }
+
+    .louis {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .louis h3 {
+        margin: 30px;
+        color: white;
+    }
+
+    .louis img {
+        margin: 0;
+        width: 220px;
+        padding-top: 20px;
+    }
+
+    .louis p {
+        font-size: 1rem;
+    }
+}
+
+
+
+
+
+
+
+/* ------------------------------------------------------------------------------------------  */
+
+/* Page Le Projet  */
+
+.project {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #DD4242;
+    margin: 0;
+}
+
+.project h1 {
+    text-align: center;
+}
+
+.project-poke-ball {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 50px 0px 50px 0px;
+}
+
+.project-poke-ball img {
+    width: 60px;
+}
+
+.project-poke-ball img:hover {
+    transform: scale(1.3);
+}
+
+
+.project p {
+    color: black;
+    background-color: white;
+    opacity: 0.8;
+    margin: 0;
+}
+
+.project-background {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url(../images/Poke-Background.png) fixed;
+    animation: background-movement 30s linear infinite;
+}
+
+
+@media screen and (min-width: 992px) {
+
+    .project {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #DD4242;
+        border: solid #A62840 5px;
+        border-radius: 50px;
+        margin: 100Px;
+    }
+
+    .project p {
+        color: black;
+        background-color: white;
+        opacity: 0.8;
+        border: solid #A62840 3px;
+        border-radius: 30px;
+        box-shadow: 0px 0px 10px black;
+        margin: 50px;
+        padding: 40px;
     }
 }

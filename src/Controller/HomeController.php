@@ -273,6 +273,23 @@ class HomeController extends AbstractController
         ]);
     }
 
+    #[Route('/about/', name: 'app_about')]
+    public function about(): Response
+    {
+        return $this->render('main/about.html.twig', [
+        ]);
+    }
+
+    #[Route('/project/', name: 'app_project')]
+    public function project(): Response
+    {
+        return $this->render('main/project.html.twig', [
+        ]);
+    }
+
+
+
+
 
 }
 

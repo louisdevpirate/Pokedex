@@ -1,0 +1,42 @@
+{# Utilisation du squelette de page base.html.twig #}
+{% extends "base.html.twig" %}
+
+{# Titre de la page #}
+{% block title %}A propos
+{% endblock %}
+
+{# Contenu de la page #}
+{% block body %}
+
+<div class="container-fluid"></div>
+
+	<h1 class="mx-auto mt-5" style="color: white; font-size: 3rem;">À propos</h1>
+
+    <div class="presentation">
+
+        <div class="yann fade-up col-12 col-lg-4">
+            <img src="/images/Yann.png" alt="Yann">
+
+            <p>Moi c'est Yann, j'aime le saucisson et le couscous</p>
+        </div>
+        
+        <div class="louis fade-up col-12 col-lg-4">
+        
+            <img src="/images/Louis.png" alt="Yann">
+
+            <h3>Lead Project</h3>
+
+            <p>Moi c'est Louis. Je suis le chef d'un tas de crétins, je suis donc le chef des crétin.</p>
+
+        </div>
+
+        <div class="bastien fade-up col-12 col-lg-4">
+            <img src="/images/Bastien.png" alt="Yann">
+
+            <p>Moi c'est Bastien ! Je suis arrogant et je déteste la Terre entière !</p>
+        </div>
+
+        
+
+    </div>
+{% endblock %}
