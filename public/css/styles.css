@@ -2136,18 +2136,36 @@ i.fa-chevron-right {
 }
 
 
-.yann img {
-    width: 200px;
-    margin: auto;
+.perso-1{
+    width: 350px;
 }
 
-.bastien img {
-    width: 270px;
+.perso-3{
+    width: 375px;
     float: left;
 }
 
-.louis img {
-    width: 190px;
+.perso-2{
+    width: 230px;
+}
+
+.poke-perso-1{
+    transform: scale(2) scaleX(-1);
+    padding-left: 50px;
+    position: absolute;
+}
+
+
+.poke-perso-2{
+    transform: scale(2);
+    position: absolute;
+    padding-right: 50px;
+}
+
+.poke-perso-3{
+    transform: scale(2.5);
+    position: absolute;
+
 }
 
 
@@ -2168,10 +2186,7 @@ i.fa-chevron-right {
         align-items: center;
     }
 
-    .yann img {
-        margin: 0;
-        width: 300px;
-    }
+
 
     .yann p {
         font-size: 1rem;
@@ -2184,10 +2199,6 @@ i.fa-chevron-right {
         align-items: center;
     }
 
-    .bastien img {
-        margin: 0;
-        width: 350px;
-    }
 
     .bastien p {
         font-size: 1rem;
@@ -2205,11 +2216,7 @@ i.fa-chevron-right {
         color: white;
     }
 
-    .louis img {
-        margin: 0;
-        width: 180px;
-        padding-top: 20px;
-    }
+
 
     .louis p {
         font-size: 1rem;
