@@ -35,7 +35,7 @@ body {
 }
 
 
-.connexion-deconnexion{
+.connexion-deconnexion {
     margin: 0;
     display: flex;
     align-items: center;
@@ -57,7 +57,7 @@ body {
 
 }
 
-.connexion-deconnexion a:hover{
+.connexion-deconnexion a:hover {
     background-color: #FFFFFF;
     color: #0C3348;
     border: solid 2px #0C3348;
@@ -80,7 +80,8 @@ body {
         margin-top: 50px;
 
     }
-    .connexion-deconnexion{
+
+    .connexion-deconnexion {
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -297,12 +298,22 @@ footer {
 }
 
 .footer-block h4 {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: bold;
 }
 
 .footer-block ul {
     list-style: none;
+}
+
+.footer-block a {
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
+}
+
+.footer-block a:hover {
+    opacity: 0.8;
 }
 
 .social-media a {
@@ -317,14 +328,71 @@ footer {
     margin: 10px;
 }
 
-
-
 .social-media-button a {
     color: white;
 }
 
 
+@media screen and (min-width: 992px) {
 
+    .footer {
+        background-color: #0C3348;
+        color: #FFFFFF;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 70px;
+        margin: 0;
+    }
+
+    .footer-logo {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: -50px;
+    }
+
+
+    .footer-blocks {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: flex-start;
+    }
+
+    .footer-block ul h4 {
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+    .footer-block ul {
+        padding: 0;
+    }
+
+    .social-media a {
+        color: #092A3B;
+    }
+
+    .social-media-button {
+        color: white;
+        background-color: #0C3348;
+        border: none;
+        font-size: 2.5rem;
+        box-sizing: border-box;
+        padding: 10px;
+        border-radius: 50px;
+        transition: all 0.4s ease;
+
+
+    }
+
+    .social-media-button:hover {
+        transition: all 0.5s ease;
+        color: white;
+        background-color: #7097AB;
+    }
+
+}
 
 
 
@@ -437,63 +505,6 @@ footer {
 
 
 /* Media Query de la bannière */
-
-@media screen and (min-width: 992px) {
-
-    .footer {
-        background-color: #0C3348;
-        color: #FFFFFF;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: center;
-        padding: 70px;
-    }
-
-    .footer-logo {
-        display: flex;
-        flex-wrap: wrap;
-        margin-top: -50px;
-    }
-
-
-    .footer-blocks {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: center;
-    }
-
-    .footer-block ul h4 {
-        font-weight: bold;
-    }
-
-    .social-media a {
-        color: #092A3B;
-    }
-
-    .social-media-button {
-        color: white;
-        background-color: #0C3348;
-        border: none;
-        font-size: 2.5rem;
-        box-sizing: border-box;
-        padding: 10px;
-        border-radius: 50px;
-        transition: all 0.4s ease;
-
-
-    }
-
-    .social-media-button:hover {
-        transition: all 0.5s ease;
-        color: white;
-        background-color: #7097AB;
-    }
-
-}
-
-
 
 
 
@@ -638,20 +649,64 @@ footer {
     align-items: center;
 }
 
+.stats-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.trainer-gif {
+    padding-top: 30px;
+    transform: scale(1.2);
+    padding: 30px 0px 30px 0px;
+}
+
+.left-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-image: url(../images/pokeball-bg.png);
+    background-size: cover;
+    background-position: center;
+    background-color: #DD4242;
+    border: solid #A62840 5px;
+    border-radius: 30px;
+    padding: 30px;
+}
+
 .informations-account-title {
     color: white;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
+.right-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-image: url(../images/pokeball-bg.png);
+    background-size: cover;
+    background-position: center;
+    background-color: #DD4242;
+    border: solid #A62840 5px;
+    border-radius: 30px;
+    padding: 20px;
+}
+
+.list-group-item {
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 0.8rem;
+    background-color: white;
+    opacity: 0.8;
+    margin: 5px;
+    border-radius: 5px;
+}
+
 .modify-info {
     text-align: center;
     margin-top: 30px;
     margin-bottom: 100px;
-}
-
-.left-block {
-    margin-bottom: 30px;
 }
 
 .modify-button {
@@ -694,83 +749,40 @@ footer {
     .profil-title {
         padding: 0;
         margin: 0;
-    }
-
-    .background {
-
-        background: url(../images/Poke-Background.png) no-repeat fixed;
-        background-size: cover;
-
-    }
-
-    .profil-title {
         font-size: 3rem
     }
 
-    .stats {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-color: #092A3B;
-        margin-bottom: 100px;
-        margin-top: 100px;
-        border: solid #092A3B;
-        border-radius: 40px;
+    .background {
+        background: url(../images/Poke-Background.png) fixed;
+        animation: background-movement 30s linear infinite;
+    }
+
+    @keyframes background-movement {
+        from {
+            background-position: top left;
+        }
+
+        to {
+            background-position: bottom right;
+        }
     }
 
     .stats-block {
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
+        align-items: center;
     }
 
-    .left-block {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        background-color: #0C3348;
-        border: solid #294c5e 5px;
-        border-radius: 30px;
-        padding: 30px;
+    .list-group-item {
+        font-family: 'Press Start 2P', sans-serif;
+        font-size: 0.8rem;
+        background-color: white;
+        opacity: 0.8;
+        margin: 5px;
+        border-radius: 5px;
     }
-
-    .right-block {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        background-color: #0C3348;
-        border: solid #294c5e 5px;
-        border-radius: 30px;
-        padding: 20px;
-    }
-
 }
-
-
-/* --------------------------------------------------------------------------------------------- */
-
-/* Page de Modification du Profil  */
-
-.modify {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #092A3B;
-    margin-bottom: 100px;
-    margin-top: 100px;
-    border: solid #092A3B;
-    border-radius: 40px;
-}
-
-.modify-block {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
 
 
 /* --------------------------------------------------------------------------------------------- */
@@ -953,7 +965,7 @@ i.fa-chevron-right {
     padding-bottom: 5px;
 }
 
-.multiple{
+.multiple {
     transform: scale(1);
 }
 
@@ -1160,8 +1172,7 @@ i.fa-chevron-right {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: solid white 1px;
-    border-right-color: #092A3B;
+    border: solid black 1px;
     height: 50px;
     padding-top: 10px;
     font-size: 1.2rem;
@@ -1174,8 +1185,7 @@ i.fa-chevron-right {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: solid white 1px;
-    border-right-color: #092A3B;
+    border: solid black 1px;
     height: 50px;
     padding-top: 10px;
     font-size: 1.2rem;
@@ -1188,8 +1198,7 @@ i.fa-chevron-right {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    border: 1px solid white;
-    border-right: none #092A3B;
+    border: 1px solid black;
     height: 50px;
     padding-top: 10px;
     padding-right: 0;
@@ -1199,12 +1208,63 @@ i.fa-chevron-right {
     color: darkgray;
 }
 
+.pokemon {
+    border: 0;
+    border-radius: 0px 0px 20px 20px;
+    padding: 0;
+    box-shadow: 0px 0px 10px black;
+    height: 450px;
+}
+
+
 .pokepic {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 100%;
     position: relative;
+}
+
+.eauvolglace {
+    background-image: url(../images/fonds/fond-mer.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.combatelectrik {
+    background-image: url(../images/fonds/fond-foret.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.planteinsecte {
+    background-image: url(../images/fonds/fond-foret2.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.rochefee {
+    background-image: url(../images/fonds/fond-grottejpg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.psyspectre {
+    background-image: url(../images/fonds/fond-nuit.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
 }
 
 .poke-gif {
@@ -1264,7 +1324,13 @@ i.fa-chevron-right {
     background-color: white;
 }
 
+.description p {
+    padding: 0;
+}
 
+.overlay {
+    display: none;
+}
 
 .gameboy {
     display: none;
@@ -1278,7 +1344,7 @@ i.fa-chevron-right {
         display: flex;
         flex-direction: row;
         background-image: url(../images/Poke-Background.png);
-        animation: background-movement 20s linear infinite;
+        animation: background-movement 30s linear infinite;
     }
 
     @keyframes background-movement {
@@ -1538,7 +1604,6 @@ i.fa-chevron-right {
         padding: 50px;
         box-shadow: 0 0 10px black;
         border: solid black 1px;
-        border-radius: 10px 10px 10px 0;
         clip-path: polygon(0 0, 100% 0%, 100% 100%, 10% 100%, 0 90%);
     }
 
@@ -1548,7 +1613,6 @@ i.fa-chevron-right {
 
     .info-tile-1 {
         border: solid black 1px;
-        border-radius: 20px 0 0 0;
         box-shadow: -1px 2px 0 #888, -3px 5px 0 #333;
     }
 
@@ -1564,7 +1628,6 @@ i.fa-chevron-right {
         border: solid white 1px;
         border-color: #000000;
         border-left-color: white;
-        border-radius: 0 20px 0 0;
         box-shadow: -1px 2px 0 #888, -3px 5px 0 #333;
 
 
@@ -1580,8 +1643,48 @@ i.fa-chevron-right {
         height: 450px;
     }
 
-    .background-pokedex-img {
-        height: 450px;
+    .pokepic {
+        height: 100%;
+    }
+
+    .eauvolglace {
+        background-image: url(../images/fonds/fond-mer.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%;
+    }
+
+    .combatelectrik {
+        background-image: url(../images/fonds/fond-foret.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%;
+    }
+
+    .planteinsecte {
+        background-image: url(../images/fonds/fond-foret2.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%;
+    }
+
+    .rochefee {
+        background-image: url(../images/fonds/fond-grottejpg.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%;
+    }
+
+    .psyspectre {
+        background-image: url(../images/fonds/fond-nuit.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%;
     }
 
     .type-h3,
@@ -1591,13 +1694,24 @@ i.fa-chevron-right {
         background-color: #9ae97a;
     }
 
+    .description p {
+        margin: 0;
+        padding-left: 12px;
+    }
+
     .digital {
-        margin-top: 50px;
+        margin: 50px 0px 0px 50px;
         padding: 20px;
         box-shadow: 0px 0px 10px black;
         background-color: #9ae97a;
         font-family: 'Press Start 2P', sans-serif;
         font-size: 0.8rem;
+        height: 450px;
+
+    }
+
+    .digital h3 {
+        font-size: 1.2rem;
     }
 
     .poke-type-description {
@@ -1680,7 +1794,7 @@ i.fa-chevron-right {
     }
 
     .jump-animation {
-        animation: jump 0.2s ease-out;
+        animation: jump 0.3s ease-out;
         transform: scale(3);
     }
 
@@ -1690,13 +1804,14 @@ i.fa-chevron-right {
         }
 
         50% {
-            transform: translateY(-50px) scale(3);
+            transform: translateY(-300px) scale(3);
         }
 
         100% {
             transform: translateY(0) scale(3);
         }
     }
+
 }
 
 
@@ -1720,14 +1835,25 @@ i.fa-chevron-right {
 
     .pokedex {
         width: 40%;
-        border-radius: 10px 10px 10px 0px;
-
     }
+
+    .info-tile-1 {
+        font-size: 0.8vw;
+    }
+
+    .info-tile-2 {
+        font-size: 0.8vw;
+    }
+
+    .info-tile-3 {
+        font-size: 0.8vw;
+    }
+
 
     .digital {
         width: 50%;
-        margin-left: 50px;
-        height: 350px;
+        margin: 50px 0px 100px 100px;
+
     }
 
     .start-select-buttons {
@@ -1738,18 +1864,43 @@ i.fa-chevron-right {
         margin-top: 100px;
     }
 
-    .start-select {
+    .start {
         background-color: rgb(100, 100, 100);
         border: solid black 1px;
         border-radius: 30px;
         width: 80px;
         height: 30px;
         box-shadow: -4px 4px 2px #333;
-
     }
 
-    .start-select:active {
+    .select {
+        background-color: rgb(100, 100, 100);
+        border: solid black 1px;
+        border-radius: 30px;
+        width: 80px;
+        height: 30px;
+        box-shadow: -4px 4px 2px #333;
+    }
+
+    .start:active {
         box-shadow: inset -5px 5px 0 #333;
+    }
+
+    .select:active {
+        box-shadow: inset -5px 5px 0 #333;
+    }
+
+    .overlay {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        font-family: 'Press Start 2P', sans-serif;
+        font-size: 1.5rem;
     }
 
     .gameboy-buttons {
@@ -1806,8 +1957,12 @@ i.fa-chevron-right {
     text-decoration: none;
     color: #FFFFFF;
     font-size: 1.2rem;
+
+    padding: 0px;
+
     padding: 0;
     margin-top: 12px;
+
 }
 
 .register-button-valid:hover {
@@ -1842,9 +1997,6 @@ i.fa-chevron-right {
 /* ------------------------------------------------------------------------------------------  */
 
 /* Page des types Pokémon  */
-
-
-
 
 .type-contain {
     margin: 0;
@@ -1885,8 +2037,6 @@ i.fa-chevron-right {
     margin: 3px 0px 0px 10px;
 }
 
-
-
 .type-description {
     transition: max-height 0.5s ease-out;
     max-height: 0;
@@ -1913,7 +2063,7 @@ i.fa-chevron-right {
 
     .type-main-contain {
         background-image: url(../images/Poke-Background.png);
-        animation: background-movement 20s linear infinite;
+        animation: background-movement 30s linear infinite;
     }
 
     @keyframes background-movement {
@@ -1931,5 +2081,230 @@ i.fa-chevron-right {
         flex-wrap: wrap;
         margin: auto;
         margin-bottom: 100px;
+    }
+}
+
+
+
+
+
+
+
+/* ------------------------------------------------------------------------------------------  */
+
+/* Page A propos  */
+
+.presentation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.yann {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.yann p {
+    color: white;
+    margin: 30px;
+}
+
+.bastien {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.bastien p {
+    color: white;
+    margin: 30px;
+}
+
+.louis {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.louis h3 {
+    margin: 30px;
+    color: white;
+}
+
+.louis p {
+    color: white;
+    margin: 0px 30px 30px 30px;
+}
+
+
+.yann img {
+    width: 200px;
+    margin: auto;
+}
+
+.bastien img {
+    width: 270px;
+    float: left;
+}
+
+.louis img {
+    width: 190px;
+}
+
+
+@media screen and (min-width: 992px) {
+
+    .presentation {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-bottom: 100px;
+    }
+
+    .yann {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .yann img {
+        margin: 0;
+        width: 300px;
+    }
+
+    .yann p {
+        font-size: 1rem;
+    }
+
+    .bastien {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .bastien img {
+        margin: 0;
+        width: 350px;
+    }
+
+    .bastien p {
+        margin-top: 40px;
+        font-size: 1rem;
+    }
+
+    .louis {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .louis h3 {
+        margin: 30px;
+        color: white;
+    }
+
+    .louis img {
+        margin: 0;
+        width: 220px;
+        padding-top: 20px;
+    }
+
+    .louis p {
+        font-size: 1rem;
+    }
+}
+
+
+
+
+
+
+
+/* ------------------------------------------------------------------------------------------  */
+
+/* Page Le Projet  */
+
+.project-presentation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #DD4242;
+    margin: 0;
+}
+
+.project-presentation h1 {
+    text-align: center;
+}
+
+.project-poke-ball {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 50px 0px 50px 0px;
+}
+
+.project-poke-ball img {
+    width: 60px;
+}
+
+.project-poke-ball img:hover {
+    transform: scale(1.3);
+}
+
+
+.project-presentation p {
+    color: black;
+    background-color: white;
+    opacity: 0.8;
+    margin: 0;
+}
+
+.project-background {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url(../images/Poke-Background.png) fixed;
+    animation: background-movement 30s linear infinite;
+}
+
+
+@media screen and (min-width: 992px) {
+
+    .project-presentation {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #DD4242;
+        border: solid #A62840 5px;
+        border-radius: 50px;
+        margin: 100Px;
+    }
+
+    .project-presentation p {
+        color: black;
+        background-color: white;
+        opacity: 0.8;
+        border: solid #A62840 3px;
+        border-radius: 30px;
+        box-shadow: 0px 0px 10px black;
+        margin: 50px;
+        padding: 40px;
     }
 }

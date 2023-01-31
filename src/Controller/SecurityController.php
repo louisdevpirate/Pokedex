@@ -9,6 +9,9 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
+    /**
+     * fonction de la page de connexion.
+     */
     #[Route(path: '/connexion/', name: 'app_connexion')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {

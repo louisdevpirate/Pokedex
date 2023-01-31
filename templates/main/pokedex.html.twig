@@ -219,31 +219,35 @@
 					{# Image Pokémon  #}
 					<div class="pokemon col-12 col-lg-12">
 
-						
-
 						<div class="column pokepic col-12">
-
+					
 							{% if currentPokemon.type == 'eau' or currentPokemon.type == 'vol' or currentPokemon.type == 'glace' or currentPokemon.type == 'dragon' %}
-								<img class="background-pokedex-img col-12" src="/images/fonds/fond-mer.png" alt="Type">
+								<div class="eauvolglace"></div>
 							{% endif %}
 
-							{% if currentPokemon.type == 'combat' or currentPokemon.type == 'electrik' or currentPokemon.type == 'feu' or currentPokemon.type == 'dragon' %}
-								<img class="background-pokedex-img col-12" src="/images/fonds/fond-foret.png" alt="Type">
+							{% if currentPokemon.type == 'combat' or currentPokemon.type == 'electrik' or currentPokemon.type == 'feu' %}
+								<div class="combatelectrik"></div>
 							{% endif %}
 
 							{% if currentPokemon.type == 'plante' or currentPokemon.type == 'insecte' or currentPokemon.type == 'normal' %}
-								<img class="background-pokedex-img col-12" src="/images/fonds/fond-foret2.png" alt="Type">
+								<div class="planteinsecte"></div>
 							{% endif %}
 
 							{% if currentPokemon.type == 'roche' or currentPokemon.type == 'fée' or currentPokemon.type == 'sol' %}
-								<img class="background-pokedex-img col-12" src="/images/fonds/fond-grottejpg.jpg" alt="Type">
+								<div class="rochefee"></div>
 							{% endif %}
 
 							{% if currentPokemon.type == 'psy' or currentPokemon.type == 'spectre' or currentPokemon.type == 'poison' %}
-								<img class="background-pokedex-img col-12" src="/images/fonds/fond-foret-nuit.jpg" alt="Type">
+								<div class="psyspectre"></div>
 							{% endif %}
 
 							<img class="poke-gif scale" src="{{ asset('images/gifs/' ~ currentPokemon.gif ) }}" alt="Pokémon">
+
+							<div class="overlay">
+
+								<p>PAUSE</p>
+
+							</div>
 
 						</div>
 
@@ -334,6 +338,10 @@
 						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Steel.png" alt="Type"></a>
 					{% endif %}
 
+					{% if currentPokemon.type == 'vol' %}
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Flying.png" alt="Type"></a>
+					{% endif %}
+
 
 					{# Image du deuxième type Pokémon  #}
 
@@ -401,13 +409,16 @@
 						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Steel.png" alt="Type"></a>
 					{% endif %}
 
+					{% if currentPokemon.type2 == 'vol' %}
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Flying.png" alt="Type"></a>
+					{% endif %}
 
 				</div>
 
 				{# Div qui contient le contenu de la description du Pokémon  #}
 				<div class="row description col-12">
 
-					<h5>Description</h3>
+					<h3>Description</h3>
 
 					<p>{{ currentPokemon.description }}</p>
 
@@ -430,9 +441,9 @@
 			{# Div qui contient les boutons start et select du milieu (affichés uniquement en écran large)  #}
 			<div class="start-select-buttons col-lg-4">
 
-				<button class="start-select"></button>
+				<button class="select"></button>
 
-				<button class="start-select"></button>
+				<button class="start"></button>
 
 			</div>
 
@@ -460,6 +471,7 @@
 
 {% block js %}
 
+	<script>const pokeShineDir = '{{ asset('images/gifs/' ~ 'shiny-' ~ currentPokemon.gif ) }}'</script>
 	<script src="{{ asset('js/pokedex.js') }}"></script>
 	
 {% endblock %}

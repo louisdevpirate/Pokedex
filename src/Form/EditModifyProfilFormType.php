@@ -4,43 +4,48 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
 
-class RegistrationFormType extends AbstractType
+class EditModifyProfilFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        /**
-         * Création du formulaire qui gèrera toute les page incluant un formulaire
-         */
         $builder
-            // Champ email
-            ->add('email', EmailType::class, [
-                'label' => 'Adresse Email',
-                'attr' => [
-                    'placeholder' => 'ex : alice@gmail.com',
-                ],
+            ->add('currentPassword', PasswordType::class, [
+                'label' => 'Mot de passe actuel',
+                'mapped' => false,
                 'constraints' => [
-
                     new NotBlank([
-                        'message' => 'Merci de renseigner une adresse email',
-                    ]),
-                    new Email([
-                        'message' => 'L\'adresse email {{value}} n\'est pas valide',
+                        'message' => 'Entrez votre mot de passe actuel',
                     ]),
                 ],
             ])
-            // Champ mots de passe (en double)
+
+            ->add('pseudonym', TextType::class, [
+                'label' => 'Pseudonyme',
+                'attr' => [
+                    'placeholder' => 'ex : bobdu95',
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Merci de renseigner un pseudonyme',
+                    ]),
+                    new Length([
+                        'min' => 2,
+                        'max' => 40,
+                        'minMessage' => 'Votre pseudonyme doit contenir au moins {{limit}} caractères',
+                        'maxMessage' => 'Votre pseudonyme doit contenir au maximum {{limit}} caractères',
+                    ]),
+                ],
+            ])
+
             ->add('plainPassword', RepeatedType::class ,[
                 'type' => PasswordType::class,
                 'invalid_message' => 'Le mot de passe ne correspond pas à sa confirmation',
@@ -71,25 +76,6 @@ class RegistrationFormType extends AbstractType
             ])
 
 
-
-            // Champ pseudonym
-            ->add('pseudonym', TextType::class, [
-                'label' => 'Pseudonyme',
-                'attr' => [
-                    'placeholder' => 'ex : bobdu95',
-                ],
-                'constraints' => [
-                    new NotBlank([
-                                'message' => 'Merci de renseigner un pseudonyme',
-                    ]),
-                    new Length([
-                        'min' => 2,
-                        'max' => 40,
-                        'minMessage' => 'Votre pseudonyme doit contenir au moins {{limit}} caractères',
-                        'maxMessage' => 'Votre pseudonyme doit contenir au maximum {{limit}} caractères',
-                    ]),
-                ],
-            ])
         ;
     }
 
