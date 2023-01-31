@@ -219,6 +219,8 @@
 					{# Image Pokémon  #}
 					<div class="pokemon col-12 col-lg-10">
 
+						
+
 						<div class="column pokepic col-12">
 					
 							{% if currentPokemon.type == 'eau' or currentPokemon.type == 'vol' or currentPokemon.type == 'glace' or currentPokemon.type == 'dragon' %}
@@ -242,6 +244,12 @@
 							{% endif %}
 
 							<img class="poke-gif" src="{{ asset('images/gifs/' ~ currentPokemon.gif ) }}" alt="Pokémon">
+
+							<button class="shiny-button-mobile">
+
+								<img src="/images/sparkle/etoiles-shiny.png" alt="shiny-logo">
+							
+							</button>
 
 							<div class="overlay">
 

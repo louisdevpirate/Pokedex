@@ -431,7 +431,7 @@ footer {
 
 }
 
-.project p{
+.project p {
     font-size: 1.5rem;
 }
 
@@ -1162,8 +1162,17 @@ i.fa-chevron-right {
     background-color: #092A3B;
     height: 300px;
     padding: 0;
+}
+
+.gb-button-a {
+    display: flex;
+    border: none;
+    border-radius: 100px;
+    background-color: white;
 
 }
+
+
 
 .info {
     padding: 0;
@@ -1218,6 +1227,7 @@ i.fa-chevron-right {
     padding: 0;
     box-shadow: 0px 0px 10px black;
     height: 450px;
+    position: relative;
 }
 
 
@@ -1286,6 +1296,15 @@ i.fa-chevron-right {
     transform: scale(2.5);
 }
 
+.shiny-button-mobile {
+    background-color: white;
+    border-radius: 100px;
+    padding: 3px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 20px;
+}
 
 .digital {
     padding: 30px;
@@ -1641,8 +1660,6 @@ i.fa-chevron-right {
         border-color: #000000;
         border-left-color: white;
         box-shadow: -1px 2px 0 #888, -3px 5px 0 #333;
-
-
     }
 
     .pokemon {
@@ -1653,7 +1670,6 @@ i.fa-chevron-right {
         height: 450px;
         box-shadow: 0px 0px 10px black;
         height: 350px;
-
     }
 
     .pokepic {
@@ -1680,7 +1696,7 @@ i.fa-chevron-right {
         background-color: #9ae97a;
         font-family: 'Press Start 2P', sans-serif;
         font-size: 0.6rem;
-        height: 450px;
+        height: 470px;
     }
 
     .digital h3 {
@@ -1819,11 +1835,15 @@ i.fa-chevron-right {
         font-size: 0.8vw;
     }
 
+    .shiny-button-mobile {
+        display: none;
+    }
+
 
     .digital {
         width: 50%;
         margin: 50px 0px 100px 100px;
-        font-size: 0.8rem;
+        font-size: 0.65rem;
     }
 
     .gameboy {
