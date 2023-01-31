@@ -83,33 +83,38 @@ class HomeController extends AbstractController
                 'error' => 'Vous n\'avez plus de lancers disponibles, veuillez réessayer plus tard!'
             ]);
         }
+
+
         $pokeRepo = $doctrine->getRepository(Pokemon::class);
         $userRepo = $doctrine->getRepository(User::class);
+
 
         //Calcul des probabilités
 
         $randomRarity = rand(10, 1000) / 10;
 
-        if ($randomRarity < 40) {
+
+        //45%
+        if ($randomRarity < 45) {
 
             $rarity = 'C';
-
-        } elseif ($randomRarity > 39.9 && $randomRarity < 64.9) {
+        //30%
+        } elseif ($randomRarity > 44.9 && $randomRarity < 74.9) {
 
             $rarity = 'PC';
-
-        } elseif ($randomRarity > 64.8 && $randomRarity < 84.8) {
+        //15%
+        } elseif ($randomRarity > 74.8 && $randomRarity < 89.8) {
 
             $rarity = 'R';
-
-        } elseif ($randomRarity > 84.7 && $randomRarity < 94.7) {
+        //8.5%
+        } elseif ($randomRarity > 89.7 && $randomRarity < 98.4) {
 
             $rarity = 'TR';
-
-        } elseif ($randomRarity > 94.6 && $randomRarity < 99.6) {
+        //1%
+        } elseif ($randomRarity > 98.3 && $randomRarity < 99.5) {
 
             $rarity = 'EX';
-
+        //0.5%
         } else {
 
             $rarity = 'SR';
@@ -123,12 +128,11 @@ class HomeController extends AbstractController
 
         $pokemonSpeciesCaptured = $pokemons[$randomPoke];
 
-
         $pokemonCaptured = new CapturedPokemon();
 
         //Calculs shiny
 
-        $shinyTest = rand(1, 250);
+        $shinyTest = rand(1, 200);
 
 
         if ($shinyTest == 1) {
@@ -157,6 +161,7 @@ class HomeController extends AbstractController
 
 
         //Retour des informations a Javascript
+
         return $this->json([
             'captured_pokemon' => [
                 'id' => $pokemonCaptured->getPokemon()->getId(),

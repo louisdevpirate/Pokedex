@@ -10,7 +10,7 @@
 
             <div class="row">
                 <div class="col-12 col-lg-10 mx-auto rarity-scale">
-                    <p><span>(C)</span> = Commun ≈ 40% / <span>(PC)</span> = Peu Commun ≈ 25% / <span>(R)</span> = Rare ≈ 20% /<br> <span>(TR)</span> = Très Rare ≈ 10% / <span>(EX)</span> = Extrêmement Rare ≈ 5% / <span>(SR)</span> = Secret Rare ≈ ??? / <span>Shiny</span> ≈ ???</p>
+                    <p><span>(C)</span> = Commun ≈ 45% / <span>(PC)</span> = Peu Commun ≈ 30% / <span>(R)</span> = Rare ≈ 15% /<br> <span>(TR)</span> = Très Rare ≈ 8.5% / <span>(EX)</span> = Extrêmement Rare ≈ 1% / <span>(SR)</span> = Secret Rare ≈ ??? / <span>Shiny</span> ≈ ???</p>
                 </div>
 
 
@@ -28,10 +28,11 @@
             <button class="capture-poke-button">
                 <img class="pokeball-animate" src="{{ asset('images/poke-capture.png') }}" alt="Pokeball, go!">
             </button>
+            <br>
             <img class="multiple" src="{{ asset('images/multiple.png') }}" alt="nombre de lancer">
-
-            {{ app.user.launchs }}
-
+            <div class="launch-items">
+                {{ app.user.launchs }}
+            </div>
         </div>
     </div>
 
@@ -57,6 +58,7 @@
         const pokemonsGifDir = '{{ asset('images/gifs') }}';
         const pokemonsShineDir = '{{ asset('images/sparkle') }}';
         const pokemonUppercase = '{{ ''|capitalize }}';
+        const launchCounter = '{{ app.user.launchs}}';
     </script>
     <script src="{{ asset('js/capture.js') }}"></script>
 

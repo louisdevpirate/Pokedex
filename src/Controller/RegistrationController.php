@@ -50,6 +50,7 @@ class RegistrationController extends AbstractController
                 )
             )   //Mise en place d'un nombre de lancés par défaut quand on crée un compte
                 ->setLaunchs(10)
+                ->setLastObtainedLaunch(new \DateTime())
             ;
 
 

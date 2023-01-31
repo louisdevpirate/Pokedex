@@ -5,15 +5,19 @@ function backToPlace() {
     elem.style.rotate = '0deg';
 }
 
-//Fonction de déplacement de la pokéball
-
-//Bouton de capture
 
 document.querySelector('.capture-poke-button').addEventListener("click", async function () {
+
+
+    // document.querySelector('.multiple').after(launchCount);
+    // launchCount.classList.add('count-pokeball');
+
 
     if (!captureInProcess) {
 
         captureInProcess = true;
+
+
 
         //Si il y'a deja un pokemon, on l'enleve
         let currentPoke = document.querySelector('.displayed-pokemon');
@@ -27,6 +31,16 @@ document.querySelector('.capture-poke-button').addEventListener("click", async f
         let currentInfo = document.querySelector('.pokemon-captured-infos');
         if (currentInfo){
             currentInfo.remove();
+        }
+
+        let launchs = document.querySelector('.launch-items').textContent;
+
+        launchs = parseInt(launchs);
+
+        if (launchs > 0 ) {
+
+            document.querySelector('.launch-items').textContent = (launchs - 1);
+
         }
 
 
@@ -97,7 +111,6 @@ document.querySelector('.capture-poke-button').addEventListener("click", async f
                         pokemonGif = pokemonsGifDir + '/' + ((data.captured_pokemon.shiny) ? 'shiny-' : '') + data.captured_pokemon.gif;
 
 
-
                         console.log(data.captured_pokemon.rarity + '(' + data.captured_pokemon.rarityRandom + '%)');
 
                         //Effets en fonction de la rareté
@@ -165,6 +178,8 @@ document.querySelector('.capture-poke-button').addEventListener("click", async f
                         }
 
 
+                        pokemonInfo.innerHTML = '';
+
 
 
 
@@ -199,7 +214,10 @@ document.querySelector('.capture-poke-button').addEventListener("click", async f
 
 
 
+
         backToPlace();
+
+
 
         setTimeout(() => {
             captureInProcess = false;

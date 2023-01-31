@@ -44,6 +44,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $launchs = null;
 
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $lastObtainedLaunch = null;
+
 
     public function __construct()
     {
@@ -183,6 +186,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLaunchs(int $launchs): self
     {
         $this->launchs = $launchs;
+
+        return $this;
+    }
+
+    public function getLastObtainedLaunch(): ?\DateTimeInterface
+    {
+        return $this->lastObtainedLaunch;
+    }
+
+    public function setLastObtainedLaunch(\DateTimeInterface $lastObtainedLaunch): self
+    {
+        $this->lastObtainedLaunch = $lastObtainedLaunch;
 
         return $this;
     }

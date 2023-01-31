@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
 
 body {
     background-color: #092A3B;
@@ -935,6 +937,7 @@ i.fa-chevron-right {
     margin-bottom: 20px;
     margin-top: 20px;
 
+
 }
 
 .capture-poke-button:active {
@@ -959,6 +962,34 @@ i.fa-chevron-right {
     color: #FFFFFF;
     text-align: center;
 
+}
+
+
+
+.launch-items{
+    color: #FFCD00;
+    -webkit-text-stroke: 1px #356ABC;
+    font-size: 3.5rem;
+    font-weight: bold;
+    font-family: 'Anton', sans-serif;
+    text-shadow: 3px 2px #899399;
+    padding-left: 5px;
+
+}
+
+
+
+@media screen and (min-width: 992px){
+
+    .capture-ball{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .capture-poke-button{
+        margin-left: 7%;
+    }
 }
 
 
