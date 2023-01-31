@@ -49,12 +49,12 @@ class RegistrationController extends AbstractController
         //Si le formulaire a bien été envoyé
         if ($form->isSubmitted()) {
 
-            // Récupération de la réponse envoyée par le captcha dans le formulaire
-// ( $_POST['g-recaptcha-response'] )
+
+            //Récupération de la valeur du captcha ($_POST['g-recaptcha-response'])
             $recaptchaResponse = $request->request->get('g-recaptcha-response', null);
 
-// Si le captcha n'est pas valide, on crée une nouvelle erreur dans le formulaire (ce qui l'empêchera de créer l'article et affichera l'erreur)
-// $request->server->get('REMOTE_ADDR') -----> Adresse IP de l'utilisateur dont la méthode verify() a besoin
+            //si le captcha est null ou s'il est invalide on ajoute une erreur dans le formulaire
+
             if($recaptchaResponse == null || !$recaptcha->verify( $recaptchaResponse, $request->server->get('REMOTE_ADDR') )){
 
                 // Ajout d'une nouvelle erreur manuellement dans le formulaire

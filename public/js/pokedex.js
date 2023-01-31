@@ -52,6 +52,21 @@ buttonA.addEventListener("click", function () {
     }
 });
 
+// Animation du bouton Shiny sur mobile
+const shinyButton = document.querySelector(".shiny-button-mobile");
+const pokeShinyGif = document.querySelector(".poke-gif");
+
+const firstSrc = pokeGif.src;
+const secondSrc = pokeShineDir;
+
+shinyButton.addEventListener("click", function () {
+    if (pokeShinyGif.src === firstSrc) {
+        pokeShinyGif.src = secondSrc;
+    } else {
+        pokeShinyGif.src = firstSrc;
+    }
+});
+
 
 
 
