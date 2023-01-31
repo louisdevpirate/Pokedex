@@ -1926,8 +1926,12 @@ i.fa-chevron-right {
     text-decoration: none;
     color: #FFFFFF;
     font-size: 1.2rem;
+
+    padding: 0px;
+
     padding: 0;
     margin-top: 12px;
+
 }
 
 .register-button-valid:hover {

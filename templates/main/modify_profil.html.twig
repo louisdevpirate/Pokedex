@@ -6,7 +6,7 @@
 {% block body %}
 
 
-	{# Container du formulaire d'inscription  #}
+	{# Container du formulaire de modification  #}
 	<div class=" register-form-block container mt-5 col-10">
 
 		<div class="row">
@@ -18,31 +18,37 @@
 			</div>
 		</div>
 
-		{# Formulaire d'inscripton #}
+		{# Formulaire de modification #}
 		<div
 				class="row">
 
 			{# Ouverture du formulaire #}
-			{{ form_start( modifyform ) }}
+			{{ form_start( editModifyProfilForm ) }}
+
 
 			{# Affichage des erreur générales du formulaire #}
-			{{ form_errors( modifyform ) }}
+			{{ form_errors( editModifyProfilForm ) }}
 
-			<div
-					class="col-12 col-md-6 mx-auto style-form-register display d-none">
-				Champ email
-				{{ form_row( modifyform.email ) }}
-			</div>
+
 			<div
 					class="col-12 col-md-6 mx-auto style-form-register">
 				{# Champ pseudo #}
-				{{ form_row( modifyform.pseudonym ) }}
+				{{ form_row( editModifyProfilForm.pseudonym ) }}
 			</div>
+
+			<div
+
+					class="col-12 col-md-6 mx-auto style-form-register display">
+
+				{{ form_row( editModifyProfilForm.currentPassword ) }}
+			</div>
+
+
 
 			<div
 					class="col-12 col-md-6 mx-auto style-form-register">
 				{# Champ mots de passe  #}
-				{{ form_row( modifyform.plainPassword ) }}
+				{{ form_row( editModifyProfilForm.plainPassword ) }}
 			</div>
 
 
@@ -51,8 +57,9 @@
 
 				<div class="second-border-register">
 
-					<img src="{{ asset('images/PokeBall.png') }}" alt="Poke Ball">{{ form_row( modifyform.modify, {
-						'attr': {'class': 'register-button-valid d-block'} } ) }}
+					<img src="{{ asset('images/PokeBall.png') }}" alt="Poke Ball">
+
+					<button type="submit" class="register-button-valid d-block btn">Modifier</button>
 
 					<i class="fa-solid fa-chevron-right"></i>
 
@@ -63,7 +70,7 @@
 
 
 			{# Fermeture du formulaire  #}
-			{{ form_end( modifyform ) }}
+			{{ form_end( editModifyProfilForm ) }}
 		</div>
 	</div>
 {% endblock %}
