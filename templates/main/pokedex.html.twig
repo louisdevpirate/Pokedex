@@ -247,7 +247,7 @@
 
 							<button class="shiny-button-mobile">
 
-								<img src="/images/sparkle/etoiles-shiny.png" alt="shiny-logo">
+								<img src="{{ asset('images/sparkle/etoiles-shiny.png') }}" alt="shiny-logo">
 							
 							</button>
 
@@ -283,151 +283,152 @@
 					{# Image du premier type Pokémon  #}
 
 					{% if currentPokemon.type == 'combat' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Fighting.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Fighting.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type == 'dragon' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Dragon.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Dragon.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type == 'eau' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Water.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Water.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type == 'electrik' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Electric.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Electric.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type == 'fée' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Fairy.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Fairy.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type == 'feu' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Fire.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Fire.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type == 'glace' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Ice.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Ice.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type == 'insecte' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Bug.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Bug.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type == 'normal' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Normal.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Normal.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type == 'plante' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Grass.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Grass.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type == 'poison' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Poison.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Poison.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type == 'psy' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Psychic.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Psychic.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type == 'roche' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Rock.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Rock.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type == 'sol' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Ground.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Ground.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type == 'spectre' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Ghost.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Ghost.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type == 'acier' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Steel.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Steel.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type == 'vol' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Flying.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Flying.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type == 'ténèbres' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Dark.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Dark.png') }}" alt="Type"></a>
 					{% endif %}
 
 
 					{# Image du deuxième type Pokémon  #}
 
 					{% if currentPokemon.type2 == 'combat' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Fighting.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Fighting.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type2 == 'dragon' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Dragon.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Dragon.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type2 == 'eau' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Water.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Water.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type2 == 'electrik' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Electric.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Electric.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type2 == 'fée' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Fairy.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Fairy.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type2 == 'feu' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Fire.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Fire.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type2 == 'glace' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Ice.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Ice.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type2 == 'insecte' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Bug.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Bug.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type2 == 'normal' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Normal.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Normal.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type2 == 'plante' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Grass.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Grass.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type2 == 'poison' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Poison.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Poison.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type2 == 'psy' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Psychic.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Psychic.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type2 == 'roche' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Rock.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Rock.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type2 == 'sol' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Ground.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Ground.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type2 == 'spectre' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Ghost.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Ghost.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type2 == 'acier' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Steel.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Steel.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type2 == 'vol' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Flying.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Flying.png') }}" alt="Type"></a>
 					{% endif %}
 
 					{% if currentPokemon.type2 == 'ténèbres' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="/images/Types/Dark.png" alt="Type"></a>
+						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/Types/Dark.png') }}" alt="Type"></a>
 					{% endif %}
+					
 
 
 				</div>
@@ -452,8 +453,7 @@
 		<div class="col-lg-12 gameboy">
 
 			{# Image de la croix directionnelle  #}
-			<img
-			class="col-lg-4" src="/images/Cross.png" alt="Croix de Gameboy">
+			<img class="col-lg-4" src="{{ asset('images/Cross.png') }}" alt="Croix de Gameboy">
 
 			{# Div qui contient les boutons start et select du milieu (affichés uniquement en écran large)  #}
 			<div class="start-select-buttons col-lg-4">
