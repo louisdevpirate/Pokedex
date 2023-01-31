@@ -1260,7 +1260,7 @@ i.fa-chevron-right {
 }
 
 .psyspectre {
-    background-image: url(../images/fonds/fond-nuit.jpg);
+    background-image: url(../images/fonds/fond-nuitee.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
@@ -1268,7 +1268,7 @@ i.fa-chevron-right {
 }
 
 .tenebre {
-    background-image: url(../images/fonds/fond-nuit.jpg);
+    background-image: url(../images/fonds/fond-nuitee.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
@@ -1654,46 +1654,7 @@ i.fa-chevron-right {
     .pokepic {
         height: 100%;
     }
-
-    .eauvolglace {
-        background-image: url(../images/fonds/fond-mer.png);
-        background-size: cover;
-        background-repeat: no-repeat;
-        width: 100%;
-        height: 100%;
-    }
-
-    .combatelectrik {
-        background-image: url(../images/fonds/fond-foret.png);
-        background-size: cover;
-        background-repeat: no-repeat;
-        width: 100%;
-        height: 100%;
-    }
-
-    .planteinsecte {
-        background-image: url(../images/fonds/fond-foret2.png);
-        background-size: cover;
-        background-repeat: no-repeat;
-        width: 100%;
-        height: 100%;
-    }
-
-    .rochefee {
-        background-image: url(../images/fonds/fond-grottejpg.jpg);
-        background-size: cover;
-        background-repeat: no-repeat;
-        width: 100%;
-        height: 100%;
-    }
-
-    .psyspectre {
-        background-image: url(../images/fonds/fond-nuit.jpg);
-        background-size: cover;
-        background-repeat: no-repeat;
-        width: 100%;
-        height: 100%;
-    }
+    
 
     .type-h3,
     .type,
