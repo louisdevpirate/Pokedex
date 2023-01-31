@@ -10,16 +10,23 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Form\FormError;
+use App\Recaptcha\RecaptchaValidator;  // Importation de notre service de validation du captcha
+use Symfony\Component\Form\FormError;  // Importation de la classe permettant de créer des erreurs dans les formulaires
+
 
 
 class RegistrationController extends AbstractController
 {
     /**
      * Contrôleur de la page d'inscription
+     * @param Request $request
+     * @param UserPasswordHasherInterface $userPasswordHasher
+     * @param EntityManagerInterface $entityManager
+     * @param $recaptcha
+     * @return Response
      */
     #[Route('/register/', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager,RecaptchaValidator $recaptcha): Response
     {
 
         // si l'utilisateur est deja connecter, on le redirige de force sur la page d'acceuil du site
@@ -33,13 +40,26 @@ class RegistrationController extends AbstractController
         // Création d'un nouveau formulaire de création de compte, "branché" sur $user (pour l'hydrater)
         $form = $this->createForm(RegistrationFormType::class, $user);
 
+
+
+
         // Remplissage du formulaire avec les données POST (qui sont dans request)
         $form->handleRequest($request);
 
         //Si le formulaire a bien été envoyé
         if ($form->isSubmitted()) {
-            //TODO a faire le captcha
 
+            // Récupération de la réponse envoyée par le captcha dans le formulaire
+// ( $_POST['g-recaptcha-response'] )
+            $recaptchaResponse = $request->request->get('g-recaptcha-response', null);
+
+// Si le captcha n'est pas valide, on crée une nouvelle erreur dans le formulaire (ce qui l'empêchera de créer l'article et affichera l'erreur)
+// $request->server->get('REMOTE_ADDR') -----> Adresse IP de l'utilisateur dont la méthode verify() a besoin
+            if($recaptchaResponse == null || !$recaptcha->verify( $recaptchaResponse, $request->server->get('REMOTE_ADDR') )){
+
+                // Ajout d'une nouvelle erreur manuellement dans le formulaire
+                $form->addError(new FormError('Le Captcha doit être validé !'));
+            }
 
             if ($form->isValid()){
                 // encode the plain password

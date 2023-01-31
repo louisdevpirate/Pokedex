@@ -39,26 +39,29 @@
 				{{ form_row( registrationForm.pseudonym ) }}
 			</div>
 
+
 			<div
 				class="col-12 col-md-6 mx-auto style-form-register">
 				{# Champ mots de passe  #}
 				{{ form_row( registrationForm.plainPassword ) }}
 			</div>
 
-			{#        #}
-			{# Affichage du cpatcha #}
-			{#        <div class="mb-3">#}
-			{#            <div class="mb-2">Captcha de sécurit</div>#}
 
-			{#            <div class="g-recaptcha" data-sitekey="{{ google_recaptcha_site_key }}"></div>#}
-			{#        </div>#}
+			{# Affichage du captcha avec la clé publique récupérée directement grâce à la passerelle faite dans twig.yaml #}
+			<div class="mb-3">
+				<div style="color: white" class="mb-2">Captcha de sécurit</div>
+
+				<div class="g-recaptcha" data-sitekey="{{ google_recaptcha_site_key }}"></div>
+			</div>
 
 
 			<div class="text-center mx-auto register-button"> 
 			
 				<div class="second-border-register">
 
-					<img src="{{ asset('images/PokeBall.png') }}" alt="Poke Ball">{{ form_row( registrationForm.save, { 'attr': {'class': 'register-button-valid d-block'} } ) }}
+					<img src="{{ asset('images/PokeBall.png') }}" alt="Poke Ball">
+
+					<button type="submit" class="register-button-valid d-block btn">sincrire</button>
 
 					<i class="fa-solid fa-chevron-right"></i>
 
@@ -72,4 +75,10 @@
 			{{ form_end( registrationForm ) }}
 		</div>
 	</div>
+{% endblock %}
+
+
+{% block css %}
+	{# Insertion du fichier JS dans le block stylesheets, ce n'est pas une erreur, la documentation de Recaptcha préconise en effet d'intégrer ce fichier JS dans le head #}
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 {% endblock %}

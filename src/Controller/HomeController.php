@@ -6,15 +6,20 @@ namespace App\Controller;
 
 use App\Entity\CapturedPokemon;
 use App\Entity\Pokemon;
+use App\Form\EditModifyProfilFormType;
 use App\Form\RegistrationFormType;
 use DateTime;
 use App\Form\ModifyFormType;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 
 class HomeController extends AbstractController
@@ -24,7 +29,7 @@ class HomeController extends AbstractController
     public function home(): Response
     {
         $user = $this->getUser();
-        if ($user){
+        if ($user) {
             $this->addFlash('success', sprintf('Bonjour %s', $user->getPseudonym()));
         }
 
@@ -41,23 +46,23 @@ class HomeController extends AbstractController
 
         $pokeRepo = $doctrine->getRepository(CapturedPokemon::class);
         $user = $this->getUser();
-
+        // hydratation du nombre total de pokemon attraper par l'utilisateur connecter.
         $capturedPokemon = $pokeRepo->findBy(['owner' => $user]);
         $capturedPokemon = $user->getCapturedPokemon();
         $pokemonIds = [];
         foreach ($capturedPokemon as $cp) {
             $pokemonIds[] = $cp->getPokemon()->getId();
         }
+        // hydratation des pokemon shiny et des pokemon unique du pokedex attraper par l'utilisateur.
         $uniquePokemonIds = array_unique($pokemonIds);
         $nbPokemonUnique = count($uniquePokemonIds);
         $nbPokemon = count($capturedPokemon);
         $capturedPokemonShiny = $pokeRepo->findBy(['owner' => $user, 'shiny' => true]);
         $nbShiny = count($capturedPokemonShiny);
 
-        return $this->render('main/profil.html.twig',[
-           'nbPokemon' => $nbPokemon , 'nbPokemonUnique' => $nbPokemonUnique, 'nbShiny' => $nbShiny
+        return $this->render('main/profil.html.twig', [
+            'nbPokemon' => $nbPokemon, 'nbPokemonUnique' => $nbPokemonUnique, 'nbShiny' => $nbShiny
         ]);
-
 
 
     }
@@ -73,7 +78,7 @@ class HomeController extends AbstractController
     }
 
     #[Route('/capture-api/', name: 'app_capture_api')]
-    #[IsGranted('ROLE_ADMIN')]
+    #[IsGranted('ROLE_USER')]
     public function captureApi(ManagerRegistry $doctrine): Response
     {
 
@@ -121,7 +126,7 @@ class HomeController extends AbstractController
         //Calculs shiny
 
 
-        $shinyTest = rand(1,250);
+//        $shinyTest = rand(1,250);
 
         $shinyTest = rand(1, 200);
 
@@ -166,13 +171,9 @@ class HomeController extends AbstractController
     }
 
 
-
-
-
-   #[Route('/pokedex/{pokeId}/', name: 'app_pokedex')]
-
-   public function pokedex(Pokemon $pokemon, ManagerRegistry $doctrine): Response
-   {
+    #[Route('/pokedex/{pokeId}/', name: 'app_pokedex')]
+    public function pokedex(Pokemon $pokemon, ManagerRegistry $doctrine): Response
+    {
 
         $pokeRepo = $doctrine->getRepository(Pokemon::class);
 
@@ -182,18 +183,17 @@ class HomeController extends AbstractController
         $pokemonNextNext = $pokeRepo->findNext($pokemon, 1);
 
 
-
         $pokemons = $pokeRepo->findBy([], ['pokeId' => 'ASC']);
-       
 
-       return $this->render('main/pokedex.html.twig',[
-           'pokemonBefore' => $pokemonBefore,
-           'currentPokemon' => $pokemon,
-           'pokemonAfter' => $pokemonNext,
-           'pokemons' => $pokemons,
+
+        return $this->render('main/pokedex.html.twig', [
+            'pokemonBefore' => $pokemonBefore,
+            'currentPokemon' => $pokemon,
+            'pokemonAfter' => $pokemonNext,
+            'pokemons' => $pokemons,
         ]);
 
-   }
+    }
 
 
 //     #[Route('/pokedex-api/', name: 'app_pokedex_api')]
@@ -225,36 +225,54 @@ class HomeController extends AbstractController
 //     }
 
 
-
-
-
     #[Route('/modify-profil/', name: 'app_modify')]
     #[IsGranted('ROLE_USER')]
-    public function modifyProfil(Request $request, ManagerRegistry $doctrine,): Response
+    public function modifyProfil(UserPasswordHasherInterface $encoder, Request $request, ManagerRegistry $doctrine,): Response
     {
+        /**
+         * page de modification du profile de l'utilisateur (pseudonym et mot de passe).
+         */
+
+        $connectedUser = $this->getUser();
 
 
-        // Creation du formulaire de modification des informations du profil
-        $form = $this->createForm(RegistrationFormType::class, $this->getUser());
+        $form = $this->createForm(EditModifyProfilFormType::class, $connectedUser);
+
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $em = $doctrine->getManager();
-            $em->flush();
+            // vérifier si le mot de passe actuel est correct
 
-            //message flash de success
-            $this->addFlash('success', 'Votre profile à été modifier avec success');
+            $currentPassword = $form->get('currentPassword')->getData();
 
-            return $this->redirectToRoute('app_profil');
+            if (!$encoder->isPasswordValid($connectedUser, $currentPassword)) {
+
+                $form->get('currentPassword')->addError( new FormError('Mauvais mot de passe !') );
+
+
+            } else {
+
+                // Modification du profil
+                $newPassword = $form->get('plainPassword')->getData();
+                $hashNewPassword = $encoder->hashPassword($connectedUser, $newPassword);
+                $connectedUser->setPassword($hashNewPassword);
+
+                $em = $doctrine->getManager();
+                $em->flush();
+
+                // message flash de succès
+                $this->addFlash('success', 'Votre profil a été modifié avec succès');
+
+                return $this->redirectToRoute('app_profil');
+            }
         }
+
         return $this->render('main/modify_profil.html.twig', [
-            'modifyform' => $form->createView(),]);
-
-
+            'editModifyProfilForm' => $form->createView(),
+        ]);
     }
-
 
 }
 
