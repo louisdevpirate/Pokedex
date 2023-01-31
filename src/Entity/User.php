@@ -41,6 +41,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'owner', targetEntity: CapturedPokemon::class, orphanRemoval: true)]
     private Collection $capturedPokemon;
 
+    #[ORM\Column]
+    private ?int $launchs = null;
+
+
     public function __construct()
     {
         $this->capturedPokemon = new ArrayCollection();
@@ -167,6 +171,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $capturedPokemon->setOwner(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLaunchs(): ?int
+    {
+        return $this->launchs;
+    }
+
+    public function setLaunchs(int $launchs): self
+    {
+        $this->launchs = $launchs;
 
         return $this;
     }

@@ -6,7 +6,11 @@ namespace App\Controller;
 
 use App\Entity\CapturedPokemon;
 use App\Entity\Pokemon;
+
 use App\Form\EditModifyProfilFormType;
+
+use App\Entity\User;
+
 use App\Form\RegistrationFormType;
 use DateTime;
 use App\Form\ModifyFormType;
@@ -82,10 +86,17 @@ class HomeController extends AbstractController
     public function captureApi(ManagerRegistry $doctrine): Response
     {
 
+        if($this->getUser()->getLaunchs() < 1){
+            return $this->json([
+                'error' => 'Vous n\'avez plus de lancers disponibles, veuillez réessayer plus tard!'
+            ]);
+        }
         $pokeRepo = $doctrine->getRepository(Pokemon::class);
+        $userRepo = $doctrine->getRepository(User::class);
+
+        //Calcul des probabilités
 
         $randomRarity = rand(10, 1000) / 10;
-
 
         if ($randomRarity < 40) {
 
@@ -126,9 +137,13 @@ class HomeController extends AbstractController
         //Calculs shiny
 
 
+
 //        $shinyTest = rand(1,250);
 
         $shinyTest = rand(1, 200);
+
+        $shinyTest = rand(1, 250);
+
 
 
         if ($shinyTest == 1) {
@@ -151,6 +166,8 @@ class HomeController extends AbstractController
 
         $em->persist($pokemonCaptured);
 
+        $this->getUser()->setLaunchs($this->getUser()->getLaunchs()-1);
+
         $em->flush();
 
 
@@ -168,6 +185,11 @@ class HomeController extends AbstractController
                 'rarityRandom' => $randomRarity,
             ],
         ]);
+
+
+
+
+
     }
 
 
@@ -183,7 +205,11 @@ class HomeController extends AbstractController
         $pokemonNextNext = $pokeRepo->findNext($pokemon, 1);
 
 
+
         $pokemons = $pokeRepo->findBy([], ['pokeId' => 'ASC']);
+
+        $pokemons = $pokeRepo->findBy([], ['pokeId' => 'ASC']);
+
 
 
         return $this->render('main/pokedex.html.twig', [
@@ -196,33 +222,34 @@ class HomeController extends AbstractController
     }
 
 
-//     #[Route('/pokedex-api/', name: 'app_pokedex_api')]
-//     public function pokedexApi(ManagerRegistry $doctrine): Response
-//     {
-//         // Récupération du gestionnaire d'entités
-//         $pokeRepo = $doctrine->getRepository(Pokemon::class);
-//
-//         // Récupération des données de la base de données
-//         $pokemons = $pokeRepo->findAll();
-//
-//         $pokemonsToReturn = [];
-//
-//
-//         foreach($pokemons as $pokemon){
-//
-//             $pokemonsToReturn[] = [
-//                 'name' => $pokemon->getName(),
-//                 'description' => $pokemon->getDescription(),
-//             ];
-//
-//         }
-//
-//
-//         // Renvoi de la réponse HTTP
-//         return $this->json([
-//             'pokemons' => $pokemonsToReturn,
-//         ]);
-//     }
+    // #[Route('/pokedex-api/', name: 'app_pokedex_api')]
+    // public function pokedexApi(ManagerRegistry $doctrine): Response
+    // {
+    //     // Récupération du gestionnaire d'entités
+    //     $pokeRepo = $doctrine->getRepository(Pokemon::class);
+
+    //     // Récupération des données de la base de données
+    //     $pokemons = $pokeRepo->findAll();
+
+    //     $pokemonsToReturn = [];
+
+
+    //     foreach($pokemons as $pokemon){
+
+    //         $pokemonsToReturn[] = [
+    //             'name' => $pokemon->getName(),
+    //             'description' => $pokemon->getDescription(),
+    //             'shiny' => $pokemon->getShiny(),
+    //         ];
+
+    //     }
+
+
+    //     // Renvoi de la réponse HTTP
+    //     return $this->json([
+    //         'pokemons' => $pokemonsToReturn,
+    //     ]);
+    // }
 
 
     #[Route('/modify-profil/', name: 'app_modify')]
@@ -273,6 +300,34 @@ class HomeController extends AbstractController
             'editModifyProfilForm' => $form->createView(),
         ]);
     }
+
+
+
+    #[Route('/types/', name: 'app_types')]
+    public function types(): Response
+    {
+        return $this->render('main/types.html.twig', [
+        ]);
+    }
+
+    #[Route('/about/', name: 'app_about')]
+    public function about(): Response
+    {
+        return $this->render('main/about.html.twig', [
+        ]);
+    }
+
+    #[Route('/project/', name: 'app_project')]
+    public function project(): Response
+    {
+        return $this->render('main/project.html.twig', [
+        ]);
+    }
+
+
+
+
+
 
 }
 
