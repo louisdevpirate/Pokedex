@@ -1773,7 +1773,7 @@ i.fa-chevron-right {
         }
 
         50% {
-            transform: translateY(-150px) scale(3);
+            transform: translateY(-300px) scale(3);
         }
 
         100% {
@@ -2202,7 +2202,7 @@ i.fa-chevron-right {
 
 /* Page Le Projet  */
 
-.project {
+.project-presentation {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -2211,7 +2211,7 @@ i.fa-chevron-right {
     margin: 0;
 }
 
-.project h1 {
+.project-presentation h1 {
     text-align: center;
 }
 
@@ -2232,7 +2232,7 @@ i.fa-chevron-right {
 }
 
 
-.project p {
+.project-presentation p {
     color: black;
     background-color: white;
     opacity: 0.8;
@@ -2251,7 +2251,7 @@ i.fa-chevron-right {
 
 @media screen and (min-width: 992px) {
 
-    .project {
+    .project-presentation {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -2262,7 +2262,7 @@ i.fa-chevron-right {
         margin: 100Px;
     }
 
-    .project p {
+    .project-presentation p {
         color: black;
         background-color: white;
         opacity: 0.8;
