@@ -163,6 +163,7 @@ document.querySelector('.capture-poke-button').addEventListener("click", async f
 
 
                         if (data.captured_pokemon.type === 'roche' ||
+                            data.captured_pokemon.type === 'acier' ||
                             data.captured_pokemon.type === 'fée' ||
                             data.captured_pokemon.type === 'sol')
                         {
@@ -172,6 +173,7 @@ document.querySelector('.capture-poke-button').addEventListener("click", async f
 
                         if (data.captured_pokemon.type === 'psy' ||
                             data.captured_pokemon.type === 'spectre' ||
+                            data.captured_pokemon.type === 'ténèbres' ||
                             data.captured_pokemon.type === 'poison')
                         {
                             document.querySelector('.view-pokemon').classList.add('night-background');
