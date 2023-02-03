@@ -112,7 +112,7 @@
 
 				{% else %}
 
-					<a><i class="fa-solid fa-chevron-down disable-arrow"></i>
+					<a><i class="fa-solid fa-chevron-down disable-arrow"></i></a>
 
 				{% endif %}
 
@@ -193,13 +193,13 @@
 
 								<div class="info-tile-1 col-4">
 
-									<p>{% if currentPokemon.name == 'clemo' or currentPokemon.name == 'N' or currentPokemon.name == 'Jones' or currentPokemon.name == 'Aeradrin' or currentPokemon.name == 'Tartifllex' or currentPokemon.name == 'LD' or currentPokemon.name == 'Bastien' %}???{% else %}{{ currentPokemon.name|capitalize }}{% endif %}</p>
+									<p>{{ currentPokemon.name|capitalize }}</p>
 
 								</div>
 
 								<div class="info-tile-2 col-4">
 
-									<p>{% if currentPokemon.nameen == 'clemo' or currentPokemon.nameen == 'heinne' or currentPokemon.nameen == 'jones' or currentPokemon.nameen == 'aeradrin' or currentPokemon.nameen == 'tartifllex' or currentPokemon.nameen == 'LD' or currentPokemon.nameen == 'bastien' %}???{% else %}{{ currentPokemon.nameen|capitalize }}{% endif %}</p>
+									<p>{{ currentPokemon.nameen|capitalize }}</p>
 
 								</div>
 

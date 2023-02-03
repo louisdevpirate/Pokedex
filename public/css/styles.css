@@ -6,6 +6,7 @@
 body {
     background-color: #092A3B;
     font-family: 'Ubuntu', sans-serif;
+    color: #FFFFFF;
 }
 
 
@@ -1102,12 +1103,11 @@ i.fa-chevron-right {
 
 .pokedex-nav {
     height: 200px;
-    overflow: scroll;
+    overflow-y: scroll;
     padding: 0;
 }
 
 .pokedex-nav ul {
-    overflow: scroll;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1176,6 +1176,7 @@ i.fa-chevron-right {
 
 .info {
     padding: 0;
+    color: black;
     border-top: solid black 1px;
 }
 
