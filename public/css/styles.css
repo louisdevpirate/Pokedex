@@ -6,7 +6,6 @@
 body {
     background-color: #092A3B;
     font-family: 'Ubuntu', sans-serif;
-    color: #FFFFFF;
 }
 
 
@@ -1005,7 +1004,7 @@ i.fa-chevron-right {
     }
 
     .capture-poke-button {
-        margin-left: 7%;
+        margin-left: 5%;
     }
 }
 

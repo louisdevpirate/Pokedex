@@ -23,14 +23,18 @@
 
 					{# Block de gauche, Infos de l'utilisateur #}
 					<ul class="list-group col-12 col-lg-12 " id="utilisateur">
-						<li class="list-group-item ">Pokémons attrapés :
+						<li class="list-group-item">Pseudo
+						<span class="text-info">{{ app.user.pseudonym }}</span>
+						</li>
+
+						<li class="list-group-item ">Pokémons libérés :
 							<span class="text-info">{{ nbPokemon }}</span>
 
 						</li>
 						<li class="list-group-item ">Shiny obtenus :
 							<span class="text-info">{{ nbShiny }}</span>
 						</li>
-						<li class="list-group-item ">Pokédex rempli à  {{ nbPokemonUnique }}/257
+						<li class="list-group-item ">Pokédex rempli à  {{ nbPokemonUnique }}/392
 							<span class="text-info"></span>
 						</li>
 					</ul>
@@ -47,9 +51,6 @@
 
 						<li class="list-group-item ">Adresse E-mail :
 							<span class="text-info">{{ app.user.email }}</span>
-						</li>
-						<li class="list-group-item ">Pseudonyme :
-							<span class="text-info">{{ app.user.pseudonym }}</span>
 						</li>
 						<li class="list-group-item ">Début de l'aventure :
 							<span class="text-info">{{ app.user.creationDate|date('d/m/Y')}}</span>

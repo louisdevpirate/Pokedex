@@ -2,9 +2,13 @@
 
 namespace App\Repository;
 
+use App\Entity\CapturedPokemon;
 use App\Entity\Pokemon;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Security\Core\User\UserInterface;
+use function Symfony\Component\String\u;
 
 /**
  * @extends ServiceEntityRepository<Pokemon>
@@ -67,6 +71,60 @@ class PokemonRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
 
+    }
+
+    public function findNextSpecieEncounter(Pokemon $currentPokemon, User $user): ?Pokemon
+    {
+
+        //SELECT * FROM USER INNER JOIN captured_pokemon ON
+        return $this->createQueryBuilder('u')
+            ->innerJoin('u.capturedPokemon', 'cp')
+            ->innerJoin('cp.pokemon', 'p')
+            ->where('cp.owner = :userId')
+            ->andWhere(' p.pokeId > ' . $currentPokemon->getPokeId())
+            ->setParameter('userId', $user->getId())
+            ->orderBy('cp.pokemon', 'ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+
+    }
+
+    public function findPreviousSpecieEncounter(Pokemon $currentPokemon, User $user): ?Pokemon
+    {
+
+        //SELECT * FROM USER INNER JOIN captured_pokemon ON
+        return $this->createQueryBuilder('u')
+            ->innerJoin('u.capturedPokemon', 'cp')
+            ->innerJoin('cp.pokemon', 'p')
+            ->where('cp.owner = :userId')
+            ->andWhere(' p.pokeId < ' . $currentPokemon->getPokeId())
+            ->setParameter('userId', $user->getId())
+            ->orderBy('cp.pokemon', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+
+    }
+
+
+    public function getSpeciesEncounter(User $user): array
+    {
+
+        // SELECT *
+        // FROM pokemon
+        // INNER JOIN captured_pokemon ON captured_pokemon.pokemon_id = pokemon.id
+        // WHERE captured_pokemon.owner_id = 1
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.capturedPokemon', 'cp')
+            ->where('cp.owner = :userId')
+            ->setParameter('userId', $user->getId())
+            ->orderBy('p.pokeId', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
     }
 
 //    /**

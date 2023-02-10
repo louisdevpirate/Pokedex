@@ -69,7 +69,7 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             )   //Mise en place d'un nombre de lancés par défaut quand on crée un compte
-                ->setLaunchs(20)
+                ->setLaunchs(30)
                 ->setLastObtainedLaunch(new \DateTime())
             ;
 

@@ -6,11 +6,8 @@ namespace App\Controller;
 
 use App\Entity\CapturedPokemon;
 use App\Entity\Pokemon;
-
 use App\Form\EditModifyProfilFormType;
-
 use App\Entity\User;
-
 use App\Form\RegistrationFormType;
 use DateTime;
 use App\Form\ModifyFormType;
@@ -88,7 +85,7 @@ class HomeController extends AbstractController
 
         if($this->getUser()->getLaunchs() < 1){
             return $this->json([
-                'error' => 'Vous n\'avez plus de lancers disponibles, veuillez réessayer plus tard!'
+                'error' => 'Vous n\'avez plus de lancers disponibles, veuillez réessayer plus tard !'
             ]);
         }
 
@@ -193,21 +190,18 @@ class HomeController extends AbstractController
 
 
     #[Route('/pokedex/{pokeId}/', name: 'app_pokedex')]
+    #[IsGranted('ROLE_USER')]
     public function pokedex(Pokemon $pokemon, ManagerRegistry $doctrine): Response
     {
 
         $pokeRepo = $doctrine->getRepository(Pokemon::class);
 
-        $pokemonBefore = $pokeRepo->findPrev($pokemon);
-        $pokemonNext = $pokeRepo->findNext($pokemon);
 
-        $pokemonNextNext = $pokeRepo->findNext($pokemon, 1);
-
-
+        $pokemonBefore = $pokeRepo->findPreviousSpecieEncounter($pokemon, $this->getUser());
+        $pokemonNext = $pokeRepo->findNextSpecieEncounter($pokemon, $this->getUser());
 
         $pokemons = $pokeRepo->findBy([], ['pokeId' => 'ASC']);
-
-        $pokemons = $pokeRepo->findBy([], ['pokeId' => 'ASC']);
+        $pokemonsCaptured = $pokeRepo->getSpeciesEncounter($this->getUser());
 
 
 
@@ -216,8 +210,8 @@ class HomeController extends AbstractController
             'currentPokemon' => $pokemon,
             'pokemonAfter' => $pokemonNext,
             'pokemons' => $pokemons,
+            'pokemonsCaptured' => $pokemonsCaptured,
         ]);
-
     }
 
 

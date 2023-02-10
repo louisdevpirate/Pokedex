@@ -56,8 +56,8 @@
 
 
 
-			{# Titre h1 seulement visible en écran large, au-dessus de la liste  #}
-			<h1 class="consult">Consultez le Pokédex</h1>
+{#			#}{# Titre h1 seulement visible en écran large, au-dessus de la liste  #}
+{#			<h1 class="consult">Consultez le Pokédex</h1>#}
 
 			{# Boutons de flèche du haut, seulement visible en écran large  #}
 			<button class="arrows col-6">
@@ -86,21 +86,25 @@
 				<ul class="col-12">
 					
 
-					{% for pokemon in pokemons %}
+					{% for pokemonCaptured in pokemonsCaptured %}
 
-						<button class="poke-li col-12">
-							<li {{ (currentPokemon == pokemon) ? 'data-current="true"' }} id="poke-{{ pokemon.pokeId }}">
-								<a disabled class="list-a" href="{{ path('app_pokedex', { pokeId : (pokemon.pokeId) }) }}">{% if pokemon.name == 'clemo' or pokemon.name == 'N' or pokemon.name == 'Jones' or pokemon.name == 'Aeradrin' or pokemon.name == 'Tartifllex' or pokemon.name == 'LD' or pokemon.name == 'Bastien' %}???{% else %}{{ pokemon.name|capitalize }} #{{ pokemon.pokeId }}{% endif %}</a>
-							</li>
-						</button>
+
+							<button class="poke-li col-12">
+								<li {{ (currentPokemon == pokemonCaptured) ? 'data-current="true"' }} id="poke-{{ pokemonCaptured.pokeId }}">
+									<a disabled class="list-a" href="{{ path('app_pokedex', { pokeId : (pokemonCaptured.pokeId) }) }}">{% if pokemonCaptured.name == 'clemo' or pokemonCaptured.name == 'N' or pokemonCaptured.name == 'Jones' or pokemonCaptured.name == 'Aeradrin' or pokemonCaptured.name == 'Tartifllex' or pokemonCaptured.name == 'LD' or pokemonCaptured.name == 'Bastien' %}???{% else %}{{ pokemonCaptured.name|capitalize }} #{{ pokemonCaptured.pokeId }}{% endif %}</a>
+								</li>
+							</button>
+
 					{% endfor %}
-				
+
 				</ul>
 
 			</div>
 
 			{# Bouton de flèche du bas, seulement visible en écran large  #}
 			<button class="arrows col-6">
+
+			{% if pokemonsCaptured %}
 
 				{% if pokemonAfter is not null %}
 
@@ -115,6 +119,7 @@
 					<a><i class="fa-solid fa-chevron-down disable-arrow"></i></a>
 
 				{% endif %}
+			{% endif %}
 
 			</button>
 
