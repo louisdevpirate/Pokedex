@@ -3,7 +3,7 @@
 
 namespace App\Controller;
 
-
+use App\Repository\UserRepository;
 use App\Entity\CapturedPokemon;
 use App\Entity\Pokemon;
 use App\Form\EditModifyProfilFormType;
@@ -44,25 +44,52 @@ class HomeController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function profil(ManagerRegistry $doctrine): Response
     {
-
+        $userRepo = $doctrine->getRepository(User::class);
         $pokeRepo = $doctrine->getRepository(CapturedPokemon::class);
+        $pokeRepo2 = $doctrine->getRepository(Pokemon::class);
         $user = $this->getUser();
-        // hydratation du nombre total de pokemon attraper par l'utilisateur connecter.
-        $capturedPokemon = $pokeRepo->findBy(['owner' => $user]);
+        // Hydratation du nombre total de pokemon attrapés par l'utilisateur connecté.
         $capturedPokemon = $user->getCapturedPokemon();
         $pokemonIds = [];
         foreach ($capturedPokemon as $cp) {
             $pokemonIds[] = $cp->getPokemon()->getId();
         }
-        // hydratation des pokemon shiny et des pokemon unique du pokedex attraper par l'utilisateur.
+        // Hydratation des pokemon shiny et des pokemon uniques du pokedex attrapés par l'utilisateur.
         $uniquePokemonIds = array_unique($pokemonIds);
+
         $nbPokemonUnique = count($uniquePokemonIds);
+
         $nbPokemon = count($capturedPokemon);
+
+//        Appel fonction pour connaitre le remplissage du pokedex de chaque utilisateur
+
+        $allUsersSpeciesSeen = $userRepo->top10TotalSpeciesSeen();
+
+        dump($allUsersSpeciesSeen);
+
+//        Pour avoir le nombre de pokémons présents dans le pokedex
+
+        $allPokemon = $pokeRepo2->findAll();
+
+        $pokedexSize = count($allPokemon);
+
+        $i = 0;
+
+
+
         $capturedPokemonShiny = $pokeRepo->findBy(['owner' => $user, 'shiny' => true]);
         $nbShiny = count($capturedPokemonShiny);
 
+
+
+
         return $this->render('main/profil.html.twig', [
-            'nbPokemon' => $nbPokemon, 'nbPokemonUnique' => $nbPokemonUnique, 'nbShiny' => $nbShiny
+            'nbPokemon' => $nbPokemon,
+            'nbPokemonUnique' => $nbPokemonUnique,
+            'nbShiny' => $nbShiny,
+            'topUserSpeciesSeen' => $allUsersSpeciesSeen,
+            'pokedexSize' => $pokedexSize,
+            'num' => $i
         ]);
 
 

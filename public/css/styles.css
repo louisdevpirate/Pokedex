@@ -681,8 +681,6 @@ footer {
 
 .informations-account-title {
     color: white;
-    margin-top: 20px;
-    margin-bottom: 20px;
 }
 
 .right-block {
@@ -695,7 +693,7 @@ footer {
     background-color: #DD4242;
     border: solid #A62840 5px;
     border-radius: 30px;
-    padding: 20px;
+    padding: 0 20px 7px 20px;
 }
 
 .list-group-item {
@@ -707,10 +705,47 @@ footer {
     border-radius: 5px;
 }
 
+/*Modif stats top 10 pokedex*/
+
+.table-pokedex{
+    border-collapse: collapse;
+
+}
+
+.table-pokedex tr th{
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 0.8rem;
+    background-color: white;
+    opacity: 0.8;
+    margin: 5px;
+}
+
+.pokedex-top-10{
+    font-family: 'Press Start 2P', sans-serif;
+    background-color: white;
+    opacity: 0.8;
+    padding: 8px;
+    border-bottom: #E06666 solid 10px;
+}
+.pokedex-top-10 td{
+    padding: 10px;
+
+}
+
+.top-10-pokedex-box{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.thead-top10 tr th {
+    padding: 10px;
+    border-bottom: #E06666 solid 25px;
+}
+
+
 .modify-info {
     text-align: center;
-    margin-top: 30px;
-    margin-bottom: 100px;
+    transform: scale(0.8);
 }
 
 .modify-button {
@@ -718,7 +753,7 @@ footer {
     padding: 5px;
     border-radius: 40px;
     border: solid #AF374D;
-    margin-top: 40px;
+    margin-top: 5px;
 }
 
 .modify-button:hover {

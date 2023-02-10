@@ -34,7 +34,7 @@
 						<li class="list-group-item ">Shiny obtenus :
 							<span class="text-info">{{ nbShiny }}</span>
 						</li>
-						<li class="list-group-item ">Pokédex rempli à  {{ nbPokemonUnique }}/392
+						<li class="list-group-item ">Pokédex rempli à  {{ nbPokemonUnique }}/{{ pokedexSize }}
 							<span class="text-info"></span>
 						</li>
 					</ul>
@@ -62,28 +62,60 @@
 							<span class="text-info">{{ is_granted('ROLE_ADMIN') ? 'Administrateur' : 'Utilisateur' }}</span>
 						</li>
 					</ul>
+
+					<div class="modify-info">
+						{# NE PAS OUBLIER DE CREER LE LIEN QUI REDIRIGE VERS LA PAGE DE MODIFICATION #}
+						<button class="modify-button">
+
+							<div class="second-border-modify">
+
+								<a href="{{ path('app_modify') }}" class="modify-button-link"><img src="{{ asset('images/PokeBall.png') }}" alt="Poke Ball" width="50px">Modifier
+
+									<i class="fa-solid fa-chevron-right"></i>
+
+								</a>
+
+							</div>
+
+						</button>
+					</div>
 				</div>
 			</div>
 
-			{# Lien qui redirige vers une nouvelle page afin de modifier les informations de l'utilisateur #}
-			<div class="modify-info">
-				{# NE PAS OUBLIER DE CREER LE LIEN QUI REDIRIGE VERS LA PAGE DE MODIFICATION #}
-				<button class="modify-button">
 
-					<div class="second-border-modify">
 
-						<a href="{{ path('app_modify') }}" class="modify-button-link"><img src="{{ asset('images/PokeBall.png') }}" alt="Poke Ball" width="50px">Modifier les informations
+			{# Tableau des 10 meilleurs pokédex #}
+			<div class="left-block col-10 top-10-pokedex-box">
 
-							<i class="fa-solid fa-chevron-right"></i>
+				<table class="table-pokedex">
+					<h2 class="stats-title">Les 10 meilleurs Pokédex!</h2>
+					<thead class="thead-top10">
+						<tr>
+							<th class="text-center" scope="col">N°</th>
+							<th class="text-center" scope="col">Pseudo</th>
+							<th class="text-center" scope="col">Complétion du Pokédex</th>
+							<th class="text-center" scope="col">Total de pokéballs ouvertes</th>
+						</tr>
+					</thead>
+					<tbody>
+					{% for userData in topUserSpeciesSeen %}
 
-						</a>
+						<tr class="pokedex-top-10">
+							{% set num = num + 1 %}
+	        				<td class="text-center">{{ num }}</td>
+							<td class="text-center">{{ userData.0.pseudonym }} </td>
+							<td class="text-center">{{ userData.total_species_seen }}/{{ pokedexSize }}</td>
+							<td class="text-center">{{ userData.total_captured }} </td>
+						</tr>
+					{% endfor %}
 
-					</div>
+					</tbody>
+				</table>
 
-				</button>
 			</div>
+
 		</div>
+
 	</div>
 
-</div>
 {# Fermeture langague twig #}{% endblock %}

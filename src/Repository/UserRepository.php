@@ -56,6 +56,48 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->save($user, true);
     }
 
+    public function top10TotalSpeciesSeen(): array
+    {
+        ///SELECT user.*, COUNT(DISTINCT captured_pokemon.pokemon_id) as total_species_seen
+        //FROM user
+        //INNER JOIN captured_pokemon ON user.id = captured_pokemon.owner_id
+        //INNER JOIN pokemon ON captured_pokemon.pokemon_id = pokemon.id
+        //GROUP BY user.id
+        //ORDER BY total_species_seen DESC
+        //LIMIT 10;
+        return $this->createQueryBuilder('u')
+            ->select('u, COUNT(DISTINCT cp.pokemon) total_species_seen, COUNT(cp.pokemon) total_captured')
+            ->innerJoin('u.capturedPokemon', 'cp')
+            ->innerJoin('cp.pokemon', 'p')
+            ->groupBy('u')
+            ->orderBy('total_species_seen', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+
+    }
+
+    public function top10TotalPokemonFreed(): array
+    {
+//        SELECT user.*, COUNT(captured_pokemon.id) as total_pokemon_captured
+//        FROM user
+//        INNER JOIN captured_pokemon ON user.id = captured_pokemon.owner_id
+//        GROUP BY user.id
+//        ORDER BY total_pokemon_captured DESC
+//        LIMIT 10;
+        return $this->createQueryBuilder('u')
+            ->select('u, COUNT(cp.pokemon) total_pokemon_captured')
+            ->innerJoin('u.capturedPokemon', 'cp')
+            ->groupBy('u.id')
+            ->orderBy('total_pokemon_captured', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+
+
+    }
+
+
 //    /**
 //     * @return User[] Returns an array of User objects
 //     */

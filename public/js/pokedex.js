@@ -15,7 +15,7 @@ let pokedexNav = document.querySelector('.pokedex-nav');
 let buttonToDisplay = pokedexNav.querySelector('[data-current]');
 
 
-pokedexNav.scrollTop = buttonToDisplay.offsetTop - 900;
+pokedexNav.scrollTop = buttonToDisplay.offsetTop - 740;
 
 
 //Animation du bouton B

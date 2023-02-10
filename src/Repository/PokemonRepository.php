@@ -127,6 +127,44 @@ class PokemonRepository extends ServiceEntityRepository
             ;
     }
 
+
+
+    public function TotalSpeciesSeen(): array
+    {
+            ///SELECT user.*, COUNT(DISTINCT captured_pokemon.pokemon_id) as total_species_seen
+            //FROM user
+            //INNER JOIN captured_pokemon ON user.id = captured_pokemon.owner_id
+            //INNER JOIN pokemon ON captured_pokemon.pokemon_id = pokemon.id
+            //GROUP BY user.id
+            //ORDER BY total_species_seen DESC
+            //LIMIT 10;
+        return $this->createQueryBuilder('u')
+            ->select('u, COUNT(DISTINCT cp.pokemon) total')
+            ->innerJoin('u.capturedPokemon', 'cp')
+            ->innerJoin('cp.pokemon', 'p')
+            ->groupBy('u')
+            ->orderBy('total', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+
+    }
+
+    public function getTotalPokemonFreed(): array
+    {
+
+//        SELECT user.*, COUNT(captured_pokemon.id) as total_pokemon_captured
+//          FROM user
+//          INNER JOIN captured_pokemon ON user.id = captured_pokemon.owner_id
+//          GROUP BY user.id
+//          ORDER BY total_pokemon_captured DESC
+//          LIMIT 10;
+
+
+    }
+
+
+
 //    /**
 //     * @return Pokemon[] Returns an array of Pokemon objects
 //     */
