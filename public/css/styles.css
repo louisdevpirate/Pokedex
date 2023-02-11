@@ -709,15 +709,16 @@ footer {
 
 .table-pokedex{
     border-collapse: collapse;
+    text-wrap: normal;
 
 }
 
 .table-pokedex tr th{
     font-family: 'Press Start 2P', sans-serif;
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     background-color: white;
     opacity: 0.8;
-    margin: 5px;
+
 }
 
 .pokedex-top-10{
@@ -728,8 +729,9 @@ footer {
     border-bottom: #E06666 solid 10px;
 }
 .pokedex-top-10 td{
-    padding: 10px;
-
+    word-wrap: break-word;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .top-10-pokedex-box{
@@ -738,7 +740,7 @@ footer {
 }
 
 .thead-top10 tr th {
-    padding: 10px;
+
     border-bottom: #E06666 solid 25px;
 }
 
@@ -820,6 +822,17 @@ footer {
         opacity: 0.8;
         margin: 5px;
         border-radius: 5px;
+    }
+    .thead-top10 tr th{
+        padding: 10px;
+    }
+
+    .pokedex-top-10 td{
+        padding: 10px;
+    }
+
+    .table-pokedex tr th{
+        font-size: 0.8rem;
     }
 }
 

@@ -47,7 +47,9 @@ class HomeController extends AbstractController
         $userRepo = $doctrine->getRepository(User::class);
         $pokeRepo = $doctrine->getRepository(CapturedPokemon::class);
         $pokeRepo2 = $doctrine->getRepository(Pokemon::class);
+
         $user = $this->getUser();
+
         // Hydratation du nombre total de pokemon attrapés par l'utilisateur connecté.
         $capturedPokemon = $user->getCapturedPokemon();
         $pokemonIds = [];
@@ -61,7 +63,7 @@ class HomeController extends AbstractController
 
         $nbPokemon = count($capturedPokemon);
 
-//        Appel fonction pour connaitre le remplissage du pokedex de chaque utilisateur
+//        Appel fonction pour connaitre le remplissage du pokedex de chaque utilisateurs
 
         $allUsersSpeciesSeen = $userRepo->top10TotalSpeciesSeen();
 
@@ -72,20 +74,46 @@ class HomeController extends AbstractController
 
         $pokedexSize = count($allPokemon);
 
+
+
+
         $i = 0;
 
 
 
         $capturedPokemonShiny = $pokeRepo->findBy(['owner' => $user, 'shiny' => true]);
+
         $nbShiny = count($capturedPokemonShiny);
 
 
+        // Obtention des stats de rareté des pokémons libérés par l'utilisateur connecté
 
+        $pokemonRarityTR = 0;
+        foreach ($capturedPokemon as $cp) {
+            if($cp->getPokemon()->getRarity() == 'TR'){
+                $pokemonRarityTR++;
+            }
+        }
+        $pokemonRarityEX = 0;
+        foreach ($capturedPokemon as $cp) {
+            if($cp->getPokemon()->getRarity() == 'EX'){
+                $pokemonRarityEX++;
+            }
+        }
+        $pokemonRaritySR = 0;
+        foreach ($capturedPokemon as $cp) {
+            if($cp->getPokemon()->getRarity() == 'SR'){
+                $pokemonRaritySR++;
+            }
+        }
 
         return $this->render('main/profil.html.twig', [
             'nbPokemon' => $nbPokemon,
             'nbPokemonUnique' => $nbPokemonUnique,
             'nbShiny' => $nbShiny,
+            'nbTR' => $pokemonRarityTR,
+            'nbEX' => $pokemonRarityEX,
+            'nbSR' => $pokemonRaritySR,
             'topUserSpeciesSeen' => $allUsersSpeciesSeen,
             'pokedexSize' => $pokedexSize,
             'num' => $i
@@ -228,6 +256,7 @@ class HomeController extends AbstractController
 
         $pokemons = $pokeRepo->findBy([], ['pokeId' => 'ASC']);
         $pokemonsCaptured = $pokeRepo->getSpeciesEncounter($this->getUser());
+
 
 
 

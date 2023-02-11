@@ -91,7 +91,11 @@
 
 							<button class="poke-li col-12">
 								<li {{ (currentPokemon == pokemonCaptured) ? 'data-current="true"' }} id="poke-{{ pokemonCaptured.pokeId }}">
-									<a disabled class="list-a" href="{{ path('app_pokedex', { pokeId : (pokemonCaptured.pokeId) }) }}">{% if pokemonCaptured.name == 'clemo' or pokemonCaptured.name == 'N' or pokemonCaptured.name == 'Jones' or pokemonCaptured.name == 'Aeradrin' or pokemonCaptured.name == 'Tartifllex' or pokemonCaptured.name == 'LD' or pokemonCaptured.name == 'Bastien' %}???{% else %}{{ pokemonCaptured.name|capitalize }} #{{ pokemonCaptured.pokeId }}{% endif %}</a>
+									<a disabled class="list-a" href="{{ path('app_pokedex', { pokeId : (pokemonCaptured.pokeId) }) }}">
+										{% if pokemonCaptured.rarity == 'SR' %}???
+										{% else %}{{ pokemonCaptured.name|capitalize }}
+											#{{ pokemonCaptured.pokeId }}
+										{% endif %}</a>
 								</li>
 							</button>
 
@@ -210,7 +214,7 @@
 
 								<div class="info-tile-3 col-4">
 
-									<p>{% if currentPokemon.pokeid == '9000' or currentPokemon.pokeid == '9001' or currentPokemon.pokeid == '9002' or currentPokemon.pokeid == '9003' or currentPokemon.pokeid == '9005' or currentPokemon.pokeid == '9004' or currentPokemon.pokeid == '0' %}???{% else %}#{{ currentPokemon.pokeid }}{% endif %}</p>
+									<p>{% if currentPokemon.rarity == 'SR'%}???{% else %}#{{ currentPokemon.pokeid }}{% endif %}</p>
 
 								</div>
 

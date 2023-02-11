@@ -31,9 +31,24 @@
 							<span class="text-info">{{ nbPokemon }}</span>
 
 						</li>
+
+
+						<li class="list-group-item ">Pokémons Très Rare(s) libéré(s) :
+							<span class="text-info">{{ nbTR }}</span>
+						</li>
+
+						<li class="list-group-item ">Pokémons Extrêmement Rare(s) libéré(s) :
+							<span class="text-info">{{ nbEX }}</span>
+						</li>
+
+						<li class="list-group-item ">Pokémons Secret Rare(s) libéré(s) : :
+							<span class="text-info">{{ nbSR }}</span>
+						</li>
+
 						<li class="list-group-item ">Shiny obtenus :
 							<span class="text-info">{{ nbShiny }}</span>
 						</li>
+
 						<li class="list-group-item ">Pokédex rempli à  {{ nbPokemonUnique }}/{{ pokedexSize }}
 							<span class="text-info"></span>
 						</li>
@@ -85,10 +100,9 @@
 
 
 			{# Tableau des 10 meilleurs pokédex #}
-			<div class="left-block col-10 top-10-pokedex-box">
-
+			<div class="left-block col-12 col-lg-10 top-10-pokedex-box row">
+				<h2 class="stats-title">Les 10 meilleurs Pokédex!</h2>
 				<table class="table-pokedex">
-					<h2 class="stats-title">Les 10 meilleurs Pokédex!</h2>
 					<thead class="thead-top10">
 						<tr>
 							<th class="text-center" scope="col">N°</th>
