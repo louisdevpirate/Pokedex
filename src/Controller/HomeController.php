@@ -65,7 +65,6 @@ class HomeController extends AbstractController
 
         $allUsersSpeciesSeen = $userRepo->top10TotalSpeciesSeen();
 
-        dump($allUsersSpeciesSeen);
 
 //        Pour avoir le nombre de pokémons présents dans le pokedex
 

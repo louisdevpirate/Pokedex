@@ -71,6 +71,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->innerJoin('cp.pokemon', 'p')
             ->groupBy('u')
             ->orderBy('total_species_seen', 'DESC')
+            ->setMaxResults('10')
             ->getQuery()
             ->getResult()
             ;
