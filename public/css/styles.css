@@ -9,7 +9,9 @@ body {
 }
 
 
-
+.mentions-legales{
+    color: #FFFFFF;
+}
 
 
 
@@ -651,6 +653,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 }
 
 .stats-block {
@@ -693,7 +696,7 @@ footer {
     background-color: #DD4242;
     border: solid #A62840 5px;
     border-radius: 30px;
-    padding: 0 20px 7px 20px;
+    padding: 15px 20px 7px 20px;
 }
 
 .list-group-item {
@@ -737,6 +740,8 @@ footer {
 .top-10-pokedex-box{
     margin-top: 50px;
     margin-bottom: 50px;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .thead-top10 tr th {
@@ -795,18 +800,18 @@ footer {
 
     .background {
         background: url(../images/Poke-Background.png) fixed;
-        animation: background-movement 30s linear infinite;
+        /*animation: background-movement 30s linear infinite;*/
     }
 
-    @keyframes background-movement {
-        from {
-            background-position: top left;
-        }
+    /*@keyframes background-movement {*/
+    /*    from {*/
+    /*        background-position: top left;*/
+    /*    }*/
 
-        to {
-            background-position: bottom right;
-        }
-    }
+    /*    to {*/
+    /*        background-position: bottom right;*/
+    /*    }*/
+    /*}*/
 
     .stats-block {
         display: flex;
@@ -825,6 +830,10 @@ footer {
     }
     .thead-top10 tr th{
         padding: 10px;
+    }
+    .top-10-pokedex-box{
+        padding-left: 30px;
+        padding-right: 30px;
     }
 
     .pokedex-top-10 td{
@@ -918,7 +927,6 @@ i.fa-chevron-right {
     align-items: center;
     justify-content: center;
     border: 2mm ridge rgba(240 0 32/ 0.9);
-    border-radius: 2%;
 
 }
 
@@ -971,11 +979,19 @@ i.fa-chevron-right {
 .rarity-scale {
     color: #FFFFFF;
     text-align: center;
+    background-color: #AF374D;
+    border: 2mm ridge rgba(240 0 32/ 0.9);
+    border-bottom-width: 0;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    font-weight: bold;
+
 }
 
 .rarity-scale p span {
-    color: #DD4242;
+    color: #d4af37;
     font-size: 1.5rem;
+    font-weight: bold;
 }
 
 .view-pokemon .displayed-pokemon {
@@ -1424,18 +1440,18 @@ i.fa-chevron-right {
         display: flex;
         flex-direction: row;
         background-image: url(../images/Poke-Background.png);
-        animation: background-movement 30s linear infinite;
+        /*animation: background-movement 30s linear infinite;*/
     }
 
-    @keyframes background-movement {
-        from {
-            background-position: top left;
-        }
+    /*@keyframes background-movement {*/
+    /*    from {*/
+    /*        background-position: top left;*/
+    /*    }*/
 
-        to {
-            background-position: bottom right;
-        }
-    }
+    /*    to {*/
+    /*        background-position: bottom right;*/
+    /*    }*/
+    /*}*/
 
     .poke-list {
         display: flex;

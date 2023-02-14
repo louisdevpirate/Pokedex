@@ -125,9 +125,20 @@ class HomeController extends AbstractController
 
     #[Route('/capture/', name: 'app_capture')]
     #[IsGranted('ROLE_USER')]
-    public function capture(): Response
+    public function capture(ManagerRegistry $doctrine): Response
     {
+
+
+        $capturedPokeRepo = $doctrine->getRepository(CapturedPokemon::class);
+
+        $allPokemonCaptured = $capturedPokeRepo->findAll();
+
+        $countPokemonCaptured = count($allPokemonCaptured);
+
+
         return $this->render('main/capture.html.twig', [
+
+            'totalPokemon' => $countPokemonCaptured
 
         ]);
     }
