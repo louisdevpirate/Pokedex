@@ -76,14 +76,14 @@ class PokemonRepository extends ServiceEntityRepository
     public function findNextSpecieEncounter(Pokemon $currentPokemon, User $user): ?Pokemon
     {
 
-        //SELECT * FROM USER INNER JOIN captured_pokemon ON
-        return $this->createQueryBuilder('u')
-            ->innerJoin('u.capturedPokemon', 'cp')
-            ->innerJoin('cp.pokemon', 'p')
+        // SELECT * FROM pokemon INNER JOIN captured_pokemon ON pokemon.id = captured_pokemon.pokemon_id ORDER BY pokemon.id ASC
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.capturedPokemon', 'cp')
             ->where('cp.owner = :userId')
-            ->andWhere(' p.pokeId > ' . $currentPokemon->getPokeId())
+            ->andWhere('p.pokeId > :pokeId ')
             ->setParameter('userId', $user->getId())
-            ->orderBy('cp.pokemon', 'ASC')
+            ->setParameter('pokeId', $currentPokemon->getPokeId())
+            ->orderBy('p.id', 'ASC')
             ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult()
@@ -94,18 +94,18 @@ class PokemonRepository extends ServiceEntityRepository
     public function findPreviousSpecieEncounter(Pokemon $currentPokemon, User $user): ?Pokemon
     {
 
-        //SELECT * FROM USER INNER JOIN captured_pokemon ON
-        return $this->createQueryBuilder('u')
-            ->innerJoin('u.capturedPokemon', 'cp')
-            ->innerJoin('cp.pokemon', 'p')
+        // SELECT * FROM pokemon INNER JOIN captured_pokemon ON pokemon.id = captured_pokemon.pokemon_id ORDER BY pokemon.id DESC
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.capturedPokemon', 'cp')
             ->where('cp.owner = :userId')
-            ->andWhere(' p.pokeId < ' . $currentPokemon->getPokeId())
+            ->andWhere('p.pokeId < :pokeId ')
             ->setParameter('userId', $user->getId())
-            ->orderBy('cp.pokemon', 'DESC')
+            ->setParameter('pokeId', $currentPokemon->getPokeId())
+            ->orderBy('p.id', 'DESC')
             ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult()
-            ;
+        ;
 
     }
 
@@ -125,7 +125,7 @@ class PokemonRepository extends ServiceEntityRepository
             ->orderBy('p.pokeId', 'ASC')
             ->getQuery()
             ->getResult()
-            ;
+        ;
     }
 
 }
