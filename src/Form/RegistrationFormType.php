@@ -26,7 +26,7 @@ class RegistrationFormType extends AbstractType
         $builder
             // Champ email
             ->add('email', EmailType::class, [
-                'label' => 'Adresse Email',
+                'label' => 'Adresse Email :',
                 'attr' => [
                     'placeholder' => 'ex : alice@gmail.com',
                 ],
@@ -45,10 +45,10 @@ class RegistrationFormType extends AbstractType
                 'type' => PasswordType::class,
                 'invalid_message' => 'Le mot de passe ne correspond pas à sa confirmation',
                 'first_options' => [
-                    'label' => 'Nouveau mot de passe',
+                    'label' => 'Nouveau mot de passe :',
                 ],
                 'second_options' => [
-                    'label' => 'Confirmation du mot de passe',
+                    'label' => 'Confirmation du mot de passe :',
                 ],
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
@@ -65,7 +65,7 @@ class RegistrationFormType extends AbstractType
                     // regex de verification de mot de passe
                     new Regex([
                         'pattern' => "/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[ !\"#\$%&\'()*+,\-.\/:;<=>?@[\\\\\]\^_`{\|}~]).{8,4096}$/u",
-                        'message' => 'Votre mot de passe doit contenir obligatoirement une minuscule, une majuscule, un chiffre et un caractère spécial'
+                        'message' => 'Votre mot de passe doit contenir obligatoirement 8 caractères dont une minuscule, une majuscule, un chiffre et un caractère spécial'
                     ]),
                 ],
             ])
@@ -74,9 +74,9 @@ class RegistrationFormType extends AbstractType
 
             // Champ pseudonym
             ->add('pseudonym', TextType::class, [
-                'label' => 'Pseudonyme',
+                'label' => 'Pseudonyme :',
                 'attr' => [
-                    'placeholder' => 'ex : bobdu95',
+                    'placeholder' => 'ex : Sasha',
                 ],
                 'constraints' => [
                     new NotBlank([

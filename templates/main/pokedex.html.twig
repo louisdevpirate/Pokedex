@@ -84,22 +84,37 @@
 			<div class="ul-list pokedex-nav">
 
 				<ul class="col-12">
-					
-
-					{% for pokemonCaptured in pokemonsCaptured %}
 
 
-							<button class="poke-li col-12">
-								<li {{ (currentPokemon == pokemonCaptured) ? 'data-current="true"' }} id="poke-{{ pokemonCaptured.pokeId }}">
-									<a disabled class="list-a" href="{{ path('app_pokedex', { pokeId : (pokemonCaptured.pokeId) }) }}">
-										{% if pokemonCaptured.rarity == 'SR' %}???
-										{% else %}{{ pokemonCaptured.name|capitalize }}
-											#{{ pokemonCaptured.pokeId }}
+					{% for poke in pokemons %}
+
+						{% if poke.captured %}
+							<button class="poke-li captured col-12">
+								<li>
+									<a disabled class="list-a col-12" href="{{ path('app_pokedex', { pokeId : (poke.pokeId) }) }}">
+										{% if poke.rarity == 'SR' %}???
+										{% else %}{{ poke.name|capitalize }}
+											#{{ poke.pokeId }}
 										{% endif %}</a>
 								</li>
 							</button>
+						{% else %}
+							<button disabled class="poke-li col-12 not-captured">
+								<li>
+								<a disabled="" class="list-a col-12" href="#/">???</a>
+								</li>
+							</button>
+
+						{% endif %}
 
 					{% endfor %}
+
+{#					{% for poke in pokemons %}#}
+{#						<button class="poke-button{% if poke.captured %} captured{% endif %}">#}
+{#							{{ poke.pokeId }} - {{ poke.name }}#}
+{#						</button>#}
+{#					{% endfor %}#}
+
 
 				</ul>
 
@@ -132,6 +147,8 @@
 	</div>
 
 	{# Div qui englobe toutes les infos du Pokédex (infos du pokémon, son image, son/ses type(s) et sa description)  #}
+
+
 	<div class="pokedex-background col-12 col-lg-7">
 
 		<div class="pokedex-style-buttons col-10">
@@ -195,6 +212,7 @@
 					<div
 						class="row col-12">
 
+
 						{# Infos du nom, du nom-en et du numéro Pokémon  #}
 						<div class="poke-info d-flex flex-row justify-content-center align-items-center">
 
@@ -230,29 +248,32 @@
 
 						
 
-						<div class="column pokepic col-12">
-					
-							{% if currentPokemon.type == 'eau' or currentPokemon.type == 'vol' or currentPokemon.type == 'glace' or currentPokemon.type == 'dragon' %}
-								<div class="eauvolglace"></div>
-							{% endif %}
+						<div class="column pokepic col-12 ">
 
-							{% if currentPokemon.type == 'combat' or currentPokemon.type == 'electrik' or currentPokemon.type == 'feu' %}
-								<div class="combatelectrik"></div>
-							{% endif %}
 
-							{% if currentPokemon.type == 'plante' or currentPokemon.type == 'insecte' or currentPokemon.type == 'normal' %}
-								<div class="planteinsecte"></div>
-							{% endif %}
 
-							{% if currentPokemon.type == 'roche' or currentPokemon.type == 'fée' or currentPokemon.type == 'sol' or currentPokemon.type == 'acier' %}
-								<div class="rochefee"></div>
-							{% endif %}
+								{% if currentPokemon.type == 'eau' or currentPokemon.type == 'vol' or currentPokemon.type == 'glace' or currentPokemon.type == 'dragon' %}
+									<div class="eauvolglace"></div>
+								{% endif %}
 
-							{% if currentPokemon.type == 'psy' or currentPokemon.type == 'spectre' or currentPokemon.type == 'poison' or currentPokemon.type == 'ténèbres' %}
-								<div class="psyspectre"></div>
-							{% endif %}
+								{% if currentPokemon.type == 'combat' or currentPokemon.type == 'electrik' or currentPokemon.type == 'feu' %}
+									<div class="combatelectrik"></div>
+								{% endif %}
 
-							<img class="poke-gif" src="{{ asset('images/gifs/' ~ currentPokemon.gif ) }}" alt="Pokémon">
+								{% if currentPokemon.type == 'plante' or currentPokemon.type == 'insecte' or currentPokemon.type == 'normal' %}
+									<div class="planteinsecte"></div>
+								{% endif %}
+
+								{% if currentPokemon.type == 'roche' or currentPokemon.type == 'fée' or currentPokemon.type == 'sol' or currentPokemon.type == 'acier' %}
+									<div class="rochefee"></div>
+								{% endif %}
+
+								{% if currentPokemon.type == 'psy' or currentPokemon.type == 'spectre' or currentPokemon.type == 'poison' or currentPokemon.type == 'ténèbres' %}
+									<div class="psyspectre"></div>
+								{% endif %}
+
+
+								<img class="poke-gif" src="{{ asset('images/gifs/' ~ currentPokemon.gif ) }}" alt="Pokémon">
 
 							<button class="shiny-button-mobile">
 
@@ -491,6 +512,8 @@
 	</div>
 
 </div>
+
+
 
 {% endblock %}
 

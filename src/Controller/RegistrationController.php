@@ -67,8 +67,9 @@ class RegistrationController extends AbstractController
                 $userPasswordHasher->hashPassword(
                     $user,
                     $form->get('plainPassword')->getData()
+
                 )
-            )   //Mise en place d'un nombre de lancés par défaut quand on crée un compte
+            )   //Mise en place d'un nombre de lancers par défaut quand on crée un compte
                 ->setLaunchs(30)
                 ->setLastObtainedLaunch(new \DateTime())
             ;
@@ -80,12 +81,17 @@ class RegistrationController extends AbstractController
                 $user->setCreationDate(new \DateTime);
 
                 $entityManager->persist($user);
+
                 $entityManager->flush();
 
 
+                $this->addFlash('success', 'Votre compte à bien été créé!');
+
+            return $this->redirectToRoute('app_connexion');
 
 
-            return $this->redirectToRoute('app_home');
+
+
         }
 
     }

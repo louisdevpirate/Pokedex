@@ -111,7 +111,7 @@ document.querySelector('.capture-poke-button').addEventListener("click", async f
                         pokemonGif = pokemonsGifDir + '/' + ((data.captured_pokemon.shiny) ? 'shiny-' : '') + data.captured_pokemon.gif;
 
 
-                        console.log(data.captured_pokemon.rarity + '(' + data.captured_pokemon.rarityRandom + '%)');
+                        console.log(data.captured_pokemon.rarity + '(' + data.captured_pokemon.rarityRandom + '%)' + data.captured_pokemon.new);
 
                         //Effets en fonction de la rareté
                         if(data.captured_pokemon.shiny === true) {
@@ -183,11 +183,9 @@ document.querySelector('.capture-poke-button').addEventListener("click", async f
                         pokemonInfo.innerHTML = '';
 
 
-
-
                         //Affichage des infos du pokemon libéré
 
-                        pokemonInfo.innerHTML = 'Vous avez libéré <span class="text-capitalize">' + data.captured_pokemon.name + '</span>'+ ((data.captured_pokemon.shiny) ? ' Shiny' : '') + ' (' + data.captured_pokemon.rarity + ') !';
+                        pokemonInfo.innerHTML = 'Vous avez libéré <span class="text-capitalize">' + data.captured_pokemon.name + '</span>'+ ((data.captured_pokemon.shiny) ? ' Shiny' : '') + ' (' + data.captured_pokemon.rarity + ') ! ' + ((data.captured_pokemon.new) ? '' : ' (New!) ');
 
                         document.querySelector('.pokeball-animate').classList.remove('pokeball-animated');
 

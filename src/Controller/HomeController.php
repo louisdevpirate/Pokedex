@@ -63,7 +63,7 @@ class HomeController extends AbstractController
 
         $nbPokemon = count($capturedPokemon);
 
-//        Appel fonction pour connaitre le remplissage du pokedex de chaque utilisateurs
+//        Appel fonction pour connaitre le remplissage du pokedex de chaques utilisateurs
 
         $allUsersSpeciesSeen = $userRepo->top10TotalSpeciesSeen();
 
@@ -128,13 +128,13 @@ class HomeController extends AbstractController
     public function capture(ManagerRegistry $doctrine): Response
     {
 
-
+        $pokeRepo = $doctrine->getRepository(Pokemon::class);
         $capturedPokeRepo = $doctrine->getRepository(CapturedPokemon::class);
+        $userRepo = $doctrine->getRepository(User::class);
 
         $allPokemonCaptured = $capturedPokeRepo->findAll();
 
         $countPokemonCaptured = count($allPokemonCaptured);
-
 
         return $this->render('main/capture.html.twig', [
 
@@ -156,6 +156,7 @@ class HomeController extends AbstractController
 
 
         $pokeRepo = $doctrine->getRepository(Pokemon::class);
+        $capturedPokeRepo = $doctrine->getRepository(CapturedPokemon::class);
         $userRepo = $doctrine->getRepository(User::class);
 
 
@@ -200,6 +201,12 @@ class HomeController extends AbstractController
 
         $pokemonCaptured = new CapturedPokemon();
 
+
+
+
+
+
+
         //Calculs shiny
 
 
@@ -222,6 +229,28 @@ class HomeController extends AbstractController
             ->setCaptureDate(new DateTime())
             ->setShiny($isShiny);
 
+
+        //Voir si un dresseur a deja vu ce pokémon ou pas
+
+        $user = $this->getUser();
+
+        $alreadyCapturedPokemon = $pokeRepo->getSpeciesEncounter($user);
+
+        $pokeID = [];
+
+        foreach ($alreadyCapturedPokemon as $acp){
+            $pokeID[] = $acp->getPokeId();
+        }
+
+        $pokemonCapturedId = $pokemonCaptured->getPokemon()->getPokeId();
+
+        if (in_array($pokemonCapturedId, $pokeID)){
+            $isAlreadyCaptured = true;
+        }else{
+            $isAlreadyCaptured = false;
+        }
+
+
         $em = $doctrine->getManager();
 
         $em->persist($pokemonCaptured);
@@ -229,6 +258,11 @@ class HomeController extends AbstractController
         $this->getUser()->setLaunchs($this->getUser()->getLaunchs()-1);
 
         $em->flush();
+
+        //Test pour voir si l'utilisateur a deja ou le pokémon ou non
+
+
+
 
 
         //Retour des informations a Javascript
@@ -244,6 +278,7 @@ class HomeController extends AbstractController
                 'shiny' => $pokemonCaptured->getShiny(),
                 'rarity' => $rarity,
                 'rarityRandom' => $randomRarity,
+                'new' => $isAlreadyCaptured,
             ],
         ]);
 
@@ -259,56 +294,49 @@ class HomeController extends AbstractController
     public function pokedex(Pokemon $pokemon, ManagerRegistry $doctrine): Response
     {
 
+
+
         $pokeRepo = $doctrine->getRepository(Pokemon::class);
 
-
         $pokemonBefore = $pokeRepo->findPreviousSpecieEncounter($pokemon, $this->getUser());
+
         $pokemonNext = $pokeRepo->findNextSpecieEncounter($pokemon, $this->getUser());
 
         $pokemons = $pokeRepo->findBy([], ['pokeId' => 'ASC']);
+
         $pokemonsCaptured = $pokeRepo->getSpeciesEncounter($this->getUser());
+        
 
+        // Créer un tableau contenant les informations de tous les pokémons
+        $allPokemonInfo = [];
+        foreach ($pokemons as $poke) {
+            $allPokemonInfo[] = [
+                'id' => $poke->getId(),
+                'pokeId' => $poke->getPokeId(),
+                'name' => $poke->getName(),
+                'rarity' => $poke->getRarity(),
+                'captured' => false, // initialisé à false
+            ];
+        }
 
+        // Mettre à jour le tableau pour les pokémons capturés par l'utilisateur
+        foreach ($allPokemonInfo as &$pokeInfo) {
+            foreach ($pokemonsCaptured as $captured) {
+                if ($pokeInfo['id'] === $captured->getId()) {
+                    $pokeInfo['captured'] = true; // mettre à jour à true
+                }
+            }
+        }
 
 
         return $this->render('main/pokedex.html.twig', [
             'pokemonBefore' => $pokemonBefore,
             'currentPokemon' => $pokemon,
             'pokemonAfter' => $pokemonNext,
-            'pokemons' => $pokemons,
+            'pokemons' => $allPokemonInfo,
             'pokemonsCaptured' => $pokemonsCaptured,
         ]);
     }
-
-
-    // #[Route('/pokedex-api/', name: 'app_pokedex_api')]
-    // public function pokedexApi(ManagerRegistry $doctrine): Response
-    // {
-    //     // Récupération du gestionnaire d'entités
-    //     $pokeRepo = $doctrine->getRepository(Pokemon::class);
-
-    //     // Récupération des données de la base de données
-    //     $pokemons = $pokeRepo->findAll();
-
-    //     $pokemonsToReturn = [];
-
-
-    //     foreach($pokemons as $pokemon){
-
-    //         $pokemonsToReturn[] = [
-    //             'name' => $pokemon->getName(),
-    //             'description' => $pokemon->getDescription(),
-    //             'shiny' => $pokemon->getShiny(),
-    //         ];
-
-    //     }
-
-
-    //     // Renvoi de la réponse HTTP
-    //     return $this->json([
-    //         'pokemons' => $pokemonsToReturn,
-    //     ]);
-    // }
 
 
     #[Route('/modify-profil/', name: 'app_modify')]
@@ -316,7 +344,7 @@ class HomeController extends AbstractController
     public function modifyProfil(UserPasswordHasherInterface $encoder, Request $request, ManagerRegistry $doctrine,): Response
     {
         /**
-         * page de modification du profile de l'utilisateur (pseudonym et mot de passe).
+         * page de modification du profil de l'utilisateur (pseudonym et mot de passe).
          */
 
         $connectedUser = $this->getUser();

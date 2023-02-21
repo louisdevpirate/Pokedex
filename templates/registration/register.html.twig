@@ -21,6 +21,8 @@
 		<div
 			class="row">
 
+			<span class="col-12 col-md-6 mx-auto obligation">Obligatoire *</span>
+
 			{# Ouverture du formulaire #}
 			{{ form_start( registrationForm ) }}
 
@@ -30,12 +32,13 @@
 			<div
 				class="col-12 col-md-6 mx-auto style-form-register">
 				{# Champ email #}
-				{{ form_row( registrationForm.email ) }}
+				<span class="obligation">*</span>{{ form_row( registrationForm.email ) }}
 			</div>
 
 			<div
 				class="col-12 col-md-6 mx-auto style-form-register">
 				{# Champ pseudo #}
+				<span class="obligation">*</span>
 				{{ form_row( registrationForm.pseudonym ) }}
 			</div>
 
@@ -43,6 +46,10 @@
 			<div
 				class="col-12 col-md-6 mx-auto style-form-register">
 				{# Champ mots de passe  #}
+				<span class="obligation">*</span> <i class="fa-solid fa-circle-info"></i>
+				<div class="password-infos inactive-info">
+					<p>Votre mot de passe doit contenir obligatoirement au moins 8 caractères dont une minuscule, une majuscule, un chiffre et un caractère spécial.</p>
+				</div>
 				{{ form_row( registrationForm.plainPassword ) }}
 			</div>
 
@@ -56,15 +63,17 @@
 
 
 			<div class="text-center mx-auto register-button"> 
-			
+
 				<div class="second-border-register">
 
+					<button type="submit" class="register-button-valid d-block btn">
 					<img src="{{ asset('images/PokeBall.png') }}" alt="Poke Ball">
 
-					<button type="submit" class="register-button-valid d-block btn">S'inscrire</button>
+					S'inscrire
 
 					<i class="fa-solid fa-chevron-right"></i>
 
+					</button>
 				</div>
 
 
@@ -75,6 +84,12 @@
 			{{ form_end( registrationForm ) }}
 		</div>
 	</div>
+
+	{% block js %}
+		<script src="{{ asset('js/register.js') }}"></script>
+	{% endblock %}
+
+
 {% endblock %}
 
 

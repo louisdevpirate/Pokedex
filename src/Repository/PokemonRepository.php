@@ -110,6 +110,9 @@ class PokemonRepository extends ServiceEntityRepository
     }
 
 
+
+
+
     public function getSpeciesEncounter(User $user): array
     {
 
