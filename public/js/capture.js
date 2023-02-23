@@ -44,7 +44,6 @@ document.querySelector('.capture-poke-button').addEventListener("click", async f
         }
 
 
-        // <img src="{{ asset('images/gifs/charizard.gif') }}" alt="">
         let pokemonImage = document.createElement('img');
         let pokemonShining = document.createElement('img');
         let pokemonInfo = document.createElement('p');

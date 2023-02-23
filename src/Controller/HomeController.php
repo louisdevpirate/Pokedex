@@ -56,7 +56,7 @@ class HomeController extends AbstractController
         foreach ($capturedPokemon as $cp) {
             $pokemonIds[] = $cp->getPokemon()->getId();
         }
-        // Hydratation des pokemon shiny et des pokemon uniques du pokedex attrapés par l'utilisateur.
+        //  Pokemons uniques du pokedex attrapés par l'utilisateur.
         $uniquePokemonIds = array_unique($pokemonIds);
 
         $nbPokemonUnique = count($uniquePokemonIds);
@@ -80,6 +80,7 @@ class HomeController extends AbstractController
         $i = 0;
 
 
+        //Hydratation des pokemon shiny et des
 
         $capturedPokemonShiny = $pokeRepo->findBy(['owner' => $user, 'shiny' => true]);
 
@@ -123,6 +124,32 @@ class HomeController extends AbstractController
     }
 
 
+    #[Route('/mon-profil-api/', name: 'app_profil_api')]
+    #[IsGranted('ROLE_USER')]
+    public function profilApi(Request $request, ManagerRegistry $doctrine): Response
+    {
+
+        $user = $this->getUser();
+
+        $avatarId = $request->get('avatarId');
+
+        $user->setAvatar($avatarId);
+
+        // Enregistre les changements en base de données
+        $em = $doctrine->getManager();
+        $em->persist($user);
+        $em->flush();
+
+
+        return $this->json([
+            'avatarId' => $user->getAvatar(),
+            'error' => 'Erreur lors du changement d\'avatar!',
+            'success' => 'Votre avatar a bien été changé !',
+        ]);
+
+    }
+
+
     #[Route('/capture/', name: 'app_capture')]
     #[IsGranted('ROLE_USER')]
     public function capture(ManagerRegistry $doctrine): Response
@@ -156,9 +183,6 @@ class HomeController extends AbstractController
 
 
         $pokeRepo = $doctrine->getRepository(Pokemon::class);
-        $capturedPokeRepo = $doctrine->getRepository(CapturedPokemon::class);
-        $userRepo = $doctrine->getRepository(User::class);
-
 
         //Calcul des probabilités
 
@@ -200,10 +224,6 @@ class HomeController extends AbstractController
         $pokemonSpeciesCaptured = $pokemons[$randomPoke];
 
         $pokemonCaptured = new CapturedPokemon();
-
-
-
-
 
 
 
@@ -251,6 +271,8 @@ class HomeController extends AbstractController
         }
 
 
+        //Hydratation BDD
+
         $em = $doctrine->getManager();
 
         $em->persist($pokemonCaptured);
@@ -259,7 +281,6 @@ class HomeController extends AbstractController
 
         $em->flush();
 
-        //Test pour voir si l'utilisateur a deja ou le pokémon ou non
 
 
 
@@ -281,10 +302,6 @@ class HomeController extends AbstractController
                 'new' => $isAlreadyCaptured,
             ],
         ]);
-
-
-
-
 
     }
 
@@ -418,10 +435,6 @@ class HomeController extends AbstractController
 
         ]);
     }
-
-
-
-
 
 
 }

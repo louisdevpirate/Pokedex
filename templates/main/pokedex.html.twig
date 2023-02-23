@@ -91,7 +91,7 @@
 						{% if poke.captured %}
 							<button class="poke-li captured col-12">
 								<li>
-									<a disabled class="list-a col-12" href="{{ path('app_pokedex', { pokeId : (poke.pokeId) }) }}">
+									<a class="list-a col-12" href="{{ path('app_pokedex', { pokeId : (poke.pokeId) }) }}">
 										{% if poke.rarity == 'SR' %}???
 										{% else %}{{ poke.name|capitalize }}
 											#{{ poke.pokeId }}

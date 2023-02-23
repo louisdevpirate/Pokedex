@@ -72,6 +72,7 @@ class RegistrationController extends AbstractController
             )   //Mise en place d'un nombre de lancers par défaut quand on crée un compte
                 ->setLaunchs(30)
                 ->setLastObtainedLaunch(new \DateTime())
+                ->setAvatar('1')
             ;
 
 
