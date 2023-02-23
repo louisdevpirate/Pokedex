@@ -44,79 +44,24 @@ class HomeController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function profil(ManagerRegistry $doctrine): Response
     {
+
+        // Repos
         $userRepo = $doctrine->getRepository(User::class);
-        $pokeRepo = $doctrine->getRepository(CapturedPokemon::class);
-        $pokeRepo2 = $doctrine->getRepository(Pokemon::class);
+        $pokeRepo = $doctrine->getRepository(Pokemon::class);
 
-        $user = $this->getUser();
+        // Utilisateur connecté
+        $currentConnectedUser = $this->getUser();
 
-        // Hydratation du nombre total de pokemon attrapés par l'utilisateur connecté.
-        $capturedPokemon = $user->getCapturedPokemon();
-        $pokemonIds = [];
-        foreach ($capturedPokemon as $cp) {
-            $pokemonIds[] = $cp->getPokemon()->getId();
-        }
-        // Hydratation des pokemon shiny et des pokemon uniques du pokedex attrapés par l'utilisateur.
-        $uniquePokemonIds = array_unique($pokemonIds);
-
-        $nbPokemonUnique = count($uniquePokemonIds);
-
-        $nbPokemon = count($capturedPokemon);
-
-//        Appel fonction pour connaitre le remplissage du pokedex de chaque utilisateurs
-
-        $allUsersSpeciesSeen = $userRepo->top10TotalSpeciesSeen();
-
-
-//        Pour avoir le nombre de pokémons présents dans le pokedex
-
-        $allPokemon = $pokeRepo2->findAll();
-
-        $pokedexSize = count($allPokemon);
-
-
-
-
-        $i = 0;
-
-
-
-        $capturedPokemonShiny = $pokeRepo->findBy(['owner' => $user, 'shiny' => true]);
-
-        $nbShiny = count($capturedPokemonShiny);
-
-
-        // Obtention des stats de rareté des pokémons libérés par l'utilisateur connecté
-
-        $pokemonRarityTR = 0;
-        foreach ($capturedPokemon as $cp) {
-            if($cp->getPokemon()->getRarity() == 'TR'){
-                $pokemonRarityTR++;
-            }
-        }
-        $pokemonRarityEX = 0;
-        foreach ($capturedPokemon as $cp) {
-            if($cp->getPokemon()->getRarity() == 'EX'){
-                $pokemonRarityEX++;
-            }
-        }
-        $pokemonRaritySR = 0;
-        foreach ($capturedPokemon as $cp) {
-            if($cp->getPokemon()->getRarity() == 'SR'){
-                $pokemonRaritySR++;
-            }
-        }
 
         return $this->render('main/profil.html.twig', [
-            'nbPokemon' => $nbPokemon,
-            'nbPokemonUnique' => $nbPokemonUnique,
-            'nbShiny' => $nbShiny,
-            'nbTR' => $pokemonRarityTR,
-            'nbEX' => $pokemonRarityEX,
-            'nbSR' => $pokemonRaritySR,
-            'topUserSpeciesSeen' => $allUsersSpeciesSeen,
-            'pokedexSize' => $pokedexSize,
-            'num' => $i
+            'nbPokemon' => $pokeRepo->getCountEncounteredBy($currentConnectedUser),
+            'nbPokemonUnique' => $pokeRepo->getCountUniqueEncounteredBy($currentConnectedUser),
+            'nbShiny' => $pokeRepo->getCountShiniesEncounteredBy($currentConnectedUser),
+            'nbTR' => $pokeRepo->getCountByRarityEncounteredBy($currentConnectedUser, 'TR'),
+            'nbEX' => $pokeRepo->getCountByRarityEncounteredBy($currentConnectedUser, 'EX'),
+            'nbSR' => $pokeRepo->getCountByRarityEncounteredBy($currentConnectedUser, 'SR'),
+            'topUserSpeciesSeen' => $userRepo->top10TotalSpeciesSeen(),
+            'pokedexSize' => $pokeRepo->getFullPokedexSize(),
         ]);
 
 

@@ -115,9 +115,8 @@
 					{% for userData in topUserSpeciesSeen %}
 
 						<tr class="pokedex-top-10">
-							{% set num = num + 1 %}
-	        				<td class="text-center">{{ num }}</td>
-							<td class="text-center">{{ userData.0.pseudonym }} </td>
+	        				<td class="text-center">{{ loop.index }}</td>
+							<td class="text-center">{{ userData.user.pseudonym }} </td>
 							<td class="text-center">{{ userData.total_species_seen }}/{{ pokedexSize }}</td>
 							<td class="text-center">{{ userData.total_captured }} </td>
 						</tr>
