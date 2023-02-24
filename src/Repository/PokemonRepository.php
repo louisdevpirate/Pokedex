@@ -131,4 +131,78 @@ class PokemonRepository extends ServiceEntityRepository
         ;
     }
 
+    public function getFullPokedexSize(): int
+    {
+
+        return $this->createQueryBuilder('p')
+            ->select('COUNT(p)')
+            ->getQuery()
+            ->getSingleScalarResult()
+        ;
+
+    }
+
+    public function getCountEncounteredBy(User $user): int
+    {
+
+        return $this->createQueryBuilder('p')
+            ->select('COUNT(p)')
+            ->innerJoin('p.capturedPokemon', 'cp')
+            ->innerJoin('cp.owner', 'u')
+            ->where('u.id = :userId')
+            ->setParameter('userId', $user->getId())
+            ->getQuery()
+            ->getSingleScalarResult()
+        ;
+
+    }
+
+    public function getCountUniqueEncounteredBy(User $user): int
+    {
+
+        return $this->createQueryBuilder('p')
+            ->select('COUNT(DISTINCT p)')
+            ->innerJoin('p.capturedPokemon', 'cp')
+            ->innerJoin('cp.owner', 'u')
+            ->where('u.id = :userId')
+            ->setParameter('userId', $user->getId())
+            ->getQuery()
+            ->getSingleScalarResult()
+        ;
+
+    }
+
+    public function getCountShiniesEncounteredBy(User $user): int
+    {
+
+        return $this->createQueryBuilder('p')
+            ->select('COUNT(p)')
+            ->innerJoin('p.capturedPokemon', 'cp')
+            ->innerJoin('cp.owner', 'u')
+            ->where('u.id = :userId')
+            ->andWhere('cp.shiny = 1')
+            ->setParameter('userId', $user->getId())
+            ->getQuery()
+            ->getSingleScalarResult()
+        ;
+
+    }
+
+    public function getCountByRarityEncounteredBy(User $user, string $rarity): int
+    {
+
+        return $this->createQueryBuilder('p')
+            ->select('COUNT(p)')
+            ->innerJoin('p.capturedPokemon', 'cp')
+            ->innerJoin('cp.owner', 'u')
+            ->where('u.id = :userId')
+            ->andWhere('p.rarity = :rarity')
+            ->setParameter('userId', $user->getId())
+            ->setParameter('rarity', $rarity)
+            ->getQuery()
+            ->getSingleScalarResult()
+        ;
+
+    }
+
 }

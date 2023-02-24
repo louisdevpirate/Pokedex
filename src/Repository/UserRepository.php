@@ -66,7 +66,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         //ORDER BY total_species_seen DESC
         //LIMIT 10;
         return $this->createQueryBuilder('u')
-            ->select('u, COUNT(DISTINCT cp.pokemon) total_species_seen, COUNT(cp.pokemon) total_captured')
+            ->select('u AS user, COUNT(DISTINCT cp.pokemon) total_species_seen, COUNT(cp.pokemon) total_captured')
             ->innerJoin('u.capturedPokemon', 'cp')
             ->innerJoin('cp.pokemon', 'p')
             ->groupBy('u')
@@ -74,7 +74,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->setMaxResults('10')
             ->getQuery()
             ->getResult()
-            ;
+        ;
 
     }
 
@@ -93,7 +93,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->orderBy('total_pokemon_captured', 'DESC')
             ->getQuery()
             ->getResult()
-            ;
+        ;
 
 
     }
