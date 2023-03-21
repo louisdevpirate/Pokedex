@@ -49,7 +49,7 @@ document.querySelector('.select-character-button').addEventListener("click", fun
 
     let messageDiv = document.createElement('div');
 
-    document.querySelector('.stats-block').after(messageDiv);
+    document.querySelector('.select-character-button').after(messageDiv);
 
     messageDiv.classList.add('message-avatar')
 
@@ -70,7 +70,7 @@ document.querySelector('.select-character-button').addEventListener("click", fun
         })
         .catch(error => {
 
-            messageDiv.innerHTML = '<p>' + data.success + '</p>';
+            messageDiv.innerHTML = '<p>' + data.error + '</p>';
 
             console.log(error);
 

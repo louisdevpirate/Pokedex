@@ -52,7 +52,7 @@ class UpdateLaunchListener{
             $secondsLeft = $difference % 1800;
 
 
-            //Blocage "cap" a 100 pokeballs
+//            //Blocage "cap" a 100 pokeballs
             if ($numberOfLaunchs + $user->getLaunchs() > 100){
 
                 $numberOfLaunchs = 100 - $user->getLaunchs();

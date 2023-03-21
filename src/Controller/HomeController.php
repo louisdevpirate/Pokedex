@@ -119,7 +119,7 @@ class HomeController extends AbstractController
     public function captureApi(ManagerRegistry $doctrine): Response
     {
 
-        if($this->getUser()->getLaunchs() < 1){
+        if ($this->getUser()->getLaunchs() < 1) {
             return $this->json([
                 'error' => 'Vous n\'avez plus de lancers disponibles, veuillez réessayer plus tard !'
             ]);
@@ -137,26 +137,38 @@ class HomeController extends AbstractController
         if ($randomRarity < 45) {
 
             $rarity = 'C';
-        //30%
+            //30%
         } elseif ($randomRarity > 44.9 && $randomRarity < 74.9) {
 
             $rarity = 'PC';
-        //15%
+            //15%
         } elseif ($randomRarity > 74.8 && $randomRarity < 89.8) {
 
             $rarity = 'R';
-        //8.5%
-        } elseif ($randomRarity > 89.7 && $randomRarity < 98.4) {
+            //8.5%
+        } elseif ($randomRarity > 89.7 && $randomRarity < 97.4) {
 
             $rarity = 'TR';
-        //1%
-        } elseif ($randomRarity > 98.3 && $randomRarity < 99.5) {
+            //1%
+        }
+        elseif ($randomRarity > 97.3 && $randomRarity < 99.5) {
+
+            $rarity = 'ME';
+            //0.5%
+        }
+        elseif ($randomRarity > 99.3 && $randomRarity < 99.5) {
 
             $rarity = 'EX';
-        //0.5%
-        } else {
+            //0.5%
+        }
+        elseif ($randomRarity > 99.4 && $randomRarity < 100){
 
             $rarity = 'SR';
+
+        }
+        else {
+
+            $rarity = 'UR';
 
         }
 
@@ -174,7 +186,7 @@ class HomeController extends AbstractController
         //Calculs shiny
 
 
-        $shinyTest = rand(1, 250);
+        $shinyTest = rand(1, 300);
 
 
         if ($shinyTest == 1) {
