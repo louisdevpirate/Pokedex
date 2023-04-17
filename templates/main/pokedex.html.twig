@@ -13,134 +13,350 @@
 
 		<div class="list row">
 
-
-			{# Bouton "Pokémon précédent" visible seulement en mobile first  #}
-			<button class="previous-next-buttons col-6">
-
-				{% if pokemonBefore is not null %}
-
-					<a href="{{ path('app_pokedex', { pokeId : (pokemonBefore.pokeId) }) }}">
-
-						<p><i class="fa-solid fa-chevron-left"></i> {{ pokemonBefore.name|capitalize }} #{{ pokemonBefore.pokeId }}</p>
-
-					</a>
-
-				{% else %}
-
-					<p><i class="fa-solid fa-chevron-left"></i></p>
-
-				{% endif %}
-
-
-			</button>
-
-			{# Bouton "Pokémon suivant" visible seulement en mobile first  #}
-			<button class="previous-next-buttons col-6">
-
-				{% if pokemonAfter is not null %}
-
-					<a href="{{ path('app_pokedex', { pokeId : (pokemonAfter.pokeId) }) }}">
-
-						<p>{{ pokemonAfter.name|capitalize }} #{{ pokemonAfter.pokeId }} <i class="fa-solid fa-chevron-right"></i></p>
-
-					</a>
-
-				{% else %}
-
-					<p><i class="fa-solid fa-chevron-right"></i></p>
-
-				{% endif %}
-
-			</button>
-
-
-
-
-{#			#}{# Titre h1 seulement visible en écran large, au-dessus de la liste  #}
-{#			<h1 class="consult">Consultez le Pokédex</h1>#}
-
-			{# Boutons de flèche du haut, seulement visible en écran large  #}
-			<button class="arrows col-6">
-
-				{% if pokemonBefore is not null %}
-
-					<a href="{{ path('app_pokedex', { pokeId : (pokemonBefore.pokeId) }) }}">
-
-						<i class="fa-solid fa-chevron-up"></i>
-
-					</a>
-
-				{% else %}
-
-					<a><i class="fa-solid fa-chevron-up disable-arrow"></i>
-
-				{% endif %}
-
-			</button>
-
-
-
 			{# Div qui contient la liste des Pokémon  #}
 			<div class="ul-list pokedex-nav">
 
 				<ul class="col-12">
 
+					{# Première Gen #}
+
+					<button class="first-gen-button gen"><span class="gen-title">Première Génération</span> <br>
+
+						<span id="activeCountG1"></span>/151 ||
+
+						<img src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">: <span id="shinyG1"></span>/151
+						<i class="fa-solid fa-play"> </i>
+					</button>
 
 					{% for poke in pokemons %}
 
-						{% if poke.captured %}
-							<button class="poke-li captured col-12">
-								<li>
-									<a class="list-a col-12" href="{{ path('app_pokedex', { pokeId : (poke.pokeId) }) }}">
-										{% if poke.rarity == 'SR' %}???
-										{% else %}{{ poke.name|capitalize }}
-											#{{ poke.pokeId }}
-										{% endif %}</a>
-								</li>
-							</button>
-						{% else %}
-							<button disabled class="poke-li col-12 not-captured">
-								<li>
-								<a disabled="" class="list-a col-12" href="#/">???</a>
-								</li>
-							</button>
+						{% if poke.pokeId >= 1 and poke.pokeId <= 151 %}
 
+
+
+							{% if poke.captured %}
+								<button class="poke-li captured col-12 pokemon-pokedex type-none gen-1" data-pokemon="{{ poke.pokeId }}" >
+									{{ poke.name|capitalize }} #{{ poke.pokeId }}
+
+									{% if poke.shiny %}
+										<img class="gen-1-shiny" src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">
+									{% endif %}
+
+								</button>
+							{% else %}
+								<button disabled class="poke-li col-12 not-captured type-none gen-1">
+
+									???
+
+								</button>
+
+							{% endif %}
 						{% endif %}
-
 					{% endfor %}
 
-{#					{% for poke in pokemons %}#}
-{#						<button class="poke-button{% if poke.captured %} captured{% endif %}">#}
-{#							{{ poke.pokeId }} - {{ poke.name }}#}
-{#						</button>#}
-{#					{% endfor %}#}
+
+
+
+				</ul>
+				<ul class="col-12">
+
+					{# Deuxieme Gen #}
+
+					<button class="second-gen-button gen"><span class="gen-title">Deuxieme Génération</span>  <br>
+
+						<span id="activeCountG2"></span>/100 ||
+
+						<img src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">: <span id="shinyG2"></span>/100
+						<i class="fa-solid fa-play"> </i></button>
+
+					{% for poke in pokemons %}
+
+						{% if poke.pokeId >= '152' and poke.pokeId <= 251 %}
+
+
+
+							{% if poke.captured %}
+								<button class="poke-li captured col-12 pokemon-pokedex type-none gen-2" data-pokemon="{{ poke.pokeId }}" >
+									{{ poke.name|capitalize }} #{{ poke.pokeId }}
+
+									{% if poke.shiny %}
+										<img class="gen-2-shiny" src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">
+									{% endif %}
+
+								</button>
+							{% else %}
+								<button disabled class="poke-li col-12 not-captured gen-2 type-none">
+
+									???
+
+								</button>
+
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+
+
+
+
+				</ul>
+				<ul class="col-12">
+
+					{# Troisième Gen #}
+
+					<button class="third-gen-button gen"><span class="gen-title">Troisième Génération</span>  <br>
+
+						<span id="activeCountG3"></span>/135 ||
+
+						<img src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">: <span id="shinyG3"></span>/135
+						<i class="fa-solid fa-play"> </i></button>
+
+					{% for poke in pokemons %}
+
+						{% if poke.pokeId >= 252 and poke.pokeId <= 386 %}
+
+
+
+							{% if poke.captured %}
+								<button class="poke-li captured col-12 pokemon-pokedex type-none gen-3" data-pokemon="{{ poke.pokeId }}" >
+									{{ poke.name|capitalize }} #{{ poke.pokeId }}
+
+									{% if poke.shiny %}
+										<img class="gen-3-shiny" src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">
+									{% endif %}
+
+								</button>
+							{% else %}
+								<button disabled class="poke-li col-12 not-captured type-none gen-3">
+
+									???
+
+								</button>
+
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+
+
+
+
+				</ul>
+				<ul class="col-12">
+
+					{# Quatrième Gen #}
+
+					<button class="fourth-gen-button gen"><span class="gen-title">Quatrième Génération</span>  <br>
+
+						<span id="activeCountG4"></span>/107 ||
+
+						<img src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">: <span id="shinyG4"></span>/107
+						<i class="fa-solid fa-play"> </i></button>
+
+					{% for poke in pokemons %}
+
+						{% if poke.pokeId >= 387 and poke.pokeId <= 493 %}
+
+
+
+							{% if poke.captured %}
+								<button class="poke-li captured col-12 pokemon-pokedex type-none gen-4" data-pokemon="{{ poke.pokeId }}" >
+									{{ poke.name|capitalize }} #{{ poke.pokeId }}
+
+									{% if poke.shiny %}
+										<img class="gen-4-shiny" src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">
+									{% endif %}
+
+								</button>
+							{% else %}
+								<button disabled class="poke-li col-12 not-captured  type-none gen-4">
+
+									???
+
+								</button>
+
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+
+
+
+
+				</ul>
+				<ul class="col-12">
+
+					{# Cinquème Gen #}
+
+					<button class="fifth-gen-button gen"><span class="gen-title">Cinquième Génération</span>  <br>
+
+						<span id="activeCountG5"></span>/156 ||
+
+						<img src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">: <span id="shinyG5"></span>/156
+						<i class="fa-solid fa-play"> </i></button>
+
+					{% for poke in pokemons %}
+
+						{% if poke.pokeId >= 494 and poke.pokeId <= 649 %}
+
+
+
+							{% if poke.captured %}
+								<button class="poke-li captured col-12 pokemon-pokedex type-none gen-5" data-pokemon="{{ poke.pokeId }}" >
+									{{ poke.name|capitalize }} #{{ poke.pokeId }}
+
+									{% if poke.shiny %}
+										<img class="gen-5-shiny" src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">
+									{% endif %}
+
+								</button>
+							{% else %}
+								<button disabled class="poke-li col-12 not-captured type-none gen-5">
+
+									???
+
+								</button>
+
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+
+
 
 
 				</ul>
 
+				<ul class="col-12">
+
+					{# Mégas Evolutions #}
+
+					<button class="ME-button gen"><span class="gen-title">Mégas Evolutions</span><br>
+
+						<span id="activeCountME"></span>/41 ||
+
+						<img src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">: <span id="shinyME"></span>/41
+						<i class="fa-solid fa-play"> </i></button>
+
+					{% for poke in pokemons %}
+
+						{% if poke.rarity == 'ME' %}
+
+
+
+							{% if poke.captured %}
+								<button class="poke-li captured col-12 pokemon-pokedex type-none gen-ME ME" data-pokemon="{{ poke.pokeId }}" >
+									{{ poke.name|capitalize }} #{{ poke.pokeId }}
+
+									{% if poke.shiny %}
+										<img class="gen-ME-shiny" src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">
+									{% endif %}
+
+								</button>
+							{% else %}
+								<button disabled class="poke-li col-12 not-captured ME type-none">
+
+									???
+
+								</button>
+
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+
+
+
+
+				</ul>
+
+
+				<ul class="col-12">
+
+					{# Secret Rares #}
+
+					<button class="SR-button gen"><span class="gen-title">Secret Rares</span><br>
+
+						<span id="activeCountSR"></span>/10 ||
+
+						<img src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">: <span id="shinySR"></span>/10
+						<i class="fa-solid fa-play"> </i></button>
+
+					{% for poke in pokemons %}
+
+						{% if poke.rarity == 'SR' %}
+
+
+
+							{% if poke.captured %}
+								<button class="poke-li captured col-12 pokemon-pokedex type-none gen-SR SR" data-pokemon="{{ poke.pokeId }}" >
+									{{ poke.name|capitalize }} #{{ poke.pokeId }}
+
+									{% if poke.shiny %}
+										<img class="gen-SR-shiny" src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">
+									{% endif %}
+
+								</button>
+							{% else %}
+								<button disabled class="poke-li col-12 not-captured SR type-none">
+
+									???
+
+								</button>
+
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+
+
+
+
+				</ul>
+
+
+				<ul class="col-12">
+
+					{# Ultra Rares #}
+
+					<button class="UR-button gen"><span class="gen-title">Ultra Rares</span><br>
+
+						<span id="activeCountUR"></span>/16 ||
+
+						<img src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">: <span id="shinyUR"></span>/16
+						<i class="fa-solid fa-play"> </i></button>
+
+					{% for poke in pokemons %}
+
+						{% if poke.rarity == 'UR' %}
+
+
+
+							{% if poke.captured %}
+								<button class="poke-li captured col-12 pokemon-pokedex type-none gen-UR UR" data-pokemon="{{ poke.pokeId }}" >
+									{{ poke.name|capitalize }} #{{ poke.pokeId }}
+
+									{% if poke.shiny %}
+										<img class="gen-UR-shiny" src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">
+									{% endif %}
+
+								</button>
+							{% else %}
+								<button disabled class="poke-li col-12 not-captured UR type-none">
+
+									???
+
+								</button>
+
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+
+
+
+
+				</ul>
+
+
+
+
 			</div>
 
-			{# Bouton de flèche du bas, seulement visible en écran large  #}
-			<button class="arrows col-6">
 
-			{% if pokemonsCaptured %}
-
-				{% if pokemonAfter is not null %}
-
-					<a href="{{ path('app_pokedex', { pokeId : (pokemonAfter.pokeId) }) }}">
-
-						<i class="fa-solid fa-chevron-down"></i>
-
-					</a>
-
-				{% else %}
-
-					<a><i class="fa-solid fa-chevron-down disable-arrow"></i></a>
-
-				{% endif %}
-			{% endif %}
-
-			</button>
 
 		</div>
 
@@ -210,29 +426,29 @@
 				<div class="poke-info-pic d-flex flex-column justify-content-center align-items-center col-lg-12">
 
 					<div
-						class="row col-12">
+						class="row col-12 poke-name">
 
 
 						{# Infos du nom, du nom-en et du numéro Pokémon  #}
 						<div class="poke-info d-flex flex-row justify-content-center align-items-center">
 
-							<div class="info col-12 col-lg-10 d-flex flex-row justify-content-center align-items-center">
+							<div class="info col-12 col-lg-12 d-flex flex-row justify-content-center align-items-center">
 
 								<div class="info-tile-1 col-4">
 
-									<p>{{ currentPokemon.name|capitalize }}</p>
+									<p class="firstName"></p>
 
 								</div>
 
 								<div class="info-tile-2 col-4">
 
-									<p>{{ currentPokemon.nameen|capitalize }}</p>
+									<p class="secondName"></p>
 
 								</div>
 
 								<div class="info-tile-3 col-4">
 
-									<p>{% if currentPokemon.rarity == 'SR'%}???{% else %}#{{ currentPokemon.pokeid }}{% endif %}</p>
+									<p class="thirdName"></p>
 
 								</div>
 
@@ -252,30 +468,12 @@
 
 
 
-								{% if currentPokemon.type == 'eau' or currentPokemon.type == 'vol' or currentPokemon.type == 'glace' or currentPokemon.type == 'dragon' %}
-									<div class="eauvolglace"></div>
-								{% endif %}
-
-								{% if currentPokemon.type == 'combat' or currentPokemon.type == 'electrik' or currentPokemon.type == 'feu' %}
-									<div class="combatelectrik"></div>
-								{% endif %}
-
-								{% if currentPokemon.type == 'plante' or currentPokemon.type == 'insecte' or currentPokemon.type == 'normal' %}
-									<div class="planteinsecte"></div>
-								{% endif %}
-
-								{% if currentPokemon.type == 'roche' or currentPokemon.type == 'fée' or currentPokemon.type == 'sol' or currentPokemon.type == 'acier' %}
-									<div class="rochefee"></div>
-								{% endif %}
-
-								{% if currentPokemon.type == 'psy' or currentPokemon.type == 'spectre' or currentPokemon.type == 'poison' or currentPokemon.type == 'ténèbres' %}
-									<div class="psyspectre"></div>
-								{% endif %}
+								<div class="fond taille-fond"></div>
 
 
-								<img class="poke-gif" src="{{ asset('images/gifs/' ~ currentPokemon.gif ) }}" alt="Pokémon">
+								<img class="poke-gif" src="{{ asset('images/sparkle/invisible-sparkle.gif') }}" alt="Pokémon">
 
-							<button class="shiny-button-mobile">
+							<button class="shiny-button-mobile type-none">
 
 								<img src="{{ asset('images/sparkle/etoiles-shiny.png') }}" alt="shiny-logo">
 							
@@ -310,155 +508,13 @@
 				<div class="row type col-12 d-flex flex-row justify-content-evenly">
 
 
-					{# Image du premier type Pokémon  #}
-
-					{% if currentPokemon.type == 'combat' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{asset('images/types/Fighting.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type == 'dragon' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Dragon.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type == 'eau' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Water.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type == 'electrik' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Electric.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type == 'fée' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Fairy.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type == 'feu' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Fire.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type == 'glace' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Ice.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type == 'insecte' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Bug.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type == 'normal' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Normal.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type == 'plante' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Grass.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type == 'poison' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Poison.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type == 'psy' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Psychic.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type == 'roche' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Rock.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type == 'sol' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Ground.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type == 'spectre' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Ghost.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type == 'acier' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Steel.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type == 'vol' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Flying.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type == 'ténèbres' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Dark.png') }}" alt="Type"></a>
-					{% endif %}
 
 
-					{# Image du deuxième type Pokémon  #}
+					<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img type1" src="{{ asset('images/types/Normal.png') }}" alt="Type"></a>
 
-					{% if currentPokemon.type2 == 'combat' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Fighting.png') }}" alt="Type"></a>
-					{% endif %}
+					<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img type2" src="{{ asset('images/types/Normal.png') }}" alt="Type"></a>
 
-					{% if currentPokemon.type2 == 'dragon' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Dragon.png') }}" alt="Type"></a>
-					{% endif %}
 
-					{% if currentPokemon.type2 == 'eau' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Water.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type2 == 'electrik' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Electric.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type2 == 'fée' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Fairy.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type2 == 'feu' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Fire.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type2 == 'glace' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Ice.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type2 == 'insecte' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Bug.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type2 == 'normal' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Normal.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type2 == 'plante' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Grass.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type2 == 'poison' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Poison.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type2 == 'psy' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Psychic.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type2 == 'roche' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Rock.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type2 == 'sol' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Ground.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type2 == 'spectre' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Ghost.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type2 == 'acier' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Steel.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type2 == 'vol' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Flying.png') }}" alt="Type"></a>
-					{% endif %}
-
-					{% if currentPokemon.type2 == 'ténèbres' %}
-						<a href="{{ path('app_types') }}" class="type-img-a"><img class="type-img" src="{{ asset('images/types/Dark.png') }}" alt="Type"></a>
-					{% endif %}
-					
 
 
 				</div>
@@ -468,7 +524,7 @@
 
 					<h3>Description</h3>
 
-					<p>{{ currentPokemon.description }}</p>
+					<p></p>
 
 				</div>
 
@@ -520,7 +576,14 @@
 
 {% block js %}
 
-	<script>const pokeShineDir = '{{ asset('images/gifs/' ~ 'shiny-' ~ currentPokemon.gif ) }}'</script>
+	<script>
+		const pokedexPageApi = '{{ url('app_pokedex_api') }}';
+		const pokemonsGifDir = '{{ asset('images/gifs') }}';
+		window.pokemonBackground = 'forest2-background';
+		const pokemonsTypeDir = '{{ asset('images/types/') }}';
+
+	</script>
+
 	<script src="{{ asset('js/pokedex.js') }}"></script>
 	
 {% endblock %}

@@ -40,4 +40,23 @@ class CapturedPokemonRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+
+
+    public function findShinyCaptured(User $user): array
+    {
+        return $this->createQueryBuilder('cp')
+            ->select('DISTINCT p.pokeId')
+            ->innerJoin('cp.pokemon', 'p')
+            ->where('cp.owner = :userId')
+            ->andWhere('cp.shiny = true')
+            ->setParameter('userId', $user->getId())
+            ->orderBy('p.pokeId', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+
+
 }

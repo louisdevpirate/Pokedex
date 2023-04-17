@@ -6,6 +6,29 @@ function backToPlace() {
 }
 
 
+const typesBackgroundArray = {
+    eau: 'sea-background',
+    feu: 'fire-background',
+    plante: 'forest2-background',
+    insecte: 'cabane-background',
+    poison: 'poison-background',
+    vol: 'montagne-background',
+    sol: 'desert-background',
+    roche: 'cave-background',
+    'ténèbres' : 'cimetière-background',
+    normal: 'forest2-background',
+    combat: 'pourpre-background',
+    psy: 'montagne-background',
+    'fée': 'night-background',
+    spectre: 'cimetière-background',
+    dragon: 'dragon-background',
+    acier: 'forest-background',
+    electrik: 'pourpre-background',
+    glace: 'neige-background',
+
+};
+
+
 document.querySelector('.capture-poke-button').addEventListener("click", async function () {
 
 
@@ -33,6 +56,17 @@ document.querySelector('.capture-poke-button').addEventListener("click", async f
             currentInfo.remove();
         }
 
+        let currentNew = document.querySelector('.logo-new');
+        if (currentNew){
+            currentNew.remove();
+        }
+
+        let currentPokeDiv = document.querySelector('.poke-capture-div')
+        if (currentPokeDiv){
+            currentPokeDiv.remove();
+        }
+
+
         let launchs = document.querySelector('.launch-items').textContent;
 
         launchs = parseInt(launchs);
@@ -47,6 +81,8 @@ document.querySelector('.capture-poke-button').addEventListener("click", async f
         let pokemonImage = document.createElement('img');
         let pokemonShining = document.createElement('img');
         let pokemonInfo = document.createElement('p');
+        let pokemonNewLogo = document.createElement('img');
+        let pokemonDiv = document.createElement('div');
         pokemonImage.classList.add('displayed-pokemon');
         pokemonShining.classList.add('shining-effect');
         pokemonInfo.classList.add('pokemon-captured-infos');
@@ -54,6 +90,8 @@ document.querySelector('.capture-poke-button').addEventListener("click", async f
         pokemonShining.alt = '';
         let pokemonGif;
         let pokemonShine;
+        let pokemonIsNew;
+
 
         let animatePromise = new Promise((resolve, reject) => {
 
@@ -110,7 +148,7 @@ document.querySelector('.capture-poke-button').addEventListener("click", async f
                         pokemonGif = pokemonsGifDir + '/' + ((data.captured_pokemon.shiny) ? 'shiny-' : '') + data.captured_pokemon.gif;
 
 
-                        console.log(data.captured_pokemon.rarity + '(' + data.captured_pokemon.rarityRandom + '%)' + data.captured_pokemon.new);
+
 
                         //Effets en fonction de la rareté
                         if(data.captured_pokemon.shiny === true) {
@@ -127,56 +165,13 @@ document.querySelector('.capture-poke-button').addEventListener("click", async f
 
                         //Fonds en fonction des types
 
-                        document.querySelector('.view-pokemon').classList.remove('sea-background');
-                        document.querySelector('.view-pokemon').classList.remove('cave-background');
-                        document.querySelector('.view-pokemon').classList.remove('cave2-background');
-                        document.querySelector('.view-pokemon').classList.remove('forest-background');
-                        document.querySelector('.view-pokemon').classList.remove('forest2-background');
-                        document.querySelector('.view-pokemon').classList.remove('night-background');
-
-                        if( data.captured_pokemon.type === 'eau' ||
-                            data.captured_pokemon.type === 'vol' ||
-                            data.captured_pokemon.type === 'dragon'||
-                            data.captured_pokemon.type === 'glace')
-                        {
-
-                            document.querySelector('.view-pokemon').classList.add('sea-background');
-
-                        }
 
 
-                        if (data.captured_pokemon.type === 'combat' ||
-                            data.captured_pokemon.type === 'electrik' ||
-                            data.captured_pokemon.type === 'feu')
-                        {
-                            document.querySelector('.view-pokemon').classList.add('forest-background');
-                        }
+                        document.querySelector('.view-pokemon').classList.remove(window.pokemonBackground);
 
+                        window.pokemonBackground = typesBackgroundArray[data.captured_pokemon.type];
 
-                        if (data.captured_pokemon.type === 'plante' ||
-                            data.captured_pokemon.type === 'insecte' ||
-                            data.captured_pokemon.type === 'normal')
-                        {
-                            document.querySelector('.view-pokemon').classList.add('forest2-background');
-                        }
-
-
-                        if (data.captured_pokemon.type === 'roche' ||
-                            data.captured_pokemon.type === 'acier' ||
-                            data.captured_pokemon.type === 'fée' ||
-                            data.captured_pokemon.type === 'sol')
-                        {
-                            document.querySelector('.view-pokemon').classList.add('cave-background');
-                        }
-
-
-                        if (data.captured_pokemon.type === 'psy' ||
-                            data.captured_pokemon.type === 'spectre' ||
-                            data.captured_pokemon.type === 'ténèbres' ||
-                            data.captured_pokemon.type === 'poison')
-                        {
-                            document.querySelector('.view-pokemon').classList.add('night-background');
-                        }
+                        document.querySelector('.view-pokemon').classList.add(typesBackgroundArray[data.captured_pokemon.type]);
 
 
                         pokemonInfo.innerHTML = '';
@@ -184,9 +179,19 @@ document.querySelector('.capture-poke-button').addEventListener("click", async f
 
                         //Affichage des infos du pokemon libéré
 
-                        pokemonInfo.innerHTML = 'Vous avez libéré <span class="text-capitalize">' + data.captured_pokemon.name + '</span>'+ ((data.captured_pokemon.shiny) ? ' Shiny' : '') + ' (' + data.captured_pokemon.rarity + ') ! ' + ((data.captured_pokemon.new) ? '' : ' (New!) ');
+                        pokemonInfo.innerHTML = 'Vous avez libéré <span class="text-capitalize">' + data.captured_pokemon.name + '</span>'+ ((data.captured_pokemon.shiny) ? ' Shiny' : '') + ' (' + data.captured_pokemon.rarity + ') ! ';
+
+                        console.log(data.captured_pokemon.rarity, data.captured_pokemon.rarityRandom);
 
                         document.querySelector('.pokeball-animate').classList.remove('pokeball-animated');
+
+                        if (data.captured_pokemon.new === true){
+
+                            pokemonIsNew = true;
+
+                        }
+
+
 
 
                     }
@@ -205,8 +210,28 @@ document.querySelector('.capture-poke-button').addEventListener("click", async f
         if(pokemonIsCaptured){
             pokemonImage.src = pokemonGif;
             pokemonShining.src = pokemonShine;
-            document.querySelector('.view-pokemon').append(pokemonShining);
-            document.querySelector('.view-pokemon').append(pokemonImage);
+            pokemonNewLogo.src = newLogo;
+
+            pokemonDiv.classList.add('poke-capture-div');
+
+            pokemonDiv.append(pokemonShining, pokemonImage);
+
+            if (pokemonIsNew === true){
+
+                pokemonNewLogo.classList.add('logo-new');
+                pokemonDiv.append(pokemonNewLogo);
+
+            }
+
+
+
+
+            document.querySelector('.view-pokemon').append(pokemonDiv);
+
+
+
+
+
         }
 
         document.querySelector('.description-poke-capture').append(pokemonInfo);

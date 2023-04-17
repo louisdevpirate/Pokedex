@@ -637,6 +637,20 @@ footer {
 
 /* Page de Profil */
 
+.dev-message{
+    border: 2mm ridge rgba(240 0 32/ 0.9);
+    color: #FFFFFF;
+    text-align: justify;
+    background-color: #AF374D;
+    font-weight: bold;
+}
+
+
+.dev-text{
+    padding: 10px 50px 10px 50px;
+
+}
+
 
 .profil-title {
     color: white;
@@ -1038,7 +1052,7 @@ i.fa-chevron-right {
 
 .view-pokemon {
     height: 400px;
-    background: url(../images/fonds/fond-foret2.png) no-repeat center;
+    /*background: url(../images/fonds/fond-foret2.png) no-repeat center;*/
     background-size: cover;
     display: flex;
     align-items: center;
@@ -1052,6 +1066,49 @@ i.fa-chevron-right {
 .no-background {
     background: none;
 }
+
+.pourpre-background{
+    background: url(../images/fonds/pourpre.jpg) center;
+    background-size: cover;
+}
+
+.montagne-background{
+    background: url(../images/fonds/montagne.jpg) center;
+    background-size: cover;
+}
+
+.cabane-background{
+    background: url(../images/fonds/cabane.jpg) center;
+    background-size: cover;
+}
+
+.cimetière-background{
+    background: url(../images/fonds/cimetière.png) center;
+    background-size: cover;
+}
+
+.desert-background{
+    background: url(../images/fonds/desert.jpg) center;
+    background-size: cover;
+}
+
+.fire-background{
+    background: url(../images/fonds/feu.jpg) center;
+    background-size: cover;
+}
+
+.dragon-background{
+    background: url(../images/fonds/dragon.jpg) center;
+    background-size: cover;
+}
+
+
+
+.neige-background{
+    background: url(../images/fonds/neige.jpg) center;
+    background-size: cover;
+}
+
 
 .cave-background {
     background: url(../images/fonds/fond-grottejpg.jpg) center;
@@ -1069,7 +1126,7 @@ i.fa-chevron-right {
 }
 
 .night-background {
-    background: url(../images/fonds/fond-nuitee.jpeg) no-repeat center;
+    background: url(../images/fonds/fond-nuit.jpg) no-repeat center;
     background-size: cover;
 }
 
@@ -1078,10 +1135,18 @@ i.fa-chevron-right {
     background-size: cover;
 }
 
+.poison-background{
+    background: url(../images/fonds/fond-foret-nuit.jpg) no-repeat center;
+    background-size: cover;
+}
+
 .forest2-background {
     background: url(../images/fonds/fond-foret2.png) no-repeat center;
     background-size: cover;
 }
+
+
+
 
 .pokemon-captured-infos {
     background-color: #A62840;
@@ -1111,18 +1176,37 @@ i.fa-chevron-right {
     font-weight: bold;
 }
 
-.view-pokemon .displayed-pokemon {
+.view-pokemon .poke-capture-div .displayed-pokemon {
 
     max-width: 100%;
     transform: scale(2.5);
+    position: relative;
+
+}
+
+.logo-new{
+    width: 125px;
     position: absolute;
+    top: -25px;
+
+}
+
+.poke-capture-div{
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+
 
 }
 
 .shining-effect {
 
     transform: scale(0.80);
-    position: relative;
+    position: absolute;
 }
 
 .capture-poke-button {
@@ -1298,7 +1382,8 @@ i.fa-chevron-right {
 
 .poke-li {
     font-family: 'Oxanium', sans-serif;
-    background-color: white;
+    color: #FFFFFF;
+    background-color: #DD4242;
     border: solid #000000 1px;
     height: 50px;
     display: flex;
@@ -1306,6 +1391,7 @@ i.fa-chevron-right {
     justify-content: flex-start;
     align-items: center;
     font-size: 1rem;
+
 }
 
 .poke-li:active {
@@ -1425,53 +1511,11 @@ i.fa-chevron-right {
     position: relative;
 }
 
-.eauvolglace {
-    background-image: url(../images/fonds/fond-mer.png);
-    background-size: cover;
-    background-repeat: no-repeat;
+.taille-fond{
     width: 100%;
     height: 100%;
 }
 
-.combatelectrik {
-    background-image: url(../images/fonds/fond-foret.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-}
-
-.planteinsecte {
-    background-image: url(../images/fonds/fond-foret2.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-}
-
-.rochefee {
-    background-image: url(../images/fonds/fond-grottejpg.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-}
-
-.psyspectre {
-    background-image: url(../images/fonds/fond-nuitee.jpeg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-}
-
-.tenebre {
-    background-image: url(../images/fonds/fond-nuitee.jpeg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-}
 
 .poke-gif {
     object-fit: cover;
@@ -1523,6 +1567,49 @@ i.fa-chevron-right {
     padding: 0;
 }
 
+/*Boutons des gens du dex*/
+
+.gen{
+    padding: 25px;
+    color: #FFFFFF;
+    text-align: center;
+    background-color: #AF374D;
+    border: 2mm ridge rgba(240 0 32/ 0.9);
+    border-radius: 50px ;
+    font-family: 'Oxanium', sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 15px;
+}
+
+.gen-title{
+    text-decoration: underline #d4af37 3px;
+}
+
+.type-none{
+    display: none !important;
+}
+
+.rotate{
+    rotate: 90deg;
+    transition: 1s;
+}
+
+.un-rotate{
+    rotate: -90deg;
+    transition: 1s;
+}
+
+
+.type-flex{
+    display: flex !important;
+}
+
+.type-on{
+    display: block;
+}
+
+
 .type-img-a {
     width: 80px;
     cursor: pointer;
@@ -1556,6 +1643,10 @@ i.fa-chevron-right {
 /* Premier media querry qui démarre à 992px, car problèmes d'affichage en responsive (div trop petites, manque de cohérence dans l'affichage)  */
 @media screen and (min-width: 992px) {
 
+    .gen{
+        width: 400px !important;
+    }
+
     .main-block {
         display: flex;
         flex-direction: row;
@@ -1563,15 +1654,6 @@ i.fa-chevron-right {
         /*animation: background-movement 30s linear infinite;*/
     }
 
-    /*@keyframes background-movement {*/
-    /*    from {*/
-    /*        background-position: top left;*/
-    /*    }*/
-
-    /*    to {*/
-    /*        background-position: bottom right;*/
-    /*    }*/
-    /*}*/
 
     .poke-list {
         display: flex;
@@ -1628,7 +1710,7 @@ i.fa-chevron-right {
     }
 
     .pokedex-nav {
-        height: 435px;
+        height: 800px;
         margin-top: 50px;
         margin-bottom: 50px;
     }
@@ -1814,46 +1896,24 @@ i.fa-chevron-right {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: white;
         padding: 20px;
-        box-shadow: 0 0 10px black;
-        border: solid black 1px;
-        clip-path: polygon(0 0, 100% 0%, 100% 100%, 10% 100%, 0 90%);
         margin-top: 20px;
     }
 
     .info {
-        box-shadow: 0 0 10px black;
-    }
-
-    .info-tile-1 {
-        border: solid black 1px;
-        box-shadow: -1px 2px 0 #888, -3px 5px 0 #333;
-    }
-
-    .info-tile-2 {
-        border: solid black 1px;
-        border-top-color: #000000;
-        border-left-color: white;
-        box-shadow: -1px 2px 0 #888, -3px 5px 0 #333;
 
     }
-
-    .info-tile-3 {
-        border: solid white 1px;
-        border-color: #000000;
-        border-left-color: white;
-        box-shadow: -1px 2px 0 #888, -3px 5px 0 #333;
+    .poke-name{
+        width: 450px !important;
     }
 
     .pokemon {
         border: 0;
         border-radius: 0 0 20px 20px;
         padding: 0;
-        box-shadow: 0 0 10px black;
         height: 450px;
-        box-shadow: 0px 0px 10px black;
-        height: 350px;
+        width: 450px;
+
     }
 
     .pokepic {
@@ -2019,9 +2079,7 @@ i.fa-chevron-right {
         font-size: 0.8vw;
     }
 
-    .shiny-button-mobile {
-        display: none;
-    }
+
 
 
     .digital {

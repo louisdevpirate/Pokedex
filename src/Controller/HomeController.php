@@ -133,42 +133,46 @@ class HomeController extends AbstractController
         $randomRarity = rand(10, 1000) / 10;
 
 
-        //45%
-        if ($randomRarity < 45) {
+
+        if ($randomRarity < 40 ) {
 
             $rarity = 'C';
-            //30%
-        } elseif ($randomRarity > 44.9 && $randomRarity < 74.9) {
+            //40%
+
+        } elseif ($randomRarity >= 40  && $randomRarity < 70 ) {
 
             $rarity = 'PC';
-            //15%
-        } elseif ($randomRarity > 74.8 && $randomRarity < 89.8) {
+            //30%
+
+        } elseif ($randomRarity >= 70  && $randomRarity < 90 ) {
 
             $rarity = 'R';
-            //8.5%
-        } elseif ($randomRarity > 89.7 && $randomRarity < 97.4) {
+            //20%
+
+        } elseif ($randomRarity >= 90  && $randomRarity < 98 ) {
 
             $rarity = 'TR';
-            //1%
+            //8%
         }
-        elseif ($randomRarity > 97.3 && $randomRarity < 99.5) {
+        elseif ($randomRarity >= 98  && $randomRarity < 99 ) {
 
             $rarity = 'ME';
-            //0.5%
+            //1%
         }
-        elseif ($randomRarity > 99.3 && $randomRarity < 99.5) {
+        elseif ($randomRarity >= 99  && $randomRarity < 99.5 ) {
 
             $rarity = 'EX';
             //0.5%
         }
-        elseif ($randomRarity > 99.4 && $randomRarity < 100){
+        elseif ($randomRarity >= 99.5  && $randomRarity < 100){
 
             $rarity = 'SR';
-
+            //0.5%
         }
         else {
 
             $rarity = 'UR';
+            //0.01%
 
         }
 
@@ -186,7 +190,7 @@ class HomeController extends AbstractController
         //Calculs shiny
 
 
-        $shinyTest = rand(1, 300);
+        $shinyTest = rand(1, 200);
 
 
         if ($shinyTest == 1) {
@@ -221,9 +225,9 @@ class HomeController extends AbstractController
         $pokemonCapturedId = $pokemonCaptured->getPokemon()->getPokeId();
 
         if (in_array($pokemonCapturedId, $pokeID)){
-            $isAlreadyCaptured = true;
+            $isNew = false;
         }else{
-            $isAlreadyCaptured = false;
+            $isNew = true;
         }
 
 
@@ -255,29 +259,30 @@ class HomeController extends AbstractController
                 'shiny' => $pokemonCaptured->getShiny(),
                 'rarity' => $rarity,
                 'rarityRandom' => $randomRarity,
-                'new' => $isAlreadyCaptured,
+                'new' => $isNew,
             ],
         ]);
 
     }
 
 
-    #[Route('/pokedex/{pokeId}/', name: 'app_pokedex')]
+    #[Route('/pokedex/', name: 'app_pokedex')]
     #[IsGranted('ROLE_USER')]
-    public function pokedex(Pokemon $pokemon, ManagerRegistry $doctrine): Response
+    public function pokedex( ManagerRegistry $doctrine): Response
     {
 
 
 
         $pokeRepo = $doctrine->getRepository(Pokemon::class);
 
-        $pokemonBefore = $pokeRepo->findPreviousSpecieEncounter($pokemon, $this->getUser());
+        $capturedRepo = $doctrine->getRepository(CapturedPokemon::class);
 
-        $pokemonNext = $pokeRepo->findNextSpecieEncounter($pokemon, $this->getUser());
 
         $pokemons = $pokeRepo->findBy([], ['pokeId' => 'ASC']);
 
         $pokemonsCaptured = $pokeRepo->getSpeciesEncounter($this->getUser());
+
+        $shinyObtained = $pokeRepo->getShinyCaptured($this->getUser());
         
 
         // Créer un tableau contenant les informations de tous les pokémons
@@ -289,6 +294,7 @@ class HomeController extends AbstractController
                 'name' => $poke->getName(),
                 'rarity' => $poke->getRarity(),
                 'captured' => false, // initialisé à false
+                'shiny' => false,
             ];
         }
 
@@ -299,17 +305,94 @@ class HomeController extends AbstractController
                     $pokeInfo['captured'] = true; // mettre à jour à true
                 }
             }
+
+            foreach ($shinyObtained as $shinies){
+
+                if ($pokeInfo['pokeId'] === $shinies['pokeId']){
+                    $pokeInfo['shiny'] = true;
+
+                }
+
+            }
+
         }
 
 
         return $this->render('main/pokedex.html.twig', [
-            'pokemonBefore' => $pokemonBefore,
-            'currentPokemon' => $pokemon,
-            'pokemonAfter' => $pokemonNext,
             'pokemons' => $allPokemonInfo,
             'pokemonsCaptured' => $pokemonsCaptured,
         ]);
     }
+
+    #[Route('/pokedex-api/', name: 'app_pokedex_api')]
+    #[IsGranted('ROLE_USER')]
+    public function pokedexApi(Request $request, ManagerRegistry $doctrine ): Response
+    {
+
+        $user = $this->getUser();
+
+        $capturedRepo = $doctrine->getRepository(CapturedPokemon::class);
+
+        $pokeRepo = $doctrine->getRepository(Pokemon::class);
+
+        $pokemonPokeId = $request->get('pokemonId');
+
+
+
+
+
+        // Récupération du Pokémon correspondant à l'ID envoyé depuis le JSON
+        $pokemonToDisplay = $pokeRepo->findOneBy(['pokeId' => $pokemonPokeId]);
+        
+         $shinyObtained = $pokeRepo->getShinyCaptured($user);
+
+         $isShiny = false;
+
+        $name = $pokemonToDisplay->getName();
+
+        //Si l'utilisateur possède au moins un pokémon shiny, on compare les pokéID avec celui récupéré en requête
+
+         if ($shinyObtained) {
+
+             foreach ($shinyObtained as $shiny) {
+
+                 foreach ($shiny as $shinyId) {
+
+                     if ($shinyId == $pokemonPokeId) {
+
+                         $isShiny = true;
+
+                     }
+
+                 }
+
+             }
+
+         }
+
+
+
+
+        return $this->json([
+
+            'pokemonToDisplay' => [
+                'pokeId' => $pokemonPokeId,
+                'name' => $name,
+                'nameEN' => $pokemonToDisplay->getNameEn(),
+                'gif' => $pokemonToDisplay->getGif(),
+                'type1' => $pokemonToDisplay ->getType(),
+                'type2' => $pokemonToDisplay->getType2(),
+                'description' => $pokemonToDisplay->getDescription(),
+                'shiny' => $isShiny,
+
+            ],
+            'error' => 'Impossible d\'accéder au pokémon séléctionné',
+
+        ]);
+
+
+    }
+
 
 
     #[Route('/modify-profil/', name: 'app_modify')]

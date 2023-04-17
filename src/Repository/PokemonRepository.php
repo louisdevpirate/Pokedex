@@ -131,6 +131,21 @@ class PokemonRepository extends ServiceEntityRepository
         ;
     }
 
+    public function getShinyCaptured(User $user): array
+    {
+
+        return $this->createQueryBuilder('p')
+            ->select('DISTINCT p.pokeId')
+            ->innerJoin('p.capturedPokemon', 'cp')
+            ->where('cp.owner = :userId')
+            ->andWhere('cp.shiny = true')
+            ->setParameter('userId', $user->getId())
+            ->orderBy('p.pokeId', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     public function getFullPokedexSize(): int
     {
 

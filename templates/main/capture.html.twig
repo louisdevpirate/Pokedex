@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-12 col-lg-10 mx-auto rarity-scale">
                     <p>
-                        À ce jour, <span>{{ totalPokemon }}</span> ont été libérés dans le monde !<br>
+                        À ce jour, <span>{{ totalPokemon }}</span> Pokémons ont été libérés dans le monde !<br>
 
                         <span>(C)</span> = Commun ≈ 45%  <span>(PC)</span> = Peu Commun ≈ 30%  <span>(R)</span> = Rare ≈ 15% <br> <span>(TR)</span> = Très Rare ≈ 8.5%
                         <img src="{{ asset('/images/sparkle/etoiles-tres-rare.png') }}" alt="Pokemon tres rare">   <span>(EX)</span> = Extrêmement Rare ≈ 1%
@@ -22,7 +22,7 @@
                 </div>
 
 
-                <div class="col-12 col-lg-10 mx-auto view-pokemon">
+                <div class="col-12 col-lg-10 mx-auto view-pokemon forest2-background">
                 </div>
                 
             </div>
@@ -67,6 +67,8 @@
         const pokemonsShineDir = '{{ asset('images/sparkle') }}';
         const pokemonUppercase = '{{ ''|capitalize }}';
         const launchCounter = '{{ app.user.launchs}}';
+        const newLogo = '{{ asset('images/sparkle/new3.png') }}';
+        window.pokemonBackground = 'forest2-background';
     </script>
     <script src="{{ asset('js/capture.js') }}"></script>
 
