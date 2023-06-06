@@ -721,12 +721,12 @@ footer {
 
 
 
-.carousel{
+.carousel-avatar{
     padding: 50px 0;
     transform: scale(1.35);
 }
 
-.carousel-inner{
+.carou-avatar{
     text-align: center;
     max-width: 200px;
     padding: 30px 0;
@@ -752,12 +752,12 @@ footer {
 
     }
 
-    .carousel-item img{
+    .avatar img{
         margin: 0 50px;
 
     }
 
-    .carousel-inner{
+    .carou-avatar{
         text-align: center;
         max-width: 300px;
         padding: 30px 0;
@@ -1184,6 +1184,36 @@ i.fa-chevron-right {
 
 }
 
+.coin-width{
+
+    width: 30px;
+
+}
+
+.coin-count{
+    padding: 20px 0 0 0;
+    margin-bottom: 0 !important;
+    font-size: 1rem;
+    color: #d4af37;
+    font-family: 'Press Start 2P', sans-serif;
+
+}
+
+.coin-container{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.coin-width-2{
+    width: 50px;
+}
+
+.coin-count p {
+    margin-top: 10px !important;
+}
+
+
 .logo-new{
     width: 125px;
     position: absolute;
@@ -1200,7 +1230,6 @@ i.fa-chevron-right {
     position: relative;
 
 
-
 }
 
 .shining-effect {
@@ -1214,10 +1243,10 @@ i.fa-chevron-right {
     border-width: 10px;
     border-color: #DE0C30;
     background-color: #AF374D;
-    width: 250px;
+    width: 200px;
     margin-bottom: 20px;
     margin-top: 20px;
-
+    height: 140px;
 
 }
 
@@ -1229,14 +1258,32 @@ i.fa-chevron-right {
 
 .pokeball-animate {
     position: relative;
-    width: 75%;
+
     padding-top: 5px;
     padding-bottom: 5px;
 }
 
-.multiple {
-    transform: scale(1);
+.too-big{
+    width: 75%;
+    overflow: visible !important;
 }
+
+
+
+.carou-ball{
+    text-align: center;
+    padding: 0 50px 50px;
+    overscroll-behavior-y: unset !important;
+
+}
+
+.carou-ball{
+    max-width: 100vw;
+}
+
+
+
+
 
 
 .description-poke-capture {
@@ -1245,16 +1292,141 @@ i.fa-chevron-right {
 
 }
 
+.carousel.overflow-visible {
+    overflow: visible !important;
+}
 
+
+.multiple {
+    transform: scale(0.5);
+    text-align: center;
+    position: absolute;
+    left: 20px;
+
+}
 
 .launch-items {
     color: #FFCD00;
     -webkit-text-stroke: 1px #356ABC;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: bold;
     font-family: 'Anton', sans-serif;
     text-shadow: 3px 2px #899399;
     padding-left: 5px;
+    text-align: center;
+    margin-top: 15px;
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    bottom:-40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.pokeball-car.active {
+    display: flex;
+}
+
+
+/*Shop de la page*/
+
+
+.shop{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    background-color: #AF374D;
+    border-radius: 15px;
+    margin-top: 150px;
+    position: static;
+
+
+}
+
+.shop-title{
+    padding-bottom: 20px;
+    font-family: 'Press Start 2P', sans-serif;
+    text-decoration-line: underline;
+    text-decoration-style: double;
+}
+
+.mini-shop{
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 0.6rem;
+    background-color: #E06666;
+    padding: 5px;
+    border-radius: 25px;
+    border: solid #000000 5px;
+}
+
+.shop-table thead tr th{
+
+    font-size: 0.7rem;
+    padding: 10px;
+
+
+}
+
+.total_shop{
+
+    text-decoration: underline 3px #d4af37;
+    background-color: white;
+    opacity: 0.8;
+    border-radius: 10px;
+
+}
+
+.shopNotice{
+
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    font-weight: bold;
+    margin-top: 25px;
+
+}
+
+.shop-list tr td{
+    padding: 10px 0;
+
+}
+
+.shop-list tr{
+
+    border-bottom: #E06666 solid 5px;
+    background-color: white;
+    opacity: 0.8;
+
+}
+
+
+tfoot tr td{
+    padding: 20px 0;
+}
+
+.item-name{
+    color: #DE0C30;
+}
+
+.price{
+    color: #d4af37;
+}
+
+.minus, .plus{
+
+    border: none;
+    color: #DE0C30;
+    background-color: rgba(255, 255, 255);
+
+    border-radius: 18px;
+
+}
+
+.buy-it{
+    border: #DE0C30 solid 3px;
+    border-radius: 10px;
 
 }
 
@@ -1268,9 +1440,55 @@ i.fa-chevron-right {
         align-items: center;
     }
 
-    .capture-poke-button {
-        margin-left: 5%;
+    .carou-ball{
+        max-width: 500px;
     }
+
+    .carousel-ball{
+        width: 500px;
+    }
+
+    .capture-poke-button{
+        width: 250px;
+    }
+
+    .multiple {
+        transform: scale(0.5);
+        text-align: center;
+        position: absolute;
+        left: 100px;
+
+    }
+
+    .mini-shop{
+        font-size: 1.2rem;
+        padding: 30px;
+    }
+
+    .shop-table thead tr th{
+
+        font-size: 1.5rem;
+        padding: 35px;
+
+    }
+
+    .buy-it{
+
+        padding: 10px;
+        border-radius: 15px;
+
+    }
+
+    .minus, .plus{
+        font-size: 2rem;
+    }
+
+    .shop-list tr td{
+
+        padding: 20px;
+
+    }
+
 }
 
 
@@ -1314,6 +1532,10 @@ i.fa-chevron-right {
     }
 }
 
+
+
+
+
 /* --------------------------------------------------------------------------------------------- */
 
 /* Page du Pokédex  */
@@ -1332,6 +1554,7 @@ i.fa-chevron-right {
 
 .left-arrow {
     margin-right: 10px;
+
 }
 
 .previous-next-buttons {

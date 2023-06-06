@@ -3,16 +3,14 @@
 
 namespace App\Controller;
 
-use App\Repository\UserRepository;
 use App\Entity\CapturedPokemon;
+use App\Entity\Items;
 use App\Entity\Pokemon;
 use App\Form\EditModifyProfilFormType;
 use App\Entity\User;
-use App\Form\RegistrationFormType;
 use DateTime;
 use App\Form\ModifyFormType;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,7 +18,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-use Symfony\Component\Validator\Constraints\NotBlank;
+
 
 
 class HomeController extends AbstractController
@@ -99,83 +97,312 @@ class HomeController extends AbstractController
     public function capture(ManagerRegistry $doctrine): Response
     {
 
+        $user = $this->getUser();
         $pokeRepo = $doctrine->getRepository(Pokemon::class);
         $capturedPokeRepo = $doctrine->getRepository(CapturedPokemon::class);
         $userRepo = $doctrine->getRepository(User::class);
 
-        $allPokemonCaptured = $capturedPokeRepo->findAll();
+        $allUser = $userRepo->findAll();
 
-        $countPokemonCaptured = count($allPokemonCaptured);
+        $totalPokemon = 0;
 
-        return $this->render('main/capture.html.twig', [
+        foreach ($allUser as $user){
 
-            'totalPokemon' => $countPokemonCaptured
+            $userLaunch = $user->getLaunchCount();
 
-        ]);
-    }
+            $totalPokemon = $totalPokemon + $userLaunch;
 
-    #[Route('/capture-api/', name: 'app_capture_api')]
-    #[IsGranted('ROLE_USER')]
-    public function captureApi(ManagerRegistry $doctrine): Response
-    {
-
-        if ($this->getUser()->getLaunchs() < 1) {
-            return $this->json([
-                'error' => 'Vous n\'avez plus de lancers disponibles, veuillez réessayer plus tard !'
-            ]);
         }
 
 
+
+
+
+        //Coté Shop
+
+        //Envoi de la liste des articles
+
+        $itemsRepo = $doctrine->getRepository(Items::class);
+
+        $items = $itemsRepo->findAll();
+
+
+        return $this->render('main/capture.html.twig', [
+
+            'totalPokemon' => $totalPokemon,
+            'items' => $items,
+
+        ]);
+
+
+    }
+
+    #[Route('/capture-shop-api/', name: 'app_shop_api')]
+    #[IsGranted('ROLE_USER')]
+    public function shop(Request $request, ManagerRegistry $doctrine):Response {
+
+        $userRepo = $doctrine->getRepository(User::class);
+        $itemRepo = $doctrine->getRepository(Items::class);
+
+        $user = $this->getUser();
+
+        $kartString = $request->get('quantityArray');
+
+        $kart = explode(",", $kartString);
+
+        $allItems = $itemRepo->findAll();
+
+        $totalPrice = 0;
+
+        //Comptage du panier
+
+        foreach ($allItems as $item) {
+
+            $unityPrice = $item->getPrice();
+
+            $kartItemPrice = $unityPrice * intval($kart[$item->getId()-1]);
+
+            $totalPrice = $totalPrice + $kartItemPrice;
+        }
+
+        $userWallet = $this->getUser()->getMoney();
+
+
+        if ($userWallet<$totalPrice){
+
+            return $this->json([
+                'error' => 'Vous n\'avez pas assez d\'argent pour acheter ce lot.',
+            ]);
+
+        }else{
+
+            //On enlève l'argent de l'utilisateur
+
+
+            $user->setMoney($user->getMoney()-$totalPrice);
+
+
+
+            //Si l'utilisateur à assez d'argent
+
+            $user->setHyperBall($user->getHyperBall()+intval($kart[0]));
+
+            $user->setShinyBall($user->getShinyBall()+intval($kart[1]));
+
+            $user->setMasterBall($user->getMasterBall()+intval($kart[2]));
+
+
+            $em = $doctrine->getManager();
+            $em->flush();
+
+
+            return $this->json([
+
+                'success'=> 'Votre achat a bien été effectué!',
+                'kart' => $kart,
+                'kartPrice' => $totalPrice,
+
+
+            ]);
+
+        }
+    }
+
+
+
+    #[Route('/capture-api/', name: 'app_capture_api')]
+    #[IsGranted('ROLE_USER')]
+    public function captureApi(ManagerRegistry $doctrine, Request $request): Response
+    {
+
         $pokeRepo = $doctrine->getRepository(Pokemon::class);
+
+        $pokeballId = intval($request->get('pokeballData'));
+
+
+        $user = $this->getUser();
+
+
 
         //Calcul des probabilités
 
         $randomRarity = rand(10, 1000) / 10;
 
 
+        //LANCERS NORMAUX ----------------------
 
-        if ($randomRarity < 40 ) {
+        if ($pokeballId == 1){
 
-            $rarity = 'C';
-            //40%
+            if ($user->getLaunchs() < 1) {
+                return $this->json([
+                    'error' => 'Vous n\'avez plus de lancers disponibles, veuillez réessayer plus tard !'
+                ]);
+            }
 
-        } elseif ($randomRarity >= 40  && $randomRarity < 70 ) {
 
-            $rarity = 'PC';
-            //30%
+            $rarity = $this->getStr($randomRarity);
 
-        } elseif ($randomRarity >= 70  && $randomRarity < 90 ) {
+            //Calculs shiny
 
-            $rarity = 'R';
-            //20%
 
-        } elseif ($randomRarity >= 90  && $randomRarity < 98 ) {
+            $shinyTest = rand(1, 200);
 
-            $rarity = 'TR';
-            //8%
+
+            if ($shinyTest == 1) {
+
+                $isShiny = true;
+            } else {
+
+                $isShiny = false;
+            }
+
+
+            //On retire un lancer à l'utilisateur
+            $this->getUser()->setLaunchs($this->getUser()->getLaunchs()-1);
+
+
+
+        }elseif ($pokeballId == 2){
+
+
+            //HYPER BALL------------------------
+
+
+            if ($user->getHyperBall() < 1) {
+                return $this->json([
+                    'error' => 'Vous n\'avez plus de lancers disponibles, veuillez réessayer plus tard !'
+                ]);
+            }
+
+
+
+            //Calcul Rareté
+
+
+            if ($randomRarity <= 70 ) {
+
+                $rarity = 'TR';
+                //70%
+
+            } elseif ($randomRarity > 70 && $randomRarity <= 90){
+
+                $rarity = 'ME';
+                //30%
+
+            }else{
+
+                $rarity = 'SR';
+
+            }
+
+
+            //Calculs shiny
+
+
+            $shinyTest = rand(1, 200);
+
+
+            if ($shinyTest == 1) {
+
+                $isShiny = true;
+            } else {
+
+                $isShiny = false;
+            }
+
+
+
+            //On retire un lancer à l'utilisateur
+            $this->getUser()->setHyperBall($this->getUser()->getHyperBall()-1);
+
+
+
+
+        }elseif ($pokeballId == 3){
+
+
+            if ($user->getShinyBall() < 1) {
+                return $this->json([
+                    'error' => 'Vous n\'avez plus de lancers disponibles, veuillez réessayer plus tard !'
+                ]);
+            }
+
+
+
+            //SHINY BALL---------------------------
+
+            $rarity = $this->getStr($randomRarity);
+
+
+            //Shiny 100%
+
+
+            $isShiny = true;
+
+            //On retire un lancer à l'utilisateur
+            $this->getUser()->setShinyBall($this->getUser()->getShinyBall()-1);
+
+
+        }elseif ($pokeballId == 4){
+
+            //MASTER BALL --------------------------
+
+
+            if ($user->getMasterBall() < 1) {
+                return $this->json([
+                    'error' => 'Vous n\'avez plus de lancers disponibles, veuillez réessayer plus tard !'
+
+                ]);
+            }
+
+
+
+            if ($randomRarity <= 70 ) {
+
+                $rarity = 'EX';
+                //70%
+
+            } else {
+
+                $rarity = 'UR';
+                //30%
+
+            }
+
+            //Calculs shiny
+
+
+            $shinyTest = rand(1, 200);
+
+
+            if ($shinyTest == 1) {
+
+                $isShiny = true;
+            } else {
+
+                $isShiny = false;
+            }
+
+
+            //On retire un lancer à l'utilisateur
+            $this->getUser()->setMasterBall($this->getUser()->getMasterBall()-1);
+
+
+        }else{
+
+            return $this->json([
+                'error' => 'Lancer invalide.',
+                'bug' => $pokeballId,
+            ]);
+
+
         }
-        elseif ($randomRarity >= 98  && $randomRarity < 99 ) {
 
-            $rarity = 'ME';
-            //1%
-        }
-        elseif ($randomRarity >= 99  && $randomRarity < 99.5 ) {
 
-            $rarity = 'EX';
-            //0.5%
-        }
-        elseif ($randomRarity >= 99.5  && $randomRarity < 100){
 
-            $rarity = 'SR';
-            //0.5%
-        }
-        else {
 
-            $rarity = 'UR';
-            //0.01%
 
-        }
-
+        //Recherche du pokémon
 
         $pokemons = $pokeRepo->findByRarity($rarity);
 
@@ -187,19 +414,6 @@ class HomeController extends AbstractController
 
 
 
-        //Calculs shiny
-
-
-        $shinyTest = rand(1, 200);
-
-
-        if ($shinyTest == 1) {
-
-            $isShiny = true;
-        } else {
-
-            $isShiny = false;
-        }
 
 
         //Hydratation BDD
@@ -231,17 +445,57 @@ class HomeController extends AbstractController
         }
 
 
-        //Hydratation BDD
+
+
+
+        if ($isNew || $isShiny){
+        //Hydratation BDD si le Pokémon est nouveau ou shiny
+
+            $em = $doctrine->getManager();
+
+            $em->persist($pokemonCaptured);
+
+            $em->flush();
+
+        }else{
+
+            //Valeur en pièce si le Pokémon à déja été vu
+
+            $rarityScale = [
+                'C' => 1,
+                'PC' => 3,
+                'R' => 5,
+                'TR' => 10,
+                'ME' => 25,
+                'SR' => 50,
+                'EX' => 50,
+                'UR' => 250
+            ];
+
+            $capturedRarity = $pokemonCaptured->getPokemon()->getRarity();
+
+            $this->getUser()->setMoney($this->getUser()->getMoney()+$rarityScale[$capturedRarity]);
+
+        }
+
+
+        //On compte un lancer en plus pour l'utilisateur
+        $this->getUser()->setLaunchCount($this->getUser()->getLaunchCount()+1);
+
+
+        //UPDATE user
+        //SET launch_count = (
+        //    SELECT COUNT(*)
+        //    FROM captured_pokemon
+        //    WHERE captured_pokemon.owner_id = 3
+        //    AND captured_pokemon.owner_id = user.id
+        //)
+        //WHERE pseudonym = 'Spirit';
+
+
 
         $em = $doctrine->getManager();
-
-        $em->persist($pokemonCaptured);
-
-        $this->getUser()->setLaunchs($this->getUser()->getLaunchs()-1);
-
         $em->flush();
-
-
 
 
 
@@ -275,9 +529,6 @@ class HomeController extends AbstractController
 
         $pokeRepo = $doctrine->getRepository(Pokemon::class);
 
-        $capturedRepo = $doctrine->getRepository(CapturedPokemon::class);
-
-
         $pokemons = $pokeRepo->findBy([], ['pokeId' => 'ASC']);
 
         $pokemonsCaptured = $pokeRepo->getSpeciesEncounter($this->getUser());
@@ -300,12 +551,14 @@ class HomeController extends AbstractController
 
         // Mettre à jour le tableau pour les pokémons capturés par l'utilisateur
         foreach ($allPokemonInfo as &$pokeInfo) {
+
+            //vérification si l'utilisateur à libéré le pokemon
             foreach ($pokemonsCaptured as $captured) {
                 if ($pokeInfo['id'] === $captured->getId()) {
                     $pokeInfo['captured'] = true; // mettre à jour à true
                 }
             }
-
+            //vérification si l'utilisateur le possède en shiny
             foreach ($shinyObtained as $shinies){
 
                 if ($pokeInfo['pokeId'] === $shinies['pokeId']){
@@ -316,6 +569,7 @@ class HomeController extends AbstractController
             }
 
         }
+
 
 
         return $this->render('main/pokedex.html.twig', [
@@ -331,24 +585,19 @@ class HomeController extends AbstractController
 
         $user = $this->getUser();
 
-        $capturedRepo = $doctrine->getRepository(CapturedPokemon::class);
-
         $pokeRepo = $doctrine->getRepository(Pokemon::class);
 
         $pokemonPokeId = $request->get('pokemonId');
 
 
 
-
-
         // Récupération du Pokémon correspondant à l'ID envoyé depuis le JSON
         $pokemonToDisplay = $pokeRepo->findOneBy(['pokeId' => $pokemonPokeId]);
-        
+
+
          $shinyObtained = $pokeRepo->getShinyCaptured($user);
 
          $isShiny = false;
-
-        $name = $pokemonToDisplay->getName();
 
         //Si l'utilisateur possède au moins un pokémon shiny, on compare les pokéID avec celui récupéré en requête
 
@@ -372,23 +621,28 @@ class HomeController extends AbstractController
 
 
 
+        if ($pokemonToDisplay !== null) {
 
-        return $this->json([
+            return $this->json([
+                'pokemonToDisplay' => [
+                    'pokeId' => $pokemonToDisplay->getPokeId(),
+                    'name' => $pokemonToDisplay->getName(),
+                    'nameEN' => $pokemonToDisplay->getNameEn(),
+                    'gif' => $pokemonToDisplay->getGif(),
+                    'type1' => $pokemonToDisplay ->getType(),
+                    'type2' => $pokemonToDisplay->getType2(),
+                    'description' => $pokemonToDisplay->getDescription(),
+                    'shiny' => $isShiny,
+                ]
+            ]);
 
-            'pokemonToDisplay' => [
-                'pokeId' => $pokemonPokeId,
-                'name' => $name,
-                'nameEN' => $pokemonToDisplay->getNameEn(),
-                'gif' => $pokemonToDisplay->getGif(),
-                'type1' => $pokemonToDisplay ->getType(),
-                'type2' => $pokemonToDisplay->getType2(),
-                'description' => $pokemonToDisplay->getDescription(),
-                'shiny' => $isShiny,
+        } else {
 
-            ],
-            'error' => 'Impossible d\'accéder au pokémon séléctionné',
-
-        ]);
+            // Si le résultat est nul, retourner une réponse d'erreur
+            return $this->json([
+                'error' => 'Impossible d\'accéder au pokémon séléctionné',
+            ]);
+        }
 
 
     }
@@ -473,6 +727,52 @@ class HomeController extends AbstractController
         return $this->render('main/legals.html.twig', [
 
         ]);
+    }
+
+    /**
+     * @param float|int $randomRarity
+     * @return string
+     */
+    public function getStr(float|int $randomRarity): string
+    {
+        if ($randomRarity < 40) {
+
+            $rarity = 'C';
+            //40%
+
+        } elseif ($randomRarity >= 40 && $randomRarity < 70) {
+
+            $rarity = 'PC';
+            //30%
+
+        } elseif ($randomRarity >= 70 && $randomRarity < 90) {
+
+            $rarity = 'R';
+            //20%
+
+        } elseif ($randomRarity >= 90 && $randomRarity < 98) {
+
+            $rarity = 'TR';
+            //8%
+        } elseif ($randomRarity >= 98 && $randomRarity < 99) {
+
+            $rarity = 'ME';
+            //1%
+        } elseif ($randomRarity >= 99 && $randomRarity < 99.5) {
+
+            $rarity = 'EX';
+            //0.5%
+        } elseif ($randomRarity >= 99.5 && $randomRarity < 100) {
+
+            $rarity = 'SR';
+            //0.5%
+        } else {
+
+            $rarity = 'UR';
+            //0.01%
+
+        }
+        return $rarity;
     }
 
 

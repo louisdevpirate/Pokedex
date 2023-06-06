@@ -50,6 +50,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $avatar = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $money = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $launch_count = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $hyper_ball = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $shiny_ball = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $master_ball = null;
+
 
     public function __construct()
     {
@@ -213,6 +228,66 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setAvatar(?string $avatar): self
     {
         $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    public function getMoney(): ?int
+    {
+        return $this->money;
+    }
+
+    public function setMoney(?int $money): self
+    {
+        $this->money = $money;
+
+        return $this;
+    }
+
+    public function getLaunchCount(): ?int
+    {
+        return $this->launch_count;
+    }
+
+    public function setLaunchCount(?int $launch_count): self
+    {
+        $this->launch_count = $launch_count;
+
+        return $this;
+    }
+
+    public function getHyperBall(): ?int
+    {
+        return $this->hyper_ball;
+    }
+
+    public function setHyperBall(?int $hyper_ball): self
+    {
+        $this->hyper_ball = $hyper_ball;
+
+        return $this;
+    }
+
+    public function getShinyBall(): ?int
+    {
+        return $this->shiny_ball;
+    }
+
+    public function setShinyBall(?int $shiny_ball): self
+    {
+        $this->shiny_ball = $shiny_ball;
+
+        return $this;
+    }
+
+    public function getMasterBall(): ?int
+    {
+        return $this->master_ball;
+    }
+
+    public function setMasterBall(?int $master_ball): self
+    {
+        $this->master_ball = $master_ball;
 
         return $this;
     }

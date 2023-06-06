@@ -12,24 +12,25 @@
 
 		<div class="dev-message">
 
-
+			<h1 class="text-center text-white">Bonjour à tous!</h1>
 
 			<p class="dev-text">
-				Bien le bonjour, bien le bonsoir! <br>
+				Le site a été mis à jour ! Une nouvelle fonctionnalité de boutique a été mise en place ! Grâce à celle-ci, vous allez pouvoir dépenser votre monnaie, acquise lors de la libération de Pokémon doublons.
+			</p>
 
-				Ce sera mon premier message officiel directement ici !
 
-				Tout d'abord, laissez-moi vous remercier de rendre ce petit projet qui me tient tant à cœur vivant !
-				<br>
-				Je posterais ici l'avancée des mises à jour futures et de petits événements qui auront lieu par ci par là.
-				<br>
-				Cela m'amène à la chose suivante: <br>
+				<ul class="dev-text">
+					Plusieurs nouvelles balls ont vu le jour :
 
-				Le pokédex à subit une refonte, il est maintenant bien plus plaisant à utiliser, sans chargements entre chaque pokémons, et est plus beau de manière générale.
-				J'espère de tout coeur que cela vous plaira, d'autres mises à jour arriveront, avec très prochainement l'arrivée de la 6ème génération.
-				<br><br>
-				Merci encore !
-				<br>
+
+					<li>L'Hyper Ball, permettant d'obtenir à coup sûr des TR, ME ou SR. </li>
+					<li>La Shiny Ball, comme son nom l'indique, elle vous garantit d'attraper un Pokémon shiny avec les mêmes chances de réussite que les lancers normaux.</li>
+					<li>Enfin, la Master Ball, permettant d'obtenir au moins un EX ou un UR si vous avez un peu de chance !</li>
+				</ul>
+			<p class="dev-text">
+				4000 Pokédollars ont été crédités sur votre compte pour vous remercier d'être toujours aussi actif sur ce site! Des bisous à vous !
+
+
 				<br>
 
 				Spirit
@@ -57,7 +58,7 @@
 						</li>
 
 						<li class="list-group-item ">Pokémons libérés :
-							<span class="text-info">{{ nbPokemon }}</span>
+							<span class="text-info">{{ app.user.launchCount }}</span>
 
 						</li>
 
@@ -86,105 +87,107 @@
 
 				{# Carousel d'admin #}
 
-				{% if is_granted('ROLE_ADMIN') %}
 
-					<div id="carouselExample" class="carousel slide">
 
-						<div class="carousel-inner">
+					<div id="carouselExample" class="carousel carousel-avatar slide">
 
-							<div class="carousel-item  justify-content-center">
+						<div class="carousel-inner carou-avatar">
+
+							<div class="carousel-item  justify-content-center avatar">
 								<img src="{{ asset('images/trainers/trainer1.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="1">
 							</div>
 
-							<div class="carousel-item ">
+							<div class="carousel-item avatar">
 								<img src="{{ asset('images/trainers/trainer2.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="2">
 							</div>
 
-							<div class="carousel-item ">
+							<div class="carousel-item avatar">
 								<img src="{{ asset('images/trainers/trainer3.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="3">
 							</div>
 
-							<div class="carousel-item ">
+							<div class="carousel-item avatar">
 								<img src="{{ asset('images/trainers/trainer4.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="4">
 							</div>
 
-							<div class="carousel-item">
+							<div class="carousel-item avatar">
 								<img src="{{ asset('images/trainers/trainer5.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="5">
 							</div>
 
-							<div class="carousel-item ">
+							<div class="carousel-item avatar">
 								<img src="{{ asset('images/trainers/trainer6.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="6">
 							</div>
 
-							<div class="carousel-item ">
+							<div class="carousel-item avatar">
 								<img src="{{ asset('images/trainers/trainer7.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="7">
 							</div>
 
-							<div class="carousel-item ">
+							<div class="carousel-item avatar">
 								<img src="{{ asset('images/trainers/trainer8.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="8">
 							</div>
 
-							<div class="carousel-item ">
+							<div class="carousel-item avatar">
 								<img src="{{ asset('images/trainers/trainer9.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="9">
 							</div>
 
-							<div class="carousel-item ">
+							<div class="carousel-item avatar">
 								<img src="{{ asset('images/trainers/trainer10.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="10">
 							</div>
 
-							<div class="carousel-item ">
+							<div class="carousel-item avatar">
 								<img src="{{ asset('images/trainers/trainer11.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="11">
 							</div>
 
-							<div class="carousel-item ">
+							<div class="carousel-item avatar">
 								<img src="{{ asset('images/trainers/trainer12.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="12">
 							</div>
 
-							<div class="carousel-item ">
+							<div class="carousel-item avatar">
 								<img src="{{ asset('images/trainers/trainer13.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="13">
 							</div>
 
-							<div class="carousel-item ">
+							<div class="carousel-item avatar">
 								<img src="{{ asset('images/trainers/trainer14.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="14">
 							</div>
 
-							<div class="carousel-item ">
+							<div class="carousel-item avatar">
 								<img src="{{ asset('images/trainers/trainer15.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="15">
 							</div>
 
-							<div class="carousel-item ">
+							<div class="carousel-item avatar">
 								<img src="{{ asset('images/trainers/trainer16.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="16">
 							</div>
 
-							<div class="carousel-item ">
+							<div class="carousel-item avatar">
 								<img src="{{ asset('images/trainers/trainer17.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="17">
 							</div>
 
-							<div class="carousel-item ">
+							<div class="carousel-item avatar">
 								<img src="{{ asset('images/trainers/trainer18.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="18">
 							</div>
 
-							<div class="carousel-item ">
+							<div class="carousel-item avatar">
 								<img src="{{ asset('images/trainers/trainer19.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="19">
 							</div>
 
-							<div class="carousel-item ">
+							<div class="carousel-item avatar">
 								<img src="{{ asset('images/trainers/trainer20.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="20">
 							</div>
 
-							<div class="carousel-item ">
+							{% if is_granted('ROLE_ADMIN') %}
+
+							<div class="carousel-item avatar">
 								<img src="{{ asset('images/trainers/Spirit.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="Spirit">
 							</div>
 
-							<div class="carousel-item ">
+							<div class="carousel-item avatar">
 								<img src="{{ asset('images/trainers/LD.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="LD">
 							</div>
 
-							<div class="carousel-item ">
+							<div class="carousel-item avatar">
 								<img src="{{ asset('images/trainers/Tarti.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="Tarti">
 							</div>
 
-
+							{% endif %}
 
 						</div>
 
@@ -206,118 +209,9 @@
 
 					</div>
 
-				{% else %}
-
-	{#				Carousel de gif de dresseurs normaux#}
-
-					<div id="carouselExample" class="carousel slide">
-
-						<div class="carousel-inner">
-
-							<div class="carousel-item justify-content-center">
-								<img src="{{ asset('images/trainers/trainer1.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="1">
-							</div>
-
-							<div class="carousel-item ">
-								<img src="{{ asset('images/trainers/trainer2.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="2">
-							</div>
-
-							<div class="carousel-item ">
-								<img src="{{ asset('images/trainers/trainer3.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="3">
-							</div>
-
-							<div class="carousel-item ">
-								<img src="{{ asset('images/trainers/trainer4.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="4">
-							</div>
-
-							<div class="carousel-item">
-								<img src="{{ asset('images/trainers/trainer5.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="5">
-							</div>
-
-							<div class="carousel-item ">
-								<img src="{{ asset('images/trainers/trainer6.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="6">
-							</div>
-
-							<div class="carousel-item ">
-								<img src="{{ asset('images/trainers/trainer7.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="7">
-							</div>
-
-							<div class="carousel-item ">
-								<img src="{{ asset('images/trainers/trainer8.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="8">
-							</div>
-
-							<div class="carousel-item ">
-								<img src="{{ asset('images/trainers/trainer9.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="9">
-							</div>
-
-							<div class="carousel-item ">
-								<img src="{{ asset('images/trainers/trainer10.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="10">
-							</div>
-
-							<div class="carousel-item ">
-								<img src="{{ asset('images/trainers/trainer11.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="11">
-							</div>
-
-							<div class="carousel-item ">
-								<img src="{{ asset('images/trainers/trainer12.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="12">
-							</div>
-
-							<div class="carousel-item ">
-								<img src="{{ asset('images/trainers/trainer13.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="13">
-							</div>
-
-							<div class="carousel-item ">
-								<img src="{{ asset('images/trainers/trainer14.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="14">
-							</div>
-
-							<div class="carousel-item ">
-								<img src="{{ asset('images/trainers/trainer15.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="15">
-							</div>
-
-							<div class="carousel-item ">
-								<img src="{{ asset('images/trainers/trainer16.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="16">
-							</div>
-
-							<div class="carousel-item ">
-								<img src="{{ asset('images/trainers/trainer17.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="17">
-							</div>
-
-							<div class="carousel-item ">
-								<img src="{{ asset('images/trainers/trainer18.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="18">
-							</div>
-
-							<div class="carousel-item ">
-								<img src="{{ asset('images/trainers/trainer19.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="19">
-							</div>
-
-							<div class="carousel-item ">
-								<img src="{{ asset('images/trainers/trainer20.gif') }}" class="d-block trainer-gif" alt="..." data-avatar="20">
-							</div>
 
 
 
-						</div>
-
-						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Previous</span>
-						</button>
-
-						<button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Next</span>
-						</button>
-
-						<div class="select-character text-center text-white">
-							<button class="select-character-button">
-								Choisir ce personnage
-							</button>
-						</div>
-
-					</div>
-
-
-				{% endif %}
 
 
 				<div class="right-block col-12 col-lg-4">
@@ -381,7 +275,7 @@
 	        				<td class="text-center">{{ loop.index }}</td>
 							<td class="text-center">{{ userData.user.pseudonym }} </td>
 							<td class="text-center">{{ userData.total_species_seen }}/{{ pokedexSize }}</td>
-							<td class="text-center">{{ userData.total_captured }} </td>
+							<td class="text-center">{{ userData.launch_count }} </td>
 						</tr>
 					{% endfor %}
 

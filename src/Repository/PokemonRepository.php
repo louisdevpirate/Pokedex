@@ -120,7 +120,7 @@ class PokemonRepository extends ServiceEntityRepository
         // FROM pokemon
         // INNER JOIN captured_pokemon ON
         // captured_pokemon.pokemon_id = pokemon.id
-        // WHERE captured_pokemon.owner_id = cet utili
+        // WHERE captured_pokemon.owner_id = cet utilisateur
         return $this->createQueryBuilder('p')
             ->innerJoin('p.capturedPokemon', 'cp')
             ->where('cp.owner = :userId')

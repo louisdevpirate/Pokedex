@@ -137,15 +137,12 @@ const type1Element = {
 let pokemonGif;
 let pokemonImage = document.querySelector('.poke-gif');
 
-
-
-
 // Récupère tous les éléments avec la classe '.pokemon-pokedex'
 let buttons = document.querySelectorAll('.pokemon-pokedex');
 
 let displayInProgress = false;
 
-
+let currentPokeId = null;
 
 // Attache l'événement 'click' à chaque élément de la liste
     buttons.forEach(function(button) {
@@ -155,134 +152,156 @@ let displayInProgress = false;
             if(displayInProgress === false){
 
 
+
+
                 displayInProgress = true;
 
                 let pokemonId = event.target.getAttribute("data-pokemon");
 
+                //Code pour eviter de recharger si on clique sur le meme bouton/pokémon
+
+                if (pokemonId === currentPokeId){
+
+                    displayInProgress = false;
+                    return;
+
+                }else{
+
+                currentPokeId = pokemonId;
 
                 let postData = new FormData();
 
                 postData.append('pokemonId', pokemonId);
 
-                fetch(pokedexPageApi, {
-                    method: 'POST',
-                    body: postData,
-                })
-                    .then((response) => response.json())
 
 
-                    .then(data => {
+                    fetch(pokedexPageApi, {
+                        method: 'POST',
+                        body: postData,
+                    })
+                        .then((response) => response.json())
 
 
-                        //Changement des noms
+                        .then(data => {
 
 
-                        //Français
-                        document.querySelector('.firstName').innerHTML = '';
-
-                        document.querySelector('.firstName').innerHTML = '<span class="text-capitalize">' + data.pokemonToDisplay.name + '</span>';
-
-                        //Anglais
-
-                        document.querySelector('.secondName').innerHTML = '';
-
-                        document.querySelector('.secondName').innerHTML = '<span class="text-capitalize">' + data.pokemonToDisplay.nameEN + '</span>';
-
-                        //ID
-
-                        document.querySelector('.thirdName').innerHTML = '';
-
-                        document.querySelector('.thirdName').innerHTML = '#' + data.pokemonToDisplay.pokeId;
+                            //Changement des noms
 
 
+                            //Français
+                            document.querySelector('.firstName').innerHTML = '';
 
-                        //Changement du gif
+                            document.querySelector('.firstName').innerHTML = '<span class="text-capitalize">' + data.pokemonToDisplay.name + '</span>';
 
-                        pokemonGif = pokemonsGifDir + '/' + data.pokemonToDisplay.gif;
+                            //Anglais
 
-                        pokemonImage.src = pokemonGif;
+                            document.querySelector('.secondName').innerHTML = '';
 
+                            document.querySelector('.secondName').innerHTML = '<span class="text-capitalize">' + data.pokemonToDisplay.nameEN + '</span>';
 
-                        //Changement de la description
+                            //ID
 
-                        document.querySelector('.description p').innerHTML = '';
+                            document.querySelector('.thirdName').innerHTML = '';
 
-                        document.querySelector('.description p').innerHTML = data.pokemonToDisplay.description;
-
-                        //Changement du fond
-
-                        document.querySelector('.fond').classList.remove(window.pokemonBackground);
-
-                        window.pokemonBackground = typesBackgroundArray[data.pokemonToDisplay.type1];
-
-                        document.querySelector('.fond').classList.add(typesBackgroundArray[data.pokemonToDisplay.type1]);
+                            document.querySelector('.thirdName').innerHTML = '#' + data.pokemonToDisplay.pokeId;
 
 
-                        //Changement des types
 
-                        let type1 = document.querySelector('.type1');
+                            //Changement du gif
 
-                        let type2 = document.querySelector('.type2');
+                            pokemonGif = pokemonsGifDir + '/' + data.pokemonToDisplay.gif;
 
-
-                        //Type 1
-
-                        type1.src = pokemonsTypeDir + type1Element[data.pokemonToDisplay.type1];
+                            pokemonImage.src = pokemonGif;
 
 
-                        if(data.pokemonToDisplay.type2 != null){
+                            //Changement de la description
 
-                            type2.classList.remove('type-none');
+                            document.querySelector('.description p').innerHTML = '';
 
-                            type2.src = pokemonsTypeDir + type1Element[data.pokemonToDisplay.type2];
+                            document.querySelector('.description p').innerHTML = data.pokemonToDisplay.description;
 
-                        }else{
+                            //Changement du fond
 
-                            type2.classList.add('type-none');
+                            document.querySelector('.fond').classList.remove(window.pokemonBackground);
 
-                        }
+                            window.pokemonBackground = typesBackgroundArray[data.pokemonToDisplay.type1];
 
-                        //Bouton de shiny si l'utilisateur possède le shiny de ce pokémon
+                            document.querySelector('.fond').classList.add(typesBackgroundArray[data.pokemonToDisplay.type1]);
 
-                        let mobileShinyButton = document.querySelector('.shiny-button-mobile');
 
-                        mobileShinyButton.classList.add('type-none');
+                            //Changement des types
 
-                        if(data.pokemonToDisplay.shiny === true){
+                            let type1 = document.querySelector('.type1');
 
-                            mobileShinyButton.classList.remove('type-none');
+                            let type2 = document.querySelector('.type2');
 
-                            mobileShinyButton.classList.add('type-on');
 
-                        }else{
+                            //Type 1
 
-                            mobileShinyButton.classList.remove('type-on');
+                            type1.src = pokemonsTypeDir + type1Element[data.pokemonToDisplay.type1];
+
+
+                            if(data.pokemonToDisplay.type2 != null){
+
+                                type2.classList.remove('type-none');
+
+                                type2.src = pokemonsTypeDir + type1Element[data.pokemonToDisplay.type2];
+
+                            }else{
+
+                                type2.classList.add('type-none');
+
+                            }
+
+                            //Bouton de shiny si l'utilisateur possède le shiny de ce pokémon
+
+                            let mobileShinyButton = document.querySelector('.shiny-button-mobile');
 
                             mobileShinyButton.classList.add('type-none');
 
-                        }
+                            if(data.pokemonToDisplay.shiny === true){
+
+                                mobileShinyButton.classList.remove('type-none');
+
+                                mobileShinyButton.classList.add('type-on');
+
+                            }else{
+
+                                mobileShinyButton.classList.remove('type-on');
+
+                                mobileShinyButton.classList.add('type-none');
+
+                            }
 
 
 
 
 
 
-                    })
-                    .catch(error => {
+                        })
+                        .catch(error => {
 
-                        console.log(error);
+                            console.log(error);
 
-                    });
+                        });
 
 
 
-                setTimeout(() => {
-                    displayInProgress = false;
-                }, 100);
 
-            }
+                        displayInProgress = false;
+
+                }
+                }
         });
     });
+
+
+
+
+
+
+
+
 
 // Animation du bouton Shiny sur mobile
 let shinyButton = document.querySelector(".shiny-button-mobile");
@@ -385,6 +404,16 @@ let arrow5Gen = document.querySelector('.fifth-gen-button .fa-solid');
 let allGenFiveButtons = document.querySelectorAll('.gen-5');
 
 toggleButtons(button5Gen, arrow5Gen, allGenFiveButtons);
+
+
+//Sixieme gen
+
+
+let button6Gen = document.querySelector('.six-gen-button');
+let arrow6Gen = document.querySelector('.six-gen-button .fa-solid');
+let allGenSixButtons = document.querySelectorAll('.gen-6');
+
+toggleButtons(button6Gen, arrow6Gen, allGenSixButtons);
 
 
 //Megas Evolutions
@@ -505,6 +534,24 @@ const activeShinyG5 = document.querySelectorAll(".gen-5-shiny");
 const activeCountShinyG5 = document.getElementById("shinyG5");
 
 activeCountShinyG5.textContent = activeShinyG5.length;
+
+
+//Gen 6
+
+
+//Completion
+const activeButtonsG6 = document.querySelectorAll(".captured.gen-6");
+const activeCountG6 = document.getElementById("activeCountG6");
+
+activeCountG6.textContent = activeButtonsG6.length;
+
+//Shiny
+
+const activeShinyG6 = document.querySelectorAll(".gen-6-shiny");
+const activeCountShinyG6 = document.getElementById("shinyG6");
+
+activeCountShinyG6.textContent = activeShinyG6.length;
+
 
 
 //ME

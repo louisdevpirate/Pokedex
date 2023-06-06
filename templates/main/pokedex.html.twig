@@ -222,6 +222,47 @@
 
 
 				</ul>
+				<ul class="col-12">
+
+					{# Sixème Gen #}
+
+					<button class="six-gen-button gen"><span class="gen-title">Sixième Génération</span>  <br>
+
+						<span id="activeCountG6"></span>/72 ||
+
+						<img src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">: <span id="shinyG6"></span>/72
+						<i class="fa-solid fa-play"> </i></button>
+
+					{% for poke in pokemons %}
+
+						{% if poke.pokeId >= 650 and poke.pokeId <= 721 %}
+
+
+
+							{% if poke.captured %}
+								<button class="poke-li captured col-12 pokemon-pokedex type-none gen-6" data-pokemon="{{ poke.pokeId }}" >
+									{{ poke.name|capitalize }} #{{ poke.pokeId }}
+
+									{% if poke.shiny %}
+										<img class="gen-6-shiny" src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">
+									{% endif %}
+
+								</button>
+							{% else %}
+								<button disabled class="poke-li col-12 not-captured type-none gen-6">
+
+									???
+
+								</button>
+
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+
+
+
+
+				</ul>
 
 				<ul class="col-12">
 
@@ -272,7 +313,7 @@
 
 					<button class="SR-button gen"><span class="gen-title">Secret Rares</span><br>
 
-						<span id="activeCountSR"></span>/10 ||
+						<span id="activeCountSR"></span>/16 ||
 
 						<img src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">: <span id="shinySR"></span>/10
 						<i class="fa-solid fa-play"> </i></button>
@@ -315,7 +356,7 @@
 
 					<button class="UR-button gen"><span class="gen-title">Ultra Rares</span><br>
 
-						<span id="activeCountUR"></span>/16 ||
+						<span id="activeCountUR"></span>/20 ||
 
 						<img src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">: <span id="shinyUR"></span>/16
 						<i class="fa-solid fa-play"> </i></button>
