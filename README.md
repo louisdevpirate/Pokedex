@@ -4,7 +4,7 @@ Il s'agit d'un projet groupé réalisé dans le cadre de notre formation.
 
 Nous sommes trois : Louis, Yann et Bastien.
 
-Ce site à pour objectif d'être un terrain de jeu pour nous, afin que nous puissions
+Ce site a pour objectif d'être un terrain de jeu pour nous, afin que nous puissions
 explorer des possibilités, améliorer ce que nous avions fait auparavant et surtout
 prendre du plaisir à coder tous ensemble.
 
@@ -13,10 +13,10 @@ des lancers passivement avec le temps. Il peut ensuite les ouvrir sur la
 page "Libération" afin d'y découvrir des Pokémons plus ou moins rares! 
 
 La page "Pokédex" permet à l'utilisateur de contempler sa collection et la 
-page dee "Profil" affiche les stats de l'utilisateur, son avatar qu'il peut changer
+page de "Profil" affiche les stats de l'utilisateur, son avatar qu'il peut changer
 et un tableau regroupant celles et ceux qui ont atteints les sommets. 
 
-Il s'agit de notre premier projet et nous éspérons qu'il vous plaira autant que nous
+Il s'agit de notre premier projet et nous espérons qu'il vous plaira autant que nous
 avons aimé le développer!
 
 
