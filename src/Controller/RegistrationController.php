@@ -73,6 +73,11 @@ class RegistrationController extends AbstractController
                 ->setLaunchs(30)
                 ->setLastObtainedLaunch(new \DateTime())
                 ->setAvatar('1')
+                ->setHyperBall(0)
+                ->setMoney(0)
+                ->setMasterBall(0)
+                ->setShinyBall(0)
+
             ;
 
 

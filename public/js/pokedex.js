@@ -416,6 +416,40 @@ let allGenSixButtons = document.querySelectorAll('.gen-6');
 toggleButtons(button6Gen, arrow6Gen, allGenSixButtons);
 
 
+//Septième gen
+
+
+let button7Gen = document.querySelector('.seven-gen-button');
+let arrow7Gen = document.querySelector('.seven-gen-button .fa-solid');
+let allGenSevenButtons = document.querySelectorAll('.gen-7');
+
+toggleButtons(button7Gen, arrow7Gen, allGenSevenButtons);
+
+
+
+//Huitième gen
+
+let button8Gen = document.querySelector('.eight-gen-button');
+let arrow8Gen = document.querySelector('.eight-gen-button .fa-solid');
+let allGenEightButtons = document.querySelectorAll('.gen-8');
+
+toggleButtons(button8Gen, arrow8Gen, allGenEightButtons);
+
+
+
+//Forme reg
+
+
+let buttonALO = document.querySelector('.ALO-button');
+let arrowALO = document.querySelector('.ALO-button .fa-solid');
+let allALOButtons = document.querySelectorAll('.ALO');
+
+toggleButtons(buttonALO, arrowALO, allALOButtons);
+
+
+
+
+
 //Megas Evolutions
 
 
@@ -552,6 +586,57 @@ const activeCountShinyG6 = document.getElementById("shinyG6");
 
 activeCountShinyG6.textContent = activeShinyG6.length;
 
+
+//Gen 7
+
+
+//Completion
+const activeButtonsG7 = document.querySelectorAll(".captured.gen-7");
+const activeCountG7 = document.getElementById("activeCountG7");
+
+activeCountG7.textContent = activeButtonsG7.length;
+
+//Shiny
+
+const activeShinyG7 = document.querySelectorAll(".gen-7-shiny");
+const activeCountShinyG7 = document.getElementById("shinyG7");
+
+activeCountShinyG7.textContent = activeShinyG7.length;
+
+
+
+//Gen 7
+
+
+//Completion
+const activeButtonsG8 = document.querySelectorAll(".captured.gen-8");
+const activeCountG8 = document.getElementById("activeCountG8");
+
+activeCountG8.textContent = activeButtonsG8.length;
+
+//Shiny
+
+const activeShinyG8 = document.querySelectorAll(".gen-8-shiny");
+const activeCountShinyG8 = document.getElementById("shinyG8");
+
+activeCountShinyG8.textContent = activeShinyG8.length;
+
+
+//Formes ALOLA
+
+
+//Completion
+const activeButtonsALO = document.querySelectorAll(".captured.ALO");
+const activeCountALO = document.getElementById("activeCountALO");
+
+activeCountALO.textContent = activeButtonsALO.length;
+
+//Shiny
+
+const activeShinyALO = document.querySelectorAll(".ALO-shiny");
+const activeCountShinyALO = document.getElementById("shinyALO");
+
+activeCountShinyALO.textContent = activeShinyALO.length;
 
 
 //ME

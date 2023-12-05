@@ -264,6 +264,141 @@
 
 				</ul>
 
+
+				<ul class="col-12">
+
+					{# Septième Gen #}
+
+					<button class="seven-gen-button gen"><span class="gen-title">Septième Génération</span>  <br>
+
+						<span id="activeCountG7"></span>/86 ||
+
+						<img src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">: <span id="shinyG7"></span>/86
+						<i class="fa-solid fa-play"> </i></button>
+
+					{% for poke in pokemons %}
+
+						{% if poke.pokeId >= 722 and poke.pokeId <= 809 %}
+
+
+
+							{% if poke.captured %}
+								<button class="poke-li captured col-12 pokemon-pokedex type-none gen-7" data-pokemon="{{ poke.pokeId }}" >
+									{{ poke.name|capitalize }} #{{ poke.pokeId }}
+
+									{% if poke.shiny %}
+										<img class="gen-7-shiny" src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">
+									{% endif %}
+
+								</button>
+							{% else %}
+								<button disabled class="poke-li col-12 not-captured type-none gen-7">
+
+									???
+
+								</button>
+
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+
+
+
+
+				</ul>
+
+
+
+				<ul class="col-12">
+
+					{# Huitième Gen #}
+
+					<button class="eight-gen-button gen"><span class="gen-title">Huitième Génération</span>  <br>
+
+						<span id="activeCountG8"></span>/89 ||
+
+						<img src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">: <span id="shinyG8"></span>/89
+						<i class="fa-solid fa-play"> </i></button>
+
+					{% for poke in pokemons %}
+
+						{% if poke.pokeId >= 810 and poke.pokeId <= 898 %}
+
+
+
+							{% if poke.captured %}
+								<button class="poke-li captured col-12 pokemon-pokedex type-none gen-8" data-pokemon="{{ poke.pokeId }}" >
+									{{ poke.name|capitalize }} #{{ poke.pokeId }}
+
+									{% if poke.shiny %}
+										<img class="gen-8-shiny" src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">
+									{% endif %}
+
+								</button>
+							{% else %}
+								<button disabled class="poke-li col-12 not-captured type-none gen-8">
+
+									???
+
+								</button>
+
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+
+				</ul>
+
+
+
+
+
+				<ul class="col-12">
+
+					{# Forme REGIONALES #}
+
+					<button class="ALO-button gen"><span class="gen-title">Formes Régionales</span>  <br>
+
+						<span id="activeCountALO"></span>/35 ||
+
+						<img src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">: <span id="shinyALO"></span>/35
+						<i class="fa-solid fa-play"> </i></button>
+
+					{% for poke in pokemons %}
+
+						{% if poke.pokeId >= 1500 and poke.pokeId <= 1534 %}
+
+
+
+							{% if poke.captured %}
+								<button class="poke-li captured col-12 pokemon-pokedex type-none ALO" data-pokemon="{{ poke.pokeId }}" >
+									{{ poke.name|capitalize }} #{{ poke.pokeId }}
+
+									{% if poke.shiny %}
+										<img class="ALO-shiny" src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">
+									{% endif %}
+
+								</button>
+							{% else %}
+								<button disabled class="poke-li col-12 not-captured type-none ALO">
+
+									???
+
+								</button>
+
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+
+
+
+
+				</ul>
+
+
+
+
+
+
 				<ul class="col-12">
 
 					{# Mégas Evolutions #}
@@ -315,7 +450,7 @@
 
 						<span id="activeCountSR"></span>/16 ||
 
-						<img src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">: <span id="shinySR"></span>/10
+						<img src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">: <span id="shinySR"></span>/16
 						<i class="fa-solid fa-play"> </i></button>
 
 					{% for poke in pokemons %}
@@ -356,9 +491,9 @@
 
 					<button class="UR-button gen"><span class="gen-title">Ultra Rares</span><br>
 
-						<span id="activeCountUR"></span>/20 ||
+						<span id="activeCountUR"></span>/25 ||
 
-						<img src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">: <span id="shinyUR"></span>/16
+						<img src="{{ asset('images/sparkle/shinyOK.png') }}" alt="">: <span id="shinyUR"></span>/25
 						<i class="fa-solid fa-play"> </i></button>
 
 					{% for poke in pokemons %}
