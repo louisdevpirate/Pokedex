@@ -24,5 +24,5 @@ Le lien du site en ligne :
 
 https://pokemon-station.fr/
 
-
+*EDIT le site n'est plus en ligne*
 
